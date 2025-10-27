@@ -1,9 +1,9 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blender 5.0.0 Beta (b'2b3706e29f27')\n"
+"Project-Id-Version: Blender 5.0.0 Beta (b'6f9eadf7a433')\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-20 08:46+0000\n"
+"POT-Creation-Date: 2025-10-27 09:50+0000\n"
 "PO-Revision-Date: 2025-08-06 08:59+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://translate.blender.org/projects/blender-ui/ui/ta/>\n"
@@ -34306,16 +34306,136 @@ msgid "Editor menu containing buttons"
 msgstr "பொத்தான்களைக் கொண்ட திருத்தி பட்டியல்"
 
 
-msgid "Assign Material"
-msgstr "மூலப்பொருள் ஒதுக்க"
+msgid "Text"
+msgstr "உரை"
+
+
+msgid "Metaball"
+msgstr "வளர்சிதை மாற்ற"
+
+
+msgid "Show/Hide"
+msgstr "காட்டு/மறைக்க"
+
+
+msgid "Names"
+msgstr "பெயர்கள்"
+
+
+msgid "Bone Roll"
+msgstr "எலும்பு ரோல்"
+
+
+msgid "Clean Up"
+msgstr "தூய்மை செய்"
+
+
+msgid "Pivot Point"
+msgstr "பிவோட் புள்ளி"
+
+
+msgid "Snap"
+msgstr "ச்னாப்"
+
+
+msgid "Proportional Editing Falloff"
+msgstr "விகிதாசார திருத்துதல் வீழ்ச்சி"
+
+
+msgid "Mask Edit"
+msgstr "முகமூடி திருத்து"
+
+
+msgid "Automasking"
+msgstr "ஆட்டோமேச்கிங்"
+
+
+msgid "Face Sets Edit"
+msgstr "முகம் தொகுப்புகள் திருத்து"
+
+
+msgid "Vertex Group Locks"
+msgstr "வெர்டெக்ச் குழு பூட்டுகள்"
+
+
+msgid "Layout"
+msgstr "தளவமைப்பு"
+
+
+msgid "Mirror"
+msgstr "கண்ணாடி"
+
+
+msgid "UV Mapping"
+msgstr "புறஊதா மேப்பிங்"
+
+
+msgid "Local View"
+msgstr "உள்ளக பார்வை"
+
+
+msgid "Viewpoint"
+msgstr "பார்வை"
+
+
+msgid "Navigation"
+msgstr "வழிசெலுத்தல்"
+
+
+msgid "Align View"
+msgstr "பார்வையை சீரமைக்கவும்"
+
+
+msgid "Adjust"
+msgstr "சரிசெய்யவும்"
+
+
+msgid "Align View to Active"
+msgstr "செயலில் பார்வையை சீரமைக்கவும்"
+
+
+msgid "View Regions"
+msgstr "மண்டலங்களைக் காண்க"
 
 
 msgid "Select More/Less"
 msgstr "மேலும்/குறைவாக தேர்ந்தெடுக்கவும்"
 
 
-msgid "Metaball"
-msgstr "வளர்சிதை மாற்ற"
+msgid "Keying"
+msgstr "கீயிங்"
+
+
+msgid "Tracking"
+msgstr "கண்காணிப்பு"
+
+
+msgid "Select Similar"
+msgstr "ஒத்ததைத் தேர்ந்தெடுக்கவும்"
+
+
+msgid "Select All by Trait"
+msgstr "அனைத்தையும் பண்பின் மூலம் தேர்ந்தெடுக்கவும்"
+
+
+msgid "Utilities"
+msgstr "பயன்பாடுகள்"
+
+
+msgid "Select Linked"
+msgstr "இணைக்கப்பட்டதைத் தேர்ந்தெடுக்கவும்"
+
+
+msgid "Math"
+msgstr "கணிதம்"
+
+
+msgid "Select Loops"
+msgstr "சுழல்களைத் தேர்ந்தெடுக்கவும்"
+
+
+msgid "Assign Material"
+msgstr "மூலப்பொருள் ஒதுக்க"
 
 
 msgid "Light"
@@ -34350,14 +34470,6 @@ msgid "Quick Effects"
 msgstr "விரைவான விளைவுகள்"
 
 
-msgid "Show/Hide"
-msgstr "காட்டு/மறைக்க"
-
-
-msgid "Clean Up"
-msgstr "தூய்மை செய்"
-
-
 msgid "Asset"
 msgstr "சொத்து"
 
@@ -34378,12 +34490,20 @@ msgid "Hooks"
 msgstr "கொக்கிகள்"
 
 
-msgid "Vertex Group Locks"
-msgstr "வெர்டெக்ச் குழு பூட்டுகள்"
+msgid "Read"
+msgstr "படி"
 
 
-msgid "Layout"
-msgstr "தளவமைப்பு"
+msgid "Sample"
+msgstr "மாதிரி"
+
+
+msgid "Write"
+msgstr "எழுதுங்கள்"
+
+
+msgid "Primitives"
+msgstr "ப்ரைமிடிவ்ச்"
 
 
 msgid "Trim/Add"
@@ -34410,40 +34530,28 @@ msgid "In-Betweens"
 msgstr "இன்-பெட்வீன்ச்"
 
 
-msgid "Adjust"
-msgstr "சரிசெய்யவும்"
+msgid "Gizmo"
+msgstr "கிச்மோ"
 
 
 msgid "Propagate"
 msgstr "பிரச்சாரம்"
 
 
+msgid "Instances"
+msgstr "நிகழ்வுகள்"
+
+
 msgid "Bone Collections"
 msgstr "எலும்பு வசூல்"
 
 
-msgid "Keying"
-msgstr "கீயிங்"
-
-
-msgid "Names"
-msgstr "பெயர்கள்"
-
-
-msgid "Tracking"
-msgstr "கண்காணிப்பு"
-
-
-msgid "Utilities"
-msgstr "பயன்பாடுகள்"
+msgid "Import"
+msgstr "இறக்குமதி"
 
 
 msgid "Toggle Bone Options"
 msgstr "எலும்பு விருப்பங்களை மாற்றவும்"
-
-
-msgid "Math"
-msgstr "கணிதம்"
 
 
 msgid "Enable Bone Options"
@@ -34458,6 +34566,10 @@ msgid "Mesh Select Mode"
 msgstr "கண்ணி தேர்ந்தெடுக்கப்பட்ட பயன்முறையைத் தேர்ந்தெடுக்கவும்"
 
 
+msgid "Deprecated"
+msgstr "மதிப்பிடப்பட்டது"
+
+
 msgid "Face Data"
 msgstr "முகத்தை முகம்"
 
@@ -34468,6 +34580,14 @@ msgstr "முக வலிமையால் தேர்ந்தெடுக�
 
 msgid "Set Face Strength"
 msgstr "முக வலிமையை அமைக்கவும்"
+
+
+msgid "List"
+msgstr "பட்டியல்"
+
+
+msgid "UV"
+msgstr "புறஊதா"
 
 
 msgid "Merge"
@@ -34482,136 +34602,16 @@ msgid "Kerning"
 msgstr "கெர்னிங்"
 
 
-msgid "Text"
-msgstr "உரை"
-
-
-msgid "Bone Roll"
-msgstr "எலும்பு ரோல்"
-
-
-msgid "Read"
-msgstr "படி"
-
-
-msgid "Sample"
-msgstr "மாதிரி"
-
-
-msgid "Write"
-msgstr "எழுதுங்கள்"
-
-
-msgid "Pivot Point"
-msgstr "பிவோட் புள்ளி"
-
-
-msgid "Primitives"
-msgstr "ப்ரைமிடிவ்ச்"
-
-
-msgid "Snap"
-msgstr "ச்னாப்"
-
-
-msgid "Proportional Editing Falloff"
-msgstr "விகிதாசார திருத்துதல் வீழ்ச்சி"
-
-
-msgid "Mask Edit"
-msgstr "முகமூடி திருத்து"
-
-
-msgid "Automasking"
-msgstr "ஆட்டோமேச்கிங்"
-
-
-msgid "Face Sets Edit"
-msgstr "முகம் தொகுப்புகள் திருத்து"
-
-
-msgid "Gizmo"
-msgstr "கிச்மோ"
-
-
-msgid "Instances"
-msgstr "நிகழ்வுகள்"
-
-
-msgid "Import"
-msgstr "இறக்குமதி"
-
-
-msgid "Deprecated"
-msgstr "மதிப்பிடப்பட்டது"
-
-
-msgid "Mirror"
-msgstr "கண்ணாடி"
-
-
-msgid "UV Mapping"
-msgstr "புறஊதா மேப்பிங்"
-
-
-msgid "Local View"
-msgstr "உள்ளக பார்வை"
-
-
-msgid "List"
-msgstr "பட்டியல்"
-
-
-msgid "Viewpoint"
-msgstr "பார்வை"
-
-
-msgid "Navigation"
-msgstr "வழிசெலுத்தல்"
-
-
-msgid "UV"
-msgstr "புறஊதா"
-
-
-msgid "Align View"
-msgstr "பார்வையை சீரமைக்கவும்"
-
-
-msgid "Align View to Active"
-msgstr "செயலில் பார்வையை சீரமைக்கவும்"
-
-
-msgid "View Regions"
-msgstr "மண்டலங்களைக் காண்க"
-
-
-msgid "Select Similar"
-msgstr "ஒத்ததைத் தேர்ந்தெடுக்கவும்"
-
-
-msgid "Select All by Trait"
-msgstr "அனைத்தையும் பண்பின் மூலம் தேர்ந்தெடுக்கவும்"
+msgid "Keyframe Insert Pie"
+msgstr "கீஃப்ரேம் செருகும் பை"
 
 
 msgid "Animals"
 msgstr "விலங்குகள்"
 
 
-msgid "Select Linked"
-msgstr "இணைக்கப்பட்டதைத் தேர்ந்தெடுக்கவும்"
-
-
 msgid "Basic"
 msgstr "அடிப்படை"
-
-
-msgid "Select Loops"
-msgstr "சுழல்களைத் தேர்ந்தெடுக்கவும்"
-
-
-msgid "Keyframe Insert Pie"
-msgstr "கீஃப்ரேம் செருகும் பை"
 
 
 msgid "Bone Collection Specials"
@@ -40476,16 +40476,8 @@ msgid "Location on disk where the bake data is stored"
 msgstr "சுட்டுக்கொள்ள தரவு சேமிக்கப்படும் வட்டில் இருப்பிடம்"
 
 
-msgid "Bake Target"
-msgstr "சுட்டுக்கொள்ள இலக்கு"
-
-
 msgid "Where to store the baked data"
 msgstr "சுட்ட தரவை எங்கே சேமிக்க வேண்டும்"
-
-
-msgid "Packed"
-msgstr "நிரம்பியுள்ளது"
 
 
 msgid "Pack the baked data into the .blend file"
@@ -51422,10 +51414,6 @@ msgstr "இன்னும்"
 
 msgid "Bake a single frame"
 msgstr "ஒற்றை சட்டகத்தை சுட்டுக்கொள்ளுங்கள்"
-
-
-msgid "Inherit from Modifier"
-msgstr "மாற்றியமைப்பிலிருந்து பெறுதல்"
 
 
 msgid "Use setting from the modifier"
@@ -88307,6 +88295,10 @@ msgid "Don't import textures"
 msgstr "அமைப்புகளை இறக்குமதி செய்ய வேண்டாம்"
 
 
+msgid "Packed"
+msgstr "நிரம்பியுள்ளது"
+
+
 msgid "Import textures as packed data"
 msgstr "நிரம்பிய தரவுகளாக அமைப்புகளை இறக்குமதி செய்க"
 
@@ -89382,50 +89374,6 @@ msgid "Panel containing UI elements"
 msgstr "இடைமுகம் கூறுகளைக் கொண்ட குழு"
 
 
-msgid "Auto-Masking"
-msgstr "ஆட்டோ-மாசிங்"
-
-
-msgid "Curves Sculpt Add Curve Options"
-msgstr "வளைவுகள் சிற்பம் வளைவு விருப்பங்களைச் சேர்க்கவும்"
-
-
-msgid "Curves Sculpt Parameter Falloff"
-msgstr "வளைவுகள் சிற்பம் அளவுரு வீழ்ச்சி"
-
-
-msgid "Curves Grow/Shrink Scaling"
-msgstr "வளைவுகள் வளரும்/சுருக்கவும்"
-
-
-msgid "Viewport Debug"
-msgstr "வியூபோர்ட் பிழைத்திருத்தம்"
-
-
-msgid "VR"
-msgstr "வி.ஆர்"
-
-
-msgid "VR Info"
-msgstr "வி.ஆர் செய்தி"
-
-
-msgid "glTF Variants"
-msgstr "gltf வகைகள்"
-
-
-msgid "glTF Material Variants"
-msgstr "GLTF பொருள் மாறுபாடுகள்"
-
-
-msgid "glTF"
-msgstr "gltf"
-
-
-msgid "glTF Animations"
-msgstr "GLTF அனிமேசன்கள்"
-
-
 msgid "Active Tool"
 msgstr "செயலில் உள்ள கருவி"
 
@@ -89528,6 +89476,50 @@ msgstr "ச்டீரியோச்கோபி"
 
 msgid "Multi Frame"
 msgstr "பல சட்டகம்"
+
+
+msgid "glTF Variants"
+msgstr "gltf வகைகள்"
+
+
+msgid "glTF Material Variants"
+msgstr "GLTF பொருள் மாறுபாடுகள்"
+
+
+msgid "Auto-Masking"
+msgstr "ஆட்டோ-மாசிங்"
+
+
+msgid "Curves Sculpt Add Curve Options"
+msgstr "வளைவுகள் சிற்பம் வளைவு விருப்பங்களைச் சேர்க்கவும்"
+
+
+msgid "Curves Sculpt Parameter Falloff"
+msgstr "வளைவுகள் சிற்பம் அளவுரு வீழ்ச்சி"
+
+
+msgid "Curves Grow/Shrink Scaling"
+msgstr "வளைவுகள் வளரும்/சுருக்கவும்"
+
+
+msgid "Viewport Debug"
+msgstr "வியூபோர்ட் பிழைத்திருத்தம்"
+
+
+msgid "glTF"
+msgstr "gltf"
+
+
+msgid "glTF Animations"
+msgstr "GLTF அனிமேசன்கள்"
+
+
+msgid "VR"
+msgstr "வி.ஆர்"
+
+
+msgid "VR Info"
+msgstr "வி.ஆர் செய்தி"
 
 
 msgid "Import Settings"
@@ -115914,10 +115906,6 @@ msgid "External shader script must have .osl or .oso extension, or be a module n
 msgstr "வெளிப்புற நிழல் ச்கிரிப்டில் .osl அல்லது .oso நீட்டிப்பு இருக்க வேண்டும், அல்லது ஒரு பகுதி பெயராக இருக்க வேண்டும்"
 
 
-msgid "Failed to write .oso file next to external .osl file at "
-msgstr "வெளிப்புற .osl கோப்புக்கு அடுத்ததாக .oso கோப்பை எழுதத் தவறிவிட்டது "
-
-
 msgid "Use Intel OpenImageDenoise AI denoiser"
 msgstr "இன்டெல் ஓபன்இமேகெண்டெனோயிச் AI டெனோசரைப் பயன்படுத்தவும்"
 
@@ -116634,10 +116622,6 @@ msgid "Selected nodes are not of the same type as {}"
 msgstr "தேர்ந்தெடுக்கப்பட்ட முனைகள் {to அதே வகையைச் சேர்ந்தவை அல்ல"
 
 
-msgid "Ignored {} (not of the same type as {}), "
-msgstr "புறக்கணிக்கப்பட்டது {} ({} போன்ற அதே வகை அல்ல), "
-
-
 msgid "No folder selected"
 msgstr "கோப்புறை எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
 
@@ -116710,16 +116694,16 @@ msgid "This node has no inputs to swap"
 msgstr "இந்த முனையில் இடமாற்றம் செய்ய உள்ளீடுகள் இல்லை"
 
 
+msgid "Ignored {} (not of the same type as {})"
+msgstr "புறக்கணிக்கப்பட்டது {} ({} போன்ற அதே வகை அல்ல)"
+
+
 msgid "Ignored {}"
 msgstr "புறக்கணிக்கப்பட்டது {}"
 
 
 msgid "This node has no input connections to swap"
 msgstr "இந்த முனைக்கு இடமாற்றம் செய்ய உள்ளீட்டு இணைப்புகள் இல்லை"
-
-
-msgid "Ignored {} (not of the same type as {})"
-msgstr "புறக்கணிக்கப்பட்டது {} ({} போன்ற அதே வகை அல்ல)"
 
 
 msgid "Some connections have been lost due to differing numbers of output sockets"
@@ -117856,10 +117840,6 @@ msgid "Unable to mirror, no mirror object/bone configured"
 msgstr "பிரதிபலிக்க முடியவில்லை, கண்ணாடி பொருள்/எலும்பு கட்டமைக்கப்படவில்லை"
 
 
-msgid "Unsupported mode: %r"
-msgstr "ஆதரிக்கப்படாத பயன்முறை: %r"
-
-
 msgid "Some strings were fixed, don't forget to save the .blend file to keep those changes"
 msgstr "சில சரங்கள் சரி செய்யப்பட்டன, அந்த மாற்றங்களை வைத்திருக்க .கலப்பு கோப்பை சேமிக்க மறக்காதீர்கள்"
 
@@ -117874,10 +117854,6 @@ msgstr "முன்னோட்டங்கள் '{:s}' கோப்புக�
 
 msgid "No active camera in the scene"
 msgstr "காட்சியில் செயலில் கேமரா இல்லை"
-
-
-msgid "Unexpected modifier type: "
-msgstr "எதிர்பாராத மாற்றி வகை: "
 
 
 msgid "Target object not specified"
@@ -118048,10 +118024,6 @@ msgid "Object: {:s}, Mesh: '{:s}' has {:d} loops (for {:d} faces), expected {:d}
 msgstr "பொருள்: {:s}, கண்ணி: '{:s}' {:d} சுழல்கள் ({:d} முகங்களுக்கு), எதிர்பார்க்கப்படும் {:d}"
 
 
-msgid "Modifiers cannot be added to object: "
-msgstr "மாற்றியமைப்பாளர்களை பொருளில் சேர்க்க முடியாது: "
-
-
 msgid "Object {!r} already has {!r} F-Curve(s). Remove these before trying again"
 msgstr "பொருள் {! R} ஏற்கனவே {! R} f-CURVE (கள்) உள்ளது. மீண்டும் முயற்சிக்கும் முன் இவற்றை அகற்றவும்"
 
@@ -118174,10 +118146,6 @@ msgstr "முன்னமைவை மேலெழுத முடியவி�
 
 msgid "Unable to remove preset: {!r}"
 msgstr "முன்னமைவை அகற்ற முடியவில்லை: {! R}"
-
-
-msgid "Failed to execute the preset: "
-msgstr "முன்னமைவை இயக்கத் தவறிவிட்டது: "
 
 
 msgid "No other objects selected"
@@ -118626,10 +118594,6 @@ msgid "Python evaluation failed: "
 msgstr "பைதான் மதிப்பீடு தோல்வியடைந்தது: "
 
 
-msgid "Failed to assign value: "
-msgstr "மதிப்பை ஒதுக்குவதில் தோல்வி: "
-
-
 msgid "Strip(s)"
 msgstr "துண்டு(கள்)"
 
@@ -118662,10 +118626,6 @@ msgid "Rename {:d} {:s}"
 msgstr "மறுபெயரிடுக {:d} {:s}"
 
 
-msgid "Invalid regular expression (find): "
-msgstr "தவறான வழக்கமான வெளிப்பாடு (கண்டுபிடி): "
-
-
 msgid "Version: {:s}"
 msgstr "பதிப்பு: {:s}"
 
@@ -118688,10 +118648,6 @@ msgstr "\"{:s}\" என்று தட்டச்சு செய்ய மு
 
 msgid "Material(s)"
 msgstr "பொருள்(கள்)"
-
-
-msgid "Invalid regular expression (replace): "
-msgstr "செல்லுபடியாகாத வழக்கமான வெளிப்பாடு (மாற்றீடு): "
 
 
 msgctxt "Operator"
@@ -134909,10 +134865,6 @@ msgid "Dependency Loop"
 msgstr "சார்பு வளையம்"
 
 
-msgid "Unsupported Menu Socket"
-msgstr "ஆதரிக்கப்படாத பட்டியல் சாக்கெட்"
-
-
 msgid "Closed by Default"
 msgstr "இயல்புநிலையாக மூடப்பட்டது"
 
@@ -142176,6 +142128,10 @@ msgid "Create a separate curve instance for every layer"
 msgstr "ஒவ்வொரு அடுக்குக்கும் ஒரு தனி வளைவு உதாரணத்தை உருவாக்கவும்"
 
 
+msgid "Revert"
+msgstr "மாற்றியமைக்கவும்"
+
+
 msgid "Transform from grid index space to object space"
 msgstr "கட்டம் குறியீட்டு இடத்திலிருந்து பொருள் இடத்திற்கு மாற்றவும்"
 
@@ -145202,10 +145158,6 @@ msgstr "எச்சரிக்கை: சேமிக்கப்படாத 
 
 msgid "Revert to the Saved File"
 msgstr "சேமித்த கோப்பிற்கு திரும்பவும்"
-
-
-msgid "Revert"
-msgstr "மாற்றியமைக்கவும்"
 
 
 msgid "Clear Recent Files List"
