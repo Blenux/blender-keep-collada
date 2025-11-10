@@ -1,9 +1,9 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blender 5.0.0 Beta (b'6cf0458fdf00')\n"
+"Project-Id-Version: Blender 5.0.0 Beta (b'd29f9f6118e5')\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 10:44+0000\n"
+"POT-Creation-Date: 2025-11-10 09:45+0000\n"
 "PO-Revision-Date: 2025-07-23 15:12+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Urdu <https://translate.blender.org/projects/blender-ui/ui/ur/>\n"
@@ -32692,38 +32692,6 @@ msgid "Editor menu containing buttons"
 msgstr "ﻮﻨﯿﻣ ﺮﭩﯾﮉﯾﺍ ﻞﻤﺘﺸﻣ ﺮﭘ ﮞﻮﻨﭩﺑ"
 
 
-msgid "Select More/Less"
-msgstr "ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﻢﮐ/ﮦﺩﺎﯾﺯ"
-
-
-msgid "Metaball"
-msgstr "ﻝﺎﺑ ﺎﭩﯿﻣ"
-
-
-msgid "Light"
-msgstr "ﯽﻨﺷﻭﺭ"
-
-
-msgid "Light Probe"
-msgstr "ﺏﻭﺮﭘ ﭧﺋﻻ﻿"
-
-
-msgid "Add Image"
-msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺮﯾﻮﺼﺗ"
-
-
-msgid "Relations"
-msgstr "ﮯﺘﺷﺭ"
-
-
-msgid "Rigid Body"
-msgstr "ﻢﺴﺟ ﺖﺨﺳ"
-
-
-msgid "Apply"
-msgstr "ﮟﯿﺋﺎﮕﻟ"
-
-
 msgid "Track"
 msgstr "ﮏﯾﺮﭨ"
 
@@ -32760,10 +32728,6 @@ msgid "Hooks"
 msgstr "ﮯﭩﻧﺎﮐ"
 
 
-msgid "Layout"
-msgstr "ﭦﺅﺁ ﮯﻟ"
-
-
 msgid "Vertex Group Locks"
 msgstr "ﮎﻻ﻿ ﮦﻭﺮﮔ ﺲﮑﯿﭨﺭﻭ"
 
@@ -32784,10 +32748,6 @@ msgid "Random Mask"
 msgstr "ﮏﺳﺎﻣ ﺐﯿﺗﺮﺗ ﮯﺑ"
 
 
-msgid "Adjust"
-msgstr "ﮟﯾﺮﮐ ﭧﺴﺟﮉﯾﺍ"
-
-
 msgid "Clear Transform"
 msgstr "ﻡﺭﺎﻔﺴﻧﺍﺮﭨ  ﺕﺮﭘ ﮎ"
 
@@ -32800,28 +32760,16 @@ msgid "Propagate"
 msgstr "ﺎﻧﺮﮐ ﻎﯿﻠﺒﺗ"
 
 
-msgid "Keying"
-msgstr "ﮓﻨﯿﻠﮐ"
-
-
 msgid "Bone Collections"
 msgstr "ﮧﻋﻮﻤﺠﻣ ﺎﮐ ﮞﻮﯾﮉﮨ"
-
-
-msgid "Tracking"
-msgstr "ﮓﻨﮑﯾﺮﭨ"
 
 
 msgid "Names"
 msgstr "ﻡﺎﻧ"
 
 
-msgid "Utilities"
-msgstr "ﺖﯾﺩﺎﻓﺍ"
-
-
-msgid "Math"
-msgstr "ﯽﺿﺎﯾﺭ"
+msgid "Apply"
+msgstr "ﮟﯿﺋﺎﮕﻟ"
 
 
 msgid "Toggle Bone Options"
@@ -32834,6 +32782,10 @@ msgstr "ﮟﯾﺮﮐ ﻝﺎﻌﻓ ﻮﮐ ﺕﺍﺭﺎﯿﺘﺧﺍ ﮯﮐ ﯼﮉ�
 
 msgid "Disable Bone Options"
 msgstr "ﮟﯾﺮﮐ ﻝﺎﻌﻓ ﺮﯿﻏ ﻮﮐ ﺕﺍﺭﺎﯿﺘﺧﺍ ﮯﮐ ﯼﮉﮨ"
+
+
+msgid "Layout"
+msgstr "ﭦﺅﺁ ﮯﻟ"
 
 
 msgid "Mesh Select Mode"
@@ -32856,6 +32808,26 @@ msgid "Merge"
 msgstr "ﺎﻧﺮﮐ ﻢﺿ"
 
 
+msgid "Adjust"
+msgstr "ﮟﯾﺮﮐ ﭧﺴﺟﮉﯾﺍ"
+
+
+msgid "Keying"
+msgstr "ﮓﻨﯿﻠﮐ"
+
+
+msgid "Tracking"
+msgstr "ﮓﻨﮑﯾﺮﭨ"
+
+
+msgid "Utilities"
+msgstr "ﺖﯾﺩﺎﻓﺍ"
+
+
+msgid "Math"
+msgstr "ﯽﺿﺎﯾﺭ"
+
+
 msgid "Special Characters"
 msgstr "ﺭﺍﺩﺮﮐ ﯽﺻﻮﺼﺧ"
 
@@ -32868,24 +32840,12 @@ msgid "Text"
 msgstr "ﻦﺘﻣ"
 
 
+msgid "Metaball"
+msgstr "ﻝﺎﺑ ﺎﭩﯿﻣ"
+
+
 msgid "Bone Roll"
 msgstr "ﻝﻭﺭ ﻥﻮﺑ"
-
-
-msgid "Read"
-msgstr "ﮟﯿﮬﮍﭘ"
-
-
-msgid "Sample"
-msgstr "ﮧﻧﻮﻤﻧ"
-
-
-msgid "Write"
-msgstr "ﮟﯿﮭﮑﻟ"
-
-
-msgid "Primitives"
-msgstr "ﻢﯾﺪﻗ"
 
 
 msgid "Pivot Point"
@@ -32912,20 +32872,20 @@ msgid "Face Sets Edit"
 msgstr "ﮟﯾﺮﮐ ﺮﺋﺎﻔﯾﮈﻮﻣ ﮟﯿﻣ ﭧﯿﺳ ﮯﮐ ﮮﺮﮩﭼ"
 
 
-msgid "Gizmo"
-msgstr "ﻮﻣﺰﯿﮔ"
+msgid "Read"
+msgstr "ﮟﯿﮬﮍﭘ"
 
 
-msgid "Instances"
-msgstr "ﮟﯿﻟﺎﺜﻣ"
+msgid "Sample"
+msgstr "ﮧﻧﻮﻤﻧ"
 
 
-msgid "Import"
-msgstr "ﮟﯾﺮﮐ ﺪﻣﺁﺭﺩ"
+msgid "Write"
+msgstr "ﮟﯿﮭﮑﻟ"
 
 
-msgid "Deprecated"
-msgstr "ﮦﺩﻮﺳﺮﻓ"
+msgid "Primitives"
+msgstr "ﻢﯾﺪﻗ"
 
 
 msgid "Mirror"
@@ -32938,10 +32898,6 @@ msgstr "ﮓﻨﭙﯿﻣ ﯼﻭﻮﯾ"
 
 msgid "Local View"
 msgstr "ﺮﻈﻨﻣ ﯽﻣﺎﻘﻣ"
-
-
-msgid "UV"
-msgstr "ﯼﻭﻮﯾ"
 
 
 msgid "Viewpoint"
@@ -32964,6 +32920,18 @@ msgid "View Regions"
 msgstr "ﮟﯿﮭﮑﯾﺩ ﻮﮐ ﮞﻮﻗﻼ﻿ﻋ"
 
 
+msgid "Select More/Less"
+msgstr "ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﻢﮐ/ﮦﺩﺎﯾﺯ"
+
+
+msgid "Gizmo"
+msgstr "ﻮﻣﺰﯿﮔ"
+
+
+msgid "Instances"
+msgstr "ﮟﯿﻟﺎﺜﻣ"
+
+
 msgid "Select Similar"
 msgstr "ﮟﯾﺮﮐ ﺏﺎﺨﺘﻧﺍ ﺎﮐ ﺡﺮﻃ ﯽﺳﺍ"
 
@@ -32980,8 +32948,40 @@ msgid "Select Loops"
 msgstr "ﮟﯾﺮﮐ ﺐﺨﺘﻨﻣ ﻮﮐ ﺲﭘﻮﻟ"
 
 
+msgid "Import"
+msgstr "ﮟﯾﺮﮐ ﺪﻣﺁﺭﺩ"
+
+
+msgid "Deprecated"
+msgstr "ﮦﺩﻮﺳﺮﻓ"
+
+
 msgid "Assign Material"
 msgstr "ﮟﯾﺮﮐ ﺾﯾﻮﻔﺗ ﺩﺍﻮﻣ"
+
+
+msgid "UV"
+msgstr "ﯼﻭﻮﯾ"
+
+
+msgid "Light"
+msgstr "ﯽﻨﺷﻭﺭ"
+
+
+msgid "Light Probe"
+msgstr "ﺏﻭﺮﭘ ﭧﺋﻻ﻿"
+
+
+msgid "Add Image"
+msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺮﯾﻮﺼﺗ"
+
+
+msgid "Relations"
+msgstr "ﮯﺘﺷﺭ"
+
+
+msgid "Rigid Body"
+msgstr "ﻢﺴﺟ ﺖﺨﺳ"
 
 
 msgid "Keyframe Insert Pie"
@@ -73460,10 +73460,6 @@ msgid "Add IK to Bone"
 msgstr "IK ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﮟﯿﻣ ﯼﮉﮨ ﻮﮐ"
 
 
-msgid "Add IK Constraint to the active Bone"
-msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ IK Constraint ﮟﯿﻣ ﯼﮉﮨ ﻝﺎﻌﻓ"
-
-
 msgid "With Targets"
 msgstr "ﮫﺗﺎﺳ ﮯﮐ ﻑﺍﺪﮨﺍ"
 
@@ -77236,17 +77232,9 @@ msgid "Add Scene Strip"
 msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﯽﭩﭘ ﯽﮐ ﺮﻈﻨﻣ"
 
 
-msgid "Add a strip to the sequencer using a Blender scene as a source"
-msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﯽﭩﭘ ﮏﯾﺍ ﮟﯿﻣ ﺮﺴﻨﯾﻮﮑﯿﺳ ﮯﺋﻮﮨ ﮯﺗﺮﮐ ﻝﺎﻤﻌﺘﺳﺍ ﺎﮐﻮﯾﻭ ﺭﮉﻨﯿﻠﺑ ﺮﭘ ﺭﻮﻃ ﮯﮐ ﺬﺧﺎﻣ ﮏﯾﺍ"
-
-
 msgctxt "Operator"
 msgid "Add Strip with a new Scene"
 msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﯽﭩﭘ ﮫﺗﺎﺳ ﮯﮐﻮﯾﻭ ﮯﺌﻧ ﮏﯾﺍ"
-
-
-msgid "Create a new Strip and assign a new Scene as source"
-msgstr "ﮟﯾﺮﮐ ﺾﯾﻮﻔﺗ ﺬﺧﺎﻣ ﺭﻮﻄﺑﻮﯾﻭ ﺎﯿﻧ ﮏﯾﺍ ﺭﻭﺍ ﮟﯿﺋﺎﻨﺑ ﯽﭩﭘ ﯽﺌﻧ ﮏﯾﺍ"
 
 
 msgid "Add new Strip with a new empty Scene with default settings"
@@ -84471,26 +84459,6 @@ msgid "Panel containing UI elements"
 msgstr "UI ﻞﻨﯿﭘ ﻞﻤﺘﺸﻣ ﺮﭘ ﺮﺻﺎﻨﻋ"
 
 
-msgid "Auto-Masking"
-msgstr "ﮓﻨﮑﺳﺎﻣ ﻮﭨﺁ"
-
-
-msgid "Curves Sculpt Add Curve Options"
-msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺕﺍﺭﺎﯿﺘﺧﺍ ﻢﺴﺠﻣ ﮯﮐ ﻢﺴﺠﻣ ﮟﯿﻤﺧ"
-
-
-msgid "Curves Sculpt Parameter Falloff"
-msgstr "ﻑﺁ ﻝﺎﻓ ﺮﭩﯿﻣﺍﺮﯿﭘ ﻢﺴﺠﻣ  ﮟﯿﻤﺧ"
-
-
-msgid "Curves Grow/Shrink Scaling"
-msgstr "ﺎﻧﮍﮑﺳ/ﺎﻨﮬﮍﺑ  ﮟﯿﻤﺧ"
-
-
-msgid "Viewport Debug"
-msgstr "ﮓﺒﯾﮈ ﭦﺭﻮﭘ ﻮﯾﻭ"
-
-
 msgid "VR"
 msgstr "ﺭﺁ ﯼﻭ"
 
@@ -84597,6 +84565,26 @@ msgstr "ﯽﭘﻮﮑﺳﻮﯾﺮﯿﭩﺳ"
 
 msgid "Multi Frame"
 msgstr "ﻢﯾﺮﻓ ﯽﭩﻠﻣ"
+
+
+msgid "Auto-Masking"
+msgstr "ﮓﻨﮑﺳﺎﻣ ﻮﭨﺁ"
+
+
+msgid "Curves Sculpt Add Curve Options"
+msgstr "ﮟﯾﺮﮐ ﻞﻣﺎﺷ ﺕﺍﺭﺎﯿﺘﺧﺍ ﻢﺴﺠﻣ ﮯﮐ ﻢﺴﺠﻣ ﮟﯿﻤﺧ"
+
+
+msgid "Curves Sculpt Parameter Falloff"
+msgstr "ﻑﺁ ﻝﺎﻓ ﺮﭩﯿﻣﺍﺮﯿﭘ ﻢﺴﺠﻣ  ﮟﯿﻤﺧ"
+
+
+msgid "Curves Grow/Shrink Scaling"
+msgstr "ﺎﻧﮍﮑﺳ/ﺎﻨﮬﮍﺑ  ﮟﯿﻤﺧ"
+
+
+msgid "Viewport Debug"
+msgstr "ﮓﺒﯾﮈ ﭦﺭﻮﭘ ﻮﯾﻭ"
 
 
 msgid "Chain Scaling"
@@ -110686,6 +110674,10 @@ msgid "This data-block has no Action slot assigned"
 msgstr "۔ﮯﮨ ﺎﯿﮔ ﺎﯿﮐ ﮟﯿﮩﻧ ﺾﯾﻮﻔﺗ ﭦﻼ﻿ﺳ ﻦﺸﮑﯾﺍ ﯽﺋﻮﮐ ﮟﯿﻣ ﮎﻼ﻿ﺑ ﺎﭩﯾﮈ ﺱﺍ"
 
 
+msgid "No objects selected"
+msgstr "ﮟﯿﺌﮔ ﯽﮐ ﮟﯿﮩﻧ ﺐﺨﺘﻨﻣ ءﺎﯿﺷﺍ ﯽﺋﻮﮐ"
+
+
 msgid "Go to pose mode to copy pose bone colors"
 msgstr "ﮟﯿﺋﺎﺟ ﺮﭘ ﮈﻮﻣ ﺯﻮﭘ ﮯﯿﻟ ﮯﮐ ﮯﻧﺮﮐ ﯽﭘﺎﮐ ﻮﮐ ﮞﻮﮕﻧﺭ ﮯﮐ ﯼﮉﮨ ﺯﻮﭘ"
 
@@ -123044,22 +123036,6 @@ msgid "Add IK"
 msgstr "IK ﮟﯾﺮﮐ ﻞﻣﺎﺷ"
 
 
-msgid "To Active Bone"
-msgstr "ﻮﮐ ﯼﮉﮨ ﻝﺎﻌﻓ"
-
-
-msgid "To Active Object"
-msgstr "ﮯﯿﻟ ﮯﮐ ﮯﺷ ﻝﺎﻌﻓ"
-
-
-msgid "To New Empty Object"
-msgstr "ﺮﭘ ﮯﺷ ﯽﻟﺎﺧ ﮯﺌﻧ"
-
-
-msgid "Without Targets"
-msgstr "ﺮﯿﻐﺑ ﮯﮐ ﻑﺍﺪﮨﺍ"
-
-
 msgid "Could not find constraint data for Child-Of Set Inverse"
 msgstr "ﺎﮑﺳ ﻞﻣ ﮟﯿﮩﻧ ﺎﭩﯾﮈ ﺎﮐ ﭦﻭﺎﮐﺭ ﮯﯿﻟ ﮯﮐ ﺱﺭﻮﻧﺍ ﭧﯿﺳ ﻑﺁ  ﮧﭽﺑ"
 
@@ -123182,10 +123158,6 @@ msgstr "ﻼ﻿ﻣ ﮟﯿﮩﻧ ﮧﻋﻮﻤﺠﻣ ،ﯽﺑﺍﺮﺧ ﻊﻗﻮﺘ
 
 msgid "Cannot add objects to a library override or linked collection"
 msgstr "ﺎﺘﮑﺳ ﺎﺟ ﺎﯿﮐ ﮟﯿﮩﻧ ﻞﻣﺎﺷ ﻮﮐ ءﺎﯿﺷﺍ ﮟﯿﻣ ﮧﻋﻮﻤﺠﻣ ﮏﻠﺴﻨﻣ ﺎﯾ ﮉﺋﺍﺭ ﺭﻭﻭﺍ ﯼﺮﯾﺮﺒﺋﻻ﻿"
-
-
-msgid "No objects selected"
-msgstr "ﮟﯿﺌﮔ ﯽﮐ ﮟﯿﮩﻧ ﺐﺨﺘﻨﻣ ءﺎﯿﺷﺍ ﯽﺋﻮﮐ"
 
 
 msgid "%s already in %s"

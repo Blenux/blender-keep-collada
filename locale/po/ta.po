@@ -1,9 +1,9 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blender 5.0.0 Beta (b'6cf0458fdf00')\n"
+"Project-Id-Version: Blender 5.0.0 Beta (b'd29f9f6118e5')\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 10:44+0000\n"
+"POT-Creation-Date: 2025-11-10 09:45+0000\n"
 "PO-Revision-Date: 2025-08-06 08:59+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://translate.blender.org/projects/blender-ui/ui/ta/>\n"
@@ -34306,38 +34306,6 @@ msgid "Editor menu containing buttons"
 msgstr "பொத்தான்களைக் கொண்ட திருத்தி பட்டியல்"
 
 
-msgid "Select More/Less"
-msgstr "மேலும்/குறைவாக தேர்ந்தெடுக்கவும்"
-
-
-msgid "Metaball"
-msgstr "வளர்சிதை மாற்ற"
-
-
-msgid "Light"
-msgstr "ஒளி"
-
-
-msgid "Light Probe"
-msgstr "ஒளி ஆய்வு"
-
-
-msgid "Add Image"
-msgstr "படத்தைச் சேர்க்கவும்"
-
-
-msgid "Relations"
-msgstr "உறவுகள்"
-
-
-msgid "Rigid Body"
-msgstr "கடினமான உடல்"
-
-
-msgid "Apply"
-msgstr "இடு"
-
-
 msgid "Track"
 msgstr "டிராக்"
 
@@ -34374,10 +34342,6 @@ msgid "Hooks"
 msgstr "கொக்கிகள்"
 
 
-msgid "Layout"
-msgstr "தளவமைப்பு"
-
-
 msgid "Vertex Group Locks"
 msgstr "வெர்டெக்ச் குழு பூட்டுகள்"
 
@@ -34398,10 +34362,6 @@ msgid "Random Mask"
 msgstr "சீரற்ற முகமூடி"
 
 
-msgid "Adjust"
-msgstr "சரிசெய்யவும்"
-
-
 msgid "Clear Transform"
 msgstr "தெளிவான உருமாற்றம்"
 
@@ -34414,28 +34374,16 @@ msgid "Propagate"
 msgstr "பிரச்சாரம்"
 
 
-msgid "Keying"
-msgstr "கீயிங்"
-
-
 msgid "Bone Collections"
 msgstr "எலும்பு வசூல்"
-
-
-msgid "Tracking"
-msgstr "கண்காணிப்பு"
 
 
 msgid "Names"
 msgstr "பெயர்கள்"
 
 
-msgid "Utilities"
-msgstr "பயன்பாடுகள்"
-
-
-msgid "Math"
-msgstr "கணிதம்"
+msgid "Apply"
+msgstr "இடு"
 
 
 msgid "Toggle Bone Options"
@@ -34448,6 +34396,10 @@ msgstr "எலும்பு விருப்பங்களை இயக்�
 
 msgid "Disable Bone Options"
 msgstr "எலும்பு விருப்பங்களை முடக்கு"
+
+
+msgid "Layout"
+msgstr "தளவமைப்பு"
 
 
 msgid "Mesh Select Mode"
@@ -34470,6 +34422,26 @@ msgid "Merge"
 msgstr "ஒன்றிணைக்கவும்"
 
 
+msgid "Adjust"
+msgstr "சரிசெய்யவும்"
+
+
+msgid "Keying"
+msgstr "கீயிங்"
+
+
+msgid "Tracking"
+msgstr "கண்காணிப்பு"
+
+
+msgid "Utilities"
+msgstr "பயன்பாடுகள்"
+
+
+msgid "Math"
+msgstr "கணிதம்"
+
+
 msgid "Special Characters"
 msgstr "சிறப்பு எழுத்துக்கள்"
 
@@ -34482,24 +34454,12 @@ msgid "Text"
 msgstr "உரை"
 
 
+msgid "Metaball"
+msgstr "வளர்சிதை மாற்ற"
+
+
 msgid "Bone Roll"
 msgstr "எலும்பு ரோல்"
-
-
-msgid "Read"
-msgstr "படி"
-
-
-msgid "Sample"
-msgstr "மாதிரி"
-
-
-msgid "Write"
-msgstr "எழுதுங்கள்"
-
-
-msgid "Primitives"
-msgstr "ப்ரைமிடிவ்ச்"
 
 
 msgid "Pivot Point"
@@ -34526,20 +34486,20 @@ msgid "Face Sets Edit"
 msgstr "முகம் தொகுப்புகள் திருத்து"
 
 
-msgid "Gizmo"
-msgstr "கிச்மோ"
+msgid "Read"
+msgstr "படி"
 
 
-msgid "Instances"
-msgstr "நிகழ்வுகள்"
+msgid "Sample"
+msgstr "மாதிரி"
 
 
-msgid "Import"
-msgstr "இறக்குமதி"
+msgid "Write"
+msgstr "எழுதுங்கள்"
 
 
-msgid "Deprecated"
-msgstr "மதிப்பிடப்பட்டது"
+msgid "Primitives"
+msgstr "ப்ரைமிடிவ்ச்"
 
 
 msgid "Mirror"
@@ -34550,16 +34510,8 @@ msgid "UV Mapping"
 msgstr "புறஊதா மேப்பிங்"
 
 
-msgid "List"
-msgstr "பட்டியல்"
-
-
 msgid "Local View"
 msgstr "உள்ளக பார்வை"
-
-
-msgid "UV"
-msgstr "புறஊதா"
 
 
 msgid "Viewpoint"
@@ -34582,6 +34534,18 @@ msgid "View Regions"
 msgstr "மண்டலங்களைக் காண்க"
 
 
+msgid "Select More/Less"
+msgstr "மேலும்/குறைவாக தேர்ந்தெடுக்கவும்"
+
+
+msgid "Gizmo"
+msgstr "கிச்மோ"
+
+
+msgid "Instances"
+msgstr "நிகழ்வுகள்"
+
+
 msgid "Select Similar"
 msgstr "ஒத்ததைத் தேர்ந்தெடுக்கவும்"
 
@@ -34598,8 +34562,44 @@ msgid "Select Loops"
 msgstr "சுழல்களைத் தேர்ந்தெடுக்கவும்"
 
 
+msgid "Import"
+msgstr "இறக்குமதி"
+
+
+msgid "Deprecated"
+msgstr "மதிப்பிடப்பட்டது"
+
+
 msgid "Assign Material"
 msgstr "மூலப்பொருள் ஒதுக்க"
+
+
+msgid "List"
+msgstr "பட்டியல்"
+
+
+msgid "UV"
+msgstr "புறஊதா"
+
+
+msgid "Light"
+msgstr "ஒளி"
+
+
+msgid "Light Probe"
+msgstr "ஒளி ஆய்வு"
+
+
+msgid "Add Image"
+msgstr "படத்தைச் சேர்க்கவும்"
+
+
+msgid "Relations"
+msgstr "உறவுகள்"
+
+
+msgid "Rigid Body"
+msgstr "கடினமான உடல்"
 
 
 msgid "Keyframe Insert Pie"
@@ -77624,10 +77624,6 @@ msgid "Add IK to Bone"
 msgstr "எலும்புக்கு ஐகே சேர்க்கவும்"
 
 
-msgid "Add IK Constraint to the active Bone"
-msgstr "செயலில் உள்ள எலும்புக்கு ஐகே"
-
-
 msgid "With Targets"
 msgstr "இலக்குகளுடன்"
 
@@ -81579,17 +81575,9 @@ msgid "Add Scene Strip"
 msgstr "காட்சி துண்டு சேர்க்கவும்"
 
 
-msgid "Add a strip to the sequencer using a Blender scene as a source"
-msgstr "ஒரு மூலமாக ஒரு கலப்பான் காட்சியைப் பயன்படுத்தி சீக்வென்சரில் ஒரு துண்டு சேர்க்கவும்"
-
-
 msgctxt "Operator"
 msgid "Add Strip with a new Scene"
 msgstr "புதிய காட்சியுடன் துண்டு சேர்க்கவும்"
-
-
-msgid "Create a new Strip and assign a new Scene as source"
-msgstr "ஒரு புதிய துண்டுகளை உருவாக்கி, புதிய காட்சியை மூலமாக ஒதுக்குங்கள்"
 
 
 msgid "Add new Strip with a new empty Scene with default settings"
@@ -89370,26 +89358,6 @@ msgid "Panel containing UI elements"
 msgstr "இடைமுகம் கூறுகளைக் கொண்ட குழு"
 
 
-msgid "Auto-Masking"
-msgstr "ஆட்டோ-மாசிங்"
-
-
-msgid "Curves Sculpt Add Curve Options"
-msgstr "வளைவுகள் சிற்பம் வளைவு விருப்பங்களைச் சேர்க்கவும்"
-
-
-msgid "Curves Sculpt Parameter Falloff"
-msgstr "வளைவுகள் சிற்பம் அளவுரு வீழ்ச்சி"
-
-
-msgid "Curves Grow/Shrink Scaling"
-msgstr "வளைவுகள் வளரும்/சுருக்கவும்"
-
-
-msgid "Viewport Debug"
-msgstr "வியூபோர்ட் பிழைத்திருத்தம்"
-
-
 msgid "VR"
 msgstr "வி.ஆர்"
 
@@ -89516,6 +89484,26 @@ msgstr "ச்டீரியோச்கோபி"
 
 msgid "Multi Frame"
 msgstr "பல சட்டகம்"
+
+
+msgid "Auto-Masking"
+msgstr "ஆட்டோ-மாசிங்"
+
+
+msgid "Curves Sculpt Add Curve Options"
+msgstr "வளைவுகள் சிற்பம் வளைவு விருப்பங்களைச் சேர்க்கவும்"
+
+
+msgid "Curves Sculpt Parameter Falloff"
+msgstr "வளைவுகள் சிற்பம் அளவுரு வீழ்ச்சி"
+
+
+msgid "Curves Grow/Shrink Scaling"
+msgstr "வளைவுகள் வளரும்/சுருக்கவும்"
+
+
+msgid "Viewport Debug"
+msgstr "வியூபோர்ட் பிழைத்திருத்தம்"
 
 
 msgid "Import Settings"
@@ -117712,6 +117700,10 @@ msgid "No Action slot is assigned, so there is nothing to un-assign"
 msgstr "எந்த அதிரடி ச்லாட்டும் ஒதுக்கப்படவில்லை, எனவே ஒதுக்குவதற்கு எதுவும் இல்லை"
 
 
+msgid "No objects selected"
+msgstr "எந்தவொரு பொருளும் தேர்ந்தெடுக்கப்படவில்லை"
+
+
 msgid "Go to pose mode to copy pose bone colors"
 msgstr "போச் எலும்பு வண்ணங்களை நகலெடுக்க போச் பயன்முறைக்குச் செல்லுங்கள்"
 
@@ -131251,22 +131243,6 @@ msgid "Add IK"
 msgstr "ஐகே சேர்"
 
 
-msgid "To Active Bone"
-msgstr "செயலில் உள்ள எலும்புக்கு"
-
-
-msgid "To Active Object"
-msgstr "செயலில் உள்ள பொருளுக்கு"
-
-
-msgid "To New Empty Object"
-msgstr "புதிய வெற்று பொருளுக்கு"
-
-
-msgid "Without Targets"
-msgstr "இலக்குகள் இல்லாமல்"
-
-
 msgid "Could not find constraint data for Child-Of Set Inverse"
 msgstr "குழந்தைகளின் தலைகீழ் அமைப்பிற்கான கட்டுப்பாட்டு தரவைக் கண்டுபிடிக்க முடியவில்லை"
 
@@ -131413,10 +131389,6 @@ msgstr "எதிர்பாராத பிழை, சேகரிப்பு
 
 msgid "Cannot add objects to a library override or linked collection"
 msgstr "ஒரு நூலக மேலெழுத அல்லது இணைக்கப்பட்ட சேகரிப்பில் பொருட்களைச் சேர்க்க முடியாது"
-
-
-msgid "No objects selected"
-msgstr "எந்தவொரு பொருளும் தேர்ந்தெடுக்கப்படவில்லை"
 
 
 msgid "Unable to change object mode while transforming"

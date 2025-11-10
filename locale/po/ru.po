@@ -1,10 +1,10 @@
 
 msgid ""
 msgstr ""
-"Project-Id-Version: Blender 5.0.0 Beta (b'6cf0458fdf00')\n"
+"Project-Id-Version: Blender 5.0.0 Beta (b'd29f9f6118e5')\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 10:44+0000\n"
-"PO-Revision-Date: 2025-11-02 13:59+0000\n"
+"POT-Creation-Date: 2025-11-10 09:45+0000\n"
+"PO-Revision-Date: 2025-11-10 08:59+0000\n"
 "Last-Translator: Fatih Alexandr <radix83@rambler.ru>\n"
 "Language-Team: Russian <https://translate.blender.org/projects/blender-ui/ui/ru/>\n"
 "Language: ru\n"
@@ -12643,11 +12643,11 @@ msgstr "Значение элемента"
 
 
 msgid "F-Curve"
-msgstr "F-кривая"
+msgstr "F-Кривая"
 
 
 msgid "F-Curve defining values of a period of time"
-msgstr "F-кривая, задающая значения периода времени"
+msgstr "F-Кривая, задающая значения периода времени"
 
 
 msgid "RNA Array Index"
@@ -12755,7 +12755,7 @@ msgstr "Группа действий, к которой принадлежит 
 
 
 msgid "F-Curve and its keyframes are hidden in the Graph Editor graphs"
-msgstr "F-кривая и её ключевые кадры скрыты среди графов в редакторе графов"
+msgstr "F-Кривая и её ключевые кадры скрыты среди графов в редакторе графов"
 
 
 msgid "True if the curve contributes no animation due to lack of keyframes or useful modifiers, and should be deleted"
@@ -12803,7 +12803,7 @@ msgstr "Выборочные данные анимации"
 
 
 msgid "F-Curve is selected for editing"
-msgstr "F-кривая выбрана для редактирования"
+msgstr "F-Кривая выбрана для редактирования"
 
 
 msgid "Keyframe Points"
@@ -12831,7 +12831,7 @@ msgstr "Сэмпл F-кривой"
 
 
 msgid "Sample point for F-Curve"
-msgstr "Точка сэмпла F-кривой"
+msgstr "Точка выборки F-кривой"
 
 
 msgid "Point coordinates"
@@ -18371,7 +18371,7 @@ msgstr "Встроенные данные"
 
 
 msgid "This data-block is not an independent one, but is actually a sub-data of another ID (typical example: root node trees or master collections)"
-msgstr "Этот блок данных не является независимым, а фактически является подданными другого ID (типичный пример: корни деревьев нод или основные коллекции)"
+msgstr "Этот блок данных не является независимым, а фактически является подданными другого ID (типичный пример: корни деревьев нод или мастер коллекции)"
 
 
 msgid "Is Evaluated"
@@ -34885,38 +34885,6 @@ msgid "Editor menu containing buttons"
 msgstr "Меню редактора, содержащее кнопки"
 
 
-msgid "Select More/Less"
-msgstr "Выделить больше/меньше"
-
-
-msgid "Metaball"
-msgstr "Метасфера"
-
-
-msgid "Light"
-msgstr "Свет"
-
-
-msgid "Light Probe"
-msgstr "Зонд освещения"
-
-
-msgid "Add Image"
-msgstr "Добавить изображение"
-
-
-msgid "Relations"
-msgstr "Отношения"
-
-
-msgid "Rigid Body"
-msgstr "Твёрдое тело"
-
-
-msgid "Apply"
-msgstr "Применить"
-
-
 msgid "Track"
 msgstr "Отслеживание"
 
@@ -34953,10 +34921,6 @@ msgid "Hooks"
 msgstr "Крюки"
 
 
-msgid "Layout"
-msgstr "Разметка"
-
-
 msgid "Vertex Group Locks"
 msgstr "Блокировки групп вершин"
 
@@ -34977,10 +34941,6 @@ msgid "Random Mask"
 msgstr "Случайная маска"
 
 
-msgid "Adjust"
-msgstr "Коррекция"
-
-
 msgid "Clear Transform"
 msgstr "Очистить трансформацию"
 
@@ -34993,32 +34953,16 @@ msgid "Propagate"
 msgstr "Распространение"
 
 
-msgid "Keying"
-msgstr "Кеинг"
-
-
 msgid "Bone Collections"
 msgstr "Коллекции костей"
-
-
-msgid "Tracking"
-msgstr "Трекинг"
 
 
 msgid "Names"
 msgstr "Названия"
 
 
-msgid "Utilities"
-msgstr "Утилиты"
-
-
-msgid "Math"
-msgstr "Математика"
-
-
-msgid "Creative"
-msgstr "Художественные"
+msgid "Apply"
+msgstr "Применить"
 
 
 msgid "Toggle Bone Options"
@@ -35031,6 +34975,10 @@ msgstr "Включить параметры костей"
 
 msgid "Disable Bone Options"
 msgstr "Отключить параметры костей"
+
+
+msgid "Layout"
+msgstr "Разметка"
 
 
 msgid "Mesh Select Mode"
@@ -35049,16 +34997,36 @@ msgid "Set Face Strength"
 msgstr "Установить твёрдость грани"
 
 
-msgid "Render Preview"
-msgstr "Превью рендера"
-
-
 msgid "Merge"
 msgstr "Объединить"
 
 
+msgid "Adjust"
+msgstr "Коррекция"
+
+
+msgid "Keying"
+msgstr "Кеинг"
+
+
+msgid "Tracking"
+msgstr "Трекинг"
+
+
+msgid "Utilities"
+msgstr "Утилиты"
+
+
+msgid "Math"
+msgstr "Математика"
+
+
 msgid "Special Characters"
 msgstr "Специальные символы"
+
+
+msgid "Creative"
+msgstr "Художественные"
 
 
 msgid "Kerning"
@@ -35069,24 +35037,16 @@ msgid "Text"
 msgstr "Текст"
 
 
+msgid "Metaball"
+msgstr "Метасфера"
+
+
 msgid "Bone Roll"
 msgstr "Крен кости"
 
 
-msgid "Read"
-msgstr "Прочитать"
-
-
-msgid "Sample"
-msgstr "Сэмплировать"
-
-
-msgid "Write"
-msgstr "Записать"
-
-
-msgid "Primitives"
-msgstr "Примитивы"
+msgid "Render Preview"
+msgstr "Превью рендера"
 
 
 msgid "Pivot Point"
@@ -35113,20 +35073,20 @@ msgid "Face Sets Edit"
 msgstr "Редактировать наборы граней"
 
 
-msgid "Gizmo"
-msgstr "Гизмо"
+msgid "Read"
+msgstr "Прочитать"
 
 
-msgid "Instances"
-msgstr "Экземпляры"
+msgid "Sample"
+msgstr "Сэмплировать"
 
 
-msgid "Import"
-msgstr "Импортировать"
+msgid "Write"
+msgstr "Записать"
 
 
-msgid "Deprecated"
-msgstr "Устаревшие"
+msgid "Primitives"
+msgstr "Примитивы"
 
 
 msgid "Mirror"
@@ -35137,16 +35097,8 @@ msgid "UV Mapping"
 msgstr "UV-Разметка"
 
 
-msgid "List"
-msgstr "Список"
-
-
 msgid "Local View"
 msgstr "Локальный вид"
-
-
-msgid "UV"
-msgstr "UV"
 
 
 msgid "Viewpoint"
@@ -35169,6 +35121,18 @@ msgid "View Regions"
 msgstr "Области обзора"
 
 
+msgid "Select More/Less"
+msgstr "Выделить больше/меньше"
+
+
+msgid "Gizmo"
+msgstr "Гизмо"
+
+
+msgid "Instances"
+msgstr "Экземпляры"
+
+
 msgid "Select Similar"
 msgstr "Выделить по схожести"
 
@@ -35185,8 +35149,44 @@ msgid "Select Loops"
 msgstr "Выделить петли"
 
 
+msgid "Import"
+msgstr "Импортировать"
+
+
+msgid "Deprecated"
+msgstr "Устаревшие"
+
+
 msgid "Assign Material"
 msgstr "Назначить материал"
+
+
+msgid "List"
+msgstr "Список"
+
+
+msgid "UV"
+msgstr "UV"
+
+
+msgid "Light"
+msgstr "Свет"
+
+
+msgid "Light Probe"
+msgstr "Зонд освещения"
+
+
+msgid "Add Image"
+msgstr "Добавить изображение"
+
+
+msgid "Relations"
+msgstr "Отношения"
+
+
+msgid "Rigid Body"
+msgstr "Твёрдое тело"
 
 
 msgid "Keyframe Insert Pie"
@@ -37012,7 +37012,7 @@ msgstr "Модификатор дублирования в виде массив
 
 
 msgid "Constant Offset Displacement"
-msgstr "Постоянное смещение"
+msgstr "Постоянный сдвиг смещения"
 
 
 msgid "Value for the distance between arrayed items"
@@ -44645,7 +44645,7 @@ msgstr "Фрагмент действия"
 
 
 msgid "NLA Strip references some Action"
-msgstr "НЛА-дорожка ссылается на какое-то действие"
+msgstr "НЛА-Дорожка ссылается на какое-то действие"
 
 
 msgctxt "Action"
@@ -44663,7 +44663,7 @@ msgstr "Мета"
 
 
 msgid "NLA Strip acts as a container for adjacent strips"
-msgstr "НЛА-дорожка, выступающий в роли контейнера для прилегающих дорожек"
+msgstr "НЛА-Дорожка, выступающий в роли контейнера для прилегающих дорожек"
 
 
 msgctxt "Action"
@@ -44672,7 +44672,7 @@ msgstr "Аудио фрагмент"
 
 
 msgid "NLA Strip representing a sound event for speakers"
-msgstr "НЛА-дорожка, представляющая звуковое событие для источников звука"
+msgstr "НЛА-Дорожка, представляющая звуковое событие для источников звука"
 
 
 msgid "Animated Influence"
@@ -47926,7 +47926,7 @@ msgstr "Индекс вокселя"
 
 
 msgid "Retrieve the integer coordinates of the voxel that the field is evaluated on"
-msgstr "Извлечь целочисленные координаты вокселей, используемых для оценки поля"
+msgstr "Извлечь целочисленные координаты вокселей, используемые для оценки поля"
 
 
 msgid "Instance on Points"
@@ -48430,7 +48430,7 @@ msgstr "Скругление SDF сетки"
 
 
 msgid "Round off concave internal corners in a signed distance field. Only affects areas with negative principal curvature, creating smoother transitions between surfaces"
-msgstr "Скруглить вогнутые внутренние углы в поле со знаковым расстоянием. Действует только на области с отрицательной главной кривизной, создавая более плавные переходы между поверхностями"
+msgstr "Скруглить вогнутые внутренние углы в поле со знаковыми расстояниями. Действует только на области с отрицательной главной кривизной, создавая более плавные переходы между поверхностями"
 
 
 msgid "SDF Grid Laplacian"
@@ -48438,7 +48438,7 @@ msgstr "Лапласиан SDF сетки"
 
 
 msgid "Apply Laplacian flow smoothing to a signed distance field. Computationally efficient alternative to mean curvature flow, ideal when combined with SDF normalization"
-msgstr "Применить сглаживание потоком Лапласа к полю знакового расстояния. Вычислительно эффективная альтернатива потоку средней кривизны, и идеальна в сочетании с нормализацией SDF"
+msgstr "Применить сглаживание потоком Лапласа к полю знаковых расстояний. Вычислительно эффективная альтернатива потоку средней кривизны, и идеальна в сочетании с нормализацией SDF"
 
 
 msgid "SDF Grid Mean"
@@ -48446,7 +48446,7 @@ msgstr "Усреднение SDF сетки"
 
 
 msgid "Apply mean (box) filter smoothing to a signed distance field. Fast separable averaging filter for general smoothing of the distance field"
-msgstr "Применить сглаживание усредняющего фильтра (бокс) к полю знакового расстояния. Быстрый разделяемый усредняющий фильтр для общего сглаживания поля расстояний"
+msgstr "Применить сглаживание усредняющего фильтра (бокс) к полю знаковых расстояний. Быстрый разделяемый усредняющий фильтр для общего сглаживания поля расстояний"
 
 
 msgid "SDF Grid Mean Curvature"
@@ -48454,7 +48454,7 @@ msgstr "Средняя кривизна SDF сетки"
 
 
 msgid "Apply mean curvature flow smoothing to a signed distance field. Evolves the surface based on its mean curvature, naturally smoothing high-curvature regions more than flat areas"
-msgstr "Применить сглаживание потока средней кривизны к полю знакового расстояния. Изменяет форму поверхности на основе её средней кривизны, естественным образом сглаживая области с высокой кривизной больше, чем более плоские области"
+msgstr "Применить сглаживание потока средней кривизны к полю знаковых расстояний. Изменяет форму поверхности на основе её средней кривизны, естественным образом сглаживая области с высокой кривизной больше, чем более плоские области"
 
 
 msgid "SDF Grid Median"
@@ -48462,7 +48462,7 @@ msgstr "Медиана SDF сетки"
 
 
 msgid "Apply median filter to a signed distance field. Reduces noise while preserving sharp features and edges in the distance field"
-msgstr "Применить медианный фильтр к полю знакового расстояния. Снижает уровень шума, сохраняя при этом чёткие контуры и детали в поле расстояний"
+msgstr "Применить медианный фильтр к полю знаковых расстояний. Снижает уровень шума, сохраняя при этом чёткие контуры и детали в поле расстояний"
 
 
 msgid "SDF Grid Offset"
@@ -48470,7 +48470,7 @@ msgstr "Смещение SDF сетки"
 
 
 msgid "Offset a signed distance field surface by a world-space distance. Dilates (positive) or erodes (negative) while maintaining the signed distance property"
-msgstr "Сместить поверхность поля со знаковым расстоянием (SDF) на расстояние в мировом пространстве. Расширяет (положительное) или размывает (отрицательное), при этом сохраняя свойство знакового расстояния"
+msgstr "Сместить поверхность поля знаковых расстояний (SDF) на расстояние в мировом пространстве. Расширяет (положительное) или размывает (отрицательное), при этом сохраняя свойство знакового расстояния"
 
 
 msgid "Sample Curve"
@@ -72123,7 +72123,7 @@ msgstr "Найти ноду"
 
 
 msgid "Search for a node by name and focus and select it"
-msgstr "Найти узел по имени и выбрать его"
+msgstr "Найти узел по имени и выделить его"
 
 
 msgid "Add a node to the active tree for glTF export"
@@ -72207,6 +72207,10 @@ msgstr "Свернуть"
 
 msgid "Toggle collapsing of selected nodes"
 msgstr "Свернуть/развернуть выделенные ноды"
+
+
+msgid "Add an item to the index switch"
+msgstr "Добавить элемент в индексный переключатель"
 
 
 msgid "Remove an item from the index switch"
@@ -79226,10 +79230,6 @@ msgid "Add IK to Bone"
 msgstr "Добавить ИК к кости"
 
 
-msgid "Add IK Constraint to the active Bone"
-msgstr "Добавить ограничитель инверсной кинематики к активной кости"
-
-
 msgid "With Targets"
 msgstr "С целями"
 
@@ -82505,10 +82505,6 @@ msgid "Add Scene Asset"
 msgstr "Добавить ассет сцены"
 
 
-msgid "Add a scene strip from a scene asset"
-msgstr "Добавить дорожку сцены из ассета сцены"
-
-
 msgid "Channel to place this strip into"
 msgstr "Канал, на котором нужно разместить эту дорожку"
 
@@ -83296,17 +83292,9 @@ msgid "Add Scene Strip"
 msgstr "Добавить дорожку сцены"
 
 
-msgid "Add a strip to the sequencer using a Blender scene as a source"
-msgstr "Добавить дорожку в секвенсор, используя сцену Blender'а в качестве источника"
-
-
 msgctxt "Operator"
 msgid "Add Strip with a new Scene"
 msgstr "Добавить дорожку с новой сценой"
-
-
-msgid "Create a new Strip and assign a new Scene as source"
-msgstr "Создать новую дорожку и назначить ей новую сцену в качестве источника"
 
 
 msgid "Add new Strip with a new empty Scene with default settings"
@@ -86032,7 +86020,7 @@ msgstr "Экспортировать плитки"
 
 
 msgid "Choose whether to export only the [0, 1] range, or all UV tiles"
-msgstr "Выбрать, - следует ли экспортировать только диапазон [0, 1] или все плитки UV"
+msgstr "Определить следует ли экспортировать только диапазон [0, 1] или все плитки UV"
 
 
 msgid "Export only UVs in the [0, 1] range"
@@ -91516,26 +91504,6 @@ msgid "Panel containing UI elements"
 msgstr "Панель содержит элементы интерфейса"
 
 
-msgid "Auto-Masking"
-msgstr "Авто-маски́рование"
-
-
-msgid "Curves Sculpt Add Curve Options"
-msgstr "Скульптинг кривых - Параметры добавления кривых"
-
-
-msgid "Curves Sculpt Parameter Falloff"
-msgstr "Скульптинг кривых - Параметр спада"
-
-
-msgid "Curves Grow/Shrink Scaling"
-msgstr "Масштабирование кривых: увеличить/уменьшить"
-
-
-msgid "Viewport Debug"
-msgstr "Отладка вьюпорта"
-
-
 msgid "VR"
 msgstr "VR"
 
@@ -91662,6 +91630,26 @@ msgstr "Стереоскопия"
 
 msgid "Multi Frame"
 msgstr "Мультикадр"
+
+
+msgid "Auto-Masking"
+msgstr "Авто-маски́рование"
+
+
+msgid "Curves Sculpt Add Curve Options"
+msgstr "Скульптинг кривых - Параметры добавления кривых"
+
+
+msgid "Curves Sculpt Parameter Falloff"
+msgstr "Скульптинг кривых - Параметр спада"
+
+
+msgid "Curves Grow/Shrink Scaling"
+msgstr "Масштабирование кривых: увеличить/уменьшить"
+
+
+msgid "Viewport Debug"
+msgstr "Отладка вьюпорта"
 
 
 msgid "Import Settings"
@@ -95704,6 +95692,14 @@ msgid "Device up/down directly controls the Z position of the 3D viewport"
 msgstr "Устройство вверх/вниз напрямую управляет положением Z 3D-вьюпорта"
 
 
+msgid "Auto Fly Speed"
+msgstr "Автоматическая скорость полёта"
+
+
+msgid "Automatically adjusts fly navigation speed based on the distance of objects near the center of the viewport, making it easier to navigate complex scenes. Speed is recalculated each time movement starts."
+msgstr "Автоматически корректирует скорость полёта в зависимости от расстояния до объектов вблизи центра вьюпорта, упрощая навигацию в сложных сценах. Скорость пересчитывается каждый раз при начале движения."
+
+
 msgid "Pan / Zoom Camera View"
 msgstr "Панорам-ть / Масшаб-ть вид камеры"
 
@@ -96884,10 +96880,6 @@ msgid "Czech - Čeština"
 msgstr "Чешский - Čeština"
 
 
-msgid "Locale code: cs_CZ. Translation progress: 28%"
-msgstr "Код локали: cs_CZ. Прогресс перевода: 28%"
-
-
 msgid "Danish - Dansk"
 msgstr "Датский - Dansk"
 
@@ -96898,10 +96890,6 @@ msgstr "Код локали: da. Прогресс перевода: 3%"
 
 msgid "Dutch - Nederlands"
 msgstr "Голландский - Nederlands"
-
-
-msgid "Locale code: nl_NL. Translation progress: 6%"
-msgstr "Код локали: nl_NL. Прогресс перевода: 6%"
 
 
 msgid "English (UK)"
@@ -97008,12 +96996,12 @@ msgid "Italian - Italiano"
 msgstr "Итальянский - Italiano"
 
 
+msgid "Locale code: it_IT. Translation progress: 44%"
+msgstr "Код локали: it_IT. Прогресс перевода: 44%"
+
+
 msgid "Japanese - 日本語"
 msgstr "Японский - 日本語"
-
-
-msgid "Locale code: ja_JP. Translation progress: 99%"
-msgstr "Код локали: ja_JP. Прогресс перевода: 100%"
 
 
 msgid "Khmer - ខ្មែរ"
@@ -97140,10 +97128,6 @@ msgid "Slovenian - Slovenščina"
 msgstr "Словенский - Slovenščina"
 
 
-msgid "Locale code: sl. Translation progress: 51%"
-msgstr "Код локали: sl. Прогресс перевода: 51%"
-
-
 msgid "Spanish - Español"
 msgstr "Испанский - Español"
 
@@ -97154,10 +97138,6 @@ msgstr "Код локали: es. Прогресс перевода: 100%"
 
 msgid "Swahili - Kiswahili"
 msgstr "Суахили - Kiswahili"
-
-
-msgid "Locale code: sw. Translation progress: 74%"
-msgstr "Код локали: sw. Прогресс перевода: 74%"
 
 
 msgid "Swedish - Svenska"
@@ -97210,10 +97190,6 @@ msgstr "Код локали: ur. Прогресс перевода: 88%"
 
 msgid "Vietnamese - Tiếng Việt"
 msgstr "Вьетнамский - Tiếng Việt"
-
-
-msgid "Locale code: vi_VN. Translation progress: 96%"
-msgstr "Код локали: vi_VN. Прогресс перевода: 96%"
 
 
 msgid "Reference Sphere Size"
@@ -100436,7 +100412,7 @@ msgstr "Переключаемый родитель"
 
 
 msgid "Allow switching the parent of the master control"
-msgstr "Разрешить переключение родителя главного элемента управления"
+msgstr "Разрешить переключение родителя основного контроллера"
 
 
 msgid "Widget"
@@ -107458,7 +107434,7 @@ msgstr "Показывать превью нод"
 
 
 msgid "Display each node's preview if node is toggled"
-msgstr "Отображать предвью каждого узла, если узел переключён"
+msgstr "Отображать превью каждого узла, если узел переключён"
 
 
 msgid "Show Reroute Auto Labels"
@@ -119057,6 +119033,30 @@ msgid "Add-on Enabled"
 msgstr "Аддон включён"
 
 
+msgid ", failed"
+msgstr ", не удалось"
+
+
+msgid ", some actions failed"
+msgstr ", некоторые действия не увенчались успехом"
+
+
+msgid "Internal error, unknown state!{:s}"
+msgstr "Внутренняя ошибка, неизвестное состояние!{:s}"
+
+
+msgid "Checking for Extension Updates{:s}"
+msgstr "Проверка обновлений расширений{:s}"
+
+
+msgid "All Extensions Up-to-date{:s}"
+msgstr "Все расширения обновлены{:s}"
+
+
+msgid "Extensions Updates Available ({:d}){:s}"
+msgstr "Доступны обновления расширений ({:d}){:s}"
+
+
 msgid "Demo"
 msgstr "Демо"
 
@@ -119078,7 +119078,7 @@ msgstr "Шумоподавление завершено"
 
 
 msgid "Frame '%s' not found, animation must be complete"
-msgstr "Кадр «%s» не найден, анимация должна быть закончена"
+msgstr "Кадр \"%s\" не найден, анимация должна быть закончена"
 
 
 msgid "OSL shader compilation succeeded"
@@ -119488,11 +119488,11 @@ msgstr "%s не может быть выведен из режима редак�
 
 
 msgid "Mesh '%s' has polygons with more than 4 vertices, cannot compute/export tangent space for it"
-msgstr "Меш «%s» имеет полигоны с более 4 вершинами, невозможно вычислить вектор касательных для них"
+msgstr "Меш \"%s\" имеет полигоны с более 4 вершинами, невозможно вычислить вектор касательных для них"
 
 
 msgid "Collection '%s' was not found"
-msgstr "Коллекция '%s' не найдена"
+msgstr "Коллекция \"%s\" не найдена"
 
 
 msgid "%s in %s could not be set out of Edit Mode, so cannot be exported"
@@ -120568,7 +120568,7 @@ msgstr "Кость {:s} выделена с обеих сторон, зерка�
 
 
 msgid "Master Control"
-msgstr "Базовый контроль"
+msgstr "Основной контроллер"
 
 
 msgid "Deform Bone"
@@ -121249,6 +121249,10 @@ msgstr "Этот блок данных не имеет назначенного 
 
 msgid "No Action slot is assigned, so there is nothing to un-assign"
 msgstr "Слот действия не назначен, поэтому отменять назначение не для чего"
+
+
+msgid "No objects selected"
+msgstr "Ни одного объекта не выделено"
 
 
 msgid "Go to pose mode to copy pose bone colors"
@@ -123390,12 +123394,16 @@ msgid "Strip Name"
 msgstr "Имя дорожки"
 
 
-msgid "Max B-frames"
-msgstr "Макс. B-кадров"
-
-
 msgid "HDR needs H.265 or AV1"
 msgstr "Для HDR требуется H.265 или AV1"
+
+
+msgid "HDR needs 10 or 12 bits"
+msgstr "Для HDR требуется 10 или 12 бит"
+
+
+msgid "Max B-frames"
+msgstr "Макс. B-кадров"
 
 
 msgid "Buffer"
@@ -123424,10 +123432,6 @@ msgstr "Метр"
 
 msgid "Pixels/{:s}"
 msgstr "Пиксели/{:s}"
-
-
-msgid "HDR needs 10 or 12 bits"
-msgstr "Для HDR требуется 10 или 12 бит"
 
 
 msgid "Mask Mapping"
@@ -129891,7 +129895,7 @@ msgstr "Невозможно изменить действие, поскольк
 
 
 msgid "Could not set action '%s' to animate ID '%s', as it does not have suitably rooted paths for this purpose"
-msgstr "Невозможно установить действие '%s' для ID '%s', поскольку отсутствует необходимое количество корневых путей для этой цели"
+msgstr "Невозможно установить действие \"%s\" для ID \"%s\", поскольку отсутствует необходимое количество корневых путей для этой цели"
 
 
 msgid "%sAction"
@@ -129979,7 +129983,7 @@ msgstr "Невозможно вставить ключевой кадр, пос�
 
 
 msgid "Failed to insert keys on F-Curve with path '%s[%d]', ensure that it is not locked or sampled, and try removing F-Modifiers"
-msgstr "F-Кривая с путём '%s[%d]' не может быть раскадрована, убедитесь, что она не заблокирована или сэмплирована, а также попробуйте удалить F-модификаторы"
+msgstr "F-Кривая с путём \"%s[%d]\" не может быть раскадрована, убедитесь, что она не заблокирована или сэмплирована, а также попробуйте удалить F-модификаторы"
 
 
 msgid "Could not delete keyframe, as RNA path is invalid for the given ID (ID = %s, path = %s)"
@@ -129991,7 +129995,7 @@ msgstr "Нет действия, для которого необходимо у
 
 
 msgid "Not deleting keyframe for locked F-Curve '%s' for %s '%s'"
-msgstr "Ключевой кадр для заблокированной F-кривой «%s» (%s «%s») не удалён"
+msgstr "Ключевой кадр для заблокированной F-кривой \"%s\" (%s \"%s\") не удалён"
 
 
 msgid "Could not clear keyframe, as RNA path is invalid for the given ID (ID = %s, path = %s)"
@@ -129999,11 +130003,11 @@ msgstr "Невозможно очистить ключевой кадр, пос�
 
 
 msgid "Not clearing all keyframes from locked F-Curve '%s' for %s '%s'"
-msgstr "Не подчищены ключевые кадры для заблокированной F-кривой «%s» для %s «%s»"
+msgstr "Не подчищены ключевые кадры для заблокированной F-кривой \"%s\" для %s \"%s\""
 
 
 msgid "Skipping path in keying set, as it has no ID (KS = '%s', path = '%s[%d]')"
-msgstr "Путь пропущен в ключевом наборе, поскольку у него нет ID (KS = '%s', path = '%s[%d]')"
+msgstr "Путь пропущен в ключевом наборе, поскольку у него нет ID (KS = \"%s\", path = \"%s[%d]\")"
 
 
 msgid "\"%s\" is using Action \"%s\", which does not have a slot with identifier \"%s\" or \"%s\". Manually assign the right action slot to \"%s\"."
@@ -130054,6 +130058,10 @@ msgid "Failed to delete asset library file"
 msgstr "Не удалось удалить файл библиотеки ассетов"
 
 
+msgid "Could not create a copy of ID '%s' to write it in the library"
+msgstr "Не удалось создать копию ID \"%s\" для записи в библиотеку"
+
+
 msgid "Saved \"%s\""
 msgstr "«%s» сохранено"
 
@@ -130091,7 +130099,7 @@ msgstr "Тип не поддерживается для атрибута \"%s\""
 
 
 msgid "Layer '%s' could not be created"
-msgstr "Слой '%s' не может быть создан"
+msgstr "Слой \"%s\" не может быть создан"
 
 
 msgid "This attribute cannot be accessed in a procedural context"
@@ -130115,7 +130123,7 @@ msgstr "Невозможно записать в файл: %s"
 
 
 msgid "LIB: %s: '%s' missing from '%s', parent '%s'"
-msgstr "LIB: %s: '%s' отсутствует в '%s', родитель '%s'"
+msgstr "LIB: %s: \"%s\" отсутствует в \"%s\", родитель \"%s\""
 
 
 msgid "This file is managed by the asset system, you cannot overwrite it (using \"Save As\" is possible)"
@@ -130171,7 +130179,7 @@ msgstr "Связывание или присоединение от .blend-фа�
 
 
 msgid "Lib Reload: Replacing all references to old data-block '%s' by reloaded one failed, old one (%d remaining users) had to be kept and was renamed to '%s'"
-msgstr "Перезагрузка библиотеки: замена всех ссылок на старый датаблок '%s' с помощью перезагрузки не удалась, старый датаблок (%d оставшихся пользователей) пришлось сохранить и переименовать в '%s'"
+msgstr "Перезагрузка библиотеки: замена всех ссылок на старый датаблок \"%s\" с помощью перезагрузки не удалась, старый датаблок (%d оставшихся пользователей) пришлось сохранить и переименовать в \"%s\""
 
 
 msgid "Total files %d | Changed %d | Failed %d"
@@ -130179,7 +130187,7 @@ msgstr "Всего файлов: %d | Изменено: %d | Ошибок: %d"
 
 
 msgid "Path '%s' not found, from linked data-block '%s' (from library '%s')"
-msgstr "Путь '%s' не найден из связанного блока данных '%s' (из библиотеки '%s')"
+msgstr "Путь \"%s\" не найден из связанного блока данных \"%s\" (из библиотеки \"%s\")"
 
 
 msgid "Path '%s' not found, from local data-block '%s'"
@@ -130187,7 +130195,7 @@ msgstr "Путь '%s' не найден из локального блока д�
 
 
 msgid "Path '%s' not found (no known owner data-block)"
-msgstr "Путь '%s' не найден (нет блока данных известного владельца)"
+msgstr "Путь \"%s\" не найден (нет блока данных известного владельца)"
 
 
 msgid "No missing files"
@@ -130195,23 +130203,23 @@ msgstr "Нет отсутствующих файлов"
 
 
 msgid "Could not open the directory '%s'"
-msgstr "Не удалось открыть папку '%s'"
+msgstr "Не удалось открыть папку \"%s\""
 
 
 msgid "Could not find '%s' in '%s'"
-msgstr "Не удалось найти '%s' в '%s'"
+msgstr "Не удалось найти \"%s\" в \"%s\""
 
 
 msgid "Path '%s' cannot be made absolute"
-msgstr "Невозможно преобразовать путь '%s' в абсолютный"
+msgstr "Невозможно преобразовать путь \"%s\" в абсолютный"
 
 
 msgid "Path '%s' cannot be made relative for %s '%s'"
-msgstr "Путь '%s' не может быть сделан относительным для %s '%s'"
+msgstr "Путь \"%s\" не может быть сделан относительным для %s \"%s\""
 
 
 msgid "Path '%s' cannot be made absolute for %s '%s'"
-msgstr "Путь '%s' не может быть сделан абсолютным для %s '%s'"
+msgstr "Путь \"%s\" не может быть сделан абсолютным для %s \"%s\""
 
 
 msgid "brushes"
@@ -130432,7 +130440,7 @@ msgstr "Поверхность"
 
 
 msgid "F-Curve modifier lost on '%s[%d]' because it has an unknown type"
-msgstr "Отсутствует модификатор F-кривой для '%s[%d]', поскольку данные имеют неизвестный тип"
+msgstr "Отсутствует модификатор F-кривой для \"%s[%d]\", поскольку данные имеют неизвестный тип"
 
 
 msgid "Untitled"
@@ -130517,7 +130525,7 @@ msgstr "Не удалось сохранить изображение: %s"
 
 
 msgid "When saving a tiled image, the path '%s' must contain a valid UDIM marker"
-msgstr "При сохранении мозаичного изображения путь '%s' должен содержать допустимый маркер UDIM"
+msgstr "При сохранении мозаичного изображения путь \"%s\" должен содержать допустимый маркер UDIM"
 
 
 msgid "Error writing render result, %s (see console)"
@@ -130525,7 +130533,7 @@ msgstr "Ошибка сохранения рендера, %s (смотрите �
 
 
 msgid "Render error (%s) cannot save: '%s'"
-msgstr "Ошибка рендера (%s) нельзя сохранить: «%s»"
+msgstr "Ошибка рендера (%s) нельзя сохранить: \"%s\""
 
 
 msgid "Failed to create stereo image buffer"
@@ -130565,15 +130573,15 @@ msgstr "Во время повторной синхронизации блока
 
 
 msgid "Library override templates have been removed: removing all override data from the data-block '%s'"
-msgstr "Шаблоны переопределения библиотеки были удалены: удаление всех данных переопределения из блока данных '%s'"
+msgstr "Шаблоны переопределения библиотеки были удалены: удаление всех данных переопределения из блока данных \"%s\""
 
 
 msgid "Data corruption: data-block '%s' is using itself as library override reference, removing all override data"
-msgstr "Повреждение данных: блок данных '%s' использует себя в качестве ссылки переопределения библиотеки, удаляя все данные переопределения"
+msgstr "Повреждение данных: блок данных \"%s\" использует себя в качестве ссылки переопределения библиотеки, удаляя все данные переопределения"
 
 
 msgid "Data corruption: data-block '%s' is using another local data-block ('%s') as library override reference, removing all override data"
-msgstr "Повреждение данных: блок данных '%s' использует другой локальный блок данных ('%s') в качестве ссылки переопределения библиотеки, удаляя все данные переопределения"
+msgstr "Повреждение данных: блок данных \"%s\" использует другой локальный блок данных (\"%s\") в качестве ссылки переопределения библиотеки, удаляя все данные переопределения"
 
 
 msgid "Data corruption: data-block `%s` has a Library Override property with no RNA path"
@@ -130597,7 +130605,7 @@ msgstr "Привязка тени для %s"
 
 
 msgid "Cannot unlink unsupported '%s' from light linking collection '%s'"
-msgstr "Невозможно отсоединить неподдерживаемый '%s' от коллекция для привязки света '%s'"
+msgstr "Невозможно отсоединить неподдерживаемый \"%s\" от коллекция для привязки света \"%s\""
 
 
 msgid "lightprobes"
@@ -130609,7 +130617,7 @@ msgstr "стили линий"
 
 
 msgid "Merged %d IDs from '%s' Main into '%s' Main; %d IDs and %d Libraries already existed as part of the destination Main, and %d IDs missing from destination Main, were freed together with the source Main"
-msgstr "%d ID из базы данных '%s' были объединены в базу данных '%s'; %d ID и %d библиотек уже существовало как часть целевой базы данных, и %d ID, отсутствующих в целевой базе данных были освобождены вместе с исходной базой данных"
+msgstr "%d ID из базы данных \"%s\" были объединены в базу данных \"%s\"; %d ID и %d библиотек уже существовало как часть целевой базы данных, и %d ID, отсутствующих в целевой базе данных были освобождены вместе с исходной базой данных"
 
 
 msgid "MaskLayer"
@@ -130749,19 +130757,19 @@ msgstr "Нет новых запакованных файлов"
 
 
 msgid "Unable to pack file, source path '%s' not found"
-msgstr "Ошибка упаковки файла, путь к исходному файлу «%s» не найден"
+msgstr "Ошибка упаковки файла, путь к исходному файлу \"%s\" не найден"
 
 
 msgid "Unable to access the size of, source path '%s'"
-msgstr "Не удалось получить доступ к размеру, исходный путь '%s'"
+msgstr "Не удалось получить доступ к размеру, исходный путь \"%s\""
 
 
 msgid "Unable to pack files over 2gb, source path '%s'"
-msgstr "Невозможно упаковать файлы размером более 2 ГБ, исходный путь '%s'"
+msgstr "Невозможно упаковать файлы размером более 2 ГБ, исходный путь \"%s\""
 
 
 msgid "Image '%s' skipped, packing movies or image sequences not supported"
-msgstr "Изображение '%s' пропущено, упаковка видео или секвенций изображений не поддерживается"
+msgstr "Изображение \"%s\" пропущено, упаковка видео или секвенций изображений не поддерживается"
 
 
 msgid "Packed %d file(s)"
@@ -130769,11 +130777,11 @@ msgstr "Запаковано файлов: %d"
 
 
 msgid "Error creating file '%s'"
-msgstr "Ошибка при создании файла «%s»"
+msgstr "Ошибка при создании файла \"%s\""
 
 
 msgid "Error writing file '%s'"
-msgstr "Ошибка при записи файла «%s»"
+msgstr "Ошибка при записи файла \"%s\""
 
 
 msgid "Saved packed file to: %s"
@@ -130781,11 +130789,11 @@ msgstr "Место сохранения запакованного файла: %
 
 
 msgid "Error restoring temp file (check files '%s' '%s')"
-msgstr "Ошибка при восстановлении временного файла (проверьте файлы «%s» «%s»)"
+msgstr "Ошибка при восстановлении временного файла (проверьте файлы \"%s\" \"%s\")"
 
 
 msgid "Error deleting '%s' (ignored)"
-msgstr "Ошибка удаления «%s» (игнорируется)"
+msgstr "Ошибка удаления \"%s\" (игнорируется)"
 
 
 msgid "Use existing file (instead of packed): %s"
@@ -130793,11 +130801,11 @@ msgstr "Использовать существующий файл (вместо
 
 
 msgid "Cannot pack absolute file: '%s'"
-msgstr "Невозможно упаковать файл по абсолютному пути: «%s»"
+msgstr "Невозможно упаковать файл по абсолютному пути: \"%s\""
 
 
 msgid "Cannot unpack individual Library file, '%s'"
-msgstr "Невозможно упаковать отдельный файл библиотеки, «%s»"
+msgstr "Невозможно упаковать отдельный файл библиотеки, \"%s\""
 
 
 msgid "palettes"
@@ -130893,7 +130901,7 @@ msgstr "Скомпилировано без физического движка 
 
 
 msgid "LIB: object lost from scene: '%s'"
-msgstr "LIB: объект не найден в сцене: «%s»"
+msgstr "LIB: объект не найден в сцене: \"%s\""
 
 
 msgid "RenderView"
@@ -131342,23 +131350,23 @@ msgstr "Не удаётся открыть"
 
 
 msgid "Data-block '%s' had an invalid embedded node group, which has not been read"
-msgstr "Блок данных '%s' содержал недопустимую вложенную группу нод, которую невозможно прочитать"
+msgstr "Блок данных \"%s\" содержал недопустимую вложенную группу нод, которую невозможно прочитать"
 
 
 msgid "Scene '%s' had an invalid root collection, which has not been read"
-msgstr "Сцена '%s' содержала недопустимую корневую коллекцию, которую невозможно прочитать"
+msgstr "Сцена \"%s\" содержала недопустимую корневую коллекцию, которую невозможно прочитать"
 
 
 msgid "Library '%s', '%s' had multiple instances, save and reload!"
-msgstr "Библиотека «%s», «%s» имеет несколько экземпляров, сохраните и выполните перезапуск!"
+msgstr "Библиотека \"%s\", \"%s\" имеет несколько экземпляров, сохраните и выполните перезапуск!"
 
 
 msgid "LIB: .blend file %s seems corrupted, no owner 'Library' data found for the linked data-block '%s'. Try saving the file again."
-msgstr "LIB: файл .blend %s, по-видимому, повреждён, для связанного блока данных '%s' не найдены проприетарные данные 'Библиотеки'. Попробуйте сохранить файл ещё раз."
+msgstr "LIB: файл .blend %s, по-видимому, повреждён, для связанного блока данных \"%s\" не найдены проприетарные данные \"Библиотеки\". Попробуйте сохранить файл ещё раз."
 
 
 msgid "LIB: Data refers to main .blend file: '%s' from %s"
-msgstr "LIB: Данные ссылаются на главный .blend-файл: '%s' из %s"
+msgstr "LIB: Данные ссылаются на главный .blend-файл: \"%s\" из %s"
 
 
 msgid "LIB: .blend file %s seems corrupted, no owner 'Library' data found for the packed linked data-block %s. Try saving the file again."
@@ -131366,19 +131374,19 @@ msgstr "LIB: файл .blend %s, по-видимому, повреждён, дл
 
 
 msgid "LIB: %s: '%s' is directly linked from '%s' (parent '%s'), but is a non-linkable data type"
-msgstr "LIB: %s: '%s' напрямую связан из '%s' (родитель '%s'), но является нессылочным типом данных"
+msgstr "LIB: %s: \"%s\" напрямую связан из \"%s\" (родитель \"%s\"), но является нессылочным типом данных"
 
 
 msgid "Read packed library: '%s', parent '%s'"
-msgstr "Чтение запакованной библиотеки: '%s', родитель '%s'"
+msgstr "Чтение запакованной библиотеки: \"%s\", родитель \"%s\""
 
 
 msgid "Read library: '%s', '%s', parent '%s'"
-msgstr "Чтение библиотеки: '%s', '%s', родитель '%s'"
+msgstr "Чтение библиотеки: \"%s\", \"%s\", родитель \"%s\""
 
 
 msgid "Cannot find lib '%s'"
-msgstr "Не удалось найти библиотеку '%s'"
+msgstr "Не удалось найти библиотеку \"%s\""
 
 
 msgid "Unable to open blend <memory>"
@@ -131394,47 +131402,47 @@ msgstr "Файл был сохранён более новой версией, �
 
 
 msgid "Blend file '%s' created by a Big Endian version of Blender, support for these files has been removed in Blender 5.0, use an older version of Blender to open and convert it."
-msgstr "Blend-файл '%s' создан версией Blender'а с обратным порядком байтов. Поддержка таких файлов прекращена в Blender 5.0. Для его открытия и преобразования используйте более старую версию Blender'а."
+msgstr "Blend-файл \"%s\" создан версией Blender'а с обратным порядком байтов. Поддержка таких файлов прекращена в Blender 5.0. Для его открытия и преобразования используйте более старую версию Blender'а."
 
 
 msgid "Failed to read blend file '%s': %s"
-msgstr "Не удалось прочитать файл «%s», %s"
+msgstr "Не удалось прочитать файл \"%s\": %s"
 
 
 msgid "Cannot read blend file '%s', incomplete header, may be from a newer version of Blender"
-msgstr "Невозможно прочитать файл-blend '%s', неполный заголовок, возможно, из более новой версии Blender'а"
+msgstr "Невозможно прочитать файл-blend \"%s\", неполный заголовок, возможно, из более новой версии Blender'а"
 
 
 msgid "Failed to read file '%s', not a blend file"
-msgstr "Не удалось прочитать файл '%s', это не blend-файл"
+msgstr "Не удалось прочитать файл \"%s\", это не blend-файл"
 
 
 msgid "Unable to read '%s': %s"
-msgstr "Не удалось прочитать «%s», %s"
+msgstr "Не удалось прочитать \"%s\": %s"
 
 
 msgid "Unrecognized file format '%s'"
-msgstr "Нераспознанный файловый формат «%s»"
+msgstr "Нераспознанный файловый формат \"%s\""
 
 
 msgid "Unable to open '%s': %s"
-msgstr "Ошибка открытия «%s»: %s"
+msgstr "Ошибка открытия \"%s\": %s"
 
 
 msgid "Blendfile '%s' was created by a future version of Blender and contains ID names longer than currently supported. These have been truncated."
-msgstr "Файл .blend '%s' был создан предстоящей версией Blender'а и содержит имена ID длиннее, чем поддерживаются в настоящее время. Они были усечены."
+msgstr "Файл .blend \"%s\" был создан предстоящей версией Blender'а и содержит имена ID длиннее, чем поддерживаются в настоящее время. Они были усечены."
 
 
 msgid "Blendfile '%s' appears corrupted, it contains invalid ID names. These have been truncated."
-msgstr "Файл .blend '%s', похоже, повреждён, он содержит недопустимые имена идентификаторов. Они были усечены."
+msgstr "Файл .blend \"%s\", похоже, повреждён, он содержит недопустимые имена идентификаторов. Они были усечены."
 
 
 msgid "Library '%s' was created by a future version of Blender and contains ID names longer than currently supported. This may cause missing linked data, consider opening and re-saving that library with the current Blender version."
-msgstr "Библиотека '%s' была создана предстоящей версией Blender'а и содержит имена идентификаторов длиннее, чем поддерживается в настоящее время. Это может привести к потере связанных данных, рассмотрите возможность открытия и повторного сохранения этой библиотеки в текущей версии Blender'а."
+msgstr "Библиотека \"%s\" была создана предстоящей версией Blender'а и содержит имена идентификаторов длиннее, чем поддерживается в настоящее время. Это может привести к потере связанных данных, рассмотрите возможность открытия и повторного сохранения этой библиотеки в текущей версии Blender'а."
 
 
 msgid "Library '%s' appears corrupted, it contains invalid ID names. This may cause missing linked data."
-msgstr "Библиотека '%s', похоже, повреждена, она содержит недопустимые имена идентификаторов. Это может привести к потере связанных данных."
+msgstr "Библиотека \"%s\", похоже, повреждена, она содержит недопустимые имена идентификаторов. Это может привести к потере связанных данных."
 
 
 msgid "GP_Palette"
@@ -131442,7 +131450,7 @@ msgstr "Палитра GP"
 
 
 msgid "Non-Empty object '%s' cannot duplicate collection '%s' anymore in Blender 2.80 and later, removed instancing"
-msgstr "Непустой объект '%s' больше не может дублировать коллекцию '%s' в Blender 2.80 и более поздних версиях, удалено создание экземпляров"
+msgstr "Непустой объект \"%s\" больше не может дублировать коллекцию \"%s\" в Blender 2.80 и более поздних версиях, удалено создание экземпляров"
 
 
 msgid "Hidden %d"
@@ -132127,11 +132135,11 @@ msgstr "Не удалось обновить флаги для этой F-кри
 
 
 msgid "Keying set '%s' - successfully added %d keyframes"
-msgstr "Ключевой набор «%s» — успешно добавлено %d ключевых кадров"
+msgstr "Ключевой набор \"%s\" — успешно добавлено %d ключевых кадров"
 
 
 msgid "Successfully added %d keyframes for keying set '%s'"
-msgstr "Успешно добавлено %d ключевых кадров для ключевого набора «%s»"
+msgstr "Успешно добавлено %d ключевых кадров для ключевого набора \"%s\""
 
 
 msgid "Unsupported context mode"
@@ -132147,11 +132155,11 @@ msgstr "Не удалось вставить ключевой кадр, так �
 
 
 msgid "'%s' is not editable"
-msgstr "'%s' не подлежит редактированию"
+msgstr "\"%s\" не подлежит редактированию"
 
 
 msgid "Successfully removed %d keyframes for keying set '%s'"
-msgstr "Успешно удалено %d ключевых кадров из ключевого набора «%s»"
+msgstr "Успешно удалено %d ключевых кадров из ключевого набора \"%s\""
 
 
 msgid "Scene has no animation data or active action"
@@ -132159,11 +132167,11 @@ msgstr "Сцена не содержит данных анимации или а
 
 
 msgid "Not deleting keyframe for locked F-Curve '%s', object '%s'"
-msgstr "Ключевой кадр для заблокированной F-кривой «%s» объекта «%s» не удалён"
+msgstr "Ключевой кадр для заблокированной F-кривой \"%s\" объекта \"%s\" не удалён"
 
 
 msgid "Not deleting keyframe for locked F-Curve '%s', scene '%s'"
-msgstr "Ключевой кадр для заблокированной F-кривой '%s' объекта '%s' не удалён"
+msgstr "Ключевой кадр для заблокированной F-кривой \"%s\" из сцены \"%s\" не был удалён"
 
 
 msgid "%d object(s) successfully had %d keyframes removed"
@@ -132183,11 +132191,11 @@ msgstr "К клавише не прикреплена информация о с
 
 
 msgid "Not deleting keyframe for locked F-Curve for NLA Strip influence on %s - %s '%s'"
-msgstr "Не удалён ключевой кадр для заблокированной F-кривой влияния дорожки НЛА на %s - %s '%s'"
+msgstr "Не удалён ключевой кадр для заблокированной F-кривой влияния дорожки НЛА на %s - %s \"%s\""
 
 
 msgid "Keying set '%s' not found"
-msgstr "Набор ключей «%s» не найден"
+msgstr "Набор ключей \"%s\" не найден"
 
 
 msgid "No active Keying Set to remove"
@@ -132227,11 +132235,11 @@ msgstr "Свойство удалено из набора ключей"
 
 
 msgid "Property added to Keying Set: '%s'"
-msgstr "Свойство добавлено в ключевой набор: «%s»"
+msgstr "Свойство добавлено в ключевой набор: \"%s\""
 
 
 msgid "Bone was added to a hidden collection '%s'"
-msgstr "Кость добавлена в скрытую коллекцию '%s'"
+msgstr "Кость добавлена в скрытую коллекцию \"%s\""
 
 
 msgid "Delete selected bones?"
@@ -132267,11 +132275,11 @@ msgstr "Выделено слишком много точек: %d"
 
 
 msgid "Aligned bone '%s' to parent"
-msgstr "Кость «%s» выровнена относительно родителя"
+msgstr "Кость \"%s\" выровнена относительно родителя"
 
 
 msgid "%d bones aligned to bone '%s'"
-msgstr "%d шт. костей выровнены относительно кости «%s»"
+msgstr "%d шт. костей выровнены относительно кости \"%s\""
 
 
 msgid "New bone name collides with an existing vertex group name, vertex group names are unchanged. (%s::%s)"
@@ -132316,7 +132324,7 @@ msgstr "Все выделенные кости уже были частью эт
 
 
 msgid "No bone collection named '%s'"
-msgstr "Нет коллекции костей с именем '%s'"
+msgstr "Нет коллекции костей с именем \"%s\""
 
 
 msgid "Cannot assign to linked bone collection %s"
@@ -132336,11 +132344,11 @@ msgstr "Отсутствует имя кости"
 
 
 msgid "Could not find bone '%s'"
-msgstr "Не удалось найти кость '%s'"
+msgstr "Не удалось найти кость \"%s\""
 
 
 msgid "Bone '%s' was not assigned to collection '%s'"
-msgstr "Кость '%s' не была назначена в коллекцию '%s'"
+msgstr "Кость \"%s\" не была назначена в коллекцию \"%s\""
 
 
 msgid "Bone collection with index %d not found on Armature %s"
@@ -132464,11 +132472,11 @@ msgstr "Внутренняя ошибка библиотеки поз, отме�
 
 
 msgid "Asset not found: '%s'"
-msgstr "Ассет не найден: '%s'"
+msgstr "Ассет не найден: \"%s\""
 
 
 msgid "Asset ('%s') is not an action data-block"
-msgstr "Ассет ('%s') не является блоком данных действия"
+msgstr "Ассет (\"%s\") не является блоком данных действия"
 
 
 msgid "No active Keying Set to use"
@@ -132616,7 +132624,7 @@ msgstr "Сохранение не удалось"
 
 
 msgid "Data-block '%s' is now an asset"
-msgstr "Блок данных '%s' теперь является ассетом"
+msgstr "Блок данных \"%s\" теперь является ассетом"
 
 
 msgid "%i data-blocks are now assets"
@@ -132624,7 +132632,7 @@ msgstr "%i блоки данных теперь являются ассетам�
 
 
 msgid "Data-block '%s' is not an asset anymore"
-msgstr "Блок данных '%s' больше не является ассетом"
+msgstr "Блок данных \"%s\" больше не является ассетом"
 
 
 msgid "%i data-blocks are not assets anymore"
@@ -132889,7 +132897,7 @@ msgstr "Неверный контекст для разрыва связи со 
 
 
 msgid "Failed to open file '%s'"
-msgstr "Не удалось открыть файл «%s»"
+msgstr "Не удалось открыть файл \"%s\""
 
 
 msgid "File too long %s"
@@ -133073,7 +133081,7 @@ msgstr "Переместить на новый слой"
 
 
 msgid "Material '%s' could not be found"
-msgstr "Материал '%s' не найден"
+msgstr "Материал \"%s\" не найден"
 
 
 msgid "Nothing selected"
@@ -133109,11 +133117,11 @@ msgstr "Активный объект не является выделенным
 
 
 msgid "There is no layer '%s'"
-msgstr "Слой '%s' отсутствует"
+msgstr "Слой \"%s\" отсутствует"
 
 
 msgid "'%s' Layer is locked"
-msgstr "Слой '%s' заблокирован"
+msgstr "Слой \"%s\" заблокирован"
 
 
 msgid "Copied %d selected curve(s)"
@@ -133205,7 +133213,7 @@ msgstr "Активная группа вершин заблокирована"
 
 
 msgid "Data-block renamed to '%s', try again to force renaming it to '%s'"
-msgstr "Блок данных переименован в '%s', попробуйте ещё раз принудительно переименовать его в '%s'"
+msgstr "Блок данных переименован в \"%s\", попробуйте ещё раз принудительно переименовать его в \"%s\""
 
 
 msgid "Name in use. The other data-block was renamed to ‘%s’"
@@ -133249,7 +133257,7 @@ msgstr "Нажмите 'Enter', чтобы выполнить сэмплиров
 
 
 msgid "Could not resolve path '%s'"
-msgstr "Не удалось разрешить путь «%s»"
+msgstr "Не удалось разрешить путь \"%s\""
 
 
 msgid "Failed to set value"
@@ -133257,7 +133265,7 @@ msgstr "Ошибка установки значения"
 
 
 msgid "Property from path '%s' is not a float"
-msgstr "Свойство по пути «%s» не является нецелочисленным"
+msgstr "Свойство по пути \"%s\" не является нецелочисленным"
 
 
 msgid "Current: "
@@ -133547,7 +133555,7 @@ msgstr "Невозможно изменить числовое значение 
 
 
 msgid "Failed to find '%s'"
-msgstr "Не удалось найти '%s'"
+msgstr "Не удалось найти \"%s\""
 
 
 msgid "Generating StudioLight icon..."
@@ -134693,7 +134701,7 @@ msgstr "Невозможно экспортировать PDF"
 
 
 msgid "Unable to import '%s'"
-msgstr "Невозможно импортировать '%s'"
+msgstr "Невозможно импортировать \"%s\""
 
 
 msgid "Error during file write for \"%s\""
@@ -135451,15 +135459,15 @@ msgstr "В финальной трансформации активного об
 
 
 msgid "Cannot delete indirectly linked object '%s'"
-msgstr "Нельзя удалить не связанный напрямую объект «%s»"
+msgstr "Нельзя удалить не связанный напрямую объект \"%s\""
 
 
 msgid "Cannot delete object '%s' as it is used by override collections"
-msgstr "Невозможно удалить объект '%s', так как он используется коллекциями переопределений"
+msgstr "Невозможно удалить объект \"%s\", так как он используется коллекциями переопределений"
 
 
 msgid "Cannot delete object '%s' from scene '%s', indirectly used objects need at least one user"
-msgstr "Нельзя удалить объект «%s» из сцены «%s», для косвенно используемых объектов нужен как минимум один пользователь"
+msgstr "Нельзя удалить объект \"%s\" из сцены \"%s\", для косвенно используемых объектов нужен как минимум один пользователь"
 
 
 msgid "Deleted %u object(s)"
@@ -135467,19 +135475,19 @@ msgstr "Удалено %u объект(ов)"
 
 
 msgid "Object '%s' has no evaluated Curve or Grease Pencil data"
-msgstr "Объект '%s' не имеет вычисляемых данных кривой или Grease Pencil"
+msgstr "Объект \"%s\" не имеет вычисляемых данных кривой или Grease Pencil"
 
 
 msgid "Object '%s' has no evaluated mesh or curves data"
-msgstr "Объект '%s' не имеет оценённых данных меша или кривых"
+msgstr "Объект \"%s\" не имеет оценённых данных меша или кривых"
 
 
 msgid "Object '%s' has no evaluated Grease Pencil or Curves data"
-msgstr "Объект '%s' не имеет вычисляемых данных Grease Pencil или кривых"
+msgstr "Объект \"%s\" не имеет вычисляемых данных Grease Pencil или кривых"
 
 
 msgid "Object '%s' has no evaluated curves data"
-msgstr "Объект '%s' не имеет оцененных данных кривой"
+msgstr "Объект \"%s\" не имеет оцененных данных кривой"
 
 
 msgid "None of the objects are compatible with a conversion to \"%s\""
@@ -135491,7 +135499,7 @@ msgstr "Выделение включает в себя %d типа(-ов) об�
 
 
 msgid "Cannot edit object '%s' as it is used by override collections"
-msgstr "Невозможно редактировать объект '%s', так как он используется коллекциями переопределений"
+msgstr "Невозможно редактировать объект \"%s\", так как он используется коллекциями переопределений"
 
 
 msgid "No active mesh object"
@@ -135763,23 +135771,23 @@ msgstr "Невозможно отсоединить коллекцию библ�
 
 
 msgid "File handler '%s' not found"
-msgstr "Обработчик для файла '%s' не найден"
+msgstr "Обработчик для файла \"%s\" не найден"
 
 
 msgid "File handler operator '%s' not found"
-msgstr "Оператор обработчика файлов '%s' не найден"
+msgstr "Оператор обработчика файлов \"%s\" не найден"
 
 
 msgid "File path '%s' is not a valid file"
-msgstr "Путь к файлу '%s' не является допустимым файлом"
+msgstr "Путь к файлу \"%s\" не является допустимым файлом"
 
 
 msgid "Exported '%s'"
-msgstr "Экспортировано '%s'"
+msgstr "Экспортировано \"%s\""
 
 
 msgid "Exported %d files from collection '%s'"
-msgstr "Экспортировано %d файлов из коллекции '%s'"
+msgstr "Экспортировано %d файлов из коллекции \"%s\""
 
 
 msgid "Exported %d files from %d collections"
@@ -135788,22 +135796,6 @@ msgstr "Экспортировано %d файлов из %d коллекций"
 
 msgid "Add IK"
 msgstr "Добавить ИК"
-
-
-msgid "To Active Bone"
-msgstr "К активной кости"
-
-
-msgid "To Active Object"
-msgstr "К активному объекту"
-
-
-msgid "To New Empty Object"
-msgstr "К новому объекту-пустышке"
-
-
-msgid "Without Targets"
-msgstr "Без цели"
 
 
 msgid "Could not find constraint data for Child-Of Set Inverse"
@@ -135899,11 +135891,11 @@ msgstr "Оператор заморожен, изменения в его нас
 
 
 msgid "Skipping object '%s', linked or override data '%s' cannot be modified"
-msgstr "Пропуск объекта '%s', связанные или переопределяющие данные '%s' не могут быть изменены"
+msgstr "Пропуск объекта \"%s\", связанные или переопределяющие данные \"%s\" не могут быть изменены"
 
 
 msgid "Skipping object '%s', data '%s' has already been processed with a previous object"
-msgstr "Пропуск объекта «%s», связанные данные «%s» уже обработаны вместе с другим объектом"
+msgstr "Пропуск объекта \"%s\", связанные данные \"%s\" уже обработаны вместе с другим объектом"
 
 
 msgid "Failed to transfer mesh data to %d objects"
@@ -135962,10 +135954,6 @@ msgid "Cannot add objects to a library override or linked collection"
 msgstr "Невозможно добавить объекты к переопределению библиотеки или в связанную коллекцию"
 
 
-msgid "No objects selected"
-msgstr "Ни одного объекта не выделено"
-
-
 msgid "Unable to change object mode while transforming"
 msgstr "Невозможно переключиться из объектного режима во время трансформации"
 
@@ -136015,7 +136003,7 @@ msgstr "Не удалось найти модификатор крюка"
 
 
 msgid "Unable to execute '%s', error changing modes"
-msgstr "Не удалось выполнить «%s», ошибка смены режимов"
+msgstr "Не удалось выполнить \"%s\", ошибка смены режимов"
 
 
 msgid "No target object to transfer the mode to"
@@ -136027,11 +136015,11 @@ msgstr "Невозможно передать режим, исходные и/и
 
 
 msgid "Current mode of source object '%s' is not compatible with target liboverride object '%s'"
-msgstr "Текущий режим исходного объекта '%s' несовместим с целевым объектом переопределения библиотеки '%s'"
+msgstr "Текущий режим исходного объекта \"%s\" несовместим с целевым объектом переопределения библиотеки \"%s\""
 
 
 msgid "Current mode of source object '%s' is not compatible with target object '%s'"
-msgstr "Текущий режим исходного объекта '%s' несовместим с целевым объектом '%s'"
+msgstr "Текущий режим исходного объекта \"%s\" несовместим с целевым объектом \"%s\""
 
 
 msgctxt "Operator"
@@ -136152,23 +136140,23 @@ msgstr "Модификатор отключён"
 
 
 msgid "Modifiers cannot be added to object '%s'"
-msgstr "Модификаторы не применимы к объекту «%s»"
+msgstr "Модификаторы не применимы к объекту \"%s\""
 
 
 msgid "Modifier '%s' not in object '%s'"
-msgstr "Модификатор «%s» не принадлежит объекту «%s»"
+msgstr "Модификатор \"%s\" не принадлежит объекту \"%s\""
 
 
 msgid "Object '%s' does not support %s modifiers"
-msgstr "Объект '%s' не поддерживает модификаторы %s"
+msgstr "Объект \"%s\" не поддерживает модификаторы %s"
 
 
 msgid "Modifier can only be added once to object '%s'"
-msgstr "Модификатор можно добавить к объекту '%s' только единожды"
+msgstr "Модификатор можно добавить к объекту \"%s\" только единожды"
 
 
 msgid "Copying modifier '%s' to object '%s' failed"
-msgstr "Копирование модификатора '%s' в объект '%s' не удалось"
+msgstr "Копирование модификатора \"%s\" в объект \"%s\" не удалось"
 
 
 msgid "Removed modifier: %s"
@@ -136180,11 +136168,11 @@ msgstr "Применён модификатор: %s"
 
 
 msgid "Modifier '%s' was not copied to any objects"
-msgstr "Модификатор '%s' не был скопирован ни в один объект"
+msgstr "Модификатор \"%s\" не был скопирован ни в один объект"
 
 
 msgid "Mesh '%s' has no skin vertex data"
-msgstr "У меша «%s» нет данных оболочки"
+msgstr "У меша \"%s\" нет данных оболочки"
 
 
 msgid "Cannot edit modifiers coming from linked data in a library override"
@@ -136352,11 +136340,11 @@ msgstr "Не удалось отсоединить объектные данны
 
 
 msgid "Collection '%s' (instantiated by the active object) is not overridable"
-msgstr "Коллекцию «%s» (экземпляр которой используется активным объектом) нельзя переопределить"
+msgstr "Коллекцию \"%s\" (экземпляр которой используется активным объектом) нельзя переопределить"
 
 
 msgid "Could not find an overridable root hierarchy for object '%s'"
-msgstr "Не удалось найти переопределяемый корневой объект иерархии для объекта '%s'"
+msgstr "Не удалось найти переопределяемый корневой объект иерархии для объекта \"%s\""
 
 
 msgid "Too many potential root collections (%d) for the override hierarchy, please use the Outliner instead"
@@ -136440,11 +136428,11 @@ msgstr "Переместить эффект за пределы конца ст�
 
 
 msgid "Effect cannot be added to object '%s'"
-msgstr "Эффект не может быть добавлен на объект «%s»"
+msgstr "Эффект не может быть добавлен на объект \"%s\""
 
 
 msgid "Effect '%s' not in object '%s'"
-msgstr "Эффект «%s» не на объекте «%s»"
+msgstr "Эффект \"%s\" не на объекте \"%s\""
 
 
 msgid "Removed effect: %s"
@@ -136740,15 +136728,15 @@ msgstr "Очистка запекания не удалась: найдены о
 
 
 msgid "Fluid: Empty cache path, reset to default '%s'"
-msgstr "Флюид: Пустой путь кэша, сбросить до значения по умолчанию '%s'"
+msgstr "Флюид: Пустой путь кэша, сбросить до значения по умолчанию \"%s\""
 
 
 msgid "Fluid: Could not create cache directory '%s', reset to default '%s'"
-msgstr "Флюид: Не удалось создать папку кэша '%s', сброс на значение по умолчанию '%s'"
+msgstr "Флюид: Не удалось создать папку кэша \"%s\", сброс на значение по умолчанию \"%s\""
 
 
 msgid "Fluid: Could not use default cache directory '%s', please define a valid cache path manually"
-msgstr "Флюид: Невозможно использовать папку кэша \"по умолчанию\" '%s', определите допустимый путь к кэшу вручную"
+msgstr "Флюид: Невозможно использовать папку кэша 'по умолчанию' \"%s\", определите допустимый путь к кэшу вручную"
 
 
 msgid "Fluid: %s complete (%.2fs)"
@@ -136796,7 +136784,7 @@ msgstr "У объекта нет ограничителя твёрдых тел 
 
 
 msgid "Object '%s' already has a Rigid Body Constraint"
-msgstr "У объекта «%s» уже есть ограничитель твёрдых тел"
+msgstr "У объекта \"%s\" уже есть ограничитель твёрдых тел"
 
 
 msgid "Acrylic"
@@ -137220,11 +137208,11 @@ msgstr "Невозможно создать новое окно!"
 
 
 msgid "Active scene changed to '%s'"
-msgstr "Активная сцена изменена на '%s'"
+msgstr "Активная сцена изменена на \"%s\""
 
 
 msgid "View layer '%s' could not be removed from scene '%s'"
-msgstr "Слой визуализации «%s» не может быть удален из сцены «%s»"
+msgstr "Слой визуализации \"%s\" не может быть удален из сцены \"%s\""
 
 
 msgid "Join Areas"
@@ -137510,7 +137498,7 @@ msgstr "Невозможно активировать только что сох
 
 
 msgid "File not found '%s'"
-msgstr "Файл «%s"
+msgstr "Файл \"%s\" не найден"
 
 
 msgid "Asset library is not editable"
@@ -137921,7 +137909,7 @@ msgstr "Не удалось отменить назначение действи
 
 
 msgid "Action '%s' will not be saved, create Fake User or Stash in NLA Stack to retain"
-msgstr "Действие «%s» не будет сохранено, создайте фиктивного пользователя или используйте функцию размещения в стеке НЛА для сохранения"
+msgstr "Действие \"%s\" не будет сохранено, создайте фиктивного пользователя или используйте функцию размещения в стеке НЛА для сохранения"
 
 
 msgid "Delete selected keyframes?"
@@ -138149,7 +138137,7 @@ msgstr "Не выбраны файлы для открытия"
 
 
 msgid "Cannot read '%s': %s"
-msgstr "Ошибка чтения «%s»: %s"
+msgstr "Ошибка чтения \"%s\": %s"
 
 
 msgid "Building proxies..."
@@ -138394,7 +138382,7 @@ msgstr "Не удалось выполнить внешнюю файловую �
 
 
 msgid "'%s' given path is OS-invalid, creating '%s' path instead"
-msgstr "Путь «%s» для системы неверен, изменён на «%s»"
+msgstr "Путь \"%s\" для системы неверен, изменён на \"%s\""
 
 
 msgid "Could not create new folder: %s"
@@ -138729,15 +138717,15 @@ msgstr "Драйверы не удалены"
 
 
 msgid "Euler Rotation F-Curve has invalid index (ID='%s', Path='%s', Index=%d)"
-msgstr "Недопустимый индекс у F-кривой эйлеровского вращения (ID='%s', Path='%s', Index=%d)"
+msgstr "Недопустимый индекс у F-кривой эйлеровского вращения (ID=\"%s\", Path=\"%s\", Index=%d)"
 
 
 msgid "Missing %s%s%s component(s) of euler rotation for ID='%s' and RNA-Path='%s'"
-msgstr "Отсутствуют компоненты %s%s%s эйлеровского вращения для ID='%s' и RNA-траектории='%s'"
+msgstr "Отсутствуют компоненты %s%s%s эйлеровского вращения для ID=\"%s\" и RNA-Path=\"%s\""
 
 
 msgid "XYZ rotations not equally keyed for ID='%s' and RNA-Path='%s'"
-msgstr "Вращения XYZ не одинаково запрограммированы (кеинг) для ID='%s' и RNA-Path='%s'"
+msgstr "Вращения XYZ не одинаково запрограммированы (кеинг) для ID=\"%s\" и RNA-Path=\"%s\""
 
 
 msgid "%d of %d rotation channels were filtered (see the Info window for details)"
@@ -139137,11 +139125,11 @@ msgstr "Невозможно поменять местами выделенны�
 
 
 msgid "Action '%s' does not specify what data-blocks it can be used on (try setting the 'ID Root Type' setting from the data-blocks editor for this action to avoid future problems)"
-msgstr "Для действия «%s» не определены блоки данных, с которыми оно может использоваться (попробуйте установить тип корневого ID в редакторе блоков данных для этого действия, чтобы избежать проблем в будущем)"
+msgstr "Для действия \"%s\" не определены блоки данных, с которыми оно может использоваться (попробуйте установить тип корневого ID в редакторе блоков данных для этого действия, чтобы избежать проблем в будущем)"
 
 
 msgid "Could not add action '%s' as it cannot be used relative to ID-blocks of type '%s'"
-msgstr "Не удалось добавить действие «%s», поскольку оно не может быть использовано по отношению к ID-блоку типа «%s»"
+msgstr "Не удалось добавить действие \"%s\", поскольку оно не может быть использовано по отношению к ID-блоку типа \"%s\""
 
 
 msgid "Too many clusters of strips selected in NLA Track (%s): needs exactly 2 to be selected"
@@ -139153,7 +139141,7 @@ msgstr "Выделено слишком мало кластеров дороже
 
 
 msgid "Cannot swap '%s' and '%s' as one or both will not be able to fit in their new places"
-msgstr "Невозможно поменять «%s» и «%s» местами, поскольку одна или обе из них не смогут поместиться в новых местах"
+msgstr "Невозможно поменять \"%s\" и \"%s\" местами, поскольку одна или обе из них не смогут поместиться в новых местах"
 
 
 msgid "Modifier could not be added to (%s : %s) (see console for details)"
@@ -139320,12 +139308,12 @@ msgid ""
 "Cannot add node group '%s' to '%s':\n"
 "  %s"
 msgstr ""
-"Невозможно добавить группу нод '%s' в '%s':\n"
+"Невозможно добавить группу нод \"%s\" в \"%s\":\n"
 "  %s"
 
 
 msgid "Cannot add node group '%s' to '%s'"
-msgstr "Невозможно добавить группу нод '%s' в '%s'"
+msgstr "Невозможно добавить группу нод \"%s\" в \"%s\""
 
 
 msgid "Node tree type %s undefined"
@@ -139415,24 +139403,24 @@ msgid ""
 "Cannot add node '%s' in a group:\n"
 "  %s"
 msgstr ""
-"Невозможно добавить ноду '%s' в группу:\n"
+"Невозможно добавить ноду \"%s\" в группу:\n"
 "  %s"
 
 
 msgid "Cannot add node '%s' in a group"
-msgstr "Невозможно добавить ноду '%s' в группу"
+msgstr "Невозможно добавить ноду \"%s\" в группу"
 
 
 msgid "Cannot add zone input node '%s' to a group without its paired output '%s'"
-msgstr "Невозможно добавить входную ноду зоны '%s' в группу без соответствующего ей выхода '%s'"
+msgstr "Невозможно добавить входную ноду зоны \"%s\" в группу без соответствующего ей выхода \"%s\""
 
 
 msgid "Cannot add zone output node '%s' to a group without its paired input '%s'"
-msgstr "Невозможно добавить выходную ноду зоны '%s' в группу без соответствующего ей входа '%s'"
+msgstr "Невозможно добавить выходную ноду зоны \"%s\" в группу без соответствующего ей входа \"%s\""
 
 
 msgid "Cannot insert group '%s' in '%s'"
-msgstr "Невозможно вставить группу '%s' в '%s'"
+msgstr "Невозможно вставить группу \"%s\" в \"%s\""
 
 
 msgid "There is no parent group node in this context"
@@ -139717,7 +139705,7 @@ msgstr "Невозможно добавить цветовой тег для с�
 
 
 msgid "Cannot delete collection '%s', it is either a linked one used by other linked scenes/collections, or a library override one"
-msgstr "Невозможно удалить коллекцию '%s', она либо является связанной и используется другими связанными сценами/коллекциями, либо она является коллекцией переопределений библиотеки"
+msgstr "Невозможно удалить коллекцию \"%s\", она либо является связанной и используется другими связанными сценами/коллекциями, либо она является коллекцией переопределений библиотеки"
 
 
 msgid "Unable to duplicate %d of the selected collections. Could not find a valid parent collection for the new duplicate, they won't be linked to any view layer"
@@ -140012,11 +140000,11 @@ msgstr "Переименовать слот действия"
 
 
 msgid "Library path '%s' does not exist, correct this before saving"
-msgstr "Путь к библиотеке «%s» не существует, исправьте это перед сохранением"
+msgstr "Путь к библиотеке \"%s\" не существует, исправьте это перед сохранением"
 
 
 msgid "Library path '%s' is now valid, please reload the library"
-msgstr "Путь к библиотеке «%s» теперь правильный, пожалуйста, перезагрузите библиотеку"
+msgstr "Путь к библиотеке \"%s\" теперь правильный, пожалуйста, перезагрузите библиотеку"
 
 
 msgid "Cannot edit library or non-editable override data"
@@ -140088,35 +140076,43 @@ msgstr "Попытка удалить сцены в рамках операци�
 
 
 msgid "Cannot delete library override id '%s', it is part of an override hierarchy"
-msgstr "Невозможно удалить идентификатор переопределения библиотеки '%s', он является частью иерархии переопределения"
+msgstr "Невозможно удалить идентификатор переопределения библиотеки \"%s\", он является частью иерархии переопределения"
 
 
 msgid "Cannot delete indirectly linked library '%s'"
-msgstr "Нельзя удалить не связанную напрямую библиотеку «%s»"
+msgstr "Нельзя удалить не связанную напрямую библиотеку \"%s\""
 
 
 msgid "Cannot delete library '%s', as it contains the currently active Scene"
-msgstr "Невозможно удалить библиотеку '%s', так как она содержит текущую активную сцену"
+msgstr "Невозможно удалить библиотеку \"%s\", так как она содержит текущую активную сцену"
+
+
+msgid "Cannot delete library '%s', as it contains the archive library of the currently active packed Scene"
+msgstr "Невозможно удалить библиотеку \"%s\", так как она содержит библиотеку архива текущей активной упакованной сцены"
 
 
 msgid "Cannot delete indirectly linked id '%s'"
-msgstr "Нельзя удалить не связанную напрямую библиотеку «%s»"
+msgstr "Нельзя удалить не связанный напрямую идентификатор \"%s\""
 
 
 msgid "Cannot delete id '%s', indirectly used data-blocks need at least one user"
-msgstr "Нельзя удалить идентификатор «%s», для косвенно используемых датаблоков нужен как минимум один пользователь"
+msgstr "Нельзя удалить идентификатор \"%s\", для косвенно используемых датаблоков нужен как минимум один пользователь"
 
 
 msgid "Cannot delete currently visible workspace id '%s'"
-msgstr "Текущий видимый идентификатор рабочей области '%s' не может быть удалён"
+msgstr "Текущий видимый идентификатор рабочей области \"%s\" не может быть удалён"
 
 
 msgid "Invalid old/new ID pair ('%s' / '%s')"
-msgstr "Неверная пара старый/новый идентификатор ('%s' / '%s')"
+msgstr "Неверная пара старый/новый идентификатор (\"%s\" / \"%s\")"
 
 
 msgid "Old ID '%s' is linked from a library, indirect usages of this data-block will not be remapped"
-msgstr "На старый ID '%s' ссылается библиотека, непрямое использование этого датаблока не будет подвергнуто переназначению"
+msgstr "На старый ID \"%s\" ссылается библиотека, непрямое использование этого датаблока не будет подвергнуто переназначению"
+
+
+msgid "Copying ID '%s' is not possible, '%s' type of data-blocks is not supported"
+msgstr "Копирование ID \"%s\" невозможно, тип блоков данных \"%s\" не поддерживается"
 
 
 msgid "Copied %d selected data-block(s)"
@@ -140128,15 +140124,15 @@ msgstr "Вставлено датаблоков: %d"
 
 
 msgid "The active data-block '%s' is not a valid linked one"
-msgstr "Активный блок данных '%s' не является допустимым связанным блоком"
+msgstr "Активный блок данных \"%s\" не является допустимым связанным блоком"
 
 
 msgid "The active data-block '%s' is used by other linked data"
-msgstr "Активный блок данных '%s' используется другими связанными данными"
+msgstr "Активный блок данных \"%s\" используется другими связанными данными"
 
 
 msgid "Cannot relocate indirectly linked library '%s'"
-msgstr "Нельзя перебазировать не связанную напрямую библиотеку «%s»"
+msgstr "Нельзя перебазировать не связанную напрямую библиотеку \"%s\""
 
 
 msgid "Deleted %d data-block(s)"
@@ -140172,55 +140168,55 @@ msgstr "Пока не реализовано"
 
 
 msgid "Cannot unlink action '%s'. It's not clear which object or object-data it should be unlinked from, there's no object or object-data as parent in the Outliner tree"
-msgstr "Невозможно отсоединить действие '%s'. Неясно, от какого объекта или данных объекта его следует отсоединять, в дереве аулайнера нет родительского объекта или данных объекта"
+msgstr "Невозможно отсоединить действие \"%s\". Неясно, от какого объекта или данных объекта его следует отсоединять, в дереве аулайнера нет родительского объекта или данных объекта"
 
 
 msgid "Cannot unlink material '%s'. It's not clear which object or object-data it should be unlinked from, there's no object or object-data as parent in the Outliner tree"
-msgstr "Невозможно отсоединить материал '%s'. Неясно, от какого объекта или данных объекта его следует отсоединять, в дереве аутлайнера нет родительского объекта или данных объекта"
+msgstr "Невозможно отсоединить материал \"%s\". Неясно, от какого объекта или данных объекта его следует отсоединять, в дереве аутлайнера нет родительского объекта или данных объекта"
 
 
 msgid "Cannot unlink the material '%s' from linked object data"
-msgstr "Невозможно отсоединить материал '%s' от связанных данных объекта"
+msgstr "Невозможно отсоединить материал \"%s\" от связанных данных объекта"
 
 
 msgid "Cannot unlink texture '%s'. It's not clear which Freestyle line style it should be unlinked from, there's no Freestyle line style as parent in the Outliner tree"
-msgstr "Невозможно отсоединить текстуру '%s'. Неясно, от какого стиля линий Freestyle её следует отсоединять, в дереве аутлайнера нет родительского стиля линий Freestyle"
+msgstr "Невозможно отсоединить текстуру \"%s\". Неясно, от какого стиля линий Freestyle её следует отсоединять, в дереве аутлайнера нет родительского стиля линий Freestyle"
 
 
 msgid "Cannot unlink collection '%s'. It's not clear which scene, collection or instance empties it should be unlinked from, there's no scene, collection or instance empties as parent in the Outliner tree"
-msgstr "Невозможно отсоединить коллекцию '%s'. Неясно, от какой сцены, коллекции или экземпляра пустышек её следует отсоединить, в дереве аутлайнера нет родительских сцен, коллекций или экземпляра пустышек"
+msgstr "Невозможно отсоединить коллекцию \"%s\". Неясно, от какой сцены, коллекции или экземпляра пустышек её следует отсоединить, в дереве аутлайнера нет родительских сцен, коллекций или экземпляра пустышек"
 
 
 msgid "Cannot unlink collection '%s' parented to another linked collection '%s'"
-msgstr "Невозможно отсоединить коллекцию '%s', которая является родительской для другой связанной коллекции '%s'"
+msgstr "Невозможно отсоединить коллекцию \"%s\", которая является родительской для другой связанной коллекции \"%s\""
 
 
 msgid "Cannot unlink object '%s' parented to another linked object '%s'"
-msgstr "Невозможно отсоединить объект '%s', который является родителем другого связанного объекта '%s'"
+msgstr "Невозможно отсоединить объект \"%s\", который является родителем другого связанного объекта \"%s\""
 
 
 msgid "Cannot unlink object '%s' from linked collection or scene '%s'"
-msgstr "Невозможно отсоединить объект '%s' от связанной коллекции или сцены '%s'"
+msgstr "Невозможно отсоединить объект \"%s\" от связанной коллекции или сцены \"%s\""
 
 
 msgid "Cannot unlink world '%s'. It's not clear which scene it should be unlinked from, there's no scene as parent in the Outliner tree"
-msgstr "Невозможно отсоединить мир '%s'. Неясно, от какой сцены его следует отсоединять, в дереве аутлайнера нет родительской сцены"
+msgstr "Невозможно отсоединить мир \"%s\". Неясно, от какой сцены его следует отсоединять, в дереве аутлайнера нет родительской сцены"
 
 
 msgid "Could not create library override from data-block '%s', as it is not overridable"
-msgstr "Не удалось создать переопределение библиотеки из блока данных '%s', так как его нельзя переопределить"
+msgstr "Не удалось создать переопределение библиотеки из блока данных \"%s\", так как его нельзя переопределить"
 
 
 msgid "Invalid anchor ('%s') found, needed to create library override from data-block '%s'"
-msgstr "Найден неверный якорь ('%s'), необходимо создать переопределение библиотеки из блока данных '%s'"
+msgstr "Найден неверный якорь (\"%s\"), необходимо создать переопределение библиотеки из блока данных \"%s\""
 
 
 msgid "Could not create library override from data-block '%s', one of its parents is not overridable ('%s')"
-msgstr "Не удалось создать переопределение библиотеки из блока данных '%s', поскольку один из его родителей не является переопределяемым ('%s')"
+msgstr "Не удалось создать переопределение библиотеки из блока данных \"%s\", поскольку один из его родителей не является переопределяемым (\"%s\")"
 
 
 msgid "Invalid hierarchy root ('%s') found, needed to create library override from data-block '%s'"
-msgstr "Найден неверный корень иерархии ('%s'), необходимо создать переопределение библиотеки из блока данных '%s'"
+msgstr "Найден неверный корень иерархии (\"%s\"), необходимо создать переопределение библиотеки из блока данных \"%s\""
 
 
 msgid "Could not create library override from one or more of the selected data-blocks"
@@ -140228,11 +140224,11 @@ msgstr "Не удалось создать переопределение биб
 
 
 msgid "Cannot clear embedded library override '%s', only overrides of real data-blocks can be directly cleared"
-msgstr "Невозможно очистить переопределение встроенной библиотеки '%s', очищать напрямую можно только переопределения реальных блоков данных"
+msgstr "Невозможно очистить переопределение встроенной библиотеки \"%s\", очищать напрямую можно только переопределения реальных блоков данных"
 
 
 msgid "Cannot clear linked library override '%s', only local overrides can be directly cleared"
-msgstr "Невозможно удалить связанное переопределение библиотеки '%s', напрямую можно удалять только локальные переопределения"
+msgstr "Невозможно удалить связанное переопределение библиотеки \"%s\", напрямую можно удалять только локальные переопределения"
 
 
 msgctxt "Operator"
@@ -140527,11 +140523,11 @@ msgstr "Тип дорожки не установлен."
 
 
 msgid "Filename '%s' too long (max length %zu, was %zu)"
-msgstr "Имя файла '%s' слишком длинное (максимальная длина %zu, было %zu)"
+msgstr "Имя файла \"%s\" слишком длинное (максимальная длина %zu, было %zu)"
 
 
 msgid "File '%s' could not be loaded"
-msgstr "Файл «%s» не может быть загружен"
+msgstr "Файл \"%s\" не может быть загружен"
 
 
 msgid "View transform set to %s (converted from %s)"
@@ -140544,10 +140540,6 @@ msgstr "Частота кадров сцены установлена на %.4g 
 
 msgid "Empty Scene"
 msgstr "Пустая сцена"
-
-
-msgid "Scenes..."
-msgstr "Сцены..."
 
 
 msgid ""
@@ -140883,7 +140875,7 @@ msgstr "Невозможно сохранить текстовый файл, п�
 
 
 msgid "Unable to save '%s': %s"
-msgstr "Ошибка сохранения «%s»: %s"
+msgstr "Ошибка сохранения \"%s\": %s"
 
 
 msgid "Saved text \"%s\""
@@ -140891,7 +140883,7 @@ msgstr "Текст \"%s\" сохранён"
 
 
 msgid "Unable to stat '%s': %s"
-msgstr "Ошибка выполнения функции stat для «%s»: %s"
+msgstr "Ошибка выполнения функции stat для \"%s\": %s"
 
 
 msgid "Text not found: %s"
@@ -140899,15 +140891,15 @@ msgstr "Текст не найден: %s"
 
 
 msgid "See '%s' in the external editor"
-msgstr "См. '%s' во внешнем редакторе"
+msgstr "См. \"%s\" во внешнем редакторе"
 
 
 msgid "File '%s' cannot be opened"
-msgstr "Файл «%s» не может быть открыт"
+msgstr "Файл \"%s\" не может быть открыт"
 
 
 msgid "See '%s' in the text editor"
-msgstr "См. «%s» в текстовом редакторе"
+msgstr "См. \"%s\" в текстовом редакторе"
 
 
 msgid "Clear Recent Files List..."
@@ -141291,12 +141283,17 @@ msgid "Create object instance from object-data"
 msgstr "Создать экземпляр объекта из объектных данных"
 
 
+msgctxt "Operator"
+msgid "Drop Collection"
+msgstr "Перетащить коллекцию"
+
+
 msgid "X-Ray not available in current mode"
 msgstr "Рентген не поддерживается в этом режиме"
 
 
 msgid "Cannot remove background image %d from camera '%s', as it is from the linked reference data"
-msgstr "Невозможно удалить фоновое изображение %d с камеры '%s', так как оно происходит из связанных эталонных данных"
+msgstr "Невозможно удалить фоновое изображение %d с камеры \"%s\", так как оно происходит из связанных эталонных данных"
 
 
 msgid "Gizmos hidden in this view"
@@ -142063,6 +142060,18 @@ msgid "Freestyle: Stroke rendering"
 msgstr "Freestyle: рендеринг штрихов"
 
 
+msgid "Realized point cloud has too many points."
+msgstr "Реализованное облако точек содержит слишком много точек."
+
+
+msgid "Realized mesh has too many elements."
+msgstr "Реализованный меш содержит слишком много элементов."
+
+
+msgid "Realized curves data has too many elements."
+msgstr "Данные реализованных кривых содержат слишком много элементов."
+
+
 msgid "Realized grease pencil has too many layers."
 msgstr "Реализованный Grease Pencil содержит слишком много слоёв."
 
@@ -142120,7 +142129,7 @@ msgstr "Формат аудиообразца не поддерживается"
 
 
 msgid "Alembic Export: Unable to find collection '%s'"
-msgstr "Экспорт Alembic: Не удалось найти коллекцию '%s'"
+msgstr "Экспорт Alembic: Не удалось найти коллекцию \"%s\""
 
 
 msgid "Exporting Alembic..."
@@ -142217,23 +142226,23 @@ msgstr "Импорт Alembic..."
 
 
 msgid "CSV Import: Cannot open file '%s'"
-msgstr "Импорт CSV: Невозможно открыть файл '%s'"
+msgstr "Импорт CSV: Невозможно открыть файл \"%s\""
 
 
 msgid "CSV Import: empty file '%s'"
-msgstr "Импорт CSV: файл '%s' пуст"
+msgstr "Импорт CSV: файл \"%s\" пуст"
 
 
 msgid "CSV import: failed to parse file '%s'"
-msgstr "Импорт CSV: не удалось проанализировать файл '%s'"
+msgstr "Импорт CSV: не удалось проанализировать файл \"%s\""
 
 
 msgid "FBX Import: Cannot open file '%s'"
-msgstr "Импорт FBX: Невозможно открыть файл '%s'"
+msgstr "Импорт FBX: Невозможно открыть файл \"%s\""
 
 
 msgid "FBX Import: Cannot import file '%s': '%s'"
-msgstr "Импорт FBX: Невозможно импортировать файл '%s': '%s'"
+msgstr "Импорт FBX: Невозможно импортировать файл \"%s\": \"%s\""
 
 
 msgid "Could not open SVG"
@@ -142249,11 +142258,11 @@ msgstr "SVG имеет градиенты, цвет Grease Pencil будет п�
 
 
 msgid "PLY Export: Unable to find collection '%s'"
-msgstr "Экспорт PLY: Не удалось найти коллекцию '%s'"
+msgstr "Экспорт PLY: Не удалось найти коллекцию \"%s\""
 
 
 msgid "PLY Export: Cannot open file '%s'"
-msgstr "Экспорт PLY: Невозможно открыть файл '%s'"
+msgstr "Экспорт PLY: Невозможно открыть файл \"%s\""
 
 
 msgid "PLY Importer: failed importing, unknown error"
@@ -142269,23 +142278,23 @@ msgstr "Импортёр PLY: %s: %s"
 
 
 msgid "STL Export: Cannot open file '%s'"
-msgstr "Экспорт STL: Невозможно открыть файл '%s'"
+msgstr "Экспорт STL: Невозможно открыть файл \"%s\""
 
 
 msgid "STL Export: Unable to find collection '%s'"
-msgstr "Экспорт STL: Не удалось найти коллекцию '%s'"
+msgstr "Экспорт STL: Не удалось найти коллекцию \"%s\""
 
 
 msgid "STL Import: Cannot open file '%s'"
-msgstr "Импорт STL: Невозможно открыть файл '%s'"
+msgstr "Импорт STL: Невозможно открыть файл \"%s\""
 
 
 msgid "STL Import: Failed to read file '%s'"
-msgstr "Импорт STL: Не удалось прочитать файл '%s'"
+msgstr "Импорт STL: Не удалось прочитать файл \"%s\""
 
 
 msgid "STL Import: Failed to import mesh from file '%s'"
-msgstr "Импорт STL: Не удалось импортировать меш из файла '%s'"
+msgstr "Импорт STL: Не удалось импортировать меш из файла \"%s\""
 
 
 msgid "%s: Couldn't determine package-relative file name from path %s"
@@ -142401,19 +142410,19 @@ msgstr "Экспорт USD: не удалось найти подходящий 
 
 
 msgid "USD Export: Unable to find collection '%s'"
-msgstr "Экспорт USD: Не удалось найти коллекцию '%s'"
+msgstr "Экспорт USD: Не удалось найти коллекцию \"%s\""
 
 
 msgid "USD Export: invalid path string '%s': %s"
-msgstr "Экспорт USD: недействительная строка пути '%s': %s"
+msgstr "Экспорт USD: недействительная строка пути \"%s\": %s"
 
 
 msgid "USD Export: path '%s' is not an absolute path"
-msgstr "Экспорт USD: путь '%s' не является абсолютным путём"
+msgstr "Экспорт USD: путь \"%s\" не является абсолютным путём"
 
 
 msgid "USD Export: path string '%s' is not a prim path"
-msgstr "Экспорт USD: строка пути '%s' не является первичный путём"
+msgstr "Экспорт USD: строка пути \"%s\" не является первичный путём"
 
 
 msgid "Exporting USD..."
@@ -142442,15 +142451,15 @@ msgstr "Один или несколько объектов, используе�
 
 
 msgid "An exception occurred invoking USD hook '%s'. Please see the console for details"
-msgstr "Произошло исключение при вызове USD-крюка '%s'. Подробности см. в консоли"
+msgstr "Произошло исключение при вызове USD-крюка \"%s\". Подробности см. в консоли"
 
 
 msgid "An exception occurred invoking USD hook '%s'"
-msgstr "Произошло исключение при вызове USD-крюка '%s'"
+msgstr "Произошло исключение при вызове USD-крюка \"%s\""
 
 
 msgid "Primvar '%s' (interpolation %s, type %s) cannot be converted to Blender"
-msgstr "Primvar (переменная примитива) '%s' (интерполяция %s, тип %s) не может быть преобразована в Blender"
+msgstr "Primvar (переменная примитива) \"%s\" (интерполяция %s, тип %s) не может быть преобразована в Blender"
 
 
 msgid "%s: Error: Couldn't get input socket %s for node %s"
@@ -142458,15 +142467,15 @@ msgstr "%s: Ошибка: не удалось получить входной с
 
 
 msgid "Invalid face data detected for mesh '%s'. Automatic correction will be used, but some data will most likely be lost"
-msgstr "Обнаружены недействительные данные граней в меше '%s'. Будет использована автоматическая коррекция, но некоторые данные, скорее всего, будут потеряны"
+msgstr "Обнаружены недействительные данные граней в меше \"%s\". Будет использована автоматическая коррекция, но некоторые данные, скорее всего, будут потеряны"
 
 
 msgid "USD Import: UV attribute value '%s' count inconsistent with interpolation type"
-msgstr "Импорт USD: значение атрибута UV '%s' не соответствует типу интерполяции"
+msgstr "Импорт USD: значение атрибута UV \"%s\" не соответствует типу интерполяции"
 
 
 msgid "USD Import: couldn't add UV attribute '%s'"
-msgstr "Импорт USD: не удалось добавить UV-атрибут '%s'"
+msgstr "Импорт USD: не удалось добавить UV-атрибут \"%s\""
 
 
 msgid "Fixed mesh for prim: %s"
@@ -142586,7 +142595,7 @@ msgstr "Невозможно экспортировать смешанные з�
 
 
 msgid "Attribute '%s' (Blender domain %d, type %d) cannot be converted to USD"
-msgstr "Атрибут '%s' (домен Blender'а %d, тип %d) не могут быть преобразованы в USD"
+msgstr "Атрибут \"%s\" (домен Blender'а %d, тип %d) не могут быть преобразованы в USD"
 
 
 msgid "USD does not support animating curve types. The curve type changes from %s to %s on frame %f"
@@ -142614,7 +142623,7 @@ msgstr "Экспорт USD: не удалось скопировать текс�
 
 
 msgid "Mesh '%s', Attribute '%s' (domain %d, type %d) cannot be converted to USD"
-msgstr "Меш '%s', Атрибут '%s' (домен %d, тип %d) не могут быть преобразованы в USD"
+msgstr "Меш \"%s\", Атрибут \"%s\" (домен %d, тип %d) не могут быть преобразованы в USD"
 
 
 msgid "USD export: Simple subdivision not supported, exporting subdivided mesh"
@@ -142634,11 +142643,11 @@ msgstr "Экспорт USD: не удалось создать относите�
 
 
 msgid "OBJ Export: Cannot open file '%s'"
-msgstr "Экспорт OBJ: Невозможно открыть файл '%s'"
+msgstr "Экспорт OBJ: Невозможно открыть файл \"%s\""
 
 
 msgid "OBJ Export: Cannot create mtl file for '%s'"
-msgstr "Экспорт OBJ: Невозможно создать файл mtl для '%s'"
+msgstr "Экспорт OBJ: Невозможно создать файл mtl для \"%s\""
 
 
 msgid "OBJ Export: No information to write"
@@ -142646,11 +142655,11 @@ msgstr "Экспорт OBJ: Нет информации для записи"
 
 
 msgid "OBJ Export: Unable to find collection '%s'"
-msgstr "Экспорт OBJ: Не удалось найти коллекцию '%s'"
+msgstr "Экспорт OBJ: Не удалось найти коллекцию \"%s\""
 
 
 msgid "OBJ Import: Cannot open file '%s'"
-msgstr "Импорт OBJ: Невозможно открыть файл '%s'"
+msgstr "Импорт OBJ: Невозможно открыть файл \"%s\""
 
 
 msgid "Packed data-blocks cannot be renamed"
@@ -142714,23 +142723,23 @@ msgstr "Нет материала для удаления"
 
 
 msgid "Registering id property class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса id-свойства: имя «%s» слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса id-свойства: имя \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "'%s' is of a type that cannot be an asset"
-msgstr "'%s' имеет тип, который не может быть ассетом"
+msgstr "\"%s\" имеет тип, который не может быть ассетом"
 
 
 msgid "ID '%s' isn't an override"
-msgstr "ID '%s' не является переопределением"
+msgstr "ID \"%s\" не является переопределением"
 
 
 msgid "ID '%s' is linked, cannot edit its overrides"
-msgstr "ID '%s' связан, невозможно редактировать его переопределения"
+msgstr "ID \"%s\" связан, невозможно редактировать его переопределения"
 
 
 msgid "Data-block '%s' is not a library override, or not part of a library override hierarchy"
-msgstr "Блок данных '%s' не является переопределением библиотеки или не является частью иерархии переопределений библиотеки"
+msgstr "Блок данных \"%s\" не является переопределением библиотеки или не является частью иерархии переопределений библиотеки"
 
 
 msgid "This property is for internal use only and cannot be edited"
@@ -142754,15 +142763,15 @@ msgstr "Поддерживаются только свойства логиче�
 
 
 msgid "'%s' does not contain '%s' with prefix and suffix"
-msgstr "'%s' не содержит '%s' с префиксом и суффиксом"
+msgstr "\"%s\" не содержит \"%s\" с префиксом и суффиксом"
 
 
 msgid "'%s' does not have upper case alphanumeric prefix"
-msgstr "'%s' не имеет буквенно-цифрового префикса в верхнем регистре"
+msgstr "\"%s\" не имеет буквенно-цифрового префикса в верхнем регистре"
 
 
 msgid "'%s' does not have an alphanumeric suffix"
-msgstr "'%s' не имеет буквенно-цифрового суффикса"
+msgstr "\"%s\" не имеет буквенно-цифрового суффикса"
 
 
 msgid "%s: expected %s type, not %s"
@@ -142782,7 +142791,7 @@ msgstr "Несоответствие длины массива (ожидаетс
 
 
 msgid "Property named '%s' not found"
-msgstr "Свойство «%s» не найдено"
+msgstr "Свойство \"%s\" не найдено"
 
 
 msgid "Array length mismatch (got %d, expected more)"
@@ -142834,27 +142843,27 @@ msgstr "Невозможно вернуть пакет каналов, если 
 
 
 msgid "Cannot add slots to a legacy Action '%s'. Convert it to a layered Action first."
-msgstr "Невозможно добавить слоты к устаревшему действию '%s'. Сначала преобразуйте его в многослойное действие."
+msgstr "Невозможно добавить слоты к устаревшему действию \"%s\". Сначала преобразуйте его в многослойное действие."
 
 
 msgid "Invalid slot name '%s': name must not be empty."
-msgstr "Недопустимое имя слота '%s': имя не должно быть пустым."
+msgstr "Недопустимое имя слота \"%s\": имя не должно быть пустым."
 
 
 msgid "Cannot add layers to a legacy Action '%s'. Convert it to a layered Action first."
-msgstr "Невозможно добавить слои к устаревшему действию '%s'. Сначала преобразуйте его в многослойное действие."
+msgstr "Невозможно добавить слои к устаревшему действию \"%s\". Сначала преобразуйте его в многослойное действие."
 
 
 msgid "F-Curve '%s[%d]' already exists in this channelbag"
-msgstr "F-кривая '%s[%d]' уже существует в этом пакете каналов"
+msgstr "F-Кривая \"%s[%d]\" уже существует в этом пакете каналов"
 
 
 msgid "F-Curve not found"
-msgstr "F-кривая не найдена"
+msgstr "F-Кривая не найдена"
 
 
 msgid "Timeline marker '%s' not found in action '%s'"
-msgstr "Маркер временной шкалы «%s» не найден для действия «%s»"
+msgstr "Маркер временной шкалы \"%s\" не найден для действия \"%s\""
 
 
 msgid "Assign action \"%s\" to \"%s\" before calling this function"
@@ -142918,23 +142927,23 @@ msgstr "Этот слот (%s) не подходит для этого типа 
 
 
 msgid "%s '%s' is too long, maximum length is %d"
-msgstr "%s '%s' слишком длинный, максимальная длина %d"
+msgstr "%s \"%s\" слишком длинный, максимальная длина %d"
 
 
 msgid "%s '%s', bl_idname '%s' has been registered before, unregistering previous"
-msgstr "%s '%s', bl_idname '%s' был зарегистрирован ранее, отмена регистрации предыдущего"
+msgstr "%s \"%s\", bl_idname \"%s\" был зарегистрирован ранее, отмена регистрации предыдущего"
 
 
 msgid "%s '%s', bl_idname '%s' %s"
-msgstr "%s '%s', bl_idname '%s' %s"
+msgstr "%s \"%s\", bl_idname \"%s\" %s"
 
 
 msgid "NlaTrack '%s' cannot be removed"
-msgstr "Трек НЛА «%s» не может быть удалён"
+msgstr "Трек НЛА \"%s\" не может быть удалён"
 
 
 msgid "Driver '%s[%d]' already exists"
-msgstr "Драйвер «%s[%d]» уже существует"
+msgstr "Драйвер \"%s[%d]\" уже существует"
 
 
 msgid "This slot is not suitable for this data-block type (%c%c)"
@@ -142966,19 +142975,19 @@ msgstr "Невозможно сделать коллекцию костей пр
 
 
 msgid "Armature '%s' not in edit mode, cannot add an editbone"
-msgstr "Арматура «%s» не в режиме редактирования, невозможно добавить редактируемую кость"
+msgstr "Арматура \"%s\" не в режиме редактирования, невозможно добавить редактируемую кость"
 
 
 msgid "Armature '%s' not in edit mode, cannot remove an editbone"
-msgstr "Арматура «%s» не в режиме редактирования, невозможно удалить редактируемую кость"
+msgstr "Арматура \"%s\" не в режиме редактирования, невозможно удалить редактируемую кость"
 
 
 msgid "Armature '%s' does not contain bone '%s'"
-msgstr "Арматура «%s» не содержит кость «%s»"
+msgstr "Арматура \"%s\" не содержит кость \"%s\""
 
 
 msgid "Bone collection '%s' not found in Armature '%s'"
-msgstr "Коллекция костей '%s' не найдена в арматуре '%s'"
+msgstr "Коллекция костей \"%s\" не найдена в арматуре \"%s\""
 
 
 msgid "Cannot move collection from index '%d' to '%d'"
@@ -142998,11 +143007,11 @@ msgstr "%s не поддерживается, укажите кость, поз�
 
 
 msgid "Tag '%s' already present for given asset"
-msgstr "Тег '%s' уже присутствует для данного ассета"
+msgstr "Тег \"%s\" уже присутствует для данного ассета"
 
 
 msgid "Tag '%s' not found in given asset"
-msgstr "Тег '%s' не найден в данном ассете"
+msgstr "Тег \"%s\" не найден в данном ассете"
 
 
 msgid "Cannot modify name of required geometry attribute"
@@ -143060,11 +143069,11 @@ msgstr "По часовой стрелке"
 
 
 msgid "Layer '%s' not found in object '%s'"
-msgstr "Слой '%s' не найден в объекте '%s'"
+msgstr "Слой \"%s\" не найден в объекте \"%s\""
 
 
 msgid "Cannot add a layer to CacheFile '%s'"
-msgstr "Невозможно добавить слой в файл кэша '%s'"
+msgstr "Невозможно добавить слой в файл кэша \"%s\""
 
 
 msgid "Background image cannot be removed"
@@ -143076,39 +143085,39 @@ msgstr "Доступно только с угловыми пружинами и�
 
 
 msgid "Collection '%s' is not an original ID"
-msgstr "Коллекция '%s' не является оригинальным идентификатором"
+msgstr "Коллекция \"%s\" не является оригинальным идентификатором"
 
 
 msgid "Could not (un)link the object '%s' because the collection '%s' is overridden"
-msgstr "Не удалось (от)соединить объект '%s', так как коллекция '%s' переопределена"
+msgstr "Не удалось (от)соединить объект \"%s\", так как коллекция \"%s\" переопределена"
 
 
 msgid "Could not (un)link the object '%s' because the collection '%s' is linked"
-msgstr "Не удалось (от)соединить объекта '%s', так как коллекция '%s' связана"
+msgstr "Не удалось (от)соединить объект \"%s\", так как коллекция \"%s\" связана"
 
 
 msgid "Object '%s' already in collection '%s'"
-msgstr "Объект «%s» уже в коллекции «%s»"
+msgstr "Объект \"%s\" уже в коллекции \"%s\""
 
 
 msgid "Object '%s' not in collection '%s'"
-msgstr "Объект «%s» не в коллекции «%s»"
+msgstr "Объект \"%s\" не в коллекции \"%s\""
 
 
 msgid "Could not (un)link the collection '%s' because the collection '%s' is overridden"
-msgstr "Не удалось (от)соединить коллекцию '%s', так как коллекция '%s' переопределена"
+msgstr "Не удалось (от)соединить коллекцию \"%s\", так как коллекция \"%s\" переопределена"
 
 
 msgid "Could not (un)link the collection '%s' because the collection '%s' is linked"
-msgstr "Не удалось (от)соединить коллекцию '%s', так как коллекция '%s' связана"
+msgstr "Не удалось (от)соединить коллекцию \"%s\", так как коллекция \"%s\" связана"
 
 
 msgid "Collection '%s' already in collection '%s'"
-msgstr "Коллекция «%s» уже в коллекции «%s»"
+msgstr "Коллекция \"%s\" уже в коллекции \"%s\""
 
 
 msgid "Collection '%s' not in collection '%s'"
-msgstr "Коллекция «%s» не в коллекции «%s»"
+msgstr "Коллекция \"%s\" не в коллекции \"%s\""
 
 
 msgid "File handler not found"
@@ -143170,7 +143179,7 @@ msgstr "Возможно добавить только сплайны Безье
 
 
 msgid "Curve '%s' does not contain spline given"
-msgstr "Кривая «%s» не содержит заданный сплайн"
+msgstr "Кривая \"%s\" не содержит заданный сплайн"
 
 
 msgid "Unable to remove path point"
@@ -143250,7 +143259,7 @@ msgstr "Контрольная точка не от F-модификатора �
 
 
 msgid "F-Curve modifier '%s' not found in F-Curve"
-msgstr "Модификатор F-кривой «%s» не найден в F-кривой"
+msgstr "Модификатор F-кривой \"%s\" не найден в F-кривой"
 
 
 msgid "Already a control point at frame %.6f"
@@ -143458,23 +143467,23 @@ msgstr "Изображение не упаковано"
 
 
 msgid "Could not save packed file to disk as '%s'"
-msgstr "Упакованный файл не может быть сохранен на диск в «%s»"
+msgstr "Упакованный файл не может быть сохранен на диск в \"%s\""
 
 
 msgid "Image '%s' could not be saved to '%s'"
-msgstr "Изображение «%s» не может быть сохранено в «%s»"
+msgstr "Изображение \"%s\" не может быть сохранено в \"%s\""
 
 
 msgid "Image '%s' does not have any image data"
-msgstr "Изображение «%s» не содержит данных изображения"
+msgstr "Изображение \"%s\" не содержит данных изображения"
 
 
 msgid "Image '%s' failed to load image buffer"
-msgstr "Изображение '%s' не смогло загрузить буфер изображения"
+msgstr "Изображение \"%s\" не смогло загрузить буфер изображения"
 
 
 msgid "Failed to load image texture '%s'"
-msgstr "Не удалось загрузить изображение текстуры «%s»"
+msgstr "Не удалось загрузить изображение текстуры \"%s\""
 
 
 msgctxt "Key"
@@ -143483,11 +143492,11 @@ msgstr "Ключ"
 
 
 msgid "ViewLayer '%s' does not contain object '%s'"
-msgstr "СлойВизуализации '%s' не содержит объект '%s'"
+msgstr "СлойВизуализации \"%s\" не содержит объект \"%s\""
 
 
 msgid "AOV not found in view-layer '%s'"
-msgstr "AOV не найдены в слое визуализации '%s'"
+msgstr "AOV не найдены в слое визуализации \"%s\""
 
 
 msgid "Failed to add the color modifier"
@@ -143507,19 +143516,19 @@ msgstr "Не удалось добавить модификатор геомет
 
 
 msgid "Color modifier '%s' could not be removed"
-msgstr "Модификатор цвета «%s» не может быть удалён"
+msgstr "Модификатор цвета \"%s\" не может быть удалён"
 
 
 msgid "Alpha modifier '%s' could not be removed"
-msgstr "Модификатор альфа-канала «%s» не может быть удалён"
+msgstr "Модификатор альфа-канала \"%s\" не может быть удалён"
 
 
 msgid "Thickness modifier '%s' could not be removed"
-msgstr "Модификатор толщины '%s' не может быть удалён"
+msgstr "Модификатор толщины \"%s\" не может быть удалён"
 
 
 msgid "Geometry modifier '%s' could not be removed"
-msgstr "Модификатор геометрии «%s» не может быть удалён"
+msgstr "Модификатор геометрии \"%s\" не может быть удалён"
 
 
 msgid "unsupported font format"
@@ -143543,11 +143552,11 @@ msgstr "Объект не имеет геометрических данных"
 
 
 msgid "%s '%s' is outside of main database and cannot be removed from it"
-msgstr "%s '%s' не находится в главной базе данных и поэтому не может быть удален из неё"
+msgstr "%s \"%s\" не находится в главной базе данных и поэтому не может быть удалён из неё"
 
 
 msgid "%s '%s' must have zero users to be removed, found %d (try with do_unlink=True parameter)"
-msgstr "%s '%s' не должно нигде использоваться, чтобы можно было удалить, найдено пользователей:%d (попробуйте удалить с do_unlink=True)"
+msgstr "%s \"%s\" не должно нигде использоваться, чтобы можно было удалить, найдено пользователей:%d (попробуйте удалить с do_unlink=True)"
 
 
 msgid "Only linked IDs can be packed"
@@ -143555,11 +143564,11 @@ msgstr "Упаковывать можно только связанные иде
 
 
 msgid "Scene '%s' is the last local one, cannot be removed"
-msgstr "Сцена '%s' является последней локальной, она не может быть удалена"
+msgstr "Сцена \"%s\" является последней локальной, она не может быть удалена"
 
 
 msgid "ID type '%s' is not valid for an object"
-msgstr "ID-тип «%s» не является допустимым для объекта"
+msgstr "ID-Тип \"%s\" не является допустимым для объекта"
 
 
 msgid "Mask layer not found for given spline"
@@ -143571,11 +143580,11 @@ msgstr "Точка не найдена в заданном сплайне"
 
 
 msgid "Mask layer '%s' not found in mask '%s'"
-msgstr "Слой маски «%s» не найден в маске «%s»"
+msgstr "Слой маски \"%s\" не найден в маске \"%s\""
 
 
 msgid "Mask layer '%s' does not contain spline given"
-msgstr "Слой маски «%s» не содержит заданный сплайн"
+msgstr "Слой маски \"%s\" не содержит заданный сплайн"
 
 
 msgid "Mtex not found for this type"
@@ -143591,7 +143600,7 @@ msgstr "Индекс %d не является допустимым"
 
 
 msgid "UV map '%s' not found"
-msgstr "UV-Карта '%s' не найдена"
+msgstr "UV-Карта \"%s\" не найдена"
 
 
 msgid "Tangent space computation needs a UV Map, \"%s\" not found, aborting"
@@ -143607,7 +143616,7 @@ msgstr "Количество пользовательских нормалей �
 
 
 msgid "Metaball '%s' does not contain spline given"
-msgstr "Метасфера '%s' не содержит заданный сплайн"
+msgstr "Метасфера \"%s\" не содержит заданный сплайн"
 
 
 msgid "Modify"
@@ -143623,7 +143632,7 @@ msgstr "Дублирующий индекс %d в списке vertex_indices_se
 
 
 msgid "Cannot assign material '%s', it has to be used by the Grease Pencil object already"
-msgstr "Невозможно назначить материал '%s', он уже должен использоваться объектом Grease Pencil"
+msgstr "Невозможно назначить материал \"%s\", он уже должен использоваться объектом Grease Pencil"
 
 
 msgid "Unable to create new strip"
@@ -143639,11 +143648,11 @@ msgstr "Не удалось назначить действие %s дорожк�
 
 
 msgid "NLA strip '%s' not found in track '%s'"
-msgstr "НЛА-дорожка '%s' не найдена в треке '%s'"
+msgstr "НЛА-Дорожка \"%s\" не найдена в треке \"%s\""
 
 
 msgid "Registering node socket class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса нодового сокета: имя '%s' слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса нодового сокета: имя \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "Parent is not part of the interface"
@@ -143768,19 +143777,19 @@ msgstr "Невозможно создать элемент с этим типо�
 
 
 msgid "Registering node tree class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса дерева нод: '%s' слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса дерева нод: \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "Registering node tree class: '%s', bl_idname '%s' has been registered before, unregistering previous"
-msgstr "Регистрация класса дерева нод: '%s', bl_idname '%s' был зарегистрирован ранее, отмена регистрации предыдущего"
+msgstr "Регистрация класса дерева нод: \"%s\", bl_idname \"%s\" был зарегистрирован ранее, отмена регистрации предыдущего"
 
 
 msgid "Registering node tree class: '%s', bl_idname '%s' could not be unregistered"
-msgstr "Регистрация класса дерева нод: '%s', bl_idname '%s' не может быть отменена"
+msgstr "Регистрация класса дерева нод: \"%s\", bl_idname \"%s\" не может быть отменена"
 
 
 msgid "Node tree '%s' has undefined type %s"
-msgstr "Дерево нод '%s' имеет неопределённый тип %s"
+msgstr "Дерево нод \"%s\" имеет неопределённый тип %s"
 
 
 msgid "Node type %s undefined"
@@ -143791,36 +143800,36 @@ msgid ""
 "Cannot add node of type %s to node tree '%s'\n"
 "  %s"
 msgstr ""
-"Невозможно добавить ноду типа %s в дерево нод '%s'\n"
+"Невозможно добавить ноду типа %s в дерево нод \"%s\"\n"
 "  %s"
 
 
 msgid "Cannot add node of type %s to node tree '%s'"
-msgstr "Невозможно добавить ноду с типом %s в дерево нод '%s'"
+msgstr "Невозможно добавить ноду с типом %s в дерево нод \"%s\""
 
 
 msgid "Unable to locate node '%s' in node tree"
-msgstr "Нода '%s' не найдена в древе узлов"
+msgstr "Нода \"%s\" не найдена в древе узлов"
 
 
 msgid "Registering node class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса ноды: '%s' слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса ноды: \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "Registering node class: '%s', bl_idname '%s' is a builtin node"
-msgstr "Регистрация класса ноды: '%s', bl_idname '%s' — является встроенным узлом"
+msgstr "Регистрация класса ноды: \"%s\", bl_idname \"%s\" — является встроенным узлом"
 
 
 msgid "Registering node class: '%s', bl_idname '%s' has been registered before, unregistering previous"
-msgstr "Регистрация класса ноды: '%s', bl_idname '%s' был зарегистрирован ранее, отмена регистрации предыдущего"
+msgstr "Регистрация класса ноды: \"%s\", bl_idname \"%s\" был зарегистрирован ранее, отмена регистрации предыдущего"
 
 
 msgid "Registering node class: '%s', bl_idname '%s' could not be unregistered"
-msgstr "Регистрация класса ноды: '%s', bl_idname '%s' не может быть снят с регистрации"
+msgstr "Регистрация класса ноды: \"%s\", bl_idname \"%s\" не может быть снят с регистрации"
 
 
 msgid "Unable to locate socket '%s' in node"
-msgstr "Сокет '%s' не найден в ноде"
+msgstr "Сокет \"%s\" не найден в ноде"
 
 
 msgid "Cannot pair zone input node %s with %s because it does not have the same zone type"
@@ -143832,7 +143841,7 @@ msgstr "Выходная нода %s уже связана с %s"
 
 
 msgid "Unable to locate item '%s' in node"
-msgstr "Не удалось найти элемент '%s' в ноде"
+msgstr "Не удалось найти элемент \"%s\" в ноде"
 
 
 msgid "Can only assign evaluated data to evaluated object, or original data to original object"
@@ -143860,11 +143869,11 @@ msgstr "Вершина не в группе"
 
 
 msgid "VertexGroup '%s' not found in object '%s'"
-msgstr "ГруппаВершин '%s' не найдена в объекте '%s'"
+msgstr "ГруппаВершин \"%s\" не найдена в объекте \"%s\""
 
 
 msgid "Constraint '%s' not found in object '%s'"
-msgstr "Ограничитель «%s» не найден для объекта «%s»"
+msgstr "Ограничитель \"%s\" не найден для объекта \"%s\""
 
 
 msgid "Could not move constraint from index '%d' to '%d'"
@@ -143880,11 +143889,11 @@ msgstr "Модификатор \"%s\" отсутствует в списке м�
 
 
 msgid "%s is not supported for '%s' objects"
-msgstr "%s не поддерживается для объектов '%s'"
+msgstr "%s не поддерживается для объектов \"%s\""
 
 
 msgid "DeformGroup '%s' not in object '%s'"
-msgstr "Нет группы деформации «%s» у объекта «%s»"
+msgstr "Нет группы деформации \"%s\" у объекта \"%s\""
 
 
 msgid "Viewport not in local view"
@@ -143924,11 +143933,11 @@ msgstr "Неверный индекс вершины в списке"
 
 
 msgid "Object '%s' cannot be selected because it is not in View Layer '%s'!"
-msgstr "Объект '%s' не может быть выделен, так как он не находится в слое визуализации '%s'!"
+msgstr "Объект \"%s\" не может быть выделен, так как он не находится в слое визуализации \"%s\"!"
 
 
 msgid "Object '%s' cannot be hidden because it is not in View Layer '%s'!"
-msgstr "Объект '%s' не может быть скрыт, так как он не находится в слое визуализации '%s'!"
+msgstr "Объект \"%s\" не может быть скрыт, так как он не находится в слое визуализации \"%s\"!"
 
 
 msgid "Object %s not in view layer %s"
@@ -143936,35 +143945,35 @@ msgstr "Объект %s не находится в слое визуализац
 
 
 msgid "'from_space' '%s' is invalid when no pose bone is given!"
-msgstr "'from_space' '%s' не является допустимым, если не задана позовая кость!"
+msgstr "'from_space' \"%s\" не является допустимым, если не задана позовая кость!"
 
 
 msgid "'to_space' '%s' is invalid when no pose bone is given!"
-msgstr "'to_space' '%s' не является допустимым, если не задана позовая кость!"
+msgstr "'to_space' \"%s\" не является допустимым, если не задана позовая кость!"
 
 
 msgid "'from_space' '%s' is invalid when no custom space is given!"
-msgstr "'из_пространства' '%s' недопустимо, если не указано пользовательское пространство!"
+msgstr "'from_space' \"%s\" недопустимо, если не указано пользовательское пространство!"
 
 
 msgid "'to_space' '%s' is invalid when no custom space is given!"
-msgstr "'в_пространство' '%s' недопустимо, если не указано пользовательское пространство!"
+msgstr "'to_space' \"%s\" недопустимо, если не указано пользовательское пространство!"
 
 
 msgid "Object '%s' does not support shapes"
-msgstr "Объект «%s» не поддерживает формы"
+msgstr "Объект \"%s\" не поддерживает формы"
 
 
 msgid "Object '%s' has no evaluated mesh data"
-msgstr "Объект «%s» не имеет вычисляемых меш-данных"
+msgstr "Объект \"%s\" не имеет вычисляемых меш-данных"
 
 
 msgid "Object '%s' could not create internal data for finding nearest point"
-msgstr "Не удалось создать внутренние данные для объекта «%s» для нахождения ближайших точек"
+msgstr "Не удалось создать внутренние данные для объекта \"%s\" для нахождения ближайших точек"
 
 
 msgid "Palette '%s' does not contain color given"
-msgstr "Палитра «%s» не содержит указанного цвета"
+msgstr "Палитра \"%s\" не содержит указанного цвета"
 
 
 msgid "Invalid target!"
@@ -143996,19 +144005,19 @@ msgstr "Невозможно использовать объект-армату�
 
 
 msgid "Constraint '%s' not found in pose bone '%s'"
-msgstr "Ограничитель «%s» не найден для позовой кости «%s»"
+msgstr "Ограничитель \"%s\" не найден для позовой кости \"%s\""
 
 
 msgid "Bone '%s' is not a B-Bone!"
-msgstr "Кость '%s' не B-кость!"
+msgstr "Кость \"%s\" не является B-костью!"
 
 
 msgid "Bone '%s' has out of date B-Bone segment data - depsgraph update required!"
-msgstr "Кость '%s' имеет устаревшие данные сегмента сгибаемой кости — требуется обновление графика зависимости!"
+msgstr "Кость \"%s\" имеет устаревшие данные сегмента сгибаемой кости — требуется обновление графика зависимости!"
 
 
 msgid "Invalid index %d for B-Bone segments of '%s'!"
-msgstr "Неверный индекс %d для сегмента сгибаемой кости из '%s'!"
+msgstr "Неверный индекс %d для сегмента сгибаемой кости из \"%s\"!"
 
 
 msgid "A non convex collision shape was passed to the function, use only convex collision shapes"
@@ -144044,27 +144053,27 @@ msgstr "Стилевой модуль невозможно удалить"
 
 
 msgid "View Layer '%s' not found in scene '%s'"
-msgstr "Слой визуализации '%s' не найден в сцене '%s'"
+msgstr "Слой визуализации \"%s\" не найден в сцене \"%s\""
 
 
 msgid "Node tree '%s' is not a compositing node group."
-msgstr "Дерево нод '%s' не является группой нод компо́зитинга."
+msgstr "Дерево нод \"%s\" не является группой нод компо́зитинга."
 
 
 msgid "Render view '%s' could not be removed from scene '%s'"
-msgstr "Невозможно удалить вид рендера «%s» у сцены «%s»"
+msgstr "Невозможно удалить вид рендера \"%s\" у сцены \"%s\""
 
 
 msgid "Timeline marker '%s' not found in scene '%s'"
-msgstr "Маркер временной шкалы «%s» не найден в сцене «%s»"
+msgstr "Маркер временной шкалы \"%s\" не найден в сцене \"%s\""
 
 
 msgid "Line set '%s' could not be removed"
-msgstr "Набор линий «%s» невозможно удалить"
+msgstr "Набор линий \"%s\" невозможно удалить"
 
 
 msgid "Style module '%s' could not be removed"
-msgstr "Стилевой модуль «%s» невозможно удалить"
+msgstr "Стилевой модуль \"%s\" невозможно удалить"
 
 
 msgid "Could not move layer from index '%d' to '%d'"
@@ -144128,7 +144137,7 @@ msgstr "Strips.new_effect: эффект ожидает более 2 входов
 
 
 msgid "Strip '%s' not in scene '%s'"
-msgstr "Дорожка '%s' не в сцене '%s'"
+msgstr "Дорожка \"%s\" не в сцене \"%s\""
 
 
 msgid "Sound not packed"
@@ -144183,7 +144192,7 @@ msgstr "AOV шейдера"
 
 
 msgid "'show_locked_time' is not supported for the '%s' editor"
-msgstr "'show_locked_time' не поддерживается для редактора '%s'"
+msgstr "'show_locked_time' не поддерживается для редактора \"%s\""
 
 
 msgid "Uninitialized file-list"
@@ -144191,15 +144200,15 @@ msgstr "Список неинициализированных файлов"
 
 
 msgid "Track '%s' is not found in the tracking object %s"
-msgstr "Трек '%s' не найден в объекте отслеживания %s"
+msgstr "Трек \"%s\" не найден в объекте отслеживания %s"
 
 
 msgid "Plane track '%s' is not found in the tracking object %s"
-msgstr "Трек-плоскость '%s' не найдена в объекте отслеживания %s"
+msgstr "Трек-плоскость \"%s\" не найдена в объекте отслеживания %s"
 
 
 msgid "MovieTracking '%s' cannot be removed"
-msgstr "Отслеживание видеофрагмента «%s» не может быть удалено"
+msgstr "Отслеживание видеофрагмента \"%s\" не может быть удалено"
 
 
 msgid "Registering panel class:"
@@ -144211,27 +144220,27 @@ msgstr "Регион не найден в типе пространства"
 
 
 msgid "%s '%s' has category '%s'"
-msgstr "%s '%s' относится к категории '%s'"
+msgstr "%s \"%s\" относится к категории \"%s\""
 
 
 msgid "%s '%s', bl_idname '%s' could not be unregistered"
-msgstr "%s '%s', bl_idname '%s' не может быть снято с регистрации"
+msgstr "%s \"%s\", bl_idname \"%s\" не может быть снято с регистрации"
 
 
 msgid "%s parent '%s' for '%s' not found"
-msgstr "%s родительский элемент '%s' для '%s' не найден"
+msgstr "%s родительский элемент \"%s\" для \"%s\" не найден"
 
 
 msgid "Registering asset shelf class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса полки ассетов: имя «%s» слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса полки ассетов: имя \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "Registering asset shelf class: '%s' has been registered before, unregistering previous"
-msgstr "Регистрация класса полки ассетов: '%s' был зарегистрирован ранее, отмена регистрации предыдущего"
+msgstr "Регистрация класса полки ассетов: \"%s\" был зарегистрирован ранее, отмена регистрации предыдущего"
 
 
 msgid "Registering file handler class: '%s' is too long, maximum length is %d"
-msgstr "Регистрация класса обработчика файлов: имя '%s' слишком длинное, максимальная длина — %d"
+msgstr "Регистрация класса обработчика файлов: имя \"%s\" слишком длинное, максимальная длина — %d"
 
 
 msgid "Layout panels can not be used in this context"
@@ -144547,15 +144556,15 @@ msgstr "Только одна буква поддерживается"
 
 
 msgid "Gizmo group type '%s' not found!"
-msgstr "Тип группы манипуляторов «%s» не найден!"
+msgstr "Тип группы манипуляторов \"%s\" не найден!"
 
 
 msgid "Gizmo group '%s' has 'PERSISTENT' option set!"
-msgstr "В группе манипуляторов '%s' установлена опция 'PERSISTENT'!"
+msgstr "В группе манипуляторов \"%s\" установлена опция \"PERSISTENT\"!"
 
 
 msgid "KeyMapItem '%s' not found in KeyMap '%s'"
-msgstr "Элемент раскладки клавиатуры '%s' не найден в раскладке клавиатуры '%s'"
+msgstr "Элемент раскладки клавиатуры \"%s\" не найден в раскладке клавиатуры \"%s\""
 
 
 msgid "Modal key-maps not supported for add-on key-config"
@@ -144563,19 +144572,19 @@ msgstr "Модальные сопоставления клавиш не подд
 
 
 msgid "KeyMap '%s' not found in KeyConfig '%s'"
-msgstr "Раскладка клавиатуры '%s' не найдена в конфигурации клавиш '%s'"
+msgstr "Раскладка клавиатуры \"%s\" не найдена в конфигурации клавиш \"%s\""
 
 
 msgid "KeyConfig '%s' cannot be removed"
-msgstr "Клавиатурная конфигурация «%s» не может быть удалена"
+msgstr "Клавиатурная конфигурация \"%s\" не может быть удалена"
 
 
 msgid "GizmoType '%s' not known"
-msgstr "Тип манипуляторов «%s» не известен"
+msgstr "Тип манипуляторов \"%s\" не известен"
 
 
 msgid "GizmoType '%s' is for a 3D gizmo-group. The 'draw_select' callback is set where only 'test_select' will be used."
-msgstr "Тип гизмо '%s' предназначен для 3D-гизмо-группы. Функция обратного вызова 'draw_select' будет устанавливаться только там, где будет использоваться 'test_select'."
+msgstr "Тип гизмо \"%s\" предназначен для 3D-гизмо-группы. Функция обратного вызова 'draw_select' будет устанавливаться только там, где будет использоваться 'test_select'."
 
 
 msgid "%s area type does not support gizmos"
@@ -144591,55 +144600,55 @@ msgstr "Неизвестный оператор"
 
 
 msgid "Gizmo target property '%s.%s' not found"
-msgstr "Свойство цели гизмо '%s.%s' не найдено"
+msgstr "Свойство цели гизмо \"%s.%s\" не найдено"
 
 
 msgid "Property '%s.%s' not found"
-msgstr "Свойство «%s.%s» не найдено"
+msgstr "Свойство \"%s.%s\" не найдено"
 
 
 msgid "Gizmo target '%s.%s' expects '%s', '%s.%s' is '%s'"
-msgstr "Для цели Gizmo '%s.%s' ожидается '%s', '%s.%s' является '%s'"
+msgstr "Для цели Gizmo \"%s.%s\" ожидается \"%s\", \"%s.%s\" является \"%s\""
 
 
 msgid "Gizmo target property '%s.%s' expects an array of length %d, found %d"
-msgstr "Для свойства цели гизмо '%s.%s' необходим размер массива %d, но найдено:%d"
+msgstr "Для свойства цели гизмо \"%s.%s\" необходим размер массива %d, но найдено:%d"
 
 
 msgid "Gizmo target property '%s.%s' expects an array of length %d"
-msgstr "Для свойства цели гизмо '%s.%s' необходим массив размером %d"
+msgstr "Для свойства цели гизмо \"%s.%s\" необходим массив размером %d"
 
 
 msgid "Gizmo target property '%s.%s', index %d must be below %d"
-msgstr "Свойство цели гизмо '%s.%s', индекс %d должен быть меньше %d"
+msgstr "Свойство цели гизмо \"%s.%s\", индекс %d должен быть меньше %d"
 
 
 msgid "%s '%s'"
-msgstr "%s: «%s»"
+msgstr "%s: \"%s\""
 
 
 msgid "wmOwnerID '%s' not in workspace '%s'"
-msgstr "wmOwnerID «%s» не в рабочем пространстве «%s»"
+msgstr "wmOwnerID \"%s\" не в рабочем пространстве \"%s\""
 
 
 msgid "Operator '%s' not found!"
-msgstr "Оператор «%s» не найден!"
+msgstr "Оператор \"%s\" не найден!"
 
 
 msgid "Gizmo group '%s' not found!"
-msgstr "Группа гизмо '%s' не найдена!"
+msgstr "Группа гизмо \"%s\" не найдена!"
 
 
 msgid "ActionMapBinding '%s' cannot be removed from '%s'"
-msgstr "НазначениеКартыДействий '%s' не может быть удалено из '%s'"
+msgstr "НазначениеКартыДействий \"%s\" не может быть удалено из \"%s\""
 
 
 msgid "ActionMapItem '%s' cannot be removed from '%s'"
-msgstr "ЭлементКартыДействий (ActionMapItem) '%s' не может быть удалён из '%s'"
+msgstr "ЭлементКартыДействий (ActionMapItem) \"%s\" не может быть удалён из \"%s\""
 
 
 msgid "ActionMap '%s' cannot be removed"
-msgstr "КартаДействий (ActionMap) '%s' не может быть удалена"
+msgstr "КартаДействий (ActionMap) \"%s\" не может быть удалена"
 
 
 msgid "Bind To"
@@ -144847,7 +144856,7 @@ msgstr "Рёбра изменены с %d на %d"
 
 
 msgid "Vertex group '%s' is not valid, or maybe empty"
-msgstr "Группа вершин '%s' недопустима или может быть пустой"
+msgstr "Группа вершин \"%s\" недопустима или может быть пустой"
 
 
 msgid "The system did not find a solution"
@@ -145432,7 +145441,7 @@ msgstr "Середина"
 
 
 msgid "Cannot find '%s' grid"
-msgstr "Не удалось найти сетку '%s'"
+msgstr "Не удалось найти сетку \"%s\""
 
 
 msgid "Could not generate mesh from grid"
@@ -147938,7 +147947,7 @@ msgstr "Части геометрии, которые необходимо уд�
 
 
 msgid "When combined with each voxel's value, determines the number of points to sample per unit volume"
-msgstr "В сочетании со значением каждого вокселя определяет количество точек для сэмплинга на единицу объема"
+msgstr "В сочетании со значением каждого вокселя определяет количество точек, которые необходимо сэмплировать на единицу объёма"
 
 
 msgid "Seed used by the random number generator to generate random points"
@@ -148663,15 +148672,15 @@ msgstr "Истинно, если поле оценивается по тайлу
 
 
 msgid "Number of voxels in the X direction of the tile, or 1 if the field is evaluated on a voxel"
-msgstr "Число вокселей в направлении X тайла, или \"1\" в случае если поле оценивается по вокселю"
+msgstr "Количество вокселей в направлении X тайла, или \"1\" в случае если поле оценивается по вокселю"
 
 
 msgid "Number of voxels in the Y direction of the tile, or 1 if the field is evaluated on a voxel"
-msgstr "Число вокселей в направлении Y тайла, или \"1\" в случае если поле оценивается по вокселю"
+msgstr "Количество вокселей в направлении Y тайла, или \"1\" в случае если поле оценивается по вокселю"
 
 
 msgid "Number of voxels in the Z direction of the tile, or 1 if the field is evaluated on a voxel"
-msgstr "Число вокселей в направлении Z тайла, или \"1\" в случае если поле оценивается по вокселю"
+msgstr "Количество вокселей в направлении Z тайла, или \"1\" в случае если поле оценивается по вокселю"
 
 
 msgid "Realized geometry is not used when pick instances is true"
@@ -149060,7 +149069,7 @@ msgstr "SDF Сетка"
 
 
 msgid "Mesh whose inner volume is converted to a signed distance field grid"
-msgstr "Меш, внутренний объём которого следует преобразовать в сетку поля со знаковым расстоянием"
+msgstr "Меш, внутренний объём которого следует преобразовать в сетку поля знаковых расстояний"
 
 
 msgid "Width of the active voxel surface, in voxels"
@@ -149354,7 +149363,7 @@ msgstr "Определяет порядок точек в каждой крив�
 
 
 msgid "Points whose volume is converted to a signed distance field grid"
-msgstr "Точки, объём которых следует преобразовать в сетку поля со знаковым расстоянием"
+msgstr "Точки, объём которых следует преобразовать в сетку поля знаковых расстояний"
 
 
 msgid "Points that are converted to vertices in a mesh"
@@ -151413,7 +151422,7 @@ msgstr "%s: %.*s"
 
 
 msgid "Text '%s'"
-msgstr "Текст '%s'"
+msgstr "Текст \"%s\""
 
 
 msgid "Could not resolve path (%s)"
@@ -151473,19 +151482,19 @@ msgstr "Активный вид не найден для сцены «%s»"
 
 
 msgid "%s: no Combined pass found in the render layer '%s'"
-msgstr "%s: нет комбинированного прохода для рендер-слоя «%s»"
+msgstr "%s: нет комбинированного прохода для рендер-слоя \"%s\""
 
 
 msgid "%s: failed to allocate clip buffer '%s'"
-msgstr "%s: не удалось выделить буфер видеофрагмента '%s'"
+msgstr "%s: не удалось выделить буфер видеофрагмента \"%s\""
 
 
 msgid "%s: incorrect dimensions for partial copy '%s'"
-msgstr "%s: некорректные размеры для частичной копии «%s»"
+msgstr "%s: некорректные размеры для частичной копии \"%s\""
 
 
 msgid "%s: failed to load '%s'"
-msgstr "%s: не удалось загрузить «%s»"
+msgstr "%s: не удалось загрузить \"%s\""
 
 
 msgid "Reading render result: dimensions don't match, expected %dx%d"
@@ -151873,7 +151882,7 @@ msgstr "Не удалось найти доступное имя файла с �
 
 
 msgid "Engine '%s' not available for scene '%s' (an add-on may need to be installed or enabled)"
-msgstr "Движок «%s» не доступен для сцены «%s» (аддон должен быть установлен и включён)"
+msgstr "Движок \"%s\" не доступен для сцены \"%s\" (аддон должен быть установлен и включён)"
 
 
 msgid "Library \"%s\" needs overrides resync"
@@ -151977,27 +151986,27 @@ msgstr "Ничего не указано"
 
 
 msgid "Cannot append data-block '%s' of type '%s'"
-msgstr "Невозможно добавить датаблок '%s' типа '%s'"
+msgstr "Невозможно добавить датаблок \"%s\" типа \"%s\""
 
 
 msgid "Cannot link data-block '%s' of type '%s'"
-msgstr "Невозможно связать датаблок '%s' типа '%s'"
+msgstr "Невозможно связать датаблок \"%s\" типа \"%s\""
 
 
 msgid "'%s': cannot use current file as library"
-msgstr "«%s»: невозможно использовать файл как библиотеку"
+msgstr "\"%s\": невозможно использовать файл как библиотеку"
 
 
 msgid "'%s': nothing indicated"
-msgstr "«%s»: ничего не указано"
+msgstr "\"%s\": ничего не указано"
 
 
 msgid "'%s': not a library"
-msgstr "«%s»: не библиотека"
+msgstr "\"%s\": не библиотека"
 
 
 msgid "Scene '%s' is linked, instantiation of objects is disabled"
-msgstr "Сцена '%s' является связанной, создание экземпляров объектов отключено"
+msgstr "Сцена \"%s\" является связанной, создание экземпляров объектов отключено"
 
 
 msgid "No valid existing linked ID given to relocate"
@@ -152005,27 +152014,27 @@ msgstr "Не указан действительный существующий 
 
 
 msgid "Selected ID '%s' is a %s, cannot be used to relocate existing linked ID '%s' which is a %s"
-msgstr "Выбранный идентификатор '%s' является %s, он не может быть использован для перебазирования существующего связанного идентификатора '%s', который является %s"
+msgstr "Выбранный идентификатор \"%s\" является %s, он не может быть использован для перебазирования существующего связанного идентификатора \"%s\", который является %s"
 
 
 msgid "Selected ID '%s' seems to be the same as the relocated ID '%s', use 'Reload' operation instead"
-msgstr "Выбранный идентификатор '%s', по-видимому, совпадает с перемещённым идентификатором '%s', используйте вместо этого операцию 'Перезагрузить (reload)'"
+msgstr "Выбранный идентификатор \"%s\", по-видимому, совпадает с перемещённым идентификатором \"%s\", используйте вместо этого операцию \"Перезагрузить (reload)\""
 
 
 msgid "'%s' is not a valid library filepath"
-msgstr "«%s» это неверный путь к файлу библиотеки"
+msgstr "\"%s\" это неверный путь к файлу библиотеки"
 
 
 msgid "Trying to reload library '%s' from invalid path '%s'"
-msgstr "Попытка перезагрузить библиотеку '%s' из недействительного пути '%s'"
+msgstr "Попытка перезагрузить библиотеку \"%s\" из недействительного пути \"%s\""
 
 
 msgid "Trying to reload or relocate library '%s' to invalid path '%s'"
-msgstr "Попытка перезагрузить или переместить библиотеку '%s' в недействительный путь '%s'"
+msgstr "Попытка перезагрузить или переместить библиотеку \"%s\" в недействительный путь \"%s\""
 
 
 msgid "Cannot relocate library '%s' to current blend file '%s'"
-msgstr "Невозможно переместить библиотеку '%s' в текущий blend-файл '%s'"
+msgstr "Невозможно переместить библиотеку \"%s\" в текущий blend-файл \"%s\""
 
 
 msgid "Win"
@@ -152114,23 +152123,23 @@ msgstr "Свойство должно быть бестиповым, расст�
 
 
 msgid "Registering operator class: '%s', invalid bl_idname '%s', at position %d"
-msgstr "Регистрация класса оператора: «%s», неверный bl_idname «%s» в положении %d"
+msgstr "Регистрация класса оператора: \"%s\", неверный bl_idname \"%s\" в положении %d"
 
 
 msgid "Registering operator class: '%s', invalid bl_idname '%s', is too long, maximum length is %d"
-msgstr "Регистрация класса оператора: «%s», слишком длинный bl_idname «%s», максимальная длина — %d"
+msgstr "Регистрация класса оператора: \"%s\", слишком длинный bl_idname \"%s\", максимальная длина — %d"
 
 
 msgid "Registering operator class: '%s', invalid bl_idname '%s', must contain 1 '.' character"
-msgstr "Регистрация класса оператора: «%s», неверный bl_idname «%s», должен содержать 1 символ «.»"
+msgstr "Регистрация класса оператора: \"%s\", неверный bl_idname \"%s\", должен содержать 1 символ \".\""
 
 
 msgid "Cannot read %s '%s': %s"
-msgstr "Не удаётся прочитать %s «%s»: %s"
+msgstr "Не удаётся прочитать %s \"%s\": %s"
 
 
 msgid "%s '%s' not found"
-msgstr "%s '%s' не найден"
+msgstr "%s \"%s\" не найден"
 
 
 msgid "%s not found"
@@ -152138,23 +152147,23 @@ msgstr "%s не найден"
 
 
 msgid "Operator '%s' does not have register enabled, incorrect invoke function"
-msgstr "Оператор '%s' не включает регистрацию, неверная функция вызова"
+msgstr "Оператор \"%s\" не включает регистрацию, неверная функция вызова"
 
 
 msgid "Operator '%s' does not have undo enabled, incorrect invoke function"
-msgstr "Оператор «%s» не включает отмену, неверная функция invoke"
+msgstr "Оператор \"%s\" не включает отмену, неверная функция вызова"
 
 
 msgid "Operator redo '%s' does not have register enabled, incorrect invoke function"
-msgstr "Оператор повторить '%s' не включает регистрацию, неверная функция вызова"
+msgstr "Оператор повторить \"%s\" не включает регистрацию, неверная функция вызова"
 
 
 msgid "Operator redo '%s': wrong context"
-msgstr "Оператор повторить '%s': неверный контекст"
+msgstr "Оператор повторить \"%s\": неверный контекст"
 
 
 msgid "Property from path '%s' has length %d instead of %d"
-msgstr "Длина свойства по пути «%s» составляет %d, а не %d"
+msgstr "Длина свойства по пути \"%s\" составляет %d, а не %d"
 
 
 msgid "%d × %s: %.4f ms, average: %.8f ms"
@@ -153552,6 +153561,10 @@ msgid "Keep highlights in check by working in Log space and working only on the 
 msgstr "Контролировать светлые тона, работая в логарифмическом пространстве и по возможности только со значениями (яркостью)."
 
 
+msgid "The amount of diamond sharpening"
+msgstr "Степень применения эффекта алмазной заточки"
+
+
 msgid "Unsharp Mask"
 msgstr "Нерезкая маска"
 
@@ -153588,6 +153601,10 @@ msgid "Align Rotation"
 msgstr "Выровнять вращение"
 
 
+msgid "Rotate copies based on the array shape"
+msgstr "Вращать копии в соответствии с формой массива"
+
+
 msgid "Angular Distance"
 msgstr "Угловое расстояние"
 
@@ -153608,6 +153625,10 @@ msgid "Circle Segment"
 msgstr "Сегмент окружности"
 
 
+msgid "Whether the copies should fan out in a full circle or an arc"
+msgstr "Определить будут ли копии разворачиваться в виде полной окружности или только дуги"
+
+
 msgid "The number of copies to generate"
 msgstr "Количество генерируемых копий"
 
@@ -153620,6 +153641,10 @@ msgid "Method to choose the number of duplicates"
 msgstr "Режим установления количества создаваемых дубликатов"
 
 
+msgid "Reference curve object for array"
+msgstr "Эталонный объект-кривая для массива"
+
+
 msgid "The distance along the curve between copies"
 msgstr "Расстояние между копиями вдоль кривой"
 
@@ -153628,8 +153653,28 @@ msgid "Exclude First"
 msgstr "Исключить первый"
 
 
+msgid "Exclude the first (original) copy from randomization"
+msgstr "Исключить первую (оригинальный экземпляр) копию из рандомизации"
+
+
 msgid "Exclude Last"
 msgstr "Исключить последний"
+
+
+msgid "Exclude the last copy from randomization"
+msgstr "Исключить последнюю копию из рандомизации"
+
+
+msgid "The forward direction along the array shape"
+msgstr "Направление \"вперёд\" вдоль формы массива"
+
+
+msgid "Merge overlapping points by their distance. (Realize Instances must be enabled)"
+msgstr "Объединять перекрывающиеся точки по расстоянию. (Необходимо включить функцию \"Реализовать экземпляры (realize instances)\")"
+
+
+msgid "Distance below which points will be merged"
+msgstr "Расстояние, ниже значения которого точки будут объединяться"
 
 
 msgid "Amount to move each copy relative to its bounding box size"
@@ -153638,6 +153683,10 @@ msgstr "Величина перемещения каждой копии отно
 
 msgid "Offset Method"
 msgstr "Метод смещения"
+
+
+msgid "Method to interpret the offset parameters"
+msgstr "Метод интерпретации параметров смещения"
 
 
 msgid "Per Curve"
@@ -153652,16 +153701,44 @@ msgid "Distance of the instances from the origin"
 msgstr "Расстояние от экземпляров до ориджина"
 
 
+msgid "Randomize transforms between all copies"
+msgstr "Рандомизировать трансформации между всеми копиями"
+
+
 msgid "Randomize Flipping"
 msgstr "Рандомизировать разворот"
+
+
+msgid "Flip a fraction of copies along individual axes"
+msgstr "Развернуть часть копий вдоль отдельных осей"
 
 
 msgid "Randomize Offset"
 msgstr "Случайное смещение"
 
 
+msgid "Offset the copies randomly"
+msgstr "Сместить копии случайным образом"
+
+
+msgid "Rotate the copies randomly"
+msgstr "Вращать копии случайным образом"
+
+
+msgid "Scale the copies randomly"
+msgstr "Масштабировать копии случайным образом"
+
+
+msgid "Scale the copies randomly per axis"
+msgstr "Масштабировать копии случайным образом по каждой из осей"
+
+
 msgid "Randomize Scale Axes"
 msgstr "Случайный масштаб по осям"
+
+
+msgid "Whether to apply random scale uniformly or per axis"
+msgstr "Применять ли случайное масштабирование равномерно или по каждой из осей"
 
 
 msgid "Turn the output into a single geometry rather than instances (required by many other modifiers)"
@@ -153672,6 +153749,10 @@ msgid "Relative Space"
 msgstr "Относительное пространство"
 
 
+msgid "Use relative space for the input geometry so the transforms of both inputs in relation are considered"
+msgstr "Использовать относительное пространство для входной геометрии, чтобы учитывать трансформации обоих входов относительно друг друга"
+
+
 msgid "Rotation accumulated for each copy"
 msgstr "Накопительное вращение для каждой копии"
 
@@ -153680,12 +153761,24 @@ msgid "Scale accumulated for each copy"
 msgstr "Накопительное масштабирование для каждой копии"
 
 
+msgid "Base value to control random variation in a reproducible way"
+msgstr "Основное значение для контроля случайных вариаций воспроизводимым способом"
+
+
 msgid "Method used for arranging the duplicates"
 msgstr "Метод, используемый для расстановки копий"
 
 
+msgid "Total angle used to fan out the copies in a circular arc"
+msgstr "Общий угол, используемый для распределения экземпляров по дуге окружности"
+
+
 msgid "Transform Object"
 msgstr "Трансформирующий объект"
+
+
+msgid "Reference object to define the accumulated transform"
+msgstr "Эталонный объект для установления накопительной трансформации"
 
 
 msgid "Transform Reference"
@@ -153694,6 +153787,14 @@ msgstr "Эталон трансформации"
 
 msgid "Define the transform locally or with an object's transform"
 msgstr "Определить трансформацию локально или используя трансформации другого объекта"
+
+
+msgid "Translation accumulated for each copy"
+msgstr "Накопительное перемещение для каждой копии"
+
+
+msgid "The up direction along the array shape"
+msgstr "Направление \"вверх\" вдоль формы массива"
 
 
 msgid "Invalid Distance"
@@ -153712,8 +153813,28 @@ msgid "Create a box selection"
 msgstr "Произвести выделение рамкой"
 
 
+msgid "Center position of box selection"
+msgstr "Центральное положение поля выделения"
+
+
+msgid "Elements inside the box"
+msgstr "Элементы внутри поля выделения"
+
+
+msgid "Edge length of box selection"
+msgstr "Длина края поля выделения"
+
+
+msgid "Offset from the ground plane"
+msgstr "Смещение от плоскости земли"
+
+
 msgid "Convert curve geometry into tube meshes"
 msgstr "Преобразовать геометрию кривой в цилиндрический меш"
+
+
+msgid "Fill the holes at the tube ends with cap geometry"
+msgstr "Заполнить отверстия на концах трубки геометрией колпачка"
 
 
 msgid "Caps Align Normals"
@@ -153736,8 +153857,16 @@ msgid "Caps Extrapolate Radius"
 msgstr "Экстраполировать радиус колпачков"
 
 
+msgid "Adjust the shape of the cap to follow the change in radius towards the curve ends"
+msgstr "Корректировать форму колпачка, чтобы она соответствовала изменениям радиуса по направлению к концам кривой"
+
+
 msgid "Caps Input"
 msgstr "Ввод колпачков"
+
+
+msgid "How the cap geometry input should be exposed"
+msgstr "Метод отображения входа геометрии колпачка"
 
 
 msgid "Caps Merge"
@@ -153750,6 +153879,10 @@ msgstr "Объединить геометрию колпачков с базов
 
 msgid "Caps Resolution"
 msgstr "Разрешение колпачков"
+
+
+msgid "Amount of edge loops the round caps are generated with"
+msgstr "Количество петель рёбер, с которыми будут генерироваться круглые колпачки"
 
 
 msgid "Caps Smooth"
@@ -153768,20 +153901,44 @@ msgid "Geometry to add to the start of each curve"
 msgstr "Геометрия, добавляемая на начале каждой кривой"
 
 
+msgid "Method used to build the start and end geometry"
+msgstr "Метод, используемый для построения геометрии на концах"
+
+
 msgid "Consider Curve Radius"
 msgstr "Учитывать радиус кривой"
+
+
+msgid "Consider the main curve's radius attribute as a factor when mapping the V component by the profile curve's length parameter"
+msgstr "Учитывать атрибут радиуса основной кривой в качестве коэффициента при сопоставлении V-компоненты с параметром длины кривой профиля"
 
 
 msgid "Curve geometry defining the curve path"
 msgstr "Геометрия кривой, определяющая путь-кривую"
 
 
+msgid "Tube mesh"
+msgstr "Меш трубки"
+
+
+msgid "Controls for the shape of the tube profile"
+msgstr "Управление формой профиля трубки"
+
+
 msgid "Profile Geometry"
 msgstr "Геометрия профиля"
 
 
+msgid "Shape defining a section of the tube, using the XY plane"
+msgstr "Форма, определяющая сечение трубки с использованием плоскости XY"
+
+
 msgid "Profile Input"
 msgstr "Ввод профиля"
+
+
+msgid "How the profile geometry input should be exposed"
+msgstr "Метод отображения входа геометрии профиля"
 
 
 msgid "Profile Mode"
@@ -153808,28 +153965,60 @@ msgid "Resample"
 msgstr "Ресэмплинг"
 
 
+msgid "Resample the input curve before meshing"
+msgstr "Ресэмплинг входной кривой перед построением меша"
+
+
 msgid "Resample Count"
 msgstr "Количество повторных сэмплов"
+
+
+msgid "Number of sample points on the curve"
+msgstr "Количество точек выборки на кривой"
 
 
 msgid "Resample Length"
 msgstr "Длина между сэмплами"
 
 
+msgid "Distance between two sample points along the curve"
+msgstr "Расстояние между двумя точками выборки вдоль кривой"
+
+
 msgid "Resample Mode"
 msgstr "Режим ресэмплинга"
+
+
+msgid "How to specify the number of samples"
+msgstr "Метод указания количества сэмплов"
 
 
 msgid "Resample Scale"
 msgstr "Масштаб повторного сэмплинга"
 
 
+msgid "Scale factor applied on the automatically derived resample length"
+msgstr "Коэффициент масштабирования, применяемый к автоматически полученной длине повторной выборки"
+
+
+msgid "Distance factor multiplied with the curve's radius attribute to define the resulting tube radius"
+msgstr "Коэффициент расстояния помноженный на атрибут радиуса кривой для определения радиуса результирующей трубки"
+
+
 msgid "Use smooth vertex normals instead of face normals for the result mesh"
 msgstr "Для результирующего меша будут использоваться сглаженные нормали вершин вместо нормалей граней"
 
 
+msgid "Generate UV attribute data on the curve geometry"
+msgstr "Генерировать UV-атрибуты на геометрии кривой"
+
+
 msgid "UV Map Name"
 msgstr "Имя UV-карты"
+
+
+msgid "Name of the UV map attribute to generate"
+msgstr "Имя атрибута UV-карты, которая будет сгенерирована"
 
 
 msgid "UV Map Parameter U"
@@ -153864,16 +154053,44 @@ msgid "Displace geometry by an offset iteratively"
 msgstr "Итеративно смещать геометрию на определённую величину"
 
 
+msgid "Distance of the displacement offset in normal direction"
+msgstr "Расстояние сдвига смещения по направлению нормалей"
+
+
+msgid "Input method how to generate the displacement vector"
+msgstr "Метод ввода для генерации вектора смещения"
+
+
 msgid "Offset Vector"
 msgstr "Вектор смещения"
+
+
+msgid "Displacement offset vector"
+msgstr "Вектор сдвига смещения"
 
 
 msgid "Post Substep Process"
 msgstr "Процесс после подшагов"
 
 
+msgid "Geometry process to apply after each displacement step"
+msgstr "Процесс обработки геометрии, который следует применять после каждого шага смещения"
+
+
+msgid "Selection of points that should be displaced"
+msgstr "Выделение точек, которые следует сместить"
+
+
+msgid "Factor that the displacement is multiplied with"
+msgstr "Коэффициент, на который следует умножать значение смещения"
+
+
 msgid "Substeps"
 msgstr "Подшагов"
+
+
+msgid "Number of steps to divide the full displacement into. Fields, including normal and position, are re-evaluated before each step."
+msgstr "Количество шагов, на которые делится полное смещение. Поля, включая нормаль и положение, будут переоцениваться перед каждым шагом."
 
 
 msgid "Substeps <1 means the process is not executed"
@@ -153896,12 +154113,44 @@ msgid "Bisector"
 msgstr "Биссектриса"
 
 
+msgid "Directional vector pointing central between next and previous edge of a face corner"
+msgstr "Направляющий вектор, обозначающий центр между следующим и предыдущим ребром угла грани"
+
+
+msgid "Angle between the next and previous edge of a face corner within the face"
+msgstr "Угол между следующим и предыдущим ребром угла грани внутри самой грани"
+
+
 msgid "Geometry Input"
 msgstr "Ввод геометрии"
 
 
 msgid "Take reference geometry as input"
 msgstr "Позволяет использовать указанную геометрию в качестве входных данных"
+
+
+msgid "Input the geometry as an instance. (Further processing might require non-instance geometry)"
+msgstr "Ввести геометрию в качестве экземпляра. (Для дальнейшей обработки может потребоваться геометрия, не являющаяся экземпляром)"
+
+
+msgid "Collection to use as the input geometry"
+msgstr "Коллекция, которую следует использовать в качестве входной геометрии"
+
+
+msgid "How the geometry input should be exposed"
+msgstr "Метод отображения входа геометрии"
+
+
+msgid "Object to use as the input geometry"
+msgstr "Объект, который следует использовать в качестве входной геометрии"
+
+
+msgid "Transform the input relative to the main geometry"
+msgstr "Преобразовывать входные данные относительно основной геометрии"
+
+
+msgid "Replace the incoming geometry with the selected input geometry"
+msgstr "Заменить исходную геометрию выбранной геометрией ввода"
 
 
 msgid "Instance on Elements"
@@ -153912,40 +154161,128 @@ msgid "Create copies of referenced geometry on geometry elements"
 msgstr "Создать копии эталонной геометрии на геометрических элементах"
 
 
+msgid "Rotate instances based on the shape of the incoming geometry"
+msgstr "Вращать экземпляры в соответствии с формой входящей геометрии"
+
+
+msgid "Instance geometry collection"
+msgstr "Коллекция геометрии экземпляров"
+
+
 msgid "Corner Offset"
 msgstr "Угловое смещение"
+
+
+msgid "Offset the instances on face corners into their respective face"
+msgstr "Сместить экземпляры на углах граней к соответствующим им граням"
 
 
 msgid "Corner Offset Distance"
 msgstr "Расстояние углового смещения"
 
 
+msgid "Distance to offset the instances from the face corner"
+msgstr "Расстояние, на которое будут смещены экземпляры от углов граней"
+
+
 msgid "Corner Offset Factor"
 msgstr "Коэффициент углового смещения"
+
+
+msgid "Move the instances towards the face center"
+msgstr "Переместить экземпляры к центру грани"
 
 
 msgid "Corner Offset Method"
 msgstr "Метод углового смещения"
 
 
+msgid "Method for direction of the offset along the corner"
+msgstr "Метод направления смещения вдоль угла"
+
+
 msgid "Even Edge Distance"
-msgstr "Равномерное расстояние до ребра"
+msgstr "Равномерное расстояние до рёбер"
+
+
+msgid "Adjust the offset distance to keep an even perpendicular distance to edges"
+msgstr "Регулировать расстояние смещения, чтобы сохранить равномерное перпендикулярное расстояние до рёбер"
+
+
+msgid "How the instance geometry input should be exposed"
+msgstr "Метод отображения входа геометрии экземпляра"
+
+
+msgid "Instance geometry input"
+msgstr "Ввод геометрии экземпляра"
+
+
+msgid "Method how the child instance is chosen per element"
+msgstr "Метод выбора дочернего экземпляра для каждого элемента"
+
+
+msgid "Which child instance to pick per element by index"
+msgstr "Выбираемый дочерний экземпляр для каждого элемента на основе индекса"
 
 
 msgid "Instance On"
 msgstr "Экземпляр на"
 
 
+msgid "Geometry element type to instance on"
+msgstr "Тип элемента геометрии, на котором следует создавать экземпляры"
+
+
+msgid "How the instance geometry data-block should be exposed"
+msgstr "Метод отображения блока данных геометрии экземпляра"
+
+
 msgid "Keep Surface"
 msgstr "Сохранять поверхность"
+
+
+msgid "Keep the original incoming geometry and join it with the instance geometry"
+msgstr "Сохранить исходную поступающую геометрию и объединить её с геометрией экземпляров"
+
+
+msgid "Specify which elements to use for instancing. (Floating point values result in a random selection)"
+msgstr "Определить элементы, на которых следует создавать экземпляры. (Значения с плавающей запятой приводят к случайному выбору)"
+
+
+msgid "Instance geometry object"
+msgstr "Объект-экземпляр геометрии"
+
+
+msgid "Choose child instances each element instead of instancing the entire geometry"
+msgstr "Выбирать дочерние экземпляры для каждого элемента вместо инстанцирования всей геометрии"
+
+
+msgid "Scale the instances on each local axis"
+msgstr "Масштабировать экземпляры по каждой из локальных осей"
 
 
 msgid "Scale by Face Area"
 msgstr "Масштабировать по площади грани"
 
 
+msgid "Scale the instances based on the face area of the incoming geometry"
+msgstr "Масштабировать экземпляры в зависимости от площади грани исходной геометрии"
+
+
 msgid "Scale by Face Area Multiplier"
 msgstr "Множитель масштабирования по площади грани"
+
+
+msgid "Multiply the instance scale with a factor to calibrate the considered face area"
+msgstr "Умножать масштаб экземпляра на коэффициент, чтобы произвести калибровку по рассматриваемой площадь грани"
+
+
+msgid "Distance to offset each instance along the normal of the incoming geometry"
+msgstr "Расстояние смещения каждого экземпляра по нормалям исходной геометрии"
+
+
+msgid "Configuration regarding the transformation of each instance"
+msgstr "Настройка трансформации для каждого экземпляра"
 
 
 msgid "Pick Instance is on, but there is no instances to pick from. Falling back to use input as instance."
@@ -153960,12 +154297,20 @@ msgid "Returns a selection of boundary edges"
 msgstr "Возвращает выделение пограничных рёбер"
 
 
+msgid "Selection of edges that are part of the boundary of a mesh surface"
+msgstr "Выделение рёбер, являющихся частью границы поверхности меша"
+
+
 msgid "Is Edge Loose"
 msgstr "Является несвязанным ребром"
 
 
 msgid "Returns a selection of loose edges"
 msgstr "Возвращает выделение несвязанных рёбер"
+
+
+msgid "Selection of edges that are not connected to a face"
+msgstr "Выделение рёбер, не соединённых с гранью"
 
 
 msgid "Is Edge Manifold"
@@ -153976,12 +154321,24 @@ msgid "Returns a selection of manifold edges"
 msgstr "Возвращает выделение развёртываемых рёбер"
 
 
+msgid "Selection of edges that connect two faces of a mesh surface"
+msgstr "Выделение рёбер, соединяющих две грани поверхности меша"
+
+
 msgid "Is UV Split"
 msgstr "Является разделителем UV"
 
 
 msgid "Returns a selection of edges that make up a seam in the provided UV data. A seam is defined as a discontinuity of the data between connected face corners"
 msgstr "Возвращает выделение рёбер, образующих шов в предоставленных UV-данных. Шов определяется в качестве разрыва данных между соединёнными углами граней"
+
+
+msgid "Selection of edges that signify a discontinuity of the input vectors"
+msgstr "Выделение рёбер, которые обозначают разрыв входных векторов"
+
+
+msgid "Vectors to compare between connected face corners of an egde for differences. (Supports 3D vectors)"
+msgstr "Векторы для сравнения различий между соединёнными углами граней ребра. (Поддерживает 3D-векторы)"
 
 
 msgid "Normal Selection"
@@ -153992,20 +154349,48 @@ msgid "Create a selection by normal"
 msgstr "Произвести выделение по нормали"
 
 
+msgid "Target direction to compare the normal to"
+msgstr "Целевое направление по которому следует сравнивать направление нормали"
+
+
+msgid "Selection of elements with normals matching a target direction. (The normal is evaluated on the same domain as this selection output)"
+msgstr "Выделение элементов у которых нормали, соответствуют целевому направлению. (Нормаль оценивается в том же домене, что и выводимое выделение)"
+
+
+msgid "Maximum angle between normal and target to include in the selection"
+msgstr "Максимальный угол между нормалью и целевым направлением для включения в выделение"
+
+
 msgid "Returns a uniformly distributed random rotation"
 msgstr "Возвращает равномерно распределённое случайное вращение"
+
+
+msgid "Identifier per element used for randomization"
+msgstr "Идентификатор для каждого элемента, используемый для рандомизации"
 
 
 msgid "Max Zenith"
 msgstr "Зенит - Макс."
 
 
+msgid "Upper limit of the tilt away from the +Z direction"
+msgstr "Верхний предел угла наклона от направления +Z"
+
+
 msgid "Min Zenith"
 msgstr "Зенит - Мин."
 
 
+msgid "Lower limit of the tilt away from the +Z direction"
+msgstr "Нижний предел угла наклона от направления +Z"
+
+
+msgid "Random rotations resulting in uniformly distributed directions. Rotation around the Z axis is fully random."
+msgstr "Случайные вращения, приводящие к равномерному распределению направлений. Вращение вокруг оси Z является совершенно случайным."
+
+
 msgid "Randomize Transforms"
-msgstr "Случайные трансформации"
+msgstr "Рандомизировать трансформации"
 
 
 msgid "Randomize the transformation of instances"
@@ -154016,32 +154401,136 @@ msgid "Flipping"
 msgstr "Разворот"
 
 
+msgid "Flip a fraction of instances along individual axes"
+msgstr "Развернуть часть экземпляров вдоль отдельных осей"
+
+
+msgid "Randomize instance transforms in their individual local space"
+msgstr "Рандомизировать трансформации экземпляров в их индивидуальном локальном пространстве"
+
+
+msgid "Offset the instances randomly"
+msgstr "Сместить экземпляры случайным образом"
+
+
+msgid "Rotate the instances randomly"
+msgstr "Вращать экземпляры случайным образом"
+
+
+msgid "Scale the instances randomly"
+msgstr "Масштабировать экземпляры случайным образом"
+
+
+msgid "Scale the instances randomly per axis"
+msgstr "Масштабировать экземпляры случайным образом по каждой из осей"
+
+
 msgid "Scale Axes"
 msgstr "Масштаб по осям"
+
+
+msgid "Selection of instances to randomize"
+msgstr "Выделение экземпляров, трансформации которых следует рандомизировать"
 
 
 msgid "Scatter referenced geometry on a surface mesh"
 msgstr "Распределить указанную геометрию по поверхности меша"
 
 
+msgid "Rotate instances based on the shape of the surface geometry"
+msgstr "Вращать экземпляры в соответствии с формой геометрии поверхности"
+
+
 msgid "Alignment Axis"
 msgstr "Ось выравнивания"
+
+
+msgid "Which axis to align with the normal of the surface geometry"
+msgstr "Выбрать ось, которую следует совместить с нормалью геометрии поверхности"
+
+
+msgid "Exact number of scattered instances before masking"
+msgstr "Точное количество распределяемых экземпляров до маски́рования"
+
+
+msgid "Collection providing the instance geometry used for scattering"
+msgstr "Коллекция, предоставляющая экземпляры геометрий, используемых для распределения"
+
+
+msgid "Amount of scattered instances per unit squared"
+msgstr "Количество распределяемых экземпляров на единицу площади"
 
 
 msgid "Density Method"
 msgstr "Режим плотности"
 
 
+msgid "Method to define the number of scattered instances"
+msgstr "Метод установления количества распределяемых экземпляров"
+
+
 msgid "Distribution Mask"
 msgstr "Маска распределения"
+
+
+msgid "Mask to multiply the density by"
+msgstr "Маска-множитель для расчёта плотности"
 
 
 msgid "Image Mask"
 msgstr "Изображение-маска"
 
 
+msgid "Grayscale image texture used to remove scattered instances"
+msgstr "Текстура изображения в оттенках серого, используемая для удаления распределяемых экземпляров"
+
+
+msgid "Geometry that is instanced on the scattered points"
+msgstr "Геометрия, которая накладывается в качестве экземпляров на точках распределения"
+
+
 msgid "Instance Seed"
 msgstr "Вариация экземпляров"
+
+
+msgid "Base value to control random instance variation in a reproducible way"
+msgstr "Основное значение для контроля случайных вариаций экземпляров воспроизводимым способом"
+
+
+msgid "Configuration of the scattered instances"
+msgstr "Конфигурация распределяемых экземпляров"
+
+
+msgid "Keep the original incoming geometry and join it with the scattered geometry"
+msgstr "Сохранить исходную поступающую геометрию и объединить её с распределяемой геометрией"
+
+
+msgid "Additional masking applied after the initial scattering of instances"
+msgstr "Дополнительное маски́рование, применяемое после первоначального распределения экземпляров"
+
+
+msgid "Mesh on whose faces to scatter on"
+msgstr "Меш, на гранях которого будет производиться распределение"
+
+
+msgid "Minimum allowed distance between the centers of two scattered instances. Increase value for a more locally even distribution."
+msgstr "Минимально допустимое расстояние между центрами двух распределяемых экземпляров. Для более равномерного распределения следует увеличивать значение."
+
+
+msgid "Object providing the instance geometry used for scattering"
+msgstr "Объект, предоставляющий экземпляр геометрии, используемый для распределения"
+
+
+msgid "Randomize transforms between all scattered instances"
+msgstr "Рандомизировать трансформации для всех распределяемых экземплярах"
+
+
+msgid "Scale the instances down randomly"
+msgstr "Уменьшать экземпляры случайным образом"
+
+
+msgid "Scale the instances down randomly per axis"
+msgstr "Уменьшать экземпляры случайным образом по каждой из осей"
 
 
 msgid "Randomize Seed"
@@ -154052,12 +154541,44 @@ msgid "Reset Transform"
 msgstr "Сбросить трансформации"
 
 
+msgid "Reset the transforms of each individual child instance"
+msgstr "Сбросить трансформации каждого дочернего экземпляра"
+
+
+msgid "Scale of the instances on each local axis"
+msgstr "Масштаб экземпляров по каждой из локальных осей"
+
+
 msgid "Scatter on Instances"
 msgstr "Распределить на экземплярах"
 
 
+msgid "Use instances contained in the incoming geometry as base for scattering"
+msgstr "Использовать экземпляры, содержащиеся во входящей геометрии, в качестве основы для распределения"
+
+
+msgid "Which faces to scatter on"
+msgstr "Выбрать грани, на которых будет производиться распределение"
+
+
+msgid "Distance to offset each instance along the normal of the surface geometry"
+msgstr "Расстояние смещения каждого экземпляра по нормалям геометрии поверхности"
+
+
+msgid "Configure the transformation of scattered instances"
+msgstr "Настроить трансформацию распределяемых экземпляров"
+
+
+msgid "Texture coordinates used to map the image on the surface"
+msgstr "Текстурные координаты, используемые для наложения изображения на поверхности"
+
+
 msgid "Viewport Visibility"
 msgstr "Видимость во вьюпорте"
+
+
+msgid "Amount of scattered instances shown in the viewport"
+msgstr "Количество распределяемых экземпляров, отображаемых во вьюпорте"
 
 
 msgid "Smooth Geometry"
@@ -154090,6 +154611,18 @@ msgstr "Сферическое выделение"
 
 msgid "Create a spherical selection"
 msgstr "Произвести сферическое выделение"
+
+
+msgid "Center position of the sphere selection"
+msgstr "Центральное положение сферического выделения"
+
+
+msgid "Maximum distance of the element from the selection center"
+msgstr "Максимальное расстояние от центра выделения"
+
+
+msgid "Selection of elements within a sphere"
+msgstr "Выделение элементов в пределах сферы"
 
 
 msgid "Attach Hair Curves to Surface"
@@ -154449,11 +154982,11 @@ msgstr "Минимальное расстояние между двумя нап
 
 
 msgid "Guide Selection"
-msgstr "Выбор направляющих"
+msgstr "Выделение направляющих"
 
 
 msgid "Guide curves or points used for the selection of guide curves"
-msgstr "Направляющие кривые или точки, используемые для выбора направляющих кривых"
+msgstr "Направляющие кривые или точки, используемые для выделения направляющих кривых"
 
 
 msgid "Curl Hair Curves"
