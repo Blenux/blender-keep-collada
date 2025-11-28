@@ -2,17 +2,21 @@
 set -euo pipefail
 
 branch="keep-collada-5.0"
+upstream_branch="lfs-fallback/blender-v5.0-release"
 
 echo "==> Switching to ${branch}"
 git checkout "${branch}"
 
-echo "==> Fetching lfs-fallback/blender-v5.0-release"
+echo "==> Fetching ${upstream_branch}"
 git fetch lfs-fallback blender-v5.0-release --prune
 
-echo "==> Rebasing without LFS smudge"
-GIT_LFS_SKIP_SMUDGE=1 git rebase lfs-fallback/blender-v5.0-release
+echo "==> Merging upstream into ${branch} without LFS smudge"
+GIT_LFS_SKIP_SMUDGE=1 git merge --no-ff "${upstream_branch}" || {
+    echo "Merge conflicts detected. Resolve conflicts, then run 'git commit' to finish merge."
+    exit 1
+}
 
-echo "==> Refreshing all LFS objects after rebase"
+echo "==> Refreshing all LFS objects after merge"
 git lfs fetch --all
 git lfs pull
 
