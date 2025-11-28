@@ -1,32 +1,34 @@
 #!/usr/bin/env bash
-
 set -euo pipefail
-
-# Update `keep-collada-5.0` with latest lfs-fallback Blender blender-v5.0-release and push to origin.
 
 branch="keep-collada-5.0"
 
-echo "==> Ensuring branch: ${branch}"
+echo "==> Switching to ${branch}"
 git checkout "${branch}"
 
-echo "==> Fetching lfs-fallback/main"
+echo "==> Fetching lfs-fallback/blender-v5.0-release"
 git fetch lfs-fallback blender-v5.0-release --prune
 
-echo "==> Rebasing onto lfs-fallback/main (skipping LFS smudge)"
+echo "==> Rebasing without LFS smudge"
 GIT_LFS_SKIP_SMUDGE=1 git rebase lfs-fallback/blender-v5.0-release
 
-echo "==> Initializing/updating COLLADA submodules (all platforms if present)"
+echo "==> Refreshing all LFS objects after rebase"
+git lfs fetch --all
+git lfs pull
+
+echo "==> Updating COLLADA submodules"
 for sm in lib/linux_x64_collada lib/windows_x64_collada lib/windows_arm64_collada lib/macos_arm64_collada; do
   if git config --file .gitmodules --get-regexp ".*${sm}" >/dev/null 2>&1; then
-    echo "  -> updating ${sm}"
-    GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --progress "${sm}" || true
-    git -C "${sm}" lfs pull || true
+    echo "  -> ${sm}"
+    GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --progress "${sm}"
+    (cd "${sm}" && git lfs fetch --all && git lfs pull) || true
   fi
 done
 
-echo "==> Pushing to origin (skipping pre-push LFS hook)"
+echo "==> Checking LFS integrity before pushing"
+git lfs fsck || true
+
+echo "==> Pushing to origin (skipping LFS hook)"
 git push --no-verify origin "${branch}" --force-with-lease
 
-echo "==> Done"
-
-
+echo "==> Completed"
