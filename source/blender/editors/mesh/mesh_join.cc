@@ -575,6 +575,10 @@ wmOperatorStatus join_objects_exec(bContext *C, wmOperator *op)
                                        edge_ranges.total_size(),
                                        face_ranges.total_size(),
                                        corner_ranges.total_size());
+  BKE_mesh_copy_parameters_for_eval(dst_mesh, active_mesh);
+  BLI_freelistN(&dst_mesh->vertex_group_names);
+  MEM_SAFE_FREE(dst_mesh->mat);
+  dst_mesh->totcol = 0;
 
   /* Inverse transform for all selected meshes in this object,
    * See #object_join_exec for detailed comment on why the safe version is used. */
