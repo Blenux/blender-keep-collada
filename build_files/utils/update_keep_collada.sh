@@ -1,38 +1,130 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+########################################
+# Configuration
+########################################
+
 branch="keep-collada-5.0"
-upstream_branch="lfs-fallback/blender-v5.0-release"
+remote="origin"
+upstream_remote="lfs-fallback"
+upstream_branch="blender-v5.0-release"
 
-echo "==> Switching to ${branch}"
-git checkout "${branch}"
+collada_submodules=(
+  lib/linux_x64_collada
+  lib/windows_x64_collada
+  lib/windows_arm64_collada
+  lib/macos_arm64_collada
+)
 
-echo "==> Fetching ${upstream_branch}"
-git fetch lfs-fallback blender-v5.0-release --prune
+########################################
+# Helpers
+########################################
 
-echo "==> Merging upstream into ${branch} without LFS smudge"
-GIT_LFS_SKIP_SMUDGE=1 git merge --no-ff "${upstream_branch}" || {
-    echo "Merge conflicts detected. Resolve conflicts, then run 'git commit' to finish merge."
-    exit 1
+die() {
+  echo "ERROR: $*" >&2
+  exit 1
 }
 
-echo "==> Refreshing all LFS objects after merge"
-git lfs fetch --all
-git lfs pull
+info() {
+  echo "==> $*"
+}
 
-echo "==> Updating COLLADA submodules"
-for sm in lib/linux_x64_collada lib/windows_x64_collada lib/windows_arm64_collada lib/macos_arm64_collada; do
+require_clean_tree() {
+  if ! git diff --quiet || ! git diff --cached --quiet; then
+    die "Working tree is dirty. Commit or stash changes first."
+  fi
+}
+
+########################################
+# Preconditions
+########################################
+
+info "Checking Git LFS"
+command -v git-lfs >/dev/null 2>&1 || die "git-lfs not installed"
+
+require_clean_tree
+
+########################################
+# Checkout target branch
+########################################
+
+info "Checking out ${branch}"
+git checkout "${branch}"
+
+########################################
+# Fetch upstream safely
+########################################
+
+info "Fetching upstream from ${upstream_remote}"
+git fetch "${upstream_remote}" --prune
+
+upstream_ref="${upstream_remote}/${upstream_branch}"
+git show-ref --verify --quiet "refs/remotes/${upstream_ref}" \
+  || die "Upstream ref ${upstream_ref} not found"
+
+########################################
+# Merge without LFS smudge
+########################################
+
+info "Merging ${upstream_ref} into ${branch} (LFS smudge disabled)"
+GIT_LFS_SKIP_SMUDGE=1 git merge --no-ff "${upstream_ref}" || {
+  echo
+  echo "Merge conflicts detected."
+  echo "Resolve conflicts, then run:"
+  echo "  git commit"
+  exit 1
+}
+
+########################################
+# Ensure all LFS objects exist locally
+########################################
+
+info "Verifying local LFS objects"
+git lfs fsck || die "Missing local LFS objects – cannot continue"
+
+########################################
+# Push ALL LFS objects (CRITICAL STEP)
+########################################
+
+info "Pushing all LFS objects to ${remote}"
+git lfs push --all "${remote}" "${branch}"
+
+########################################
+# Update COLLADA submodules
+########################################
+
+info "Updating COLLADA submodules"
+
+for sm in "${collada_submodules[@]}"; do
   if git config --file .gitmodules --get-regexp ".*${sm}" >/dev/null 2>&1; then
-    echo "  -> ${sm}"
+    info "  -> ${sm}"
+
     GIT_LFS_SKIP_SMUDGE=1 git submodule update --init --progress "${sm}"
-    (cd "${sm}" && git lfs fetch --all && git lfs pull) || true
+
+    (
+      cd "${sm}"
+      git lfs fetch --all
+      git lfs pull
+      git lfs fsck || die "LFS integrity failure in submodule ${sm}"
+    )
   fi
 done
 
-echo "==> Checking LFS integrity before pushing"
-git lfs fsck || true
+########################################
+# Final push (safe force)
+########################################
 
-echo "==> Pushing to origin (skipping LFS hook)"
-git push --no-verify origin "${branch}" --force-with-lease
+info "Pushing branch ${branch} to ${remote}"
+git push "${remote}" "${branch}" --force-with-lease
 
-echo "==> Completed"
+########################################
+# Final verification hint
+########################################
+
+echo
+info "Completed successfully"
+echo
+echo "Recommended final check:"
+echo "  git clone <repo-url> /tmp/test && cd /tmp/test && git lfs pull"
+echo
