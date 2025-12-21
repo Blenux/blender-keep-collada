@@ -383,7 +383,7 @@ class TOPBAR_MT_file_import(Menu):
         if bpy.app.build_options.io_fbx:
             self.layout.operator("wm.fbx_import", text="FBX (.fbx) (experimental)")
         if bpy.app.build_options.collada:
-            self.layout.operator("wm.collada_import", text="Collada (.dae) (Legacy)")
+            self.layout.operator("wm.collada_import", text="Collada (.dae)")
 
 
 class TOPBAR_MT_file_export(Menu):
@@ -413,7 +413,7 @@ class TOPBAR_MT_file_export(Menu):
         if bpy.app.build_options.io_stl:
             self.layout.operator("wm.stl_export", text="STL (.stl)")
         if bpy.app.build_options.collada:
-            self.layout.operator("wm.collada_export", text="Collada (.dae) (Legacy)")
+            self.layout.operator("wm.collada_export", text="Collada (.dae)")
 
 
 class TOPBAR_MT_file_external_data(Menu):
