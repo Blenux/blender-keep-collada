@@ -169,7 +169,6 @@ elseif(WITH_GHOST_X11)
   add_definitions(-DWITH_GHOST_X11)
 endif()
 
->>>>>>> e43752475bd (readd collada)
 if(WITH_PYTHON)
   list(APPEND INC
     ../python
