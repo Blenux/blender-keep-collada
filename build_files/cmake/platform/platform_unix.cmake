@@ -87,7 +87,9 @@ if(DEFINED LIBDIR)
   # not need to be ever discovered for the Blender linking.
   list(REMOVE_ITEM LIB_SUBDIRS ${LIBDIR}/dpcpp)
 
-  # NOTE: Make sure "proper" compiled zlib comes first
+  # NOTE: Make sure "proper" compiled zlib comes first before the one
+  # which is a part of OpenCollada. They have different ABI, and we
+  # do need to use the official one.
   set(CMAKE_PREFIX_PATH ${LIBDIR}/zlib ${LIB_SUBDIRS})
 
   include(platform_old_libs_update)
@@ -107,6 +109,24 @@ if(DEFINED LIBDIR)
   set(absl_ROOT ${LIBDIR}/abseil)
   set(Ceres_ROOT ${LIBDIR}/ceres)
   set(Eigen3_ROOT ${LIBDIR}/eigen)
+endif()
+
+# Add COLLADA-specific libraries if available  
+if(EXISTS ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada)
+  set(OPENCOLLADA_ROOT_DIR ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada)
+  
+  # Set include directories explicitly
+  set(OPENCOLLADA_INCLUDE_DIRS
+    ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada/include/COLLADAFWAnimation
+    ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada/include/COLLADABaseUtils
+    ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada/include/COLLADAFramework
+    ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada/include/COLLADASaxFrameworkLoader
+    ${CMAKE_SOURCE_DIR}/lib/linux_x64_collada/opencollada/include/GeneratedSaxParser
+  )
+  
+  if(FIRST_RUN)
+    message(STATUS "Using COLLADA libraries from: ${OPENCOLLADA_ROOT_DIR}")
+  endif()
 endif()
 
 # Wrapper to prefer static libraries
@@ -356,6 +376,20 @@ if(WITH_FFTW3)
   set_and_warn_library_found("fftw3" FFTW3_FOUND WITH_FFTW3)
 endif()
 
+if(WITH_OPENCOLLADA)
+  find_package_wrapper(OpenCOLLADA)
+  if(OPENCOLLADA_FOUND)
+    find_package_wrapper(XML2)
+  else()
+    set_and_warn_library_found("OpenCollada" OPENCOLLADA_FOUND WITH_OPENCOLLADA)
+  endif()
+endif()
+
+if(WITH_MEM_JEMALLOC)
+  find_package_wrapper(JeMalloc)
+  set_and_warn_library_found("JeMalloc" JEMALLOC_FOUND WITH_MEM_JEMALLOC)
+endif()
+
 if(WITH_INPUT_NDOF)
   find_package_wrapper(Spacenav)
   set_and_warn_library_found("SpaceNav" SPACENAV_FOUND WITH_INPUT_NDOF)
@@ -501,6 +535,13 @@ if(WITH_LLVM)
     if(WITH_CLANG)
       find_package_wrapper(Clang)
       set_and_warn_library_found("Clang" CLANG_FOUND WITH_CLANG)
+    endif()
+
+    # Symbol conflicts with same UTF library used by OpenCollada
+    if(DEFINED LIBDIR)
+      if(WITH_OPENCOLLADA AND (${LLVM_VERSION} VERSION_LESS "4.0.0"))
+        list(REMOVE_ITEM OPENCOLLADA_LIBRARIES ${OPENCOLLADA_UTF_LIBRARY})
+      endif()
     endif()
   endif()
 endif()

@@ -25,7 +25,7 @@ endfunction()
 # ------------------------------------------------------------------------
 # Find system provided libraries.
 
-# Find system ZLIB
+# Find system ZLIB, not the pre-compiled one supplied with OpenCollada.
 set(ZLIB_ROOT /usr)
 find_package(ZLIB REQUIRED)
 find_package(BZip2 REQUIRED)
@@ -215,6 +215,12 @@ endif()
 if(WITH_VULKAN_BACKEND)
   find_package(ShaderC REQUIRED)
   find_package(Vulkan REQUIRED)
+endif()
+
+if(WITH_OPENCOLLADA)
+  find_package(OpenCOLLADA)
+  find_library(XML2_LIBRARIES NAMES xml2 HINTS ${LIBDIR}/opencollada/lib)
+  print_found_status("XML2" "${XML2_LIBRARIES}")
 endif()
 
 if(WITH_SDL)

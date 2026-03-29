@@ -149,6 +149,27 @@ if(WITH_VULKAN_BACKEND)
   add_definitions(-DWITH_VULKAN_BACKEND)
 endif()
 
+if(WITH_OPENCOLLADA)
+  add_definitions(-DWITH_COLLADA)
+endif()
+
+if(WITH_CODEC_FFMPEG)
+  list(APPEND INC_SYS
+    ${FFMPEG_INCLUDE_DIRS}
+  )
+  list(APPEND LIB
+    ${FFMPEG_LIBRARIES}
+  )
+  add_definitions(-DWITH_FFMPEG)
+endif()
+
+if(WITH_HEADLESS)
+  add_definitions(-DWITH_HEADLESS)
+elseif(WITH_GHOST_X11)
+  add_definitions(-DWITH_GHOST_X11)
+endif()
+
+>>>>>>> keep-collada
 if(WITH_PYTHON)
   list(APPEND INC
     ../python
