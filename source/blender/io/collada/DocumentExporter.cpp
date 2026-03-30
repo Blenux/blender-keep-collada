@@ -55,6 +55,10 @@ extern "C" char build_hash[];
 
 #include <cerrno>
 
+using namespace blender;
+
+using namespace blender;
+
 const char *bc_CustomData_get_layer_name(const CustomData *data, const eCustomDataType type, int n)
 {
   int layer_index = CustomData_get_layer_index(data, type);
@@ -142,8 +146,8 @@ int DocumentExporter::exportCurrentScene()
   float linearmeasure = RNA_float_get(&unit_settings, "scale_length");
 
   switch (RNA_property_enum_get(&unit_settings, system)) {
-    case USER_UNIT_NONE:
-    case USER_UNIT_METRIC:
+    case blender::USER_UNIT_NONE:
+    case blender::USER_UNIT_METRIC:
       if (linearmeasure == 0.001f) {
         unitname = "millimeter";
       }
@@ -160,7 +164,7 @@ int DocumentExporter::exportCurrentScene()
         unitname = "kilometer";
       }
       break;
-    case USER_UNIT_IMPERIAL:
+    case blender::USER_UNIT_IMPERIAL:
       if (linearmeasure == 0.0254f) {
         unitname = "inch";
       }
@@ -192,15 +196,15 @@ int DocumentExporter::exportCurrentScene()
   asset.getContributor().mAuthoringTool = version_buf;
   asset.add();
 
-  LinkNode *export_set = this->export_settings.get_export_set();
+  blender::LinkNode *export_set = this->export_settings.get_export_set();
   /* <library_cameras> */
-  if (bc_has_object_type(export_set, OB_CAMERA)) {
+  if (bc_has_object_type(export_set, blender::OB_CAMERA)) {
     CamerasExporter ce(writer, this->export_settings);
     ce.exportCameras(sce);
   }
 
   /* <library_lights> */
-  if (bc_has_object_type(export_set, OB_LAMP)) {
+  if (bc_has_object_type(export_set, blender::OB_LAMP)) {
     LightsExporter le(writer, this->export_settings);
     le.exportLights(sce);
   }
@@ -218,7 +222,7 @@ int DocumentExporter::exportCurrentScene()
   me.exportMaterials(sce);
 
   /* <library_geometries> */
-  if (bc_has_object_type(export_set, OB_MESH)) {
+  if (bc_has_object_type(export_set, blender::OB_MESH)) {
     GeometryExporter ge(blender_context, writer, this->export_settings);
     ge.exportGeom();
   }
@@ -226,8 +230,7 @@ int DocumentExporter::exportCurrentScene()
   /* <library_controllers> */
   ArmatureExporter arm_exporter(blender_context, writer, this->export_settings);
   ControllerExporter controller_exporter(blender_context, writer, this->export_settings);
-  if (bc_has_object_type(export_set, OB_ARMATURE) || this->export_settings.get_include_shapekeys())
-  {
+  if (bc_has_object_type(export_set, blender::OB_ARMATURE) || this->export_settings.get_include_shapekeys()) {
     controller_exporter.export_controllers();
   }
 
@@ -254,10 +257,10 @@ int DocumentExporter::exportCurrentScene()
 
   /* Finally move the created document into place */
   fprintf(stdout, "Collada export to: %s\n", this->export_settings.get_filepath());
-  int status = BLI_rename_overwrite(native_filename.c_str(), this->export_settings.get_filepath());
+  int status = blender::BLI_rename_overwrite(native_filename.c_str(), this->export_settings.get_filepath());
   if (status != 0) {
-    status = BLI_copy(native_filename.c_str(), this->export_settings.get_filepath());
-    BLI_delete(native_filename.c_str(), false, false);
+    status = blender::BLI_copy(native_filename.c_str(), this->export_settings.get_filepath());
+    blender::BLI_delete(native_filename.c_str(), false, false);
   }
   return status;
 }

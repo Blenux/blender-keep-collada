@@ -15,6 +15,6 @@
 class InstanceWriter {
  protected:
   void add_material_bindings(COLLADASW::BindMaterial &bind_material,
-                             Object *ob,
+                             blender::Object *ob,
                              bool active_uv_only);
 };

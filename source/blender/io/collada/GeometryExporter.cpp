@@ -31,6 +31,8 @@
 #include "collada_internal.h"
 #include "collada_utils.h"
 
+using namespace blender;
+
 using blender::float3;
 using blender::Span;
 
@@ -460,7 +462,7 @@ void GeometryExporter::createVertsSource(std::string geom_id, Mesh *mesh)
   source.prepareToAppendValues();
   /* appends data to <float_array> */
   for (const int i : positions.index_range()) {
-    Vector co;
+    float co[3];
     if (export_settings.get_apply_global_orientation()) {
       float co_c[3];
       copy_v3_v3(co_c, positions[i]);
@@ -604,7 +606,7 @@ void GeometryExporter::createNormalsSource(std::string geom_id,
   for (it = nor.begin(); it != nor.end(); it++) {
     Normal &n = *it;
 
-    Vector no{n.x, n.y, n.z};
+    float no[3] = {n.x, n.y, n.z};
     if (export_settings.get_apply_global_orientation()) {
       bc_add_global_transform(no, export_settings.get_global_transform());
     }

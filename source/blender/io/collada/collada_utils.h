@@ -45,10 +45,10 @@
 
 constexpr int LIMITTED_PRECISION = 6;
 
-using UidImageMap = std::map<COLLADAFW::UniqueId, Image *>;
-using KeyImageMap = std::map<std::string, Image *>;
-using TexIndexTextureArrayMap = std::map<COLLADAFW::TextureMapId, std::vector<MTex *>>;
-using BCObjectSet = std::set<Object *>;
+using UidImageMap = std::map<COLLADAFW::UniqueId, blender::Image *>;
+using KeyImageMap = std::map<std::string, blender::Image *>;
+using TexIndexTextureArrayMap = std::map<COLLADAFW::TextureMapId, std::vector<blender::MTex *>>;
+using BCObjectSet = std::set<blender::Object *>;
 
 namespace COLLADAFW {
 class Node;
@@ -59,40 +59,40 @@ extern void bc_update_scene(BlenderContext &blender_context, float ctime);
 
 /* Action helpers */
 
-std::vector<bAction *> bc_getSceneActions(const bContext *C, Object *ob, bool all_actions);
+std::vector<blender::bAction *> bc_getSceneActions(const blender::bContext *C, blender::Object *ob, bool all_actions);
 
 /* Action and Animdata helpers */
 
 /* Return Object's Action or nullptr. */
-inline bAction *bc_getSceneObjectAction(Object *ob)
+inline blender::bAction *bc_getSceneObjectAction(blender::Object *ob)
 {
   return (ob->adt && ob->adt->action) ? ob->adt->action : nullptr;
 }
 
 /* Return Light's AnimData or nullptr. */
-inline AnimData *bc_getSceneLightAnimData(Object *ob)
+inline blender::AnimData *bc_getSceneLightAnimData(blender::Object *ob)
 {
-  if (ob->type != OB_LAMP) {
+  if (ob->type != blender::OB_LAMP) {
     return nullptr;
   }
 
-  Light *lamp = (Light *)ob->data;
+  blender::Light *lamp = (blender::Light *)ob->data;
   return lamp->adt;
 }
 
 /* Return Camera's AnimData or nullptr. */
-inline AnimData *bc_getSceneCameraAnimData(Object *ob)
+inline blender::AnimData *bc_getSceneCameraAnimData(blender::Object *ob)
 {
-  if (ob->type != OB_CAMERA) {
+  if (ob->type != blender::OB_CAMERA) {
     return nullptr;
   }
 
-  const Camera *camera = (const Camera *)ob->data;
+  const blender::Camera *camera = (const blender::Camera *)ob->data;
   return camera->adt;
 }
 
 /* Return Material's AnimData or nullptr. */
-inline AnimData *bc_getSceneMaterialAnimData(Material *ma)
+inline blender::AnimData *bc_getSceneMaterialAnimData(blender::Material *ma)
 {
   if (ma == nullptr) {
     return nullptr;
@@ -108,44 +108,44 @@ std::string bc_get_action_id(const std::string &action_name,
                              const std::string &axis_separator = "_");
 
 extern float bc_get_float_value(const COLLADAFW::FloatOrDoubleArray &array, unsigned int index);
-extern int bc_test_parent_loop(Object *par, Object *ob);
+extern int bc_test_parent_loop(blender::Object *par, blender::Object *ob);
 
-extern bool bc_validateConstraints(bConstraint *con);
+extern bool bc_validateConstraints(blender::bConstraint *con);
 
-bool bc_set_parent(Object *ob, Object *par, bContext *C, bool is_parent_space = true);
-extern Object *bc_add_object(
-    Main *bmain, Scene *scene, ViewLayer *view_layer, int type, const char *name);
-extern Object *bc_add_armature(COLLADAFW::Node *node,
+bool bc_set_parent(blender::Object *ob, blender::Object *par, blender::bContext *C, bool is_parent_space = true);
+extern blender::Object *bc_add_object(
+    blender::Main *bmain, blender::Scene *scene, blender::ViewLayer *view_layer, int type, const char *name);
+extern blender::Object *bc_add_armature(COLLADAFW::Node *node,
                                ExtraTags *node_extra_tags,
-                               Main *bmain,
-                               Scene *scene,
-                               ViewLayer *view_layer,
+                               blender::Main *bmain,
+                               blender::Scene *scene,
+                               blender::ViewLayer *view_layer,
                                int type,
                                const char *name);
-extern Mesh *bc_get_mesh_copy(BlenderContext &blender_context,
-                              Object *ob,
+extern blender::Mesh *bc_get_mesh_copy(BlenderContext &blender_context,
+                              blender::Object *ob,
                               BC_export_mesh_type export_mesh_type,
                               bool apply_modifiers,
                               bool triangulate);
 
-extern Object *bc_get_assigned_armature(Object *ob);
-extern bool bc_has_object_type(LinkNode *export_set, short obtype);
+extern blender::Object *bc_get_assigned_armature(blender::Object *ob);
+extern bool bc_has_object_type(blender::LinkNode *export_set, short obtype);
 
-extern const char *bc_CustomData_get_layer_name(const CustomData *data,
-                                                eCustomDataType type,
+extern const char *bc_CustomData_get_layer_name(const blender::CustomData *data,
+                                                blender::eCustomDataType type,
                                                 int n);
-extern const char *bc_CustomData_get_active_layer_name(const CustomData *data,
-                                                       eCustomDataType type);
+extern const char *bc_CustomData_get_active_layer_name(const blender::CustomData *data,
+                                                       blender::eCustomDataType type);
 
-extern void bc_bubble_sort_by_Object_name(LinkNode *export_set);
+extern void bc_bubble_sort_by_Object_name(blender::LinkNode *export_set);
 /**
  * Check if a bone is the top most exportable bone in the bone hierarchy.
  * When deform_bones_only == false, then only bones with NO parent
  * can be root bones. Otherwise the top most deform bones in the hierarchy
  * are root bones.
  */
-extern bool bc_is_root_bone(Bone *aBone, bool deform_bones_only);
-extern int bc_get_active_UVLayer(Object *ob);
+extern bool bc_is_root_bone(blender::Bone *aBone, bool deform_bones_only);
+extern int bc_get_active_UVLayer(blender::Object *ob);
 
 inline std::string bc_string_after(const std::string &s, const std::string &probe)
 {
@@ -201,8 +201,8 @@ extern std::string bc_url_encode(const std::string &data);
  * is preserved. I.e. 1 meter in the import will also be
  * 1 meter in the current scene.
  */
-extern void bc_match_scale(Object *ob, UnitConverter &bc_unit, bool scale_to_scene);
-extern void bc_match_scale(std::vector<Object *> *objects_done,
+extern void bc_match_scale(blender::Object *ob, UnitConverter &bc_unit, bool scale_to_scene);
+extern void bc_match_scale(std::vector<blender::Object *> *objects_done,
                            UnitConverter &bc_unit,
                            bool scale_to_scene);
 
@@ -225,12 +225,12 @@ extern void bc_rotate_from_reference_quat(float quat_to[4],
                                           float quat_from[4],
                                           float mat_to[4][4]);
 
-extern void bc_triangulate_mesh(Mesh *mesh);
+extern void bc_triangulate_mesh(blender::Mesh *mesh);
 /**
  * A bone is a leaf when it has no children or all children are not connected.
  */
-extern bool bc_is_leaf_bone(Bone *bone);
-extern EditBone *bc_get_edit_bone(bArmature *armature, const char *name);
+extern bool bc_is_leaf_bone(blender::Bone *bone);
+extern blender::EditBone *bc_get_edit_bone(blender::bArmature *armature, const char *name);
 extern int bc_set_layer(int bitfield, int layer, bool enable);
 extern int bc_set_layer(int bitfield, int layer);
 
@@ -251,22 +251,22 @@ void bc_sanitize_v3(float v[3], int precision);
  * Get a custom property when it exists.
  * This function is also used to check if a property exists.
  */
-extern IDProperty *bc_get_IDProperty(Bone *bone, const std::string &key);
-extern void bc_set_IDProperty(EditBone *ebone, const char *key, float value);
+extern blender::IDProperty *bc_get_IDProperty(blender::Bone *bone, const std::string &key);
+extern void bc_set_IDProperty(blender::EditBone *ebone, const char *key, float value);
 /**
  * Stores a 4*4 matrix as a custom bone property array of size 16.
  */
-extern void bc_set_IDPropertyMatrix(EditBone *ebone, const char *key, float mat[4][4]);
+extern void bc_set_IDPropertyMatrix(blender::EditBone *ebone, const char *key, float mat[4][4]);
 
 /**
  * Read a custom bone property and convert to float
  * Return def if the property does not exist.
  */
-extern float bc_get_property(Bone *bone, const std::string &key, float def);
+extern float bc_get_property(blender::Bone *bone, const std::string &key, float def);
 /**
  * Get a vector that is stored in 3 custom properties (used in Blender <= 2.78).
  */
-extern void bc_get_property_vector(Bone *bone,
+extern void bc_get_property_vector(blender::Bone *bone,
                                    const std::string &key,
                                    float val[3],
                                    const float def[3]);
@@ -278,23 +278,23 @@ extern void bc_get_property_vector(Bone *bone,
  * - the property does not exist
  * - is not an array of size 16
  */
-extern bool bc_get_property_matrix(Bone *bone, const std::string &key, float mat[4][4]);
+extern bool bc_get_property_matrix(blender::Bone *bone, const std::string &key, float mat[4][4]);
 
-extern void bc_enable_fcurves(bAction *act, const char *bone_name);
-extern bool bc_bone_matrix_local_get(Object *ob, Bone *bone, Matrix &mat, bool for_opensim);
+extern void bc_enable_fcurves(blender::bAction *act, const char *bone_name);
+extern bool bc_bone_matrix_local_get(blender::Object *ob, blender::Bone *bone, Matrix &mat, bool for_opensim);
 extern bool bc_is_animated(BCMatrixSampleMap &values);
-extern bool bc_has_animations(Scene *sce, LinkNode *export_set);
-extern bool bc_has_animations(Object *ob);
+extern bool bc_has_animations(blender::Scene *sce, blender::LinkNode *export_set);
+extern bool bc_has_animations(blender::Object *ob);
 
 extern void bc_add_global_transform(Matrix &to_mat,
                                     const Matrix &from_mat,
                                     const BCMatrix &global_transform,
                                     bool invert = false);
-extern void bc_add_global_transform(Vector &to_vec,
-                                    const Vector &from_vec,
+extern void bc_add_global_transform(float to_vec[3],
+                                    const float from_vec[3],
                                     const BCMatrix &global_transform,
                                     bool invert = false);
-extern void bc_add_global_transform(Vector &to_vec,
+extern void bc_add_global_transform(float to_vec[3],
                                     const BCMatrix &global_transform,
                                     bool invert = false);
 extern void bc_add_global_transform(Matrix &to_mat,
@@ -303,7 +303,7 @@ extern void bc_add_global_transform(Matrix &to_mat,
 extern void bc_apply_global_transform(Matrix &to_mat,
                                       const BCMatrix &global_transform,
                                       bool invert = false);
-extern void bc_apply_global_transform(Vector &to_vec,
+extern void bc_apply_global_transform(float to_vec[3],
                                       const BCMatrix &global_transform,
                                       bool invert = false);
 /**
@@ -313,24 +313,24 @@ extern void bc_apply_global_transform(Vector &to_vec,
  * \note This is old style for Blender <= 2.78 only kept for compatibility.
  */
 extern void bc_create_restpose_mat(BCExportSettings &export_settings,
-                                   Bone *bone,
+                                   blender::Bone *bone,
                                    float to_mat[4][4],
                                    float from_mat[4][4],
                                    bool use_local_space);
 
 class ColladaBaseNodes {
  private:
-  std::vector<Object *> base_objects;
+  std::vector<blender::Object *> base_objects;
 
  public:
-  void add(Object *ob)
+  void add(blender::Object *ob)
   {
     base_objects.push_back(ob);
   }
 
-  bool contains(Object *ob)
+  bool contains(blender::Object *ob)
   {
-    std::vector<Object *>::iterator it = std::find(base_objects.begin(), base_objects.end(), ob);
+    std::vector<blender::Object *>::iterator it = std::find(base_objects.begin(), base_objects.end(), ob);
     return (it != base_objects.end());
   }
 
@@ -339,7 +339,7 @@ class ColladaBaseNodes {
     return base_objects.size();
   }
 
-  Object *get(int index)
+  blender::Object *get(int index)
   {
     return base_objects[index];
   }
@@ -381,7 +381,7 @@ class BoneExtended {
    * See ArmatureImporter::fix_leaf_bones()
    * and ArmatureImporter::connect_bone_chains()
    */
-  BoneExtended(EditBone *aBone);
+  BoneExtended(blender::EditBone *aBone);
 
   void set_name(const char *aName);
   char *get_name();
@@ -428,29 +428,33 @@ class BoneExtensionManager {
    * \note The ~BoneExtensionManager destructor takes care
    * to delete the created maps when the manager is removed.
    */
-  BoneExtensionMap &getExtensionMap(bArmature *armature);
+  BoneExtensionMap &getExtensionMap(blender::bArmature *armature);
   ~BoneExtensionManager();
 };
 
-void bc_add_default_shader(bContext *C, Material *ma);
-bNode *bc_get_master_shader(Material *ma);
+void bc_add_default_shader(blender::bContext *C, blender::Material *ma);
+blender::bNode *bc_get_master_shader(blender::Material *ma);
 
-COLLADASW::ColorOrTexture bc_get_base_color(Material *ma);
-COLLADASW::ColorOrTexture bc_get_emission(Material *ma);
-COLLADASW::ColorOrTexture bc_get_ambient(Material *ma);
-COLLADASW::ColorOrTexture bc_get_specular(Material *ma);
-COLLADASW::ColorOrTexture bc_get_reflective(Material *ma);
+COLLADASW::ColorOrTexture bc_get_base_color(blender::Material *ma);
+COLLADASW::ColorOrTexture bc_get_emission(blender::Material *ma);
+COLLADASW::ColorOrTexture bc_get_ambient(blender::Material *ma);
+COLLADASW::ColorOrTexture bc_get_specular(blender::Material *ma);
+COLLADASW::ColorOrTexture bc_get_reflective(blender::Material *ma);
 
-double bc_get_reflectivity(Material *ma);
-double bc_get_alpha(Material *ma);
-double bc_get_ior(Material *ma);
-double bc_get_shininess(Material *ma);
+double bc_get_reflectivity(blender::Material *ma);
+double bc_get_alpha(blender::Material *ma);
+double bc_get_ior(blender::Material *ma);
+double bc_get_shininess(blender::Material *ma);
 
-bool bc_get_float_from_shader(bNode *shader, double &val, std::string nodeid);
-COLLADASW::ColorOrTexture bc_get_cot_from_shader(bNode *shader,
+bool bc_get_float_from_shader(blender::bNode *shader, double &val, std::string nodeid);
+COLLADASW::ColorOrTexture bc_get_cot_from_shader(blender::bNode *shader,
                                                  std::string nodeid,
-                                                 const Color &default_color,
+                                                 float default_r,
+                                                 float default_g,
+                                                 float default_b,
+                                                 float default_a,
                                                  bool with_alpha = true);
 
 COLLADASW::ColorOrTexture bc_get_cot(float r, float g, float b, float a);
+COLLADASW::ColorOrTexture bc_get_cot(float r, float g, float b, float a, bool with_alpha);
 COLLADASW::ColorOrTexture bc_get_cot(const Color col, bool with_alpha = true);

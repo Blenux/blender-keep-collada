@@ -50,9 +50,9 @@ class SkinInfo {
 
   UnitConverter *unit_converter;
 
-  Object *ob_arm;
+  blender::Object *ob_arm;
   COLLADAFW::UniqueId controller_uid;
-  Object *parent;
+  blender::Object *parent;
 
  public:
   SkinInfo();
@@ -83,13 +83,13 @@ class SkinInfo {
   void set_controller(const COLLADAFW::SkinController *co);
 
   /** Called from write_controller. */
-  Object *create_armature(Main *bmain, Scene *scene, ViewLayer *view_layer);
+  blender::Object *create_armature(blender::Main *bmain, blender::Scene *scene, blender::ViewLayer *view_layer);
 
-  Object *set_armature(Object *ob_arm);
+  blender::Object *set_armature(blender::Object *ob_arm);
 
   bool get_joint_inv_bind_matrix(float inv_bind_mat[4][4], COLLADAFW::Node *node);
 
-  Object *BKE_armature_from_object();
+  blender::Object *BKE_armature_from_object();
 
   const COLLADAFW::UniqueId &get_controller_uid();
 
@@ -102,16 +102,16 @@ class SkinInfo {
    */
   bool uses_joint_or_descendant(COLLADAFW::Node *node);
 
-  void link_armature(bContext *C,
-                     Object *ob,
+  void link_armature(blender::bContext *C,
+                     blender::Object *ob,
                      std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> &joint_by_uid,
                      TransformReader *tm);
 
-  bPoseChannel *get_pose_channel_from_node(COLLADAFW::Node *node);
+  blender::bPoseChannel *get_pose_channel_from_node(COLLADAFW::Node *node);
 
-  void set_parent(Object *_parent);
+  void set_parent(blender::Object *_parent);
 
-  Object *get_parent();
+  blender::Object *get_parent();
 
   void find_root_joints(const std::vector<COLLADAFW::Node *> &root_joints,
                         std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> &joint_by_uid,

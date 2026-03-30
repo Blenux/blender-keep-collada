@@ -20,10 +20,23 @@
 class LightsExporter : COLLADASW::LibraryLights {
  public:
   LightsExporter(COLLADASW::StreamWriter *sw, BCExportSettings &export_settings);
-  void exportLights(Scene *sce);
-  void operator()(Object *ob);
+  void exportLights(blender::Scene *sce);
+  void operator()(blender::Object *ob);
 
  private:
-  bool exportBlenderProfile(COLLADASW::Light &cla, Light *la);
+  template<class Functor>
+  void forEachLightObjectInExportSet(blender::Scene *sce, Functor &f, blender::LinkNode *export_set)
+  {
+    blender::LinkNode *node;
+    for (node = export_set; node; node = node->next) {
+      blender::Object *ob = (blender::Object *)node->link;
+
+      if (ob->type == blender::OB_LAMP && ob->data) {
+        f(ob);
+      }
+    }
+  }
+  
+  bool exportBlenderProfile(COLLADASW::Light &cla, blender::Light *la);
   BCExportSettings &export_settings;
 };

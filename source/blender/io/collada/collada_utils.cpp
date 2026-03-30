@@ -48,6 +48,7 @@
 #include "BKE_scene.hh"
 
 #include "ANIM_action.hh"
+#include "ANIM_animdata.hh"
 #include "ANIM_action_legacy.hh"
 #include "ANIM_bone_collections.hh"
 
@@ -58,6 +59,7 @@
 #include "WM_api.hh" /* XXX hrm, see if we can do without this */
 #include "WM_types.hh"
 
+#include "BLI_listbase_wrapper.hh"
 #include "bmesh.hh"
 #include "bmesh_tools.hh"
 
@@ -68,6 +70,10 @@
 #include "ExportSettings.h"
 #include "ExtraTags.h"
 #include "collada_utils.h"
+
+using namespace blender;
+
+using namespace blender;
 
 float bc_get_float_value(const COLLADAFW::FloatOrDoubleArray &array, uint index)
 {
@@ -196,7 +202,7 @@ Object *bc_add_object(Main *bmain, Scene *scene, ViewLayer *view_layer, int type
 {
   Object *ob = BKE_object_add_only_object(bmain, type, name);
 
-  ob->data = BKE_object_obdata_add_from_type(bmain, type, name);
+  ob->data = static_cast<ID*>(BKE_object_obdata_add_from_type(bmain, type, name));
   DEG_id_tag_update(&ob->id, ID_RECALC_TRANSFORM | ID_RECALC_GEOMETRY | ID_RECALC_ANIMATION);
 
   LayerCollection *layer_collection = BKE_layer_collection_get_active(view_layer);
@@ -300,9 +306,9 @@ Object *bc_get_assigned_armature(Object *ob)
     ob_arm = ob->parent;
   }
   else {
-    LISTBASE_FOREACH (ModifierData *, mod, &ob->modifiers) {
+    for (blender::ModifierData *mod : blender::ListBaseWrapper<blender::ModifierData>(&ob->modifiers)) {
       if (mod->type == eModifierType_Armature) {
-        ob_arm = ((ArmatureModifierData *)mod)->object;
+        ob_arm = ((blender::ArmatureModifierData *)mod)->object;
       }
     }
   }
@@ -473,7 +479,7 @@ void bc_triangulate_mesh(Mesh *mesh)
 
 bool bc_is_leaf_bone(Bone *bone)
 {
-  LISTBASE_FOREACH (Bone *, child, &bone->childbase) {
+  for (blender::Bone *child : blender::ListBaseWrapper<blender::Bone>(&bone->childbase)) {
     if (child->flag & BONE_CONNECTED) {
       return false;
     }
@@ -483,7 +489,7 @@ bool bc_is_leaf_bone(Bone *bone)
 
 EditBone *bc_get_edit_bone(bArmature *armature, const char *name)
 {
-  LISTBASE_FOREACH (EditBone *, eBone, armature->edbo) {
+  for (blender::EditBone *eBone : blender::ListBaseWrapper<blender::EditBone>(armature->edbo)) {
     if (STREQ(name, eBone->name)) {
       return eBone;
     }
@@ -756,7 +762,7 @@ void bc_enable_fcurves(AnimData *adt, const char *bone_name)
     SNPRINTF(prefix, "pose.bones[\"%s\"]", bone_name_esc);
   }
 
-  for (FCurve *fcu : blender::animrig::legacy::fcurves_for_assigned_action(adt)) {
+  for (FCurve *fcu : blender::animrig::fcurves_for_assigned_action(adt)) {
     if (bone_name) {
       if (STREQLEN(fcu->rna_path, prefix, strlen(prefix))) {
         fcu->flag &= ~FCURVE_DISABLED;
@@ -894,8 +900,8 @@ void bc_add_global_transform(Matrix &to_mat,
   bc_add_global_transform(to_mat, global_transform, invert);
 }
 
-void bc_add_global_transform(Vector &to_vec,
-                             const Vector &from_vec,
+void bc_add_global_transform(float to_vec[3],
+                             const float from_vec[3],
                              const BCMatrix &global_transform,
                              const bool invert)
 {
@@ -907,15 +913,15 @@ void bc_add_global_transform(Matrix &to_mat, const BCMatrix &global_transform, c
 {
   BCMatrix mat(to_mat);
   mat.add_transform(global_transform, invert);
-  mat.get_matrix(to_mat);
+  mat.get_matrix(to_mat, false, -1, false);
 }
 
-void bc_add_global_transform(Vector &to_vec, const BCMatrix &global_transform, const bool invert)
+void bc_add_global_transform(float to_vec[3], const BCMatrix &global_transform, const bool invert)
 {
   Matrix mat;
-  Vector from_vec;
+  float from_vec[3];
   copy_v3_v3(from_vec, to_vec);
-  global_transform.get_matrix(mat, false, 6, invert);
+  global_transform.get_matrix(mat, false, 6, invert); // Fix: explicitly specify the inverted parameter
   mul_v3_m4v3(to_vec, mat, from_vec);
 }
 
@@ -923,13 +929,13 @@ void bc_apply_global_transform(Matrix &to_mat, const BCMatrix &global_transform,
 {
   BCMatrix mat(to_mat);
   mat.apply_transform(global_transform, invert);
-  mat.get_matrix(to_mat);
+  mat.get_matrix(to_mat, false, -1, false);
 }
 
-void bc_apply_global_transform(Vector &to_vec, const BCMatrix &global_transform, const bool invert)
+void bc_apply_global_transform(float to_vec[3], const BCMatrix &global_transform, const bool invert)
 {
   Matrix transform;
-  global_transform.get_matrix(transform);
+  global_transform.get_matrix(transform, false, 6, false);
   mul_v3_m4v3(to_vec, transform, to_vec);
 }
 
@@ -1167,10 +1173,10 @@ COLLADASW::ColorOrTexture bc_get_base_color(Material *ma)
   Color default_color = {ma->r, ma->g, ma->b, 1.0};
   bNode *shader = bc_get_master_shader(ma);
   if (ma->use_nodes && shader) {
-    return bc_get_cot_from_shader(shader, "Base Color", default_color, false);
+    return bc_get_cot_from_shader(shader, "Base Color", default_color[0], default_color[1], default_color[2], default_color[3], false);
   }
 
-  return bc_get_cot(default_color);
+  return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
 }
 
 COLLADASW::ColorOrTexture bc_get_emission(Material *ma)
@@ -1178,16 +1184,16 @@ COLLADASW::ColorOrTexture bc_get_emission(Material *ma)
   Color default_color = {0, 0, 0, 1}; /* default black */
   bNode *shader = bc_get_master_shader(ma);
   if (!(ma->use_nodes && shader)) {
-    return bc_get_cot(default_color);
+    return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
   }
 
   double emission_strength = 0.0;
   bc_get_float_from_shader(shader, emission_strength, "Emission Strength");
   if (emission_strength == 0.0) {
-    return bc_get_cot(default_color);
+    return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
   }
 
-  COLLADASW::ColorOrTexture cot = bc_get_cot_from_shader(shader, "Emission Color", default_color);
+  COLLADASW::ColorOrTexture cot = bc_get_cot_from_shader(shader, "Emission Color", default_color[0], default_color[1], default_color[2], default_color[3]);
 
   /* If using texture, emission strength is not supported. */
   COLLADASW::Color col = cot.getColor();
@@ -1208,19 +1214,19 @@ COLLADASW::ColorOrTexture bc_get_emission(Material *ma)
 COLLADASW::ColorOrTexture bc_get_ambient(Material *ma)
 {
   Color default_color = {0, 0, 0, 1.0};
-  return bc_get_cot(default_color);
+  return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
 }
 
 COLLADASW::ColorOrTexture bc_get_specular(Material *ma)
 {
   Color default_color = {0, 0, 0, 1.0};
-  return bc_get_cot(default_color);
+  return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
 }
 
 COLLADASW::ColorOrTexture bc_get_reflective(Material *ma)
 {
   Color default_color = {0, 0, 0, 1.0};
-  return bc_get_cot(default_color);
+  return bc_get_cot(default_color[0], default_color[1], default_color[2], default_color[3]);
 }
 
 double bc_get_alpha(Material *ma)
@@ -1276,17 +1282,20 @@ bool bc_get_float_from_shader(bNode *shader, double &val, std::string nodeid)
 
 COLLADASW::ColorOrTexture bc_get_cot_from_shader(bNode *shader,
                                                  std::string nodeid,
-                                                 const Color &default_color,
+                                                 float default_r,
+                                                 float default_g,
+                                                 float default_b,
+                                                 float default_a,
                                                  bool with_alpha)
 {
   bNodeSocket *socket = blender::bke::node_find_socket(*shader, SOCK_IN, nodeid);
   if (socket) {
     bNodeSocketValueRGBA *dcol = (bNodeSocketValueRGBA *)socket->default_value;
     float *col = dcol->value;
-    return bc_get_cot(col, with_alpha);
+    return bc_get_cot(col[0], col[1], col[2], col[3], with_alpha);
   }
 
-  return bc_get_cot(default_color, with_alpha);
+  return bc_get_cot(default_r, default_g, default_b, default_a, with_alpha);
 }
 
 bNode *bc_get_master_shader(Material *ma)
@@ -1303,6 +1312,13 @@ bNode *bc_get_master_shader(Material *ma)
 }
 
 COLLADASW::ColorOrTexture bc_get_cot(float r, float g, float b, float a)
+{
+  COLLADASW::Color color(r, g, b, a);
+  COLLADASW::ColorOrTexture cot(color);
+  return cot;
+}
+
+COLLADASW::ColorOrTexture bc_get_cot(float r, float g, float b, float a, bool with_alpha)
 {
   COLLADASW::Color color(r, g, b, a);
   COLLADASW::ColorOrTexture cot(color);

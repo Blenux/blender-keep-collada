@@ -20,7 +20,7 @@
 #include "ImportSettings.h"
 #include "MeshImporter.h"
 
-struct bContext;
+#include "BKE_context.hh"
 
 /** Importer class. */
 class DocumentImporter : COLLADAFW::IWriter {
@@ -31,7 +31,7 @@ class DocumentImporter : COLLADAFW::IWriter {
     Fetching_Controller_data, /* Second pass to collect controller data */
   };
   /** Constructor */
-  DocumentImporter(bContext *C, const ImportSettings *import_settings);
+  DocumentImporter(blender::bContext *C, const ImportSettings *import_settings);
 
   /** Destructor */
   ~DocumentImporter() override;
@@ -40,18 +40,18 @@ class DocumentImporter : COLLADAFW::IWriter {
   bool import();
 
   /** these should not be here */
-  Object *create_camera_object(COLLADAFW::InstanceCamera *, Scene *);
-  Object *create_light_object(COLLADAFW::InstanceLight *, Scene *);
-  Object *create_instance_node(Object *, COLLADAFW::Node *, COLLADAFW::Node *, Scene *, bool);
+  blender::Object *create_camera_object(COLLADAFW::InstanceCamera *, blender::Scene *);
+  blender::Object *create_light_object(COLLADAFW::InstanceLight *, blender::Scene *);
+  blender::Object *create_instance_node(blender::Object *, COLLADAFW::Node *, COLLADAFW::Node *, blender::Scene *, bool);
   /**
    * To create constraints off node <extra> tags. Assumes only constraint data in
    * current <extra> with blender profile.
    */
-  void create_constraints(ExtraTags *et, Object *ob);
-  std::vector<Object *> *write_node(COLLADAFW::Node *, COLLADAFW::Node *, Scene *, Object *, bool);
-  void write_profile_COMMON(COLLADAFW::EffectCommon *, Material *);
+  void create_constraints(ExtraTags *et, blender::Object *ob);
+  std::vector<blender::Object *> *write_node(COLLADAFW::Node *, COLLADAFW::Node *, blender::Scene *, blender::Object *, bool);
+  void write_profile_COMMON(COLLADAFW::EffectCommon *, blender::Material *);
 
-  void translate_anim_recursive(COLLADAFW::Node *, COLLADAFW::Node *, Object *);
+  void translate_anim_recursive(COLLADAFW::Node *, COLLADAFW::Node *, blender::Object *);
 
   /**
    * This method will be called if an error in the loading process occurred and the loader cannot
@@ -178,8 +178,8 @@ class DocumentImporter : COLLADAFW::IWriter {
   /** Current import stage we're in. */
   ImportStage mImportStage;
 
-  bContext *mContext;
-  ViewLayer *view_layer;
+  blender::bContext *mContext;
+  blender::ViewLayer *view_layer;
 
   UnitConverter unit_converter;
   ArmatureImporter armature_importer;
@@ -192,15 +192,15 @@ class DocumentImporter : COLLADAFW::IWriter {
   TagsMap uid_tags_map;
 
   UidImageMap uid_image_map;
-  std::map<COLLADAFW::UniqueId, Material *> uid_material_map;
-  std::map<COLLADAFW::UniqueId, Material *> uid_effect_map;
-  std::map<COLLADAFW::UniqueId, Camera *> uid_camera_map;
-  std::map<COLLADAFW::UniqueId, Light *> uid_light_map;
-  std::map<Material *, TexIndexTextureArrayMap> material_texture_mapping_map;
-  std::multimap<COLLADAFW::UniqueId, Object *> object_map;
+  std::map<COLLADAFW::UniqueId, blender::Material *> uid_material_map;
+  std::map<COLLADAFW::UniqueId, blender::Material *> uid_effect_map;
+  std::map<COLLADAFW::UniqueId, blender::Camera *> uid_camera_map;
+  std::map<COLLADAFW::UniqueId, blender::Light *> uid_light_map;
+  std::map<blender::Material *, TexIndexTextureArrayMap> material_texture_mapping_map;
+  std::multimap<COLLADAFW::UniqueId, blender::Object *> object_map;
   std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> node_map;
   std::vector<const COLLADAFW::VisualScene *> vscenes;
-  std::vector<Object *> libnode_ob;
+  std::vector<blender::Object *> libnode_ob;
 
   std::map<COLLADAFW::UniqueId, COLLADAFW::Node *>
       root_map; /* find root joint by child joint uid, for bone tree evaluation during resampling

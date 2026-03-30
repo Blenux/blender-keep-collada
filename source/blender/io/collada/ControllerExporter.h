@@ -49,62 +49,62 @@ class ControllerExporter : public COLLADASW::LibraryControllers,
   {
   }
 
-  bool is_skinned_mesh(Object *ob);
+  bool is_skinned_mesh(blender::Object *ob);
 
-  bool add_instance_controller(Object *ob);
+  bool add_instance_controller(blender::Object *ob);
 
   void export_controllers();
 
-  void operator()(Object *ob);
+  void operator()(blender::Object *ob);
 
  private:
 #if 0
-  std::vector<Object *> written_armatures;
+  std::vector<blender::Object *> written_armatures;
 
-  bool already_written(Object *ob_arm);
+  bool already_written(blender::Object *ob_arm);
 
-  void wrote(Object *ob_arm);
+  void wrote(blender::Object *ob_arm);
 
-  void find_objects_using_armature(Object *ob_arm, std::vector<Object *> &objects, Scene *sce);
+  void find_objects_using_armature(blender::Object *ob_arm, std::vector<blender::Object *> &objects, blender::Scene *sce);
 #endif
 
-  std::string get_controller_id(Object *ob_arm, Object *ob);
+  std::string get_controller_id(blender::Object *ob_arm, blender::Object *ob);
 
-  std::string get_controller_id(Key *key, Object *ob);
+  std::string get_controller_id(blender::Key *key, blender::Object *ob);
 
   /** `ob` should be of type OB_MESH, both arguments are required. */
-  void export_skin_controller(Object *ob, Object *ob_arm);
+  void export_skin_controller(blender::Object *ob, blender::Object *ob_arm);
 
-  void export_morph_controller(Object *ob, Key *key);
+  void export_morph_controller(blender::Object *ob, blender::Key *key);
 
-  void add_joints_element(const ListBase *defbase,
+  void add_joints_element(const blender::ListBase *defbase,
                           const std::string &joints_source_id,
                           const std::string &inv_bind_mat_source_id);
 
-  void add_bind_shape_mat(Object *ob);
+  void add_bind_shape_mat(blender::Object *ob);
 
-  std::string add_morph_targets(Key *key, Object *ob);
+  std::string add_morph_targets(blender::Key *key, blender::Object *ob);
 
-  std::string add_morph_weights(Key *key, Object *ob);
+  std::string add_morph_weights(blender::Key *key, blender::Object *ob);
 
   /**
    * Added to implement support for animations.
    */
-  void add_weight_extras(Key *key);
+  void add_weight_extras(blender::Key *key);
 
-  std::string add_joints_source(Object *ob_arm,
-                                const ListBase *defbase,
+  std::string add_joints_source(blender::Object *ob_arm,
+                                const blender::ListBase *defbase,
                                 const std::string &controller_id);
 
-  std::string add_inv_bind_mats_source(Object *ob_arm,
-                                       const ListBase *defbase,
+  std::string add_inv_bind_mats_source(blender::Object *ob_arm,
+                                       const blender::ListBase *defbase,
                                        const std::string &controller_id);
 
-  Bone *get_bone_from_defgroup(Object *ob_arm, const bDeformGroup *def);
+  blender::Bone *get_bone_from_defgroup(blender::Object *ob_arm, const blender::bDeformGroup *def);
 
-  bool is_bone_defgroup(Object *ob_arm, const bDeformGroup *def);
+  bool is_bone_defgroup(blender::Object *ob_arm, const blender::bDeformGroup *def);
 
-  std::string add_weights_source(Mesh *mesh,
+  std::string add_weights_source(blender::Mesh *mesh,
                                  const std::string &controller_id,
                                  const std::list<float> &weights);
 
@@ -113,5 +113,5 @@ class ControllerExporter : public COLLADASW::LibraryControllers,
                                   const std::list<int> &vcount,
                                   const std::list<int> &joints);
 
-  void write_bone_URLs(COLLADASW::InstanceController &ins, Object *ob_arm, Bone *bone);
+  void write_bone_URLs(COLLADASW::InstanceController &ins, blender::Object *ob_arm, blender::Bone *bone);
 };

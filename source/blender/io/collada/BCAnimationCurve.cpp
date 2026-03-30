@@ -7,6 +7,12 @@
 #include "DNA_light_types.h"
 #include "DNA_material_types.h"
 
+#include "MEM_guardedalloc.h"
+
+extern "C" {
+void MEM_freeN(void *mem);
+}
+
 #include "BLI_string.h"
 
 #include "BKE_material.hh"
@@ -19,8 +25,11 @@
 #include "BCAnimationCurve.h"
 
 #include "collada_utils.h"
+#include "BLI_listbase_wrapper.hh"
 
 #include <algorithm>
+#include "MEM_guardedalloc.h"
+using namespace blender;
 
 BCAnimationCurve::BCAnimationCurve()
 {
@@ -43,7 +52,7 @@ BCAnimationCurve::BCAnimationCurve(const BCAnimationCurve &other)
   get_edit_fcurve();
 }
 
-BCAnimationCurve::BCAnimationCurve(BCCurveKey key, Object *ob, FCurve *fcu)
+BCAnimationCurve::BCAnimationCurve(BCCurveKey key, blender::Object *ob, blender::FCurve *fcu)
 {
   this->min = 0;
   this->max = 0;
@@ -53,7 +62,7 @@ BCAnimationCurve::BCAnimationCurve(BCCurveKey key, Object *ob, FCurve *fcu)
   init_pointer_rna(ob);
 }
 
-BCAnimationCurve::BCAnimationCurve(const BCCurveKey &key, Object *ob)
+BCAnimationCurve::BCAnimationCurve(const BCCurveKey &key, blender::Object *ob)
 {
   this->curve_key = key;
   this->fcurve = nullptr;
@@ -61,7 +70,7 @@ BCAnimationCurve::BCAnimationCurve(const BCCurveKey &key, Object *ob)
   init_pointer_rna(ob);
 }
 
-void BCAnimationCurve::init_pointer_rna(Object *ob)
+void BCAnimationCurve::init_pointer_rna(blender::Object *ob)
 {
   switch (this->curve_key.get_animation_type()) {
     case BC_ANIMATION_TYPE_BONE: {
@@ -95,32 +104,32 @@ void BCAnimationCurve::init_pointer_rna(Object *ob)
   }
 }
 
-void BCAnimationCurve::delete_fcurve(FCurve *fcu)
+void BCAnimationCurve::delete_fcurve(blender::FCurve *fcu)
 {
-  BKE_fcurve_free(fcu);
+  blender::BKE_fcurve_free(fcu);
 }
 
-FCurve *BCAnimationCurve::create_fcurve(int array_index, const char *rna_path)
+blender::FCurve *BCAnimationCurve::create_fcurve(int array_index, const char *rna_path)
 {
-  FCurve *fcu = BKE_fcurve_create();
-  fcu->flag = (FCURVE_VISIBLE | FCURVE_SELECTED);
-  fcu->rna_path = BLI_strdupn(rna_path, strlen(rna_path));
+  blender::FCurve *fcu = blender::BKE_fcurve_create();
+  fcu->flag = (blender::FCURVE_VISIBLE | blender::FCURVE_SELECTED);
+  fcu->rna_path = blender::BLI_strdupn(rna_path, strlen(rna_path));
   fcu->array_index = array_index;
   return fcu;
 }
 
 void BCAnimationCurve::create_bezt(float frame, float output)
 {
-  FCurve *fcu = get_edit_fcurve();
-  BezTriple bez;
-  memset(&bez, 0, sizeof(BezTriple));
+  blender::FCurve *fcu = get_edit_fcurve();
+  blender::BezTriple bez;
+  memset(&bez, 0, sizeof(blender::BezTriple));
   bez.vec[1][0] = frame;
   bez.vec[1][1] = output;
   bez.ipo = U.ipo_new; /* use default interpolation mode here... */
   bez.f1 = bez.f2 = bez.f3 = SELECT;
   bez.h1 = bez.h2 = HD_AUTO;
   blender::animrig::insert_bezt_fcurve(fcu, &bez, INSERTKEY_NOFLAGS);
-  BKE_fcurve_handles_recalc(fcu);
+  BKE_fcurve_handles_recalc(*fcu);
 }
 
 BCAnimationCurve::~BCAnimationCurve()
@@ -167,7 +176,7 @@ std::string BCAnimationCurve::get_channel_posebone() const
   return pose_bone_name;
 }
 
-std::string BCAnimationCurve::get_animation_name(Object *ob) const
+std::string BCAnimationCurve::get_animation_name(blender::Object *ob) const
 {
   std::string name;
 
@@ -182,7 +191,7 @@ std::string BCAnimationCurve::get_animation_name(Object *ob) const
       }
       else {
         char boneName[MAXBONENAME];
-        if (BLI_str_quoted_substr(fcurve->rna_path, "pose.bones[", boneName, sizeof(boneName))) {
+        if (blender::BLI_str_quoted_substr(fcurve->rna_path, "pose.bones[", boneName, sizeof(boneName))) {
           name = id_name(ob) + "_" + std::string(boneName);
         }
         else {
@@ -192,17 +201,17 @@ std::string BCAnimationCurve::get_animation_name(Object *ob) const
       break;
     }
     case BC_ANIMATION_TYPE_CAMERA: {
-      Camera *camera = (Camera *)ob->data;
+      blender::Camera *camera = (blender::Camera *)ob->data;
       name = id_name(ob) + "-" + id_name(camera) + "-camera";
       break;
     }
     case BC_ANIMATION_TYPE_LIGHT: {
-      Light *lamp = (Light *)ob->data;
+      blender::Light *lamp = (blender::Light *)ob->data;
       name = id_name(ob) + "-" + id_name(lamp) + "-light";
       break;
     }
     case BC_ANIMATION_TYPE_MATERIAL: {
-      Material *ma = BKE_object_material_get(ob, this->curve_key.get_subindex() + 1);
+      blender::Material *ma = blender::BKE_object_material_get(ob, this->curve_key.get_subindex() + 1);
       name = id_name(ob) + "-" + id_name(ma) + "-material";
       break;
     }
@@ -288,17 +297,17 @@ int BCAnimationCurve::get_interpolation_type(float sample_frame) const
 {
   const int index = closest_index_below(sample_frame);
   if (index < 0) {
-    return BEZT_IPO_BEZ;
+    return blender::BEZT_IPO_BEZ;
   }
   return fcurve->bezt[index].ipo;
 }
 
-FCurve *BCAnimationCurve::get_fcurve() const
+blender::FCurve *BCAnimationCurve::get_fcurve() const
 {
   return fcurve;
 }
 
-FCurve *BCAnimationCurve::get_edit_fcurve()
+blender::FCurve *BCAnimationCurve::get_edit_fcurve()
 {
   if (!curve_is_local_copy) {
     const int index = curve_key.get_array_index();
@@ -325,23 +334,23 @@ void BCAnimationCurve::clean_handles()
   const KeyframeSettings settings = get_keyframe_settings(true);
 
   /* Keep old bezt data for copy). */
-  BezTriple *old_bezts = fcurve->bezt;
+  blender::BezTriple *old_bezts = fcurve->bezt;
   int totvert = fcurve->totvert;
   fcurve->bezt = nullptr;
   fcurve->totvert = 0;
 
   for (int i = 0; i < totvert; i++) {
-    BezTriple *bezt = &old_bezts[i];
+    blender::BezTriple *bezt = &old_bezts[i];
     float x = bezt->vec[1][0];
     float y = bezt->vec[1][1];
-    insert_vert_fcurve(fcurve, {x, y}, settings, INSERTKEY_NOFLAGS);
-    BezTriple *lastb = fcurve->bezt + (fcurve->totvert - 1);
+    insert_vert_fcurve(fcurve, {x, y}, settings, blender::INSERTKEY_NOFLAGS);
+    blender::BezTriple *lastb = fcurve->bezt + (fcurve->totvert - 1);
     lastb->f1 = lastb->f2 = lastb->f3 = 0;
   }
 
   /* now free the memory used by the old BezTriples */
   if (old_bezts) {
-    MEM_freeN(old_bezts);
+    MEM_delete(old_bezts);
   }
 }
 
@@ -360,7 +369,7 @@ bool BCAnimationCurve::is_rotation_curve() const
 float BCAnimationCurve::get_value(const float frame)
 {
   if (fcurve) {
-    return evaluate_fcurve(fcurve, frame);
+    return blender::evaluate_fcurve(fcurve, frame);
   }
   return 0; /* TODO: handle case where neither sample nor fcu exist */
 }
@@ -395,7 +404,7 @@ void BCAnimationCurve::add_value(const float val, const int frame_index)
 {
   using namespace blender::animrig;
   const KeyframeSettings settings = get_keyframe_settings(true);
-  FCurve *fcu = get_edit_fcurve();
+  blender::FCurve *fcu = get_edit_fcurve();
   fcu->auto_smoothing = U.auto_smoothing_new;
   insert_vert_fcurve(fcu, {float(frame_index), val}, settings, INSERTKEY_NOFLAGS);
 
@@ -427,8 +436,8 @@ bool BCAnimationCurve::add_value_from_matrix(const BCSample &sample, const int f
 
 bool BCAnimationCurve::add_value_from_rna(const int frame_index)
 {
-  PointerRNA ptr;
-  PropertyRNA *prop;
+  blender::PointerRNA ptr;
+  blender::PropertyRNA *prop;
   float value = 0.0f;
   int array_index = curve_key.get_array_index();
   const std::string full_path = curve_key.get_full_path();
@@ -442,19 +451,19 @@ bool BCAnimationCurve::add_value_from_rna(const int frame_index)
   }
 
   if (path_resolved) {
-    bool is_array = RNA_property_array_check(prop);
+    bool is_array = blender::RNA_property_array_check(prop);
     if (is_array) {
       /* array */
-      if ((array_index >= 0) && (array_index < RNA_property_array_length(&ptr, prop))) {
-        switch (RNA_property_type(prop)) {
-          case PROP_BOOLEAN:
-            value = float(RNA_property_boolean_get_index(&ptr, prop, array_index));
+      if ((array_index >= 0) && (array_index < blender::RNA_property_array_length(&ptr, prop))) {
+        switch (blender::RNA_property_type(prop)) {
+          case blender::PROP_BOOLEAN:
+            value = float(blender::RNA_property_boolean_get_index(&ptr, prop, array_index));
             break;
-          case PROP_INT:
-            value = float(RNA_property_int_get_index(&ptr, prop, array_index));
+          case blender::PROP_INT:
+            value = float(blender::RNA_property_int_get_index(&ptr, prop, array_index));
             break;
-          case PROP_FLOAT:
-            value = RNA_property_float_get_index(&ptr, prop, array_index);
+          case blender::PROP_FLOAT:
+            value = blender::RNA_property_float_get_index(&ptr, prop, array_index);
             break;
           default:
             break;
@@ -469,23 +478,23 @@ bool BCAnimationCurve::add_value_from_rna(const int frame_index)
     }
     else {
       /* not an array */
-      switch (RNA_property_type(prop)) {
-        case PROP_BOOLEAN:
-          value = float(RNA_property_boolean_get(&ptr, prop));
+      switch (blender::RNA_property_type(prop)) {
+        case blender::PROP_BOOLEAN:
+          value = float(blender::RNA_property_boolean_get(&ptr, prop));
           break;
-        case PROP_INT:
-          value = float(RNA_property_int_get(&ptr, prop));
+        case blender::PROP_INT:
+          value = float(blender::RNA_property_int_get(&ptr, prop));
           break;
-        case PROP_FLOAT:
-          value = RNA_property_float_get(&ptr, prop);
+        case blender::PROP_FLOAT:
+          value = blender::RNA_property_float_get(&ptr, prop);
           break;
-        case PROP_ENUM:
-          value = float(RNA_property_enum_get(&ptr, prop));
+        case blender::PROP_ENUM:
+          value = float(blender::RNA_property_enum_get(&ptr, prop));
           break;
         default:
           fprintf(stderr,
                   "property type %d not supported for Curve %s\n",
-                  RNA_property_type(prop),
+                  blender::RNA_property_type(prop),
                   curve_key.get_full_path().c_str());
           return false;
           break;
@@ -651,14 +660,14 @@ bool BCCurveKey::operator<(const BCCurveKey &other) const
   return this->curve_array_index < other.curve_array_index;
 }
 
-BCBezTriple::BCBezTriple(BezTriple &bezt) : bezt(bezt) {}
+BCBezTriple::BCBezTriple(blender::BezTriple &bezt) : bezt(bezt) {}
 
 float BCBezTriple::get_frame() const
 {
   return bezt.vec[1][0];
 }
 
-float BCBezTriple::get_time(Scene *scene) const
+float BCBezTriple::get_time(blender::Scene *scene) const
 {
   return FRA2TIME(bezt.vec[1][0]);
 }
@@ -673,20 +682,20 @@ float BCBezTriple::get_angle() const
   return RAD2DEGF(get_value());
 }
 
-void BCBezTriple::get_in_tangent(Scene *scene, float point[2], bool as_angle) const
+void BCBezTriple::get_in_tangent(blender::Scene *scene, float point[2], bool as_angle) const
 {
   get_tangent(scene, point, as_angle, 0);
 }
 
-void BCBezTriple::get_out_tangent(Scene *scene, float point[2], bool as_angle) const
+void BCBezTriple::get_out_tangent(blender::Scene *scene, float point[2], bool as_angle) const
 {
   get_tangent(scene, point, as_angle, 2);
 }
 
-void BCBezTriple::get_tangent(Scene *scene, float point[2], bool as_angle, int index) const
+void BCBezTriple::get_tangent(blender::Scene *scene, float point[2], bool as_angle, int index) const
 {
   point[0] = FRA2TIME(bezt.vec[index][0]);
-  if (bezt.ipo != BEZT_IPO_BEZ) {
+  if (bezt.ipo != blender::BEZT_IPO_BEZ) {
     /* We're in a mixed interpolation scenario, set zero as it's irrelevant but value might contain
      * unused data */
     point[0] = 0;

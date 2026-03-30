@@ -23,13 +23,15 @@
 #include "BKE_customdata.hh"
 #include "BKE_material.hh"
 
-static std::string getActiveUVLayerName(Object *ob)
-{
-  Mesh *mesh = (Mesh *)ob->data;
+using namespace blender;
 
-  int num_layers = CustomData_number_of_layers(&mesh->corner_data, CD_PROP_FLOAT2);
+static std::string getActiveUVLayerName(blender::Object *ob)
+{
+  blender::Mesh *mesh = (blender::Mesh *)ob->data;
+
+  int num_layers = blender::CustomData_number_of_layers(&mesh->corner_data, blender::CD_PROP_FLOAT2);
   if (num_layers) {
-    return std::string(bc_CustomData_get_active_layer_name(&mesh->corner_data, CD_PROP_FLOAT2));
+    return std::string(bc_CustomData_get_active_layer_name(&mesh->corner_data, blender::CD_PROP_FLOAT2));
   }
 
   return "";
@@ -42,13 +44,16 @@ EffectsExporter::EffectsExporter(COLLADASW::StreamWriter *sw,
 {
 }
 
-bool EffectsExporter::hasEffects(Scene *sce)
+bool EffectsExporter::hasEffects(blender::Scene *sce)
 {
   bool result = false;
-  FOREACH_SCENE_OBJECT_BEGIN (sce, ob) {
+  blender::Set<blender::Object *> objects;
+  blender::BKE_scene_objects_as_set(sce, &objects);
+  for (blender::Object *ob : objects) {
+    blender::Object *blender_ob = static_cast<blender::Object *>(ob);
     int a;
-    for (a = 0; a < ob->totcol; a++) {
-      Material *ma = BKE_object_material_get(ob, a + 1);
+    for (a = 0; a < blender_ob->totcol; a++) {
+      blender::Material *ma = blender::BKE_object_material_get(blender_ob, a + 1);
 
       /* no material, but check all of the slots */
       if (!ma) {
@@ -59,11 +64,10 @@ bool EffectsExporter::hasEffects(Scene *sce)
       break;
     }
   }
-  FOREACH_SCENE_OBJECT_END;
   return result;
 }
 
-void EffectsExporter::exportEffects(bContext *C, Scene *sce)
+void EffectsExporter::exportEffects(blender::bContext *C, blender::Scene *sce)
 {
   if (hasEffects(sce)) {
     this->mContext = C;
@@ -77,13 +81,13 @@ void EffectsExporter::exportEffects(bContext *C, Scene *sce)
   }
 }
 
-void EffectsExporter::set_shader_type(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_shader_type(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   /* XXX check if BLINN and PHONG can be supported as well */
   ep.setShaderType(COLLADASW::EffectProfile::LAMBERT);
 }
 
-void EffectsExporter::set_transparency(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_transparency(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   double alpha = bc_get_alpha(ma);
   if (alpha < 1) {
@@ -94,29 +98,29 @@ void EffectsExporter::set_transparency(COLLADASW::EffectProfile &ep, Material *m
   }
 }
 
-void EffectsExporter::set_diffuse_color(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_diffuse_color(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   COLLADASW::ColorOrTexture cot = bc_get_base_color(ma);
   ep.setDiffuse(cot, false, "diffuse");
 }
 
-void EffectsExporter::set_ambient(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_ambient(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   COLLADASW::ColorOrTexture cot = bc_get_ambient(ma);
   ep.setAmbient(cot, false, "ambient");
 }
-void EffectsExporter::set_specular(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_specular(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   COLLADASW::ColorOrTexture cot = bc_get_specular(ma);
   ep.setSpecular(cot, false, "specular");
 }
-void EffectsExporter::set_reflective(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_reflective(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   COLLADASW::ColorOrTexture cot = bc_get_reflective(ma);
   ep.setReflective(cot, false, "reflective");
 }
 
-void EffectsExporter::set_reflectivity(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_reflectivity(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   double reflectivity = bc_get_reflectivity(ma);
   if (reflectivity > 0.0) {
@@ -124,32 +128,32 @@ void EffectsExporter::set_reflectivity(COLLADASW::EffectProfile &ep, Material *m
   }
 }
 
-void EffectsExporter::set_emission(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_emission(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   COLLADASW::ColorOrTexture cot = bc_get_emission(ma);
   ep.setEmission(cot, false, "emission");
 }
 
-void EffectsExporter::set_ior(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_ior(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   double alpha = bc_get_ior(ma);
   ep.setIndexOfRefraction(alpha, false, "ior");
 }
 
-void EffectsExporter::set_shininess(COLLADASW::EffectProfile &ep, Material *ma)
+void EffectsExporter::set_shininess(COLLADASW::EffectProfile &ep, blender::Material *ma)
 {
   double shininess = bc_get_shininess(ma);
   ep.setShininess(shininess, false, "shininess");
 }
 
-void EffectsExporter::get_images(Material *ma, KeyImageMap &material_image_map)
+void EffectsExporter::get_images(blender::Material *ma, KeyImageMap &material_image_map)
 {
   if (!ma->use_nodes) {
     return;
   }
 
   MaterialNode material = MaterialNode(mContext, ma, key_image_map);
-  Image *image = material.get_diffuse_image();
+  blender::Image *image = material.get_diffuse_image();
   if (image == nullptr) {
     return;
   }
@@ -171,7 +175,7 @@ void EffectsExporter::create_image_samplers(COLLADASW::EffectProfile &ep,
 
   for (iter = material_image_map.begin(); iter != material_image_map.end(); iter++) {
 
-    Image *image = iter->second;
+    blender::Image *image = iter->second;
     std::string uid(id_name(image));
     std::string key = translate_id(uid);
 
@@ -186,7 +190,7 @@ void EffectsExporter::create_image_samplers(COLLADASW::EffectProfile &ep,
   }
 }
 
-void EffectsExporter::operator()(Material *ma, Object *ob)
+void EffectsExporter::operator()(blender::Material *ma, blender::Object *ob)
 {
   KeyImageMap material_image_map;
 
@@ -213,7 +217,7 @@ void EffectsExporter::operator()(Material *ma, Object *ob)
 #endif
 
   get_images(ma, material_image_map);
-  std::string active_uv(getActiveUVLayerName(ob));
+  std::string active_uv(""); // TODO: Fix getActiveUVLayerName(ob)
   create_image_samplers(ep, material_image_map, active_uv);
 
 #if 0
@@ -275,7 +279,7 @@ void EffectsExporter::operator()(Material *ma, Object *ob)
   closeEffect();
 }
 
-COLLADASW::ColorOrTexture EffectsExporter::createTexture(Image *ima,
+COLLADASW::ColorOrTexture EffectsExporter::createTexture(blender::Image *ima,
                                                          std::string &uv_layer_name,
                                                          COLLADASW::Sampler *sampler
                                                          /*COLLADASW::Surface *surface*/)

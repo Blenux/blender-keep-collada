@@ -12,7 +12,7 @@
 #include "DNA_armature_types.h"
 #include "DNA_object_types.h"
 
-using BCBoneMatrixMap = std::map<Bone *, BCMatrix *>;
+using BCBoneMatrixMap = std::map<blender::Bone *, BCMatrix *>;
 
 class BCSample {
  private:
@@ -20,18 +20,18 @@ class BCSample {
   BCBoneMatrixMap bonemats; /* For Armature animation */
 
  public:
-  BCSample(Object *ob) : obmat(ob) {}
+  BCSample(blender::Object *ob) : obmat(ob) {}
 
   ~BCSample();
 
-  void add_bone_matrix(Bone *bone, Matrix &mat);
+  void add_bone_matrix(blender::Bone *bone, Matrix &mat);
 
   /** Get channel value. */
   bool get_value(std::string channel_target, int array_index, float *val) const;
   const BCMatrix &get_matrix() const;
-  const BCMatrix *get_matrix(Bone *bone) const; /* returns NULL if bone is not animated */
+  const BCMatrix *get_matrix(blender::Bone *bone) const; /* returns NULL if bone is not animated */
 };
 
-using BCSampleMap = std::map<Object *, BCSample *>;
+using BCSampleMap = std::map<blender::Object *, BCSample *>;
 using BCFrameSampleMap = std::map<int, const BCSample *>;
 using BCMatrixSampleMap = std::map<int, const BCMatrix *>;

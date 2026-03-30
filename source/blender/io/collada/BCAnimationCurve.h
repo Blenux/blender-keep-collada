@@ -57,16 +57,16 @@ class BCCurveKey {
 
 class BCBezTriple {
  public:
-  BezTriple &bezt;
+  blender::BezTriple &bezt;
 
-  BCBezTriple(BezTriple &bezt);
+  BCBezTriple(blender::BezTriple &bezt);
   float get_frame() const;
-  float get_time(Scene *scene) const;
+  float get_time(blender::Scene *scene) const;
   float get_value() const;
   float get_angle() const;
-  void get_in_tangent(Scene *scene, float point[2], bool as_angle) const;
-  void get_out_tangent(Scene *scene, float point[2], bool as_angle) const;
-  void get_tangent(Scene *scene, float point[2], bool as_angle, int index) const;
+  void get_in_tangent(blender::Scene *scene, float point[2], bool as_angle) const;
+  void get_out_tangent(blender::Scene *scene, float point[2], bool as_angle) const;
+  void get_tangent(blender::Scene *scene, float point[2], bool as_angle, int index) const;
 };
 
 class BCAnimationCurve {
@@ -76,11 +76,11 @@ class BCAnimationCurve {
   float max = 0;
 
   bool curve_is_local_copy = false;
-  FCurve *fcurve;
-  PointerRNA id_ptr;
-  void init_pointer_rna(Object *ob);
-  void delete_fcurve(FCurve *fcu);
-  FCurve *create_fcurve(int array_index, const char *rna_path);
+  blender::FCurve *fcurve;
+  blender::PointerRNA id_ptr;
+  void init_pointer_rna(blender::Object *ob);
+  void delete_fcurve(blender::FCurve *fcu);
+  blender::FCurve *create_fcurve(int array_index, const char *rna_path);
   void create_bezt(float frame, float output);
   void update_range(float val);
   void init_range(float val);
@@ -88,8 +88,8 @@ class BCAnimationCurve {
  public:
   BCAnimationCurve();
   BCAnimationCurve(const BCAnimationCurve &other);
-  BCAnimationCurve(const BCCurveKey &key, Object *ob);
-  BCAnimationCurve(BCCurveKey key, Object *ob, FCurve *fcu);
+  BCAnimationCurve(const BCCurveKey &key, blender::Object *ob);
+  BCAnimationCurve(BCCurveKey key, blender::Object *ob, blender::FCurve *fcu);
   ~BCAnimationCurve();
 
   bool is_of_animation_type(BC_animation_type type) const;
@@ -100,7 +100,7 @@ class BCAnimationCurve {
   bool is_keyframe(int frame);
   void adjust_range(int frame);
 
-  std::string get_animation_name(Object *ob) const; /* XXX: this is COLLADA specific. */
+  std::string get_animation_name(blender::Object *ob) const; /* XXX: this is COLLADA specific. */
   std::string get_channel_target() const;
   std::string get_channel_type() const;
   std::string get_channel_posebone() const; /* returns "" if channel is not a bone channel */
@@ -108,7 +108,7 @@ class BCAnimationCurve {
   int get_channel_index() const;
   int get_subindex() const;
   std::string get_rna_path() const;
-  FCurve *get_fcurve() const;
+  blender::FCurve *get_fcurve() const;
   int sample_count() const;
 
   float get_value(float frame);
@@ -118,7 +118,7 @@ class BCAnimationCurve {
   void get_frames(BCFrames &frames) const;
 
   /* Curve edit functions create a copy of the underlying #FCurve. */
-  FCurve *get_edit_fcurve();
+  blender::FCurve *get_edit_fcurve();
   bool add_value_from_rna(int frame);
   bool add_value_from_matrix(const BCSample &sample, int frame);
   void add_value(float val, int frame);

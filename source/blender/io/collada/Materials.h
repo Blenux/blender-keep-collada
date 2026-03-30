@@ -15,35 +15,35 @@
 #include "COLLADAFWEffectCommon.h"
 #include "collada_utils.h"
 
-using NodeMap = std::map<std::string, bNode *>;
+using NodeMap = std::map<std::string, blender::bNode *>;
 
 class MaterialNode {
 
  private:
-  bContext *mContext;
-  Material *material;
+  blender::bContext *mContext;
+  blender::Material *material;
   COLLADAFW::EffectCommon *effect;
   UidImageMap *uid_image_map = nullptr;
   KeyImageMap *key_image_map = nullptr;
 
   NodeMap node_map;
-  bNodeTree *ntree;
+  blender::bNodeTree *ntree;
 
-  bNode *shader_node;
-  bNode *output_node;
+  blender::bNode *shader_node;
+  blender::bNode *output_node;
 
   /** Returns null if material already has a node tree. */
-  bNodeTree *prepare_material_nodetree();
-  bNode *add_node(int node_type, int locx, int locy, std::string label);
-  void add_link(bNode *from_node, int from_index, bNode *to_node, int to_index);
-  void add_link(bNode *from_node, const char *from_label, bNode *to_node, const char *to_label);
-  bNode *add_texture_node(COLLADAFW::ColorOrTexture &cot, int locx, int locy, std::string label);
+  blender::bNodeTree *prepare_material_nodetree();
+  blender::bNode *add_node(int node_type, int locx, int locy, std::string label);
+  void add_link(blender::bNode *from_node, int from_index, blender::bNode *to_node, int to_index);
+  void add_link(blender::bNode *from_node, const char *from_label, blender::bNode *to_node, const char *to_label);
+  blender::bNode *add_texture_node(COLLADAFW::ColorOrTexture &cot, int locx, int locy, std::string label);
   void setShaderType();
 
  public:
-  MaterialNode(bContext *C, COLLADAFW::EffectCommon *ef, Material *ma, UidImageMap &uid_image_map);
-  MaterialNode(bContext *C, Material *ma, KeyImageMap &key_image_map);
-  Image *get_diffuse_image();
+  MaterialNode(blender::bContext *C, COLLADAFW::EffectCommon *ef, blender::Material *ma, UidImageMap &uid_image_map);
+  MaterialNode(blender::bContext *C, blender::Material *ma, KeyImageMap &key_image_map);
+  blender::Image *get_diffuse_image();
 
   void set_diffuse(COLLADAFW::ColorOrTexture &cot);
   void set_specular(COLLADAFW::ColorOrTexture &cot);

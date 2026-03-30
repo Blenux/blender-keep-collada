@@ -20,40 +20,40 @@
 static const BC_global_forward_axis BC_DEFAULT_FORWARD = BC_GLOBAL_FORWARD_Y;
 static const BC_global_up_axis BC_DEFAULT_UP = BC_GLOBAL_UP_Z;
 
-bool bc_is_in_Export_set(LinkNode *export_set,
-                         Object *ob,
-                         const Scene *scene,
-                         ViewLayer *view_layer);
-bool bc_is_base_node(LinkNode *export_set, Object *ob, const Scene *scene, ViewLayer *view_layer);
+bool bc_is_in_Export_set(blender::LinkNode *export_set,
+                         blender::Object *ob,
+                         const blender::Scene *scene,
+                         blender::ViewLayer *view_layer);
+bool bc_is_base_node(blender::LinkNode *export_set, blender::Object *ob, const blender::Scene *scene, blender::ViewLayer *view_layer);
 /**
  * Returns the highest selected ancestor
  * returns NULL if no ancestor is selected
  * IMPORTANT: This function expects that all exported objects have set:
  * `ob->id.tag & ID_TAG_DOIT`
  */
-Object *bc_get_highest_exported_ancestor_or_self(LinkNode *export_set,
-                                                 Object *ob,
-                                                 const Scene *scene,
-                                                 ViewLayer *view_layer);
-int bc_is_marked(Object *ob);
-void bc_remove_mark(Object *ob);
-void bc_set_mark(Object *ob);
+blender::Object *bc_get_highest_exported_ancestor_or_self(blender::LinkNode *export_set,
+                                                 blender::Object *ob,
+                                                 const blender::Scene *scene,
+                                                 blender::ViewLayer *view_layer);
+int bc_is_marked(blender::Object *ob);
+void bc_remove_mark(blender::Object *ob);
+void bc_set_mark(blender::Object *ob);
 
 class BlenderContext {
  private:
-  bContext *context;
-  Depsgraph *depsgraph;
-  Scene *scene;
-  ViewLayer *view_layer;
-  Main *main;
+  blender::bContext *context;
+  blender::Depsgraph *depsgraph;
+  blender::Scene *scene;
+  blender::ViewLayer *view_layer;
+  blender::Main *main;
 
  public:
-  BlenderContext(bContext *C);
-  bContext *get_context();
-  Depsgraph *get_depsgraph();
-  Scene *get_scene();
-  Scene *get_evaluated_scene();
-  Object *get_evaluated_object(Object *ob);
-  ViewLayer *get_view_layer();
-  Main *get_main();
+  BlenderContext(blender::bContext *C);
+  blender::bContext *get_context();
+  blender::Depsgraph *get_depsgraph();
+  blender::Scene *get_scene();
+  blender::Scene *get_evaluated_scene();
+  blender::Object *get_evaluated_object(blender::Object *ob);
+  blender::ViewLayer *get_view_layer();
+  blender::Main *get_main();
 };

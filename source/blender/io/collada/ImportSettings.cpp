@@ -7,3 +7,6 @@
  */
 
 #include "ImportSettings.h"
+#include "BLI_string.h"
+
+using namespace blender;

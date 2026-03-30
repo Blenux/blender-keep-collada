@@ -20,10 +20,10 @@
 class CamerasExporter : COLLADASW::LibraryCameras {
  public:
   CamerasExporter(COLLADASW::StreamWriter *sw, BCExportSettings &export_settings);
-  void exportCameras(Scene *sce);
-  void operator()(Object *ob, Scene *sce);
+  void exportCameras(blender::Scene *sce);
+  void operator()(blender::Object *ob, blender::Scene *sce);
 
  private:
-  bool exportBlenderProfile(COLLADASW::Camera &cm, Camera *cam);
+  bool exportBlenderProfile(COLLADASW::Camera &cm, blender::Camera *cam);
   BCExportSettings &export_settings;
 };

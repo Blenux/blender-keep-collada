@@ -27,6 +27,8 @@
 #include "MeshImporter.h"
 #include "collada_utils.h"
 
+using namespace blender;
+
 using blender::float3;
 using blender::MutableSpan;
 
@@ -141,7 +143,7 @@ void UVDataWrapper::getUV(int uv_index, float *uv)
 VCOLDataWrapper::VCOLDataWrapper(COLLADAFW::MeshVertexData &vdata) : mVData(&vdata) {}
 
 template<typename T>
-static void colladaAddColor(T values, MLoopCol *mloopcol, int v_index, int stride)
+static void colladaAddColor(T values, blender::MLoopCol *mloopcol, int v_index, int stride)
 {
   if (values->empty() || values->getCount() < (v_index + 1) * stride) {
     fprintf(stderr,
@@ -153,11 +155,11 @@ static void colladaAddColor(T values, MLoopCol *mloopcol, int v_index, int strid
     return;
   }
 
-  mloopcol->r = unit_float_to_uchar_clamp((*values)[v_index * stride]);
-  mloopcol->g = unit_float_to_uchar_clamp((*values)[v_index * stride + 1]);
-  mloopcol->b = unit_float_to_uchar_clamp((*values)[v_index * stride + 2]);
+  mloopcol->r = blender::unit_float_to_uchar_clamp((*values)[v_index * stride]);
+  mloopcol->g = blender::unit_float_to_uchar_clamp((*values)[v_index * stride + 1]);
+  mloopcol->b = blender::unit_float_to_uchar_clamp((*values)[v_index * stride + 2]);
   if (stride == 4) {
-    mloopcol->a = unit_float_to_uchar_clamp((*values)[v_index * stride + 3]);
+    mloopcol->a = blender::unit_float_to_uchar_clamp((*values)[v_index * stride + 3]);
   }
 }
 
@@ -482,10 +484,6 @@ void MeshImporter::allocate_poly_data(COLLADAFW::Mesh *collada_mesh, Mesh *mesh)
         CustomData_add_layer_named(
             &mesh->corner_data, CD_PROP_BYTE_COLOR, CD_SET_DEFAULT, mesh->corners_num, colname);
       }
-      BKE_id_attributes_active_color_set(
-          &mesh->id, CustomData_get_layer_name(&mesh->corner_data, CD_PROP_BYTE_COLOR, 0));
-      BKE_id_attributes_default_color_set(
-          &mesh->id, CustomData_get_layer_name(&mesh->corner_data, CD_PROP_BYTE_COLOR, 0));
     }
   }
 }
@@ -889,7 +887,7 @@ std::string *MeshImporter::get_geometry_name(const std::string &mesh_name)
   return nullptr;
 }
 
-static bool bc_has_out_of_bound_indices(Mesh *mesh)
+static bool bc_has_out_of_bound_indices(blender::Mesh *mesh)
 {
   for (const int vert_i : mesh->corner_verts()) {
     if (vert_i >= mesh->verts_num) {
@@ -943,7 +941,7 @@ static void bc_copy_materials_to_data(Object *ob, Mesh *mesh)
 /**
  * Remove all references to materials from the object.
  */
-static void bc_remove_materials_from_object(Object *ob, Mesh *mesh)
+static void bc_remove_materials_from_object(blender::Object *ob, blender::Mesh *mesh)
 {
   for (int index = 0; index < ob->totcol; index++) {
     ob->matbits[index] = 0;
@@ -951,13 +949,13 @@ static void bc_remove_materials_from_object(Object *ob, Mesh *mesh)
   }
 }
 
-std::vector<Object *> MeshImporter::get_all_users_of(Mesh *reference_mesh)
+std::vector<blender::Object *> MeshImporter::get_all_users_of(blender::Mesh *reference_mesh)
 {
-  std::vector<Object *> mesh_users;
-  for (Object *ob : imported_objects) {
+  std::vector<blender::Object *> mesh_users;
+  for (blender::Object *ob : imported_objects) {
     if (bc_is_marked(ob)) {
       bc_remove_mark(ob);
-      Mesh *mesh = (Mesh *)ob->data;
+      blender::Mesh *mesh = (blender::Mesh *)ob->data;
       if (mesh == reference_mesh) {
         mesh_users.push_back(ob);
       }
@@ -968,8 +966,8 @@ std::vector<Object *> MeshImporter::get_all_users_of(Mesh *reference_mesh)
 
 void MeshImporter::optimize_material_assignements()
 {
-  for (Object *ob : imported_objects) {
-    Mesh *mesh = (Mesh *)ob->data;
+  for (blender::Object *ob : imported_objects) {
+    blender::Mesh *mesh = (blender::Mesh *)ob->data;
     if (ID_REAL_USERS(&mesh->id) == 1) {
       bc_copy_materials_to_data(ob, mesh);
       bc_remove_materials_from_object(ob, mesh);
@@ -977,9 +975,9 @@ void MeshImporter::optimize_material_assignements()
     }
     else if (ID_REAL_USERS(&mesh->id) > 1) {
       bool can_move = true;
-      std::vector<Object *> mesh_users = get_all_users_of(mesh);
+      std::vector<blender::Object *> mesh_users = get_all_users_of(mesh);
       if (mesh_users.size() > 1) {
-        Object *ref_ob = mesh_users[0];
+        blender::Object *ref_ob = mesh_users[0];
         for (int index = 1; index < mesh_users.size(); index++) {
           if (!bc_has_same_material_configuration(ref_ob, mesh_users[index])) {
             can_move = false;
@@ -988,7 +986,7 @@ void MeshImporter::optimize_material_assignements()
         }
         if (can_move) {
           bc_copy_materials_to_data(ref_ob, mesh);
-          for (Object *object : mesh_users) {
+          for (blender::Object *object : mesh_users) {
             bc_remove_materials_from_object(object, mesh);
             bc_remove_mark(object);
           }
@@ -1000,8 +998,8 @@ void MeshImporter::optimize_material_assignements()
 
 void MeshImporter::assign_material_to_geom(
     COLLADAFW::MaterialBinding cmaterial,
-    std::map<COLLADAFW::UniqueId, Material *> &uid_material_map,
-    Object *ob,
+    std::map<COLLADAFW::UniqueId, blender::Material *> &uid_material_map,
+    blender::Object *ob,
     const COLLADAFW::UniqueId *geom_uid,
     short mat_index)
 {
@@ -1018,12 +1016,12 @@ void MeshImporter::assign_material_to_geom(
   materials_mapped_to_geom.insert(
       std::pair<COLLADAFW::UniqueId, COLLADAFW::UniqueId>(*geom_uid, ma_uid));
 
-  Material *ma = uid_material_map[ma_uid];
+  blender::Material *ma = uid_material_map[ma_uid];
 
   /* Attention! This temporarily assigns material to object on purpose!
    * See note above. */
   ob->actcol = 0;
-  BKE_object_material_assign(m_bmain, ob, ma, mat_index + 1, BKE_MAT_ASSIGN_OBJECT);
+  BKE_object_material_assign(m_bmain, ob, ma, mat_index + 1, blender::BKE_MAT_ASSIGN_OBJECT);
 
   MaterialIdPrimitiveArrayMap &mat_prim_map = geom_uid_mat_mapping_map[*geom_uid];
   COLLADAFW::MaterialId mat_id = cmaterial.getMaterialId();
@@ -1045,11 +1043,11 @@ void MeshImporter::assign_material_to_geom(
   }
 }
 
-Object *MeshImporter::create_mesh_object(
+blender::Object *MeshImporter::create_mesh_object(
     COLLADAFW::Node *node,
     COLLADAFW::InstanceGeometry *geom,
     bool isController,
-    std::map<COLLADAFW::UniqueId, Material *> &uid_material_map)
+    std::map<COLLADAFW::UniqueId, blender::Material *> &uid_material_map)
 {
   const COLLADAFW::UniqueId *geom_uid = &geom->getInstanciatedObjectId();
 
@@ -1081,7 +1079,7 @@ Object *MeshImporter::create_mesh_object(
   const char *name = id.length() ? id.c_str() : nullptr;
 
   /* add object */
-  Object *ob = bc_add_object(m_bmain, scene, view_layer, OB_MESH, name);
+  blender::Object *ob = bc_add_object(m_bmain, scene, view_layer, blender::OB_MESH, name);
   bc_set_mark(ob); /* used later for material assignment optimization */
 
   /* store object pointer for ArmatureImporter */
@@ -1089,13 +1087,13 @@ Object *MeshImporter::create_mesh_object(
   imported_objects.push_back(ob);
 
   /* replace ob->data freeing the old one */
-  Mesh *old_mesh = (Mesh *)ob->data;
-  Mesh *new_mesh = uid_mesh_map[*geom_uid];
+  blender::Mesh *old_mesh = (blender::Mesh *)ob->data;
+  blender::Mesh *new_mesh = uid_mesh_map[*geom_uid];
 
   BKE_mesh_assign_object(m_bmain, ob, new_mesh);
 
   /* Because BKE_mesh_assign_object would have already decreased it... */
-  id_us_plus(&old_mesh->id);
+  blender::id_us_plus(&old_mesh->id);
 
   BKE_id_free_us(m_bmain, old_mesh);
 
@@ -1113,7 +1111,7 @@ Object *MeshImporter::create_mesh_object(
   }
 
   /* clean up the mesh */
-  BKE_mesh_validate((Mesh *)ob->data, false, false);
+  blender::bke::mesh_validate(*(blender::Mesh *)ob->data, false);
 
   return ob;
 }

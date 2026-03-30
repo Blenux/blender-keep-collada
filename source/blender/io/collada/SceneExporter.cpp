@@ -11,12 +11,15 @@
 #include "COLLADASWInstanceLight.h"
 
 #include "BLI_listbase.h"
+#include "BLI_listbase_wrapper.hh"
 
 #include "BKE_collection.hh"
 #include "BKE_constraint.h"
 
 #include "SceneExporter.h"
 #include "collada_utils.h"
+
+using namespace blender;
 
 void SceneExporter::exportScene()
 {
@@ -83,19 +86,19 @@ void SceneExporter::writeNodeList(std::vector<Object *> &child_objects, Object *
   }
 }
 
-void SceneExporter::writeNode(Object *ob)
+void SceneExporter::writeNode(blender::Object *ob)
 {
-  const Scene *scene = blender_context.get_scene();
-  ViewLayer *view_layer = blender_context.get_view_layer();
+  const blender::Scene *scene = blender_context.get_scene();
+  blender::ViewLayer *view_layer = blender_context.get_view_layer();
 
-  std::vector<Object *> child_objects;
+  std::vector<blender::Object *> child_objects;
   bc_get_children(child_objects, ob, scene, view_layer);
   bool can_export = bc_is_in_Export_set(
       this->export_settings.get_export_set(), ob, scene, view_layer);
 
   /* Add associated armature first if available */
   bool armature_exported = false;
-  Object *ob_arm = bc_get_assigned_armature(ob);
+  blender::Object *ob_arm = bc_get_assigned_armature(ob);
 
   if (ob_arm != nullptr) {
     armature_exported = bc_is_in_Export_set(
@@ -163,16 +166,17 @@ void SceneExporter::writeNode(Object *ob)
     /* empty object */
     else if (ob->type == OB_EMPTY) { /* TODO: handle groups (OB_DUPLICOLLECTION */
       if ((ob->transflag & OB_DUPLICOLLECTION) == OB_DUPLICOLLECTION && ob->instance_collection) {
-        Collection *collection = ob->instance_collection;
+        blender::Collection *collection = ob->instance_collection;
         // printf("group detected '%s'\n", group->id.name + 2);
-        FOREACH_COLLECTION_OBJECT_RECURSIVE_BEGIN (collection, object) {
+        blender::ListBaseT<blender::Base> bases = blender::BKE_collection_object_cache_get(collection);
+        for (blender::Base *base : blender::ListBaseWrapper<blender::Base>(&bases)) {
+          blender::Object *object = base->object;
           printf("\t%s\n", object->id.name);
         }
-        FOREACH_COLLECTION_OBJECT_RECURSIVE_END;
       }
 
       if (BLI_listbase_is_empty(&ob->constraints) == false) {
-        bConstraint *con = (bConstraint *)ob->constraints.first;
+        blender::bConstraint *con = (blender::bConstraint *)ob->constraints.first;
         while (con) {
           std::string con_name(encode_xml(con->name));
           std::string con_tag = con_name + "_constraint";
@@ -198,17 +202,17 @@ void SceneExporter::writeNode(Object *ob)
            * No real mapping in the `.dae`.
            * Need support for multiple target objects also. */
 
-          ListBase targets = {nullptr, nullptr};
-          if (BKE_constraint_targets_get(con, &targets)) {
-            Object *obtar;
+          blender::ListBaseT<blender::bConstraintTarget> targets = {nullptr, nullptr};
+          if (blender::BKE_constraint_targets_get(con, &targets)) {
+            blender::Object *obtar;
 
-            LISTBASE_FOREACH (bConstraintTarget *, ct, &targets) {
+            for (blender::bConstraintTarget *ct : blender::ListBaseWrapper<blender::bConstraintTarget>(static_cast<blender::ListBase*>(&targets))) {
               obtar = ct->tar;
               std::string tar_id((obtar) ? id_name(obtar) : "");
               colladaNode.addExtraTechniqueChildParameter("blender", con_tag, "target_id", tar_id);
             }
 
-            BKE_constraint_targets_flush(con, &targets, true);
+            blender::BKE_constraint_targets_flush(con, static_cast<blender::ListBaseT<blender::bConstraintTarget>*>(&targets), true);
           }
 
           con = con->next;

@@ -24,6 +24,8 @@
 
 #include "ImageExporter.h"
 
+using namespace blender;
+
 ImagesExporter::ImagesExporter(COLLADASW::StreamWriter *sw,
                                BCExportSettings &export_settings,
                                KeyImageMap &key_image_map)

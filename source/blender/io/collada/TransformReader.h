@@ -27,7 +27,7 @@ class TransformReader {
 
  public:
   struct Animation {
-    Object *ob;
+    blender::Object *ob;
     COLLADAFW::Node *node;
     COLLADAFW::Transformation *tm; /* which transform is animated by an AnimationList->id */
   };
@@ -37,11 +37,11 @@ class TransformReader {
   void get_node_mat(float mat[4][4],
                     COLLADAFW::Node *node,
                     std::map<COLLADAFW::UniqueId, Animation> *animation_map,
-                    Object *ob);
+                    blender::Object *ob);
   void get_node_mat(float mat[4][4],
                     COLLADAFW::Node *node,
                     std::map<COLLADAFW::UniqueId, Animation> *animation_map,
-                    Object *ob,
+                    blender::Object *ob,
                     float parent_mat[4][4]);
 
   void dae_rotate_to_mat4(COLLADAFW::Transformation *tm, float m[4][4]);
