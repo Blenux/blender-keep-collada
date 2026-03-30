@@ -18,6 +18,8 @@
 
 #include "BLI_utildefines.h"
 
+using namespace blender;
+
 //--------------------------------------------------------------------
 ErrorHandler::ErrorHandler() : mError(false) {}
 

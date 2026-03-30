@@ -27,6 +27,8 @@
 #include "SkinInfo.h"
 #include "collada_utils.h"
 
+using namespace blender;
+
 /* use name, or fall back to original id if name not present (name is optional) */
 template<class T> static const char *bc_get_joint_name(T *node)
 {

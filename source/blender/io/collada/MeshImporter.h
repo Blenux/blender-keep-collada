@@ -27,17 +27,17 @@
 
 #include "DNA_material_types.h"
 #include "DNA_mesh_types.h"
+#include "DNA_meshdata_types.h"
 #include "DNA_object_types.h"
 #include "DNA_scene_types.h"
 
 class ArmatureImporter;
-struct MLoopCol;
 
 /* only for ArmatureImporter to "see" MeshImporter::get_object_by_geom_uid */
 class MeshImporterBase {
  public:
-  virtual Object *get_object_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) = 0;
-  virtual Mesh *get_mesh_by_geom_uid(const COLLADAFW::UniqueId &mesh_uid) = 0;
+  virtual blender::Object *get_object_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) = 0;
+  virtual blender::Mesh *get_mesh_by_geom_uid(const COLLADAFW::UniqueId &mesh_uid) = 0;
   virtual std::string *get_geometry_name(const std::string &mesh_name) = 0;
 };
 
@@ -59,7 +59,7 @@ class VCOLDataWrapper {
 
  public:
   VCOLDataWrapper(COLLADAFW::MeshVertexData &vdata);
-  void get_vcol(int v_index, MLoopCol *mloopcol);
+  void get_vcol(int v_index, blender::MLoopCol *mloopcol);
 };
 
 class MeshImporter : public MeshImporterBase {
@@ -67,16 +67,16 @@ class MeshImporter : public MeshImporterBase {
   UnitConverter *unitconverter;
   bool use_custom_normals;
 
-  Main *m_bmain;
-  Scene *scene;
-  ViewLayer *view_layer;
+  blender::Main *m_bmain;
+  blender::Scene *scene;
+  blender::ViewLayer *view_layer;
 
   ArmatureImporter *armature_importer;
 
   std::map<std::string, std::string> mesh_geom_map;       /* needed for correct shape key naming */
-  std::map<COLLADAFW::UniqueId, Mesh *> uid_mesh_map;     /* geometry unique id-to-mesh map */
-  std::map<COLLADAFW::UniqueId, Object *> uid_object_map; /* geom UID-to-object */
-  std::vector<Object *> imported_objects;                 /* list of imported objects */
+  std::map<COLLADAFW::UniqueId, blender::Mesh *> uid_mesh_map; /* geometry unique id-to-mesh map */
+  std::map<COLLADAFW::UniqueId, blender::Object *> uid_object_map; /* geom UID-to-object */
+  std::vector<blender::Object *> imported_objects;                 /* list of imported objects */
 
   /* this structure is used to assign material indices to faces
    * it holds a portion of Mesh faces and corresponds to a DAE primitive list
@@ -101,7 +101,7 @@ class MeshImporter : public MeshImporterBase {
                    COLLADAFW::IndexList &index_list,
                    int count);
 
-  void set_vcol(MLoopCol *mloopcol,
+  void set_vcol(blender::MLoopCol *mloopcol,
                 VCOLDataWrapper &vob,
                 int loop_index,
                 COLLADAFW::IndexList &index_list,
@@ -117,7 +117,7 @@ class MeshImporter : public MeshImporterBase {
    */
   bool is_nice_mesh(COLLADAFW::Mesh *mesh);
 
-  void read_vertices(COLLADAFW::Mesh *mesh, Mesh *blender_mesh);
+  void read_vertices(COLLADAFW::Mesh *mesh, blender::Mesh *blender_mesh);
 
   /**
    * Condition 1: The Primitive has normals
@@ -139,7 +139,7 @@ class MeshImporter : public MeshImporterBase {
    * Maybe move this function to `blenderkernel/intern/mesh.cc`.
    * and add definition to BKE_mesh.c.
    */
-  static void mesh_add_edges(Mesh *mesh, int len);
+  static void mesh_add_edges(blender::Mesh *mesh, int len);
 
   uint get_loose_edge_count(COLLADAFW::Mesh *mesh);
 
@@ -149,7 +149,7 @@ class MeshImporter : public MeshImporterBase {
    * HINT: This is done because `mesh->getFacesCount()` does
    * count loose edges as extra faces, which is not what we want here.
    */
-  void allocate_poly_data(COLLADAFW::Mesh *collada_mesh, Mesh *mesh);
+  void allocate_poly_data(COLLADAFW::Mesh *collada_mesh, blender::Mesh *mesh);
 
   /* TODO: import uv set names */
   /**
@@ -160,7 +160,7 @@ class MeshImporter : public MeshImporterBase {
    * TODO: import uv set names.
    */
   void read_polys(COLLADAFW::Mesh *mesh,
-                  Mesh *blender_mesh,
+                  blender::Mesh *blender_mesh,
                   blender::Vector<blender::float3> &loop_normals);
   /**
    * Read all loose edges.
@@ -168,7 +168,7 @@ class MeshImporter : public MeshImporterBase {
    * faces have already been generated and added to me->medge
    * So this function MUST be called after read_faces() (see below)
    */
-  void read_lines(COLLADAFW::Mesh *mesh, Mesh *blender_mesh);
+  void read_lines(COLLADAFW::Mesh *mesh, blender::Mesh *blender_mesh);
   uint get_vertex_count(COLLADAFW::Polygons *mp, int index);
 
   void get_vector(float v[3], COLLADAFW::MeshVertexData &arr, int i, int stride);
@@ -180,19 +180,19 @@ class MeshImporter : public MeshImporterBase {
    * NOTE: This function uses the object user flag to control
    * which objects have already been processed.
    */
-  std::vector<Object *> get_all_users_of(Mesh *reference_mesh);
+  std::vector<blender::Object *> get_all_users_of(blender::Mesh *reference_mesh);
 
  public:
   MeshImporter(UnitConverter *unitconv,
                bool use_custom_normals,
                ArmatureImporter *arm,
-               Main *bmain,
-               Scene *sce,
-               ViewLayer *view_layer);
+               blender::Main *bmain,
+               blender::Scene *sce,
+               blender::ViewLayer *view_layer);
 
-  Object *get_object_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) override;
+  blender::Object *get_object_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) override;
 
-  Mesh *get_mesh_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) override;
+  blender::Mesh *get_mesh_by_geom_uid(const COLLADAFW::UniqueId &geom_uid) override;
 
   /**
    *
@@ -222,15 +222,15 @@ class MeshImporter : public MeshImporterBase {
    * optimize_material_assignements() above.
    */
   void assign_material_to_geom(COLLADAFW::MaterialBinding cmaterial,
-                               std::map<COLLADAFW::UniqueId, Material *> &uid_material_map,
-                               Object *ob,
+                               std::map<COLLADAFW::UniqueId, blender::Material *> &uid_material_map,
+                               blender::Object *ob,
                                const COLLADAFW::UniqueId *geom_uid,
                                short mat_index);
 
-  Object *create_mesh_object(COLLADAFW::Node *node,
+  blender::Object *create_mesh_object(COLLADAFW::Node *node,
                              COLLADAFW::InstanceGeometry *geom,
                              bool isController,
-                             std::map<COLLADAFW::UniqueId, Material *> &uid_material_map);
+                             std::map<COLLADAFW::UniqueId, blender::Material *> &uid_material_map);
 
   /** Create a mesh storing a pointer in a map so it can be retrieved later by geometry UID. */
   bool write_geometry(const COLLADAFW::Geometry *geom);

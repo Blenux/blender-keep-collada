@@ -39,9 +39,9 @@
 
 class ArmatureImporter : private TransformReader {
  private:
-  Main *m_bmain;
-  Scene *scene;
-  ViewLayer *view_layer;
+  blender::Main *m_bmain;
+  blender::Scene *scene;
+  blender::ViewLayer *view_layer;
   UnitConverter *unit_converter;
   const ImportSettings *import_settings;
 
@@ -56,21 +56,21 @@ class ArmatureImporter : private TransformReader {
 
 #if 0
   struct ArmatureJoints {
-    Object *ob_arm;
+    blender::Object *ob_arm;
     std::vector<COLLADAFW::Node *> root_joints;
   };
   std::vector<ArmatureJoints> armature_joints;
 #endif
 
-  Object *empty; /* empty for leaf bones */
+  blender::Object *empty; /* empty for leaf bones */
 
   std::map<COLLADAFW::UniqueId, COLLADAFW::UniqueId> geom_uid_by_controller_uid;
   std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> joint_by_uid; /* contains all joints */
   std::vector<COLLADAFW::Node *> root_joints;
   std::vector<COLLADAFW::Node *> finished_joints;
   std::vector<COLLADAFW::MorphController *> morph_controllers;
-  std::map<COLLADAFW::UniqueId, Object *> joint_parent_map;
-  std::map<COLLADAFW::UniqueId, Object *> unskinned_armature_map;
+  std::map<COLLADAFW::UniqueId, blender::Object *> joint_parent_map;
+  std::map<COLLADAFW::UniqueId, blender::Object *> unskinned_armature_map;
 
   MeshImporterBase *mesh_importer;
 
@@ -86,13 +86,13 @@ class ArmatureImporter : private TransformReader {
 
   int create_bone(SkinInfo *skin,
                   COLLADAFW::Node *node,
-                  EditBone *parent,
+                  blender::EditBone *parent,
                   int totchild,
                   float parent_mat[4][4],
-                  bArmature *arm,
+                  blender::bArmature *arm,
                   std::vector<std::string> &layer_labels);
 
-  BoneExtended &add_bone_extended(EditBone *bone,
+  BoneExtended &add_bone_extended(blender::EditBone *bone,
                                   COLLADAFW::Node *node,
                                   int sibcount,
                                   std::vector<std::string> &layer_labels,
@@ -104,33 +104,33 @@ class ArmatureImporter : private TransformReader {
    * tail locations for the affected bones (nodes which don't have any connected child)
    * Hint: The extended_bones set gets populated in ArmatureImporter::create_bone
    */
-  void fix_leaf_bone_hierarchy(bArmature *armature, Bone *bone, bool fix_orientation);
-  void fix_leaf_bone(bArmature *armature, EditBone *ebone, BoneExtended *be, bool fix_orientation);
-  void fix_parent_connect(bArmature *armature, Bone *bone);
-  void connect_bone_chains(bArmature *armature, Bone *bone, int max_chain_length);
+  void fix_leaf_bone_hierarchy(blender::bArmature *armature, blender::Bone *bone, bool fix_orientation);
+  void fix_leaf_bone(blender::bArmature *armature, blender::EditBone *ebone, BoneExtended *be, bool fix_orientation);
+  void fix_parent_connect(blender::bArmature *armature, blender::Bone *bone);
+  void connect_bone_chains(blender::bArmature *armature, blender::Bone *bone, int max_chain_length);
 
-  void set_pose(Object *ob_arm,
+  void set_pose(blender::Object *ob_arm,
                 COLLADAFW::Node *root_node,
                 const char *parentname,
                 float parent_mat[4][4]);
 
-  void set_bone_transformation_type(const COLLADAFW::Node *node, Object *ob_arm);
+  void set_bone_transformation_type(const COLLADAFW::Node *node, blender::Object *ob_arm);
   bool node_is_decomposed(const COLLADAFW::Node *node);
 #if 0
-  void set_leaf_bone_shapes(Object *ob_arm);
+  void set_leaf_bone_shapes(blender::Object *ob_arm);
   void set_euler_rotmode();
 #endif
 
-  Object *get_empty_for_leaves();
+  blender::Object *get_empty_for_leaves();
 
 #if 0
-  Object *find_armature(COLLADAFW::Node *node);
+  blender::Object *find_armature(COLLADAFW::Node *node);
 
-  ArmatureJoints &get_armature_joints(Object *ob_arm);
+  ArmatureJoints &get_armature_joints(blender::Object *ob_arm);
 #endif
 
-  Object *create_armature_bones(Main *bmain, SkinInfo &skin);
-  void create_armature_bones(Main *bmain, std::vector<Object *> &arm_objs);
+  blender::Object *create_armature_bones(blender::Main *bmain, SkinInfo &skin);
+  void create_armature_bones(blender::Main *bmain, std::vector<blender::Object *> &arm_objs);
 
   /** TagsMap typedef for uid_tags_map. */
   using TagsMap = std::map<std::string, ExtraTags *>;
@@ -139,9 +139,9 @@ class ArmatureImporter : private TransformReader {
  public:
   ArmatureImporter(UnitConverter *conv,
                    MeshImporterBase *mesh,
-                   Main *bmain,
-                   Scene *sce,
-                   ViewLayer *view_layer,
+                   blender::Main *bmain,
+                   blender::Scene *sce,
+                   blender::ViewLayer *view_layer,
                    const ImportSettings *import_settings);
   ~ArmatureImporter();
 
@@ -150,16 +150,16 @@ class ArmatureImporter : private TransformReader {
    * is a child of a node (not joint), root should be true since
    * this is where we build armature bones from
    */
-  void add_root_joint(COLLADAFW::Node *node, Object *parent);
+  void add_root_joint(COLLADAFW::Node *node, blender::Object *parent);
 
   /** Here we add bones to armatures, having armatures previously created in write_controller. */
-  void make_armatures(bContext *C, std::vector<Object *> &objects_to_scale);
+  void make_armatures(blender::bContext *C, std::vector<blender::Object *> &objects_to_scale);
 
-  void make_shape_keys(bContext *C);
+  void make_shape_keys(blender::bContext *C);
 
 #if 0
   /** Link with meshes, create vertex groups, assign weights. */
-  void link_armature(Object *ob_arm,
+  void link_armature(blender::Object *ob_arm,
                      const COLLADAFW::UniqueId &geom_id,
                      const COLLADAFW::UniqueId &controller_data_id);
 #endif
@@ -170,7 +170,7 @@ class ArmatureImporter : private TransformReader {
 
   COLLADAFW::UniqueId *get_geometry_uid(const COLLADAFW::UniqueId &controller_uid);
 
-  Object *get_armature_for_joint(COLLADAFW::Node *node);
+  blender::Object *get_armature_for_joint(COLLADAFW::Node *node);
 
   void get_rna_path_for_joint(COLLADAFW::Node *node, char *joint_path, size_t joint_path_maxncpy);
 

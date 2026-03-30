@@ -41,6 +41,6 @@ class SceneExporter : COLLADASW::LibraryVisualScenes,
   BCExportSettings &export_settings;
 
   void exportHierarchy();
-  void writeNodeList(std::vector<Object *> &child_objects, Object *parent);
-  void writeNode(Object *ob);
+  void writeNodeList(std::vector<blender::Object *> &child_objects, blender::Object *parent);
+  void writeNode(blender::Object *ob);
 };

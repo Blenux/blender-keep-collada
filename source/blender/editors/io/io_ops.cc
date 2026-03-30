@@ -89,8 +89,8 @@ void ED_operatortypes_io()
 #endif
 
 #ifdef WITH_COLLADA
-  WM_operatortype_append(WM_OT_collada_export);
-  WM_operatortype_append(WM_OT_collada_import);
+  blender::WM_operatortype_append(WM_OT_collada_export);
+  blender::WM_operatortype_append(WM_OT_collada_import);
   ed::io::collada_file_handler_add();
 #endif
 

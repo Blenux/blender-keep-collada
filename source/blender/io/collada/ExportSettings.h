@@ -77,16 +77,16 @@ struct ExportSettings {
   bool keep_bind_info;
 
   char *filepath;
-  LinkNode *export_set;
+  blender::LinkNode *export_set;
 };
 
 #ifdef __cplusplus
 }
 
-void bc_get_children(std::vector<Object *> &child_set,
-                     Object *ob,
-                     const Scene *scene,
-                     ViewLayer *view_layer);
+void bc_get_children(std::vector<blender::Object *> &child_set,
+                     blender::Object *ob,
+                     const blender::Scene *scene,
+                     blender::ViewLayer *view_layer);
 
 class BCExportSettings {
 
@@ -253,7 +253,7 @@ class BCExportSettings {
     return export_settings.filepath;
   }
 
-  LinkNode *get_export_set()
+  blender::LinkNode *get_export_set()
   {
     return export_settings.export_set;
   }
@@ -263,17 +263,17 @@ class BCExportSettings {
     return blender_context;
   }
 
-  Scene *get_scene()
+  blender::Scene *get_scene()
   {
     return blender_context.get_scene();
   }
 
-  ViewLayer *get_view_layer()
+  blender::ViewLayer *get_view_layer()
   {
     return blender_context.get_view_layer();
   }
 
-  bool is_export_root(Object *ob)
+  bool is_export_root(blender::Object *ob)
   {
     return bc_is_base_node(get_export_set(), ob, get_scene(), get_view_layer());
   }

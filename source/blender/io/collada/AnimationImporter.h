@@ -39,33 +39,33 @@ class AnimationImporterBase {
 
 class AnimationImporter : private TransformReader, public AnimationImporterBase {
  private:
-  bContext *mContext;
+  blender::bContext *mContext;
   ArmatureImporter *armature_importer;
-  Scene *scene;
+  blender::Scene *scene;
 
-  std::map<COLLADAFW::UniqueId, std::vector<FCurve *>> curve_map;
+  std::map<COLLADAFW::UniqueId, std::vector<blender::FCurve *>> curve_map;
   std::map<COLLADAFW::UniqueId, TransformReader::Animation> uid_animated_map;
   // std::map<bActionGroup*, std::vector<FCurve*> > fcurves_actionGroup_map;
   std::map<COLLADAFW::UniqueId, const COLLADAFW::AnimationList *> animlist_map;
-  std::vector<FCurve *> unused_curves;
-  std::map<COLLADAFW::UniqueId, Object *> joint_objects;
+  std::vector<blender::FCurve *> unused_curves;
+  std::map<COLLADAFW::UniqueId, blender::Object *> joint_objects;
 
-  FCurve *create_fcurve(int array_index, const char *rna_path);
+  blender::FCurve *create_fcurve(int array_index, const char *rna_path);
 
-  void add_bezt(FCurve *fcu,
+  void add_bezt(blender::FCurve *fcu,
                 float frame,
                 float value,
-                eBezTriple_Interpolation ipo = BEZT_IPO_LIN);
+                blender::eBezTriple_Interpolation ipo = blender::BEZT_IPO_LIN);
 
   /**
    * Create one or several fcurves depending on the number of parameters being animated.
    */
   void animation_to_fcurves(COLLADAFW::AnimationCurve *curve);
 
-  void fcurve_deg_to_rad(FCurve *cu);
-  void fcurve_scale(FCurve *cu, int scale);
+  void fcurve_deg_to_rad(blender::FCurve *cu);
+  void fcurve_scale(blender::FCurve *cu, int scale);
 
-  void fcurve_is_used(FCurve *fcu);
+  void fcurve_is_used(blender::FCurve *fcu);
 
   int typeFlag;
 
@@ -110,7 +110,7 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
   };
 
  public:
-  AnimationImporter(bContext *C, UnitConverter *conv, ArmatureImporter *arm, Scene *scene)
+  AnimationImporter(blender::bContext *C, UnitConverter *conv, ArmatureImporter *arm, blender::Scene *scene)
       : TransformReader(conv), mContext(C), armature_importer(arm), scene(scene)
   {
   }
@@ -128,14 +128,14 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
    * but rather return the transform matrix, so caller can do with it what is
    * necessary. Same for \ref get_node_mat
    */
-  void read_node_transform(COLLADAFW::Node *node, Object *ob);
-  // virtual void change_eul_to_quat(Object *ob, bAction *act);
+  void read_node_transform(COLLADAFW::Node *node, blender::Object *ob);
+  // virtual void change_eul_to_quat(blender::Object *ob, bAction *act);
 
   void translate_Animations(COLLADAFW::Node *Node,
                             std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> &root_map,
-                            std::multimap<COLLADAFW::UniqueId, Object *> &object_map,
+                            std::multimap<COLLADAFW::UniqueId, blender::Object *> &object_map,
                             std::map<COLLADAFW::UniqueId, const COLLADAFW::Object *> FW_object_map,
-                            std::map<COLLADAFW::UniqueId, Material *> uid_material_map);
+                            std::map<COLLADAFW::UniqueId, blender::Material *> uid_material_map);
 
   /**
    * Check if object is animated by checking if animlist_map
@@ -145,8 +145,8 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
       const COLLADAFW::Node *node,
       std::map<COLLADAFW::UniqueId, const COLLADAFW::Object *> FW_object_map);
 
-  void apply_matrix_curves(Object *ob,
-                           std::vector<FCurve *> &animcurves,
+  void apply_matrix_curves(blender::Object *ob,
+                           std::vector<blender::FCurve *> &animcurves,
                            COLLADAFW::Node *root,
                            COLLADAFW::Node *node,
                            COLLADAFW::Transformation *tm);
@@ -157,7 +157,7 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
    */
   void Assign_transform_animations(COLLADAFW::Transformation *transform,
                                    const COLLADAFW::AnimationList::AnimationBinding *binding,
-                                   std::vector<FCurve *> *curves,
+                                   std::vector<blender::FCurve *> *curves,
                                    bool is_joint,
                                    char *joint_path);
 
@@ -166,10 +166,10 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
    * animation class of each animation.
    */
   void Assign_color_animations(const COLLADAFW::UniqueId &listid,
-                               AnimData &adt,
+                                blender::AnimData &adt,
                                const char *anim_type);
   void Assign_float_animations(const COLLADAFW::UniqueId &listid,
-                               AnimData &adt,
+                                blender::AnimData &adt,
                                const char *anim_type);
   /**
    * Lens animations must be stored in COLLADA by using FOV,
@@ -177,22 +177,22 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
    * The imported animation curves must be converted appropriately.
    */
   void Assign_lens_animations(const COLLADAFW::UniqueId &listid,
-                              AnimData &adt,
+                             blender::AnimData &adt,
                               double aspect,
-                              const Camera *cam,
+                              const blender::Camera *cam,
                               const char *anim_type,
                               int fov_type);
 
   int setAnimType(const COLLADAFW::Animatable *prop, int type, int addition);
 
   /** Sets the rna_path and array index to curve. */
-  void modify_fcurve(std::vector<FCurve *> *curves,
+  void modify_fcurve(std::vector<blender::FCurve *> *curves,
                      const char *rna_path,
                      int array_index,
                      int scale = 1);
-  void unused_fcurve(std::vector<FCurve *> *curves);
+  void unused_fcurve(std::vector<blender::FCurve *> *curves);
 
-  void find_frames(std::vector<float> *frames, std::vector<FCurve *> *curves);
+  void find_frames(std::vector<float> *frames, std::vector<blender::FCurve *> *curves);
 
   /**
    * Internal, better make it private
@@ -218,5 +218,5 @@ class AnimationImporter : private TransformReader, public AnimationImporterBase 
 
   float convert_to_focal_length(float in_xfov, int fov_type, float aspect, float sensorx);
 
-  void add_bone_fcurve(Object *ob, COLLADAFW::Node *node, FCurve *fcu);
+  void add_bone_fcurve(blender::Object *ob, COLLADAFW::Node *node, blender::FCurve *fcu);
 };

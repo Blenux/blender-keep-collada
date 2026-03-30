@@ -14,6 +14,9 @@
 #include "DNA_image_types.h"
 #include "DNA_scene_types.h"
 
+#include "BKE_image.hh"
+#include "BLI_string.h"
+
 #include "ExportSettings.h"
 #include "collada_utils.h"
 
@@ -22,10 +25,10 @@ class ImagesExporter : COLLADASW::LibraryImages {
   ImagesExporter(COLLADASW::StreamWriter *sw,
                  BCExportSettings &export_settings,
                  KeyImageMap &key_image_map);
-  void exportImages(Scene *sce);
+  void exportImages(blender::Scene *sce);
 
  private:
   BCExportSettings &export_settings;
   KeyImageMap &key_image_map;
-  void export_UV_Image(Image *image, bool use_copies);
+  void export_UV_Image(blender::Image *image, bool use_copies);
 };

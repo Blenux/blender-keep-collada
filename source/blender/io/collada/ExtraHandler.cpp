@@ -13,6 +13,8 @@
 
 #include "ExtraHandler.h"
 
+using namespace blender;
+
 ExtraHandler::ExtraHandler(DocumentImporter *dimp, AnimationImporter *aimp)
     : currentExtraTags(nullptr)
 {
@@ -41,7 +43,7 @@ bool ExtraHandler::textData(const char *text, size_t textLength)
     return false;
   }
 
-  BLI_strncpy(buf, text, textLength + 1);
+  blender::BLI_strncpy(buf, text, textLength + 1);
   currentExtraTags->addTag(currentElement, std::string(buf));
   return true;
 }
@@ -59,7 +61,7 @@ bool ExtraHandler::parseElement(const char *profileName,
                                 const COLLADAFW::UniqueId &uniqueId,
                                 COLLADAFW::Object *object)
 {
-  if (BLI_strcaseeq(profileName, "blender")) {
+  if (blender::BLI_strcaseeq(profileName, "blender")) {
 #if 0
     printf("In parseElement for supported profile %s for id %s\n",
            profileName,

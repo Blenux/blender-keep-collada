@@ -33,7 +33,7 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
   COLLADASW::StreamWriter *sw;
   BCExportSettings &export_settings;
 
-  BC_global_rotation_type get_global_rotation_type(Object *ob);
+  BC_global_rotation_type get_global_rotation_type(blender::Object *ob);
 
  public:
   AnimationExporter(COLLADASW::StreamWriter *sw, BCExportSettings &export_settings)
@@ -44,33 +44,33 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
   bool exportAnimations();
 
   /** Called for each exported object. */
-  void operator()(Object *ob);
+  void operator()(blender::Object *ob);
 
  protected:
-  void export_object_constraint_animation(Object *ob);
+  void export_object_constraint_animation(blender::Object *ob);
 
-  void export_morph_animation(Object *ob);
+  void export_morph_animation(blender::Object *ob);
 
-  void write_bone_animation_matrix(Object *ob_arm, Bone *bone);
+  void write_bone_animation_matrix(blender::Object *ob_arm, blender::Bone *bone);
 
-  void write_bone_animation(Object *ob_arm, Bone *bone);
+  void write_bone_animation(blender::Object *ob_arm, blender::Bone *bone);
 
-  void sample_and_write_bone_animation(Object *ob_arm, Bone *bone, int transform_type);
+  void sample_and_write_bone_animation(blender::Object *ob_arm, blender::Bone *bone, int transform_type);
 
-  void sample_and_write_bone_animation_matrix(Object *ob_arm, Bone *bone);
+  void sample_and_write_bone_animation_matrix(blender::Object *ob_arm, blender::Bone *bone);
 
   void sample_animation(float *v,
                         std::vector<float> &frames,
                         int type,
-                        Bone *bone,
-                        Object *ob_arm,
-                        bPoseChannel *pChan);
+                        blender::Bone *bone,
+                        blender::Object *ob_arm,
+                        blender::bPoseChannel *pChan);
 
   void sample_animation(std::vector<float[4][4]> &mats,
                         std::vector<float> &frames,
-                        Bone *bone,
-                        Object *ob_arm,
-                        bPoseChannel *pChan);
+                        blender::Bone *bone,
+                        blender::Object *ob_arm,
+                        blender::bPoseChannel *pChan);
 
   /* dae_bone_animation -> add_bone_animation
    * (blend this into dae_bone_animation) */
@@ -81,9 +81,9 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
                           std::string ob_name,
                           std::string bone_name);
 
-  void dae_baked_animation(std::vector<float> &fra, Object *ob_arm, Bone *bone);
+  void dae_baked_animation(std::vector<float> &fra, blender::Object *ob_arm, blender::Bone *bone);
 
-  void dae_baked_object_animation(std::vector<float> &fra, Object *ob);
+  void dae_baked_object_animation(std::vector<float> &fra, blender::Object *ob);
 
   float convert_time(float frame);
 
@@ -92,7 +92,7 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
   std::vector<std::vector<std::string>> anim_meta;
 
   /** Main entry point into Animation export (called for each exported object). */
-  void exportAnimation(Object *ob, BCAnimationSampler &sampler);
+  void exportAnimation(blender::Object *ob, BCAnimationSampler &sampler);
 
   /**
    * Export all animation FCurves of an Object.
@@ -104,19 +104,19 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
    * And when parent inverse matrices are involved (when exporting
    * object hierarchies)
    */
-  void export_curve_animation_set(Object *ob, BCAnimationSampler &sampler, bool export_as_matrix);
+  void export_curve_animation_set(blender::Object *ob, BCAnimationSampler &sampler, bool export_as_matrix);
 
   /** Export one single curve. */
-  void export_curve_animation(Object *ob, BCAnimationCurve &curve);
+  void export_curve_animation(blender::Object *ob, BCAnimationCurve &curve);
 
   /** Export animation as matrix data. */
-  void export_matrix_animation(Object *ob, BCAnimationSampler &sampler);
+  void export_matrix_animation(blender::Object *ob, BCAnimationSampler &sampler);
 
   /** Write bone animations in transform matrix sources (step through the bone hierarchy). */
-  void export_bone_animations_recursive(Object *ob_arm, Bone *bone, BCAnimationSampler &sampler);
+  void export_bone_animations_recursive(blender::Object *ob_arm, blender::Bone *bone, BCAnimationSampler &sampler);
 
   /** Export for one bone. */
-  void export_bone_animation(Object *ob, Bone *bone, BCFrames &frames, BCMatrixSampleMap &samples);
+  void export_bone_animation(blender::Object *ob, blender::Bone *bone, BCFrames &frames, BCMatrixSampleMap &samples);
 
   /** Call to the low level collada exporter. */
   void export_collada_curve_animation(std::string id,
@@ -133,7 +133,7 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
                                        BCFrames &frames,
                                        BCMatrixSampleMap &samples,
                                        BC_global_rotation_type global_rotation_type,
-                                       Matrix &parentinv);
+                                       float parentinv[4][4]);
 
   /**
    * In some special cases the exported Curve needs to be replaced
@@ -143,14 +143,14 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
    * IMPORTANT: the modified curve must be deleted by the caller when no longer needed
    * if no conversion is needed this method returns a NULL;
    */
-  BCAnimationCurve *get_modified_export_curve(Object *ob,
+  BCAnimationCurve *get_modified_export_curve(blender::Object *ob,
                                               BCAnimationCurve &curve,
                                               BCAnimationCurveMap &curves);
 
   /* Helper functions. */
 
   void openAnimationWithClip(std::string id, std::string name);
-  bool open_animation_container(bool has_container, Object *ob);
+  bool open_animation_container(bool has_container, blender::Object *ob);
   void close_animation_container(bool has_container);
 
   /** Input and Output sources (single valued). */
@@ -164,7 +164,7 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
   std::string collada_source_from_values(BCMatrixSampleMap &samples,
                                          const std::string &anim_id,
                                          BC_global_rotation_type global_rotation_type,
-                                         Matrix &parentinv);
+                                         float parentinv[4][4]);
 
   /** Interpolation sources. */
   std::string collada_linear_interpolation_source(int tot, const std::string &anim_id);
@@ -211,7 +211,7 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
   /* Currently unused or not (yet?) needed */
   /* ===================================== */
 
-  bool is_bone_deform_group(Bone *bone);
+  bool is_bone_deform_group(blender::Bone *bone);
 
 #if 0
   BC_animation_transform_type _get_transform_type(const std::string path);
@@ -219,6 +219,6 @@ class AnimationExporter : COLLADASW::LibraryAnimations {
 #endif
 
 #ifdef WITH_MORPH_ANIMATION
-  void export_morph_animation(Object *ob, BCAnimationSampler &sampler);
+  void export_morph_animation(blender::Object *ob, BCAnimationSampler &sampler);
 #endif
 };

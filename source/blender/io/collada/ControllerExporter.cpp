@@ -31,43 +31,47 @@
 
 #include "collada_utils.h"
 
-bool ControllerExporter::is_skinned_mesh(Object *ob)
+#include "BLI_listbase_wrapper.hh"
+
+using namespace blender;
+
+bool ControllerExporter::is_skinned_mesh(blender::Object *ob)
 {
   return bc_get_assigned_armature(ob) != nullptr;
 }
 
 void ControllerExporter::write_bone_URLs(COLLADASW::InstanceController &ins,
-                                         Object *ob_arm,
-                                         Bone *bone)
+                                         blender::Object *ob_arm,
+                                         blender::Bone *bone)
 {
   if (bc_is_root_bone(bone, this->export_settings.get_deform_bones_only())) {
     std::string node_id = translate_id(id_name(ob_arm) + "_" + bone->name);
     ins.addSkeleton(COLLADABU::URI(COLLADABU::Utils::EMPTY_STRING, node_id));
   }
   else {
-    LISTBASE_FOREACH (Bone *, child, &bone->childbase) {
+    for (blender::Bone *child : blender::ListBaseWrapper<blender::Bone>(&bone->childbase)) {
       write_bone_URLs(ins, ob_arm, child);
     }
   }
 }
 
-bool ControllerExporter::add_instance_controller(Object *ob)
+bool ControllerExporter::add_instance_controller(blender::Object *ob)
 {
-  Object *ob_arm = bc_get_assigned_armature(ob);
-  bArmature *arm = (bArmature *)ob_arm->data;
+  blender::Object *ob_arm = bc_get_assigned_armature(ob);
+  blender::bArmature *arm = (blender::bArmature *)ob_arm->data;
 
   const std::string &controller_id = get_controller_id(ob_arm, ob);
 
   COLLADASW::InstanceController ins(mSW);
   ins.setUrl(COLLADASW::URI(COLLADABU::Utils::EMPTY_STRING, controller_id));
 
-  Mesh *mesh = (Mesh *)ob->data;
+  blender::Mesh *mesh = (blender::Mesh *)ob->data;
   if (mesh->deform_verts().is_empty()) {
     return false;
   }
 
   /* write root bone URLs */
-  LISTBASE_FOREACH (Bone *, bone, &arm->bonebase) {
+  for (blender::Bone *bone : blender::ListBaseWrapper<blender::Bone>(&arm->bonebase)) {
     write_bone_URLs(ins, ob_arm, bone);
   }
 
@@ -80,7 +84,7 @@ bool ControllerExporter::add_instance_controller(Object *ob)
 
 void ControllerExporter::export_controllers()
 {
-  Scene *sce = blender_context.get_scene();
+  blender::Scene *sce = blender_context.get_scene();
   openLibrary();
 
   GeometryFunctor gf;
@@ -90,10 +94,10 @@ void ControllerExporter::export_controllers()
   closeLibrary();
 }
 
-void ControllerExporter::operator()(Object *ob)
+void ControllerExporter::operator()(blender::Object *ob)
 {
-  Object *ob_arm = bc_get_assigned_armature(ob);
-  Key *key = BKE_key_from_object(ob);
+  blender::Object *ob_arm = bc_get_assigned_armature(ob);
+  blender::Key *key = BKE_key_from_object(ob);
 
   if (ob_arm) {
     export_skin_controller(ob, ob_arm);
@@ -134,18 +138,18 @@ void ArmatureExporter::find_objects_using_armature(Object *ob_arm,
 }
 #endif
 
-std::string ControllerExporter::get_controller_id(Object *ob_arm, Object *ob)
+std::string ControllerExporter::get_controller_id(blender::Object *ob_arm, blender::Object *ob)
 {
   return translate_id(id_name(ob_arm)) + "_" + translate_id(id_name(ob)) +
          SKIN_CONTROLLER_ID_SUFFIX;
 }
 
-std::string ControllerExporter::get_controller_id(Key *key, Object *ob)
+std::string ControllerExporter::get_controller_id(blender::Key *key, blender::Object *ob)
 {
   return translate_id(id_name(ob)) + MORPH_CONTROLLER_ID_SUFFIX;
 }
 
-void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
+void ControllerExporter::export_skin_controller(blender::Object *ob, blender::Object *ob_arm)
 {
   /* joint names
    * joint inverse bind matrices
@@ -156,9 +160,9 @@ void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
    * vertex group weights: mesh->dvert -> groups -> index, weight */
 
   bool use_instantiation = this->export_settings.get_use_object_instantiation();
-  Mesh *mesh;
+  blender::Mesh *mesh;
 
-  if (((Mesh *)ob->data)->deform_verts().is_empty()) {
+  if (((blender::Mesh *)ob->data)->deform_verts().is_empty()) {
     return;
   }
 
@@ -177,7 +181,7 @@ void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
 
   add_bind_shape_mat(ob);
 
-  const ListBase *defbase = BKE_object_defgroup_list(ob);
+  const blender::ListBase *defbase = BKE_object_defgroup_list(ob);
   std::string joints_source_id = add_joints_source(ob_arm, defbase, controller_id);
   std::string inv_bind_mat_source_id = add_inv_bind_mats_source(ob_arm, defbase, controller_id);
 
@@ -190,9 +194,9 @@ void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
 
     /* def group index -> joint index */
     std::vector<int> joint_index_by_def_index;
-    const bDeformGroup *def;
+    const blender::bDeformGroup *def;
 
-    for (def = (const bDeformGroup *)defbase->first, i = 0, j = 0; def; def = def->next, i++) {
+    for (def = (const blender::bDeformGroup *)defbase->first, i = 0, j = 0; def; def = def->next, i++) {
       if (is_bone_defgroup(ob_arm, def)) {
         joint_index_by_def_index.push_back(j++);
       }
@@ -201,10 +205,10 @@ void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
       }
     }
 
-    const MDeformVert *dvert = mesh->deform_verts().data();
+    const blender::MDeformVert *dvert = mesh->deform_verts().data();
     int oob_counter = 0;
     for (i = 0; i < mesh->verts_num; i++) {
-      const MDeformVert *vert = &dvert[i];
+      const blender::MDeformVert *vert = &dvert[i];
       std::map<int, float> jw;
 
       /* We're normalizing the weights later */
@@ -262,10 +266,10 @@ void ControllerExporter::export_skin_controller(Object *ob, Object *ob_arm)
   closeController();
 }
 
-void ControllerExporter::export_morph_controller(Object *ob, Key *key)
+void ControllerExporter::export_morph_controller(blender::Object *ob, blender::Key *key)
 {
   bool use_instantiation = this->export_settings.get_use_object_instantiation();
-  Mesh *mesh;
+  blender::Mesh *mesh;
 
   mesh = bc_get_mesh_copy(blender_context,
                           ob,
@@ -305,7 +309,7 @@ void ControllerExporter::export_morph_controller(Object *ob, Key *key)
   closeController();
 }
 
-std::string ControllerExporter::add_morph_targets(Key *key, Object *ob)
+std::string ControllerExporter::add_morph_targets(blender::Key *key, blender::Object *ob)
 {
   std::string source_id = translate_id(id_name(ob)) + TARGETS_SOURCE_ID_SUFFIX;
 
@@ -320,7 +324,7 @@ std::string ControllerExporter::add_morph_targets(Key *key, Object *ob)
 
   source.prepareToAppendValues();
 
-  KeyBlock *kb = (KeyBlock *)key->block.first;
+  blender::KeyBlock *kb = (blender::KeyBlock *)key->block.first;
   /* skip the basis */
   kb = kb->next;
   for (; kb; kb = kb->next) {
@@ -333,7 +337,7 @@ std::string ControllerExporter::add_morph_targets(Key *key, Object *ob)
   return source_id;
 }
 
-std::string ControllerExporter::add_morph_weights(Key *key, Object *ob)
+std::string ControllerExporter::add_morph_weights(blender::Key *key, blender::Object *ob)
 {
   std::string source_id = translate_id(id_name(ob)) + WEIGHTS_SOURCE_ID_SUFFIX;
 
@@ -348,7 +352,7 @@ std::string ControllerExporter::add_morph_weights(Key *key, Object *ob)
 
   source.prepareToAppendValues();
 
-  KeyBlock *kb = (KeyBlock *)key->block.first;
+  blender::KeyBlock *kb = (blender::KeyBlock *)key->block.first;
   /* skip the basis */
   kb = kb->next;
   for (; kb; kb = kb->next) {
@@ -360,12 +364,12 @@ std::string ControllerExporter::add_morph_weights(Key *key, Object *ob)
   return source_id;
 }
 
-void ControllerExporter::add_weight_extras(Key *key)
+void ControllerExporter::add_weight_extras(blender::Key *key)
 {
   /* can also try the base element and param alternative */
   COLLADASW::BaseExtraTechnique extra;
 
-  KeyBlock *kb = (KeyBlock *)key->block.first;
+  blender::KeyBlock *kb = (blender::KeyBlock *)key->block.first;
   /* skip the basis */
   kb = kb->next;
   for (; kb; kb = kb->next) {
@@ -375,7 +379,7 @@ void ControllerExporter::add_weight_extras(Key *key)
   }
 }
 
-void ControllerExporter::add_joints_element(const ListBase *defbase,
+void ControllerExporter::add_joints_element(const blender::ListBase *defbase,
                                             const std::string &joints_source_id,
                                             const std::string &inv_bind_mat_source_id)
 {
@@ -391,7 +395,7 @@ void ControllerExporter::add_joints_element(const ListBase *defbase,
   joints.add();
 }
 
-void ControllerExporter::add_bind_shape_mat(Object *ob)
+void ControllerExporter::add_bind_shape_mat(blender::Object *ob)
 {
   double bind_mat[4][4];
   float f_obmat[4][4];
@@ -413,14 +417,14 @@ void ControllerExporter::add_bind_shape_mat(Object *ob)
   addBindShapeTransform(bind_mat);
 }
 
-std::string ControllerExporter::add_joints_source(Object *ob_arm,
-                                                  const ListBase *defbase,
+std::string ControllerExporter::add_joints_source(blender::Object *ob_arm,
+                                                  const blender::ListBase *defbase,
                                                   const std::string &controller_id)
 {
   std::string source_id = controller_id + JOINTS_SOURCE_ID_SUFFIX;
 
   int totjoint = 0;
-  LISTBASE_FOREACH (bDeformGroup *, def, defbase) {
+  for (blender::bDeformGroup *def : blender::ListBaseWrapper<blender::bDeformGroup>(const_cast<blender::ListBase*>(defbase))) {
     if (is_bone_defgroup(ob_arm, def)) {
       totjoint++;
     }
@@ -437,8 +441,8 @@ std::string ControllerExporter::add_joints_source(Object *ob_arm,
 
   source.prepareToAppendValues();
 
-  LISTBASE_FOREACH (bDeformGroup *, def, defbase) {
-    Bone *bone = get_bone_from_defgroup(ob_arm, def);
+  for (blender::bDeformGroup *def : blender::ListBaseWrapper<blender::bDeformGroup>(const_cast<blender::ListBase*>(defbase))) {
+    blender::Bone *bone = get_bone_from_defgroup(ob_arm, def);
     if (bone) {
       source.appendValues(get_joint_sid(bone));
     }
@@ -449,14 +453,14 @@ std::string ControllerExporter::add_joints_source(Object *ob_arm,
   return source_id;
 }
 
-std::string ControllerExporter::add_inv_bind_mats_source(Object *ob_arm,
-                                                         const ListBase *defbase,
+std::string ControllerExporter::add_inv_bind_mats_source(blender::Object *ob_arm,
+                                                         const blender::ListBase *defbase,
                                                          const std::string &controller_id)
 {
   std::string source_id = controller_id + BIND_POSES_SOURCE_ID_SUFFIX;
 
   int totjoint = 0;
-  LISTBASE_FOREACH (bDeformGroup *, def, defbase) {
+  for (blender::bDeformGroup *def : blender::ListBaseWrapper<blender::bDeformGroup>(const_cast<blender::ListBase*>(defbase))) {
     if (is_bone_defgroup(ob_arm, def)) {
       totjoint++;
     }
@@ -474,23 +478,23 @@ std::string ControllerExporter::add_inv_bind_mats_source(Object *ob_arm,
 
   source.prepareToAppendValues();
 
-  bPose *pose = ob_arm->pose;
-  bArmature *arm = (bArmature *)ob_arm->data;
+  blender::bPose *pose = ob_arm->pose;
+  blender::bArmature *arm = (blender::bArmature *)ob_arm->data;
 
   int flag = arm->flag;
 
   /* put armature in rest position */
-  if (!(arm->flag & ARM_RESTPOS)) {
-    Depsgraph *depsgraph = blender_context.get_depsgraph();
-    Scene *scene = blender_context.get_scene();
+  if (!(arm->flag & blender::ARM_RESTPOS)) {
+    blender::Depsgraph *depsgraph = blender_context.get_depsgraph();
+    blender::Scene *scene = blender_context.get_scene();
 
-    arm->flag |= ARM_RESTPOS;
+    arm->flag |= blender::ARM_RESTPOS;
     BKE_pose_where_is(depsgraph, scene, ob_arm);
   }
 
-  LISTBASE_FOREACH (bDeformGroup *, def, defbase) {
+  for (blender::bDeformGroup *def : blender::ListBaseWrapper<blender::bDeformGroup>(const_cast<blender::ListBase*>(defbase))) {
     if (is_bone_defgroup(ob_arm, def)) {
-      bPoseChannel *pchan = BKE_pose_channel_find_name(pose, def->name);
+      blender::bPoseChannel *pchan = BKE_pose_channel_find_name(pose, def->name);
 
       float mat[4][4];
       float world[4][4];
@@ -538,9 +542,9 @@ std::string ControllerExporter::add_inv_bind_mats_source(Object *ob_arm,
   }
 
   /* back from rest position */
-  if (!(flag & ARM_RESTPOS)) {
-    Depsgraph *depsgraph = blender_context.get_depsgraph();
-    Scene *scene = blender_context.get_scene();
+  if (!(flag & blender::ARM_RESTPOS)) {
+    blender::Depsgraph *depsgraph = blender_context.get_depsgraph();
+    blender::Scene *scene = blender_context.get_scene();
     arm->flag = flag;
     BKE_pose_where_is(depsgraph, scene, ob_arm);
   }
@@ -550,18 +554,18 @@ std::string ControllerExporter::add_inv_bind_mats_source(Object *ob_arm,
   return source_id;
 }
 
-Bone *ControllerExporter::get_bone_from_defgroup(Object *ob_arm, const bDeformGroup *def)
+blender::Bone *ControllerExporter::get_bone_from_defgroup(blender::Object *ob_arm, const blender::bDeformGroup *def)
 {
-  bPoseChannel *pchan = BKE_pose_channel_find_name(ob_arm->pose, def->name);
+  blender::bPoseChannel *pchan = BKE_pose_channel_find_name(ob_arm->pose, def->name);
   return pchan ? pchan->bone : nullptr;
 }
 
-bool ControllerExporter::is_bone_defgroup(Object *ob_arm, const bDeformGroup *def)
+bool ControllerExporter::is_bone_defgroup(blender::Object *ob_arm, const blender::bDeformGroup *def)
 {
   return get_bone_from_defgroup(ob_arm, def) != nullptr;
 }
 
-std::string ControllerExporter::add_weights_source(Mesh *mesh,
+std::string ControllerExporter::add_weights_source(blender::Mesh *mesh,
                                                    const std::string &controller_id,
                                                    const std::list<float> &weights)
 {

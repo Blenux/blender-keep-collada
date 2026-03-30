@@ -20,12 +20,14 @@
 #include "collada_internal.h"
 #include "collada_utils.h"
 
+using namespace blender;
+
 void InstanceWriter::add_material_bindings(COLLADASW::BindMaterial &bind_material,
-                                           Object *ob,
+                                           blender::Object *ob,
                                            bool active_uv_only)
 {
   for (int a = 0; a < ob->totcol; a++) {
-    Material *ma = BKE_object_material_get(ob, a + 1);
+    blender::Material *ma = BKE_object_material_get(ob, a + 1);
 
     COLLADASW::InstanceMaterialList &iml = bind_material.getInstanceMaterialList();
 
@@ -38,15 +40,15 @@ void InstanceWriter::add_material_bindings(COLLADASW::BindMaterial &bind_materia
                                      COLLADASW::URI(COLLADABU::Utils::EMPTY_STRING, matid));
 
       /* Create <bind_vertex_input> for each uv map. */
-      Mesh *mesh = (Mesh *)ob->data;
+      blender::Mesh *mesh = (blender::Mesh *)ob->data;
 
-      int num_layers = CustomData_number_of_layers(&mesh->corner_data, CD_PROP_FLOAT2);
+      int num_layers = CustomData_number_of_layers(&mesh->corner_data, blender::CD_PROP_FLOAT2);
 
       int map_index = 0;
-      int active_uv_index = CustomData_get_active_layer_index(&mesh->corner_data, CD_PROP_FLOAT2);
+      int active_uv_index = CustomData_get_active_layer_index(&mesh->corner_data, blender::CD_PROP_FLOAT2);
       for (int b = 0; b < num_layers; b++) {
         if (!active_uv_only || b == active_uv_index) {
-          const char *name = bc_CustomData_get_layer_name(&mesh->corner_data, CD_PROP_FLOAT2, b);
+          const char *name = bc_CustomData_get_layer_name(&mesh->corner_data, blender::CD_PROP_FLOAT2, b);
           im.push_back(COLLADASW::BindVertexInput(name, "TEXCOORD", map_index++));
         }
       }

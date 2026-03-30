@@ -40,6 +40,9 @@
 #include "collada_utils.h"
 
 #include <algorithm>
+#include "BLI_listbase_wrapper.hh"
+
+using namespace blender;
 
 /* first try node name, if not available (since is optional), fall back to original id */
 template<class T> static const char *bc_get_joint_name(T *node)
@@ -52,15 +55,10 @@ template<class T> static const char *bc_get_joint_name(T *node)
  * Ensures that the given ID has an action assigned to it and, for layered
  * actions, an assigned slot.
  */
-static void ensure_action_and_slot_for_id(Main *bmain, ID &id)
+static void ensure_action_and_slot_for_id(blender::Main *bmain, blender::ID &id)
 {
   bAction *dna_action = blender::animrig::id_action_ensure(bmain, &id);
   BLI_assert(dna_action != nullptr);
-
-  if (blender::animrig::legacy::action_treat_as_legacy(*dna_action)) {
-    /* We don't ensure a slot for legacy actions, since they don't have slots. */
-    return;
-  }
 
   blender::animrig::Action &action = dna_action->wrap();
   blender::animrig::Slot *slot = blender::animrig::assign_action_ensure_slot_for_keying(action,
@@ -69,30 +67,28 @@ static void ensure_action_and_slot_for_id(Main *bmain, ID &id)
   UNUSED_VARS_NDEBUG(slot);
 }
 
-FCurve *AnimationImporter::create_fcurve(int array_index, const char *rna_path)
+blender::FCurve *AnimationImporter::create_fcurve(int array_index, const char *rna_path)
 {
-  FCurve *fcu = BKE_fcurve_create();
-  fcu->flag = (FCURVE_VISIBLE | FCURVE_SELECTED);
-  fcu->rna_path = BLI_strdupn(rna_path, strlen(rna_path));
+  blender::FCurve *fcu = blender::BKE_fcurve_create();
   fcu->array_index = array_index;
   return fcu;
 }
 
-void AnimationImporter::add_bezt(FCurve *fcu,
+void AnimationImporter::add_bezt(blender::FCurve *fcu,
                                  float frame,
                                  float value,
-                                 eBezTriple_Interpolation ipo)
+                                 blender::eBezTriple_Interpolation ipo)
 {
   // float fps = float(FPS);
-  BezTriple bez;
-  memset(&bez, 0, sizeof(BezTriple));
+  blender::BezTriple bez;
+  memset(&bez, 0, sizeof(blender::BezTriple));
   bez.vec[1][0] = frame;
   bez.vec[1][1] = value;
   bez.ipo = ipo; /* use default interpolation mode here... */
   bez.f1 = bez.f2 = bez.f3 = SELECT;
   bez.h1 = bez.h2 = HD_AUTO;
   blender::animrig::insert_bezt_fcurve(fcu, &bez, INSERTKEY_NOFLAGS);
-  BKE_fcurve_handles_recalc(fcu);
+  BKE_fcurve_handles_recalc(*fcu);
 }
 
 void AnimationImporter::animation_to_fcurves(COLLADAFW::AnimationCurve *curve)
@@ -107,7 +103,7 @@ void AnimationImporter::animation_to_fcurves(COLLADAFW::AnimationCurve *curve)
   size_t dim = curve->getOutDimension();
   uint i;
 
-  std::vector<FCurve *> &fcurves = curve_map[curve->getUniqueId()];
+  std::vector<blender::FCurve *> &fcurves = curve_map[curve->getUniqueId()];
 
   switch (dim) {
     case 1: /* X, Y, Z or angle */
@@ -116,20 +112,20 @@ void AnimationImporter::animation_to_fcurves(COLLADAFW::AnimationCurve *curve)
     case 16: /* matrix */
     {
       for (i = 0; i < dim; i++) {
-        FCurve *fcu = BKE_fcurve_create();
+        blender::FCurve *fcu = blender::BKE_fcurve_create();
 
-        fcu->flag = (FCURVE_VISIBLE | FCURVE_SELECTED);
+        fcu->flag = (blender::FCURVE_VISIBLE | blender::FCURVE_SELECTED);
         fcu->array_index = 0;
-        fcu->auto_smoothing = U.auto_smoothing_new;
+        fcu->auto_smoothing = blender::U.auto_smoothing_new;
 
         for (uint j = 0; j < curve->getKeyCount(); j++) {
-          BezTriple bez;
-          memset(&bez, 0, sizeof(BezTriple));
+          blender::BezTriple bez;
+          memset(&bez, 0, sizeof(blender::BezTriple));
 
           /* input, output */
           bez.vec[1][0] = bc_get_float_value(input, j) * fps;
           bez.vec[1][1] = bc_get_float_value(output, j * dim + i);
-          bez.h1 = bez.h2 = HD_AUTO;
+          bez.h1 = bez.h2 = blender::HD_AUTO;
 
           if (curve->getInterpolationType() == COLLADAFW::AnimationCurve::INTERPOLATION_BEZIER ||
               curve->getInterpolationType() == COLLADAFW::AnimationCurve::INTERPOLATION_STEP)
@@ -164,7 +160,7 @@ void AnimationImporter::animation_to_fcurves(COLLADAFW::AnimationCurve *curve)
           blender::animrig::insert_bezt_fcurve(fcu, &bez, INSERTKEY_NOFLAGS);
         }
 
-        BKE_fcurve_handles_recalc(fcu);
+        BKE_fcurve_handles_recalc(*fcu);
 
         fcurves.push_back(fcu);
         unused_curves.push_back(fcu);
@@ -179,7 +175,7 @@ void AnimationImporter::animation_to_fcurves(COLLADAFW::AnimationCurve *curve)
   }
 }
 
-void AnimationImporter::fcurve_deg_to_rad(FCurve *cu)
+void AnimationImporter::fcurve_deg_to_rad(blender::FCurve *cu)
 {
   for (uint i = 0; i < cu->totvert; i++) {
     /* TODO: convert handles too. */
@@ -189,7 +185,7 @@ void AnimationImporter::fcurve_deg_to_rad(FCurve *cu)
   }
 }
 
-void AnimationImporter::fcurve_scale(FCurve *cu, int scale)
+void AnimationImporter::fcurve_scale(blender::FCurve *cu, int scale)
 {
   for (uint i = 0; i < cu->totvert; i++) {
     /* TODO: convert handles too. */
@@ -199,7 +195,7 @@ void AnimationImporter::fcurve_scale(FCurve *cu, int scale)
   }
 }
 
-void AnimationImporter::fcurve_is_used(FCurve *fcu)
+void AnimationImporter::fcurve_is_used(blender::FCurve *fcu)
 {
   unused_curves.erase(std::remove(unused_curves.begin(), unused_curves.end(), fcu),
                       unused_curves.end());
@@ -208,8 +204,8 @@ void AnimationImporter::fcurve_is_used(FCurve *fcu)
 AnimationImporter::~AnimationImporter()
 {
   /* free unused FCurves */
-  for (FCurve *unused_curve : unused_curves) {
-    BKE_fcurve_free(unused_curve);
+  for (blender::FCurve *unused_curve : unused_curves) {
+    blender::BKE_fcurve_free(unused_curve);
   }
 
   if (!unused_curves.empty()) {
@@ -278,26 +274,26 @@ bool AnimationImporter::write_animation_list(const COLLADAFW::AnimationList *ani
   return true;
 }
 
-void AnimationImporter::read_node_transform(COLLADAFW::Node *node, Object *ob)
+void AnimationImporter::read_node_transform(COLLADAFW::Node *node, blender::Object *ob)
 {
   float mat[4][4];
   TransformReader::get_node_mat(mat, node, &uid_animated_map, ob);
   if (ob) {
-    copy_m4_m4(ob->runtime->object_to_world.ptr(), mat);
-    BKE_object_apply_mat4(ob, ob->object_to_world().ptr(), false, false);
+    blender::copy_m4_m4(ob->runtime->object_to_world.ptr(), mat);
+    blender::BKE_object_apply_mat4(ob, ob->object_to_world().ptr(), false, false);
   }
 }
 
-void AnimationImporter::modify_fcurve(std::vector<FCurve *> *curves,
+void AnimationImporter::modify_fcurve(std::vector<blender::FCurve *> *curves,
                                       const char *rna_path,
                                       int array_index,
                                       int scale)
 {
-  std::vector<FCurve *>::iterator it;
+  std::vector<blender::FCurve *>::iterator it;
   int i;
   for (it = curves->begin(), i = 0; it != curves->end(); it++, i++) {
-    FCurve *fcu = *it;
-    fcu->rna_path = BLI_strdup(rna_path);
+    blender::FCurve *fcu = *it;
+    fcu->rna_path = blender::BLI_strdup(rna_path);
 
     if (array_index == -1) {
       fcu->array_index = i;
@@ -314,21 +310,21 @@ void AnimationImporter::modify_fcurve(std::vector<FCurve *> *curves,
   }
 }
 
-void AnimationImporter::unused_fcurve(std::vector<FCurve *> *curves)
+void AnimationImporter::unused_fcurve(std::vector<blender::FCurve *> *curves)
 {
   /* when an error happens and we can't actually use curve remove it from unused_curves */
-  std::vector<FCurve *>::iterator it;
+  std::vector<blender::FCurve *>::iterator it;
   for (it = curves->begin(); it != curves->end(); it++) {
-    FCurve *fcu = *it;
+    blender::FCurve *fcu = *it;
     fcurve_is_used(fcu);
   }
 }
 
-void AnimationImporter::find_frames(std::vector<float> *frames, std::vector<FCurve *> *curves)
+void AnimationImporter::find_frames(std::vector<float> *frames, std::vector<blender::FCurve *> *curves)
 {
-  std::vector<FCurve *>::iterator iter;
+  std::vector<blender::FCurve *>::iterator iter;
   for (iter = curves->begin(); iter != curves->end(); iter++) {
-    FCurve *fcu = *iter;
+    blender::FCurve *fcu = *iter;
 
     for (uint k = 0; k < fcu->totvert; k++) {
       /* get frame value from bezTriple */
@@ -387,7 +383,7 @@ void AnimationImporter::Assign_transform_animations(
     case COLLADAFW::Transformation::SCALE: {
       bool loc = tm_type == COLLADAFW::Transformation::TRANSLATE;
       if (is_joint) {
-        SNPRINTF(rna_path, "%s.%s", joint_path, loc ? "location" : "scale");
+        blender::BLI_snprintf(rna_path, sizeof(rna_path), "%s.%s", joint_path, loc ? "location" : "scale");
       }
       else {
         STRNCPY(rna_path, loc ? "location" : "scale");
@@ -418,14 +414,14 @@ void AnimationImporter::Assign_transform_animations(
 
     case COLLADAFW::Transformation::ROTATE: {
       if (is_joint) {
-        SNPRINTF(rna_path, "%s.rotation_euler", joint_path);
+        blender::BLI_snprintf(rna_path, sizeof(rna_path), "%s.rotation_euler", joint_path);
       }
       else {
         STRNCPY(rna_path, "rotation_euler");
       }
-      std::vector<FCurve *>::iterator iter;
+      std::vector<blender::FCurve *>::iterator iter;
       for (iter = curves->begin(); iter != curves->end(); iter++) {
-        FCurve *fcu = *iter;
+        blender::FCurve *fcu = *iter;
 
         /* if transform is rotation the fcurves values must be turned in to radian. */
         if (is_rotation) {
@@ -497,7 +493,7 @@ void AnimationImporter::Assign_color_animations(const COLLADAFW::UniqueId &listi
 
   const COLLADAFW::AnimationList::AnimationBindings &bindings = animlist->getAnimationBindings();
   /* all the curves belonging to the current binding */
-  std::vector<FCurve *> animcurves;
+  std::vector<blender::FCurve *> animcurves;
   for (uint j = 0; j < bindings.getCount(); j++) {
     animcurves = curve_map[bindings[j].animation];
 
@@ -524,10 +520,10 @@ void AnimationImporter::Assign_color_animations(const COLLADAFW::UniqueId &listi
                 "COLOR");
     }
 
-    std::vector<FCurve *>::iterator iter;
+    std::vector<blender::FCurve *>::iterator iter;
     /* Add the curves of the current animation to the object */
     for (iter = animcurves.begin(); iter != animcurves.end(); iter++) {
-      FCurve *fcu = *iter;
+      blender::FCurve *fcu = *iter;
       blender::animrig::action_fcurve_attach(
           adt.action->wrap(), adt.slot_handle, *fcu, std::nullopt);
       fcurve_is_used(fcu);
@@ -550,16 +546,16 @@ void AnimationImporter::Assign_float_animations(const COLLADAFW::UniqueId &listi
   const COLLADAFW::AnimationList *animlist = animlist_map[listid];
   const COLLADAFW::AnimationList::AnimationBindings &bindings = animlist->getAnimationBindings();
   /* all the curves belonging to the current binding */
-  std::vector<FCurve *> animcurves;
+  std::vector<blender::FCurve *> animcurves;
   for (uint j = 0; j < bindings.getCount(); j++) {
     animcurves = curve_map[bindings[j].animation];
 
-    STRNCPY(rna_path, anim_type);
+    blender::STRNCPY(rna_path, anim_type);
     modify_fcurve(&animcurves, rna_path, 0);
-    std::vector<FCurve *>::iterator iter;
+    std::vector<blender::FCurve *>::iterator iter;
     /* Add the curves of the current animation to the object */
     for (iter = animcurves.begin(); iter != animcurves.end(); iter++) {
-      FCurve *fcu = *iter;
+      blender::FCurve *fcu = *iter;
       /* All anim_types whose values are to be converted from Degree to Radians can be ORed here
        */
       if (STREQ("spot_size", anim_type)) {
@@ -590,13 +586,13 @@ float AnimationImporter::convert_to_focal_length(float in_xfov,
   float xfov = (fov_type == CAMERA_YFOV) ?
                    (2.0f * atanf(aspect * tanf(DEG2RADF(in_xfov) * 0.5f))) :
                    DEG2RADF(in_xfov);
-  return fov_to_focallength(xfov, sensorx);
+  return blender::fov_to_focallength(xfov, sensorx);
 }
 
 void AnimationImporter::Assign_lens_animations(const COLLADAFW::UniqueId &listid,
-                                               AnimData &adt,
+                                               blender::AnimData &adt,
                                                const double aspect,
-                                               const Camera *cam,
+                                               const blender::Camera *cam,
                                                const char *anim_type,
                                                int fov_type)
 {
@@ -611,17 +607,17 @@ void AnimationImporter::Assign_lens_animations(const COLLADAFW::UniqueId &listid
   const COLLADAFW::AnimationList *animlist = animlist_map[listid];
   const COLLADAFW::AnimationList::AnimationBindings &bindings = animlist->getAnimationBindings();
   /* all the curves belonging to the current binding */
-  std::vector<FCurve *> animcurves;
+  std::vector<blender::FCurve *> animcurves;
   for (uint j = 0; j < bindings.getCount(); j++) {
     animcurves = curve_map[bindings[j].animation];
 
-    STRNCPY(rna_path, anim_type);
+    blender::STRNCPY(rna_path, anim_type);
 
     modify_fcurve(&animcurves, rna_path, 0);
-    std::vector<FCurve *>::iterator iter;
+    std::vector<blender::FCurve *>::iterator iter;
     /* Add the curves of the current animation to the object */
     for (iter = animcurves.begin(); iter != animcurves.end(); iter++) {
-      FCurve *fcu = *iter;
+      blender::FCurve *fcu = *iter;
 
       for (uint i = 0; i < fcu->totvert; i++) {
         fcu->bezt[i].vec[0][1] = convert_to_focal_length(
@@ -639,8 +635,8 @@ void AnimationImporter::Assign_lens_animations(const COLLADAFW::UniqueId &listid
   }
 }
 
-void AnimationImporter::apply_matrix_curves(Object *ob,
-                                            std::vector<FCurve *> &animcurves,
+void AnimationImporter::apply_matrix_curves(blender::Object *ob,
+                                            std::vector<blender::FCurve *> &animcurves,
                                             COLLADAFW::Node *root,
                                             COLLADAFW::Node *node,
                                             COLLADAFW::Transformation *tm)
@@ -660,20 +656,20 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
 
   if (is_joint) {
     get_joint_rest_mat(irest_dae, root, node);
-    invert_m4(irest_dae);
+    blender::invert_m4(irest_dae);
 
-    Bone *bone = BKE_armature_find_bone_name((bArmature *)ob->data, bone_name);
+    blender::Bone *bone = blender::BKE_armature_find_bone_name((blender::bArmature *)ob->data, bone_name);
     if (!bone) {
       fprintf(stderr, "cannot find bone \"%s\"\n", bone_name);
       return;
     }
 
-    unit_m4(rest);
-    copy_m4_m4(rest, bone->arm_mat);
-    invert_m4_m4(irest, rest);
+    blender::unit_m4(rest);
+    blender::copy_m4_m4(rest, bone->arm_mat);
+    blender::invert_m4_m4(irest, rest);
   }
   /* new curves to assign matrix transform animation */
-  FCurve *newcu[10]; /* if tm_type is matrix, then create 10 curves: 4 rot, 3 loc, 3 scale */
+  blender::FCurve *newcu[10]; /* if tm_type is matrix, then create 10 curves: 4 rot, 3 loc, 3 scale */
   uint totcu = 10;
   const char *tm_str = nullptr;
   char rna_path[200];
@@ -695,7 +691,7 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
     }
 
     if (is_joint) {
-      SNPRINTF(rna_path, "%s.%s", joint_path, tm_str);
+      blender::BLI_snprintf(rna_path, sizeof(rna_path), "%s.%s", joint_path, tm_str);
     }
     else {
       STRNCPY(rna_path, tm_str);
@@ -719,7 +715,7 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
     float mat[4][4];
     float matfra[4][4];
 
-    unit_m4(matfra);
+    blender::unit_m4(matfra);
 
     /* calc object-space mat */
     evaluate_transform_at_frame(matfra, node, fra);
@@ -734,17 +730,17 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
 
       /* calc M */
       calc_joint_parent_mat_rest(par, nullptr, root, node);
-      mul_m4_m4m4(temp, par, matfra);
+      blender::mul_m4_m4m4(temp, par, matfra);
 
       /* calc special matrix */
-      mul_m4_series(mat, irest, temp, irest_dae, rest);
+      blender::mul_m4_series(mat, irest, temp, irest_dae, rest);
     }
     else {
-      copy_m4_m4(mat, matfra);
+      blender::copy_m4_m4(mat, matfra);
     }
 
     float rot[4], loc[3], scale[3];
-    mat4_decompose(loc, rot, scale, mat);
+    blender::mat4_decompose(loc, rot, scale, mat);
 
     /* add keys */
     for (int i = 0; i < totcu; i++) {
@@ -759,7 +755,7 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
       }
     }
   }
-  Main *bmain = CTX_data_main(mContext);
+  blender::Main *bmain = CTX_data_main(mContext);
 
   ensure_action_and_slot_for_id(bmain, ob->id);
 
@@ -778,11 +774,11 @@ void AnimationImporter::apply_matrix_curves(Object *ob,
   }
 
   if (is_joint) {
-    bPoseChannel *chan = BKE_pose_channel_find_name(ob->pose, bone_name);
-    chan->rotmode = ROT_MODE_QUAT;
+    blender::bPoseChannel *chan = BKE_pose_channel_find_name(ob->pose, bone_name);
+    chan->rotmode = blender::ROT_MODE_QUAT;
   }
   else {
-    ob->rotmode = ROT_MODE_QUAT;
+    ob->rotmode = blender::ROT_MODE_QUAT;
   }
 }
 
@@ -822,15 +818,15 @@ static double get_aspect_ratio(const COLLADAFW::Camera *camera)
 void AnimationImporter::translate_Animations(
     COLLADAFW::Node *node,
     std::map<COLLADAFW::UniqueId, COLLADAFW::Node *> &root_map,
-    std::multimap<COLLADAFW::UniqueId, Object *> &object_map,
+    std::multimap<COLLADAFW::UniqueId, blender::Object *> &object_map,
     std::map<COLLADAFW::UniqueId, const COLLADAFW::Object *> FW_object_map,
-    std::map<COLLADAFW::UniqueId, Material *> uid_material_map)
+    std::map<COLLADAFW::UniqueId, blender::Material *> uid_material_map)
 {
   bool is_joint = node->getType() == COLLADAFW::Node::JOINT;
   COLLADAFW::UniqueId uid = node->getUniqueId();
   COLLADAFW::Node *root = root_map.find(uid) == root_map.end() ? node : root_map[uid];
 
-  Object *ob;
+  blender::Object *ob;
   if (is_joint) {
     ob = armature_importer->get_armature_for_joint(root);
   }
@@ -844,7 +840,7 @@ void AnimationImporter::translate_Animations(
   }
 
   AnimationImporter::AnimMix *animType = get_animation_type(node, FW_object_map);
-  Main *bmain = CTX_data_main(mContext);
+  blender::Main *bmain = CTX_data_main(mContext);
 
   if ((animType->transform) != 0) {
     // const char *bone_name = is_joint ? bc_get_joint_name(node) : nullptr; /* UNUSED */
@@ -878,7 +874,7 @@ void AnimationImporter::translate_Animations(
       const COLLADAFW::AnimationList::AnimationBindings &bindings =
           animlist->getAnimationBindings();
       /* all the curves belonging to the current binding */
-      std::vector<FCurve *> animcurves;
+      std::vector<blender::FCurve *> animcurves;
       for (uint j = 0; j < bindings.getCount(); j++) {
         animcurves = curve_map[bindings[j].animation];
         if (is_matrix) {
@@ -889,10 +885,10 @@ void AnimationImporter::translate_Animations(
            * animation class */
           Assign_transform_animations(transform, &bindings[j], &animcurves, is_joint, joint_path);
 
-          std::vector<FCurve *>::iterator iter;
+          std::vector<blender::FCurve *>::iterator iter;
           /* Add the curves of the current animation to the object */
           for (iter = animcurves.begin(); iter != animcurves.end(); iter++) {
-            FCurve *fcu = *iter;
+            blender::FCurve *fcu = *iter;
             blender::animrig::action_fcurve_attach(
                 ob->adt->action->wrap(), ob->adt->slot_handle, *fcu, std::nullopt);
             fcurve_is_used(fcu);
@@ -901,13 +897,13 @@ void AnimationImporter::translate_Animations(
       }
 
       if (is_rotation && !(is_joint || is_matrix)) {
-        ob->rotmode = ROT_MODE_EUL;
+        ob->rotmode = blender::ROT_MODE_EUL;
       }
     }
   }
 
   if ((animType->light) != 0) {
-    Light *lamp = (Light *)ob->data;
+    blender::Light *lamp = (blender::Light *)ob->data;
     ensure_action_and_slot_for_id(bmain, lamp->id);
 
     const COLLADAFW::InstanceLightPointerArray &nodeLights = node->getInstanceLights();
@@ -939,7 +935,7 @@ void AnimationImporter::translate_Animations(
 
   if (animType->camera != 0) {
 
-    Camera *cam = (Camera *)ob->data;
+    blender::Camera *cam = (blender::Camera *)ob->data;
     ensure_action_and_slot_for_id(bmain, cam->id);
 
     const COLLADAFW::InstanceCameraPointerArray &nodeCameras = node->getInstanceCameras();
@@ -995,7 +991,7 @@ void AnimationImporter::translate_Animations(
         const COLLADAFW::UniqueId &matuid = matBinds[j].getReferencedMaterial();
         const COLLADAFW::Effect *ef = (COLLADAFW::Effect *)(FW_object_map[matuid]);
         if (ef != nullptr) { /* can be nullptr #28909. */
-          Material *ma = uid_material_map[matuid];
+          blender::Material *ma = uid_material_map[matuid];
           if (!ma) {
             fprintf(stderr,
                     "Collada: Node %s refers to undefined material\n",
@@ -1152,14 +1148,14 @@ void AnimationImporter::evaluate_transform_at_frame(float mat[4][4],
 {
   const COLLADAFW::TransformationPointerArray &tms = node->getTransformations();
 
-  unit_m4(mat);
+  blender::unit_m4(mat);
 
   for (uint i = 0; i < tms.getCount(); i++) {
     COLLADAFW::Transformation *tm = tms[i];
     COLLADAFW::Transformation::TransformationType type = tm->getTransformationType();
     float m[4][4];
 
-    unit_m4(m);
+    blender::unit_m4(m);
 
     std::string nodename = node->getName().empty() ? node->getOriginalId() : node->getName();
     if (!evaluate_animation(tm, m, fra, nodename.c_str())) {
@@ -1182,9 +1178,9 @@ void AnimationImporter::evaluate_transform_at_frame(float mat[4][4],
     }
 
     float temp[4][4];
-    copy_m4_m4(temp, mat);
+    blender::copy_m4_m4(temp, mat);
 
-    mul_m4_m4m4(mat, temp, m);
+    blender::mul_m4_m4m4(mat, temp, m);
   }
 }
 
@@ -1244,22 +1240,22 @@ bool AnimationImporter::evaluate_animation(COLLADAFW::Transformation *tm,
 
     for (uint index = 0; index < bindings.getCount(); index++) {
       const COLLADAFW::AnimationList::AnimationBinding &binding = bindings[index];
-      std::vector<FCurve *> &curves = curve_map[binding.animation];
+      std::vector<blender::FCurve *> &curves = curve_map[binding.animation];
       COLLADAFW::AnimationList::AnimationClass animclass = binding.animationClass;
       char path[100];
 
       switch (type) {
         case COLLADAFW::Transformation::ROTATE:
-          SNPRINTF(path, "%s.rotate (binding %u)", node_id, index);
+          blender::BLI_snprintf(path, sizeof(path), "%s.rotate (binding %u)", node_id, index);
           break;
         case COLLADAFW::Transformation::SCALE:
-          SNPRINTF(path, "%s.scale (binding %u)", node_id, index);
+          blender::BLI_snprintf(path, sizeof(path), "%s.scale (binding %u)", node_id, index);
           break;
         case COLLADAFW::Transformation::TRANSLATE:
-          SNPRINTF(path, "%s.translate (binding %u)", node_id, index);
+          blender::BLI_snprintf(path, sizeof(path), "%s.translate (binding %u)", node_id, index);
           break;
         case COLLADAFW::Transformation::MATRIX:
-          SNPRINTF(path, "%s.matrix (binding %u)", node_id, index);
+          blender::BLI_snprintf(path, sizeof(path), "%s.matrix (binding %u)", node_id, index);
           break;
         default:
           break;
@@ -1280,8 +1276,8 @@ bool AnimationImporter::evaluate_animation(COLLADAFW::Transformation *tm,
         COLLADABU::Math::Vector3 &axis = ((COLLADAFW::Rotate *)tm)->getRotationAxis();
 
         float ax[3] = {float(axis[0]), float(axis[1]), float(axis[2])};
-        float angle = evaluate_fcurve(curves[0], fra);
-        axis_angle_to_mat4(mat, ax, angle);
+        float angle = blender::evaluate_fcurve(curves[0], fra);
+        blender::axis_angle_to_mat4(mat, ax, angle);
 
         return true;
       }
@@ -1300,18 +1296,18 @@ bool AnimationImporter::evaluate_animation(COLLADAFW::Transformation *tm,
 
         switch (animclass) {
           case COLLADAFW::AnimationList::POSITION_X:
-            vec[0] = evaluate_fcurve(curves[0], fra);
+            vec[0] = blender::evaluate_fcurve(curves[0], fra);
             break;
           case COLLADAFW::AnimationList::POSITION_Y:
-            vec[1] = evaluate_fcurve(curves[0], fra);
+            vec[1] = blender::evaluate_fcurve(curves[0], fra);
             break;
           case COLLADAFW::AnimationList::POSITION_Z:
-            vec[2] = evaluate_fcurve(curves[0], fra);
+            vec[2] = blender::evaluate_fcurve(curves[0], fra);
             break;
           case COLLADAFW::AnimationList::POSITION_XYZ:
-            vec[0] = evaluate_fcurve(curves[0], fra);
-            vec[1] = evaluate_fcurve(curves[1], fra);
-            vec[2] = evaluate_fcurve(curves[2], fra);
+            vec[0] = blender::evaluate_fcurve(curves[0], fra);
+            vec[1] = blender::evaluate_fcurve(curves[1], fra);
+            vec[2] = blender::evaluate_fcurve(curves[2], fra);
             break;
           default:
             report_class_type_unsupported(path, animclass, type);
@@ -1329,8 +1325,8 @@ bool AnimationImporter::evaluate_animation(COLLADAFW::Transformation *tm,
         COLLADABU::Math::Matrix4 matrix;
         int mi = 0, mj = 0;
 
-        for (const FCurve *curve : curves) {
-          matrix.setElement(mi, mj, evaluate_fcurve(curve, fra));
+        for (const blender::FCurve *curve : curves) {
+          matrix.setElement(mi, mj, blender::evaluate_fcurve(curve, fra));
           mj++;
           if (mj == 4) {
             mi++;
@@ -1343,10 +1339,10 @@ bool AnimationImporter::evaluate_animation(COLLADAFW::Transformation *tm,
     }
 
     if (is_scale) {
-      size_to_mat4(mat, vec);
+      blender::size_to_mat4(mat, vec);
     }
     else {
-      copy_v3_v3(mat[3], vec);
+      blender::copy_v3_v3(mat[3], vec);
     }
 
     return is_scale || is_translate;
@@ -1366,7 +1362,7 @@ void AnimationImporter::get_joint_rest_mat(float mat[4][4],
 
     calc_joint_parent_mat_rest(par, nullptr, root, node);
     get_node_mat(m, node, nullptr, nullptr);
-    mul_m4_m4m4(mat, par, m);
+    blender::mul_m4_m4m4(mat, par, m);
   }
 }
 
@@ -1378,7 +1374,7 @@ bool AnimationImporter::calc_joint_parent_mat_rest(float mat[4][4],
   float m[4][4];
 
   if (node == end) {
-    par ? copy_m4_m4(mat, par) : unit_m4(mat);
+    par ? blender::copy_m4_m4(mat, par) : blender::unit_m4(mat);
     return true;
   }
 
@@ -1387,7 +1383,7 @@ bool AnimationImporter::calc_joint_parent_mat_rest(float mat[4][4],
     if (par) {
       float temp[4][4];
       get_node_mat(temp, node, nullptr, nullptr);
-      mul_m4_m4m4(m, par, temp);
+      blender::mul_m4_m4m4(m, par, temp);
     }
     else {
       get_node_mat(m, node, nullptr, nullptr);
@@ -1404,7 +1400,7 @@ bool AnimationImporter::calc_joint_parent_mat_rest(float mat[4][4],
   return false;
 }
 
-void AnimationImporter::add_bone_fcurve(Object *ob, COLLADAFW::Node *node, FCurve *fcu)
+void AnimationImporter::add_bone_fcurve(blender::Object *ob, COLLADAFW::Node *node, blender::FCurve *fcu)
 {
   BLI_assert(ob->adt != nullptr && ob->adt->action != nullptr);
 

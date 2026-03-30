@@ -5,6 +5,8 @@
 #include "BCSampleData.h"
 #include "collada_utils.h"
 
+using namespace blender;
+
 BCSample::~BCSample()
 {
   BCBoneMatrixMap::iterator it;
@@ -13,7 +15,7 @@ BCSample::~BCSample()
   }
 }
 
-void BCSample::add_bone_matrix(Bone *bone, Matrix &mat)
+void BCSample::add_bone_matrix(blender::Bone *bone, Matrix &mat)
 {
   BCMatrix *matrix;
   BCBoneMatrixMap::const_iterator it = bonemats.find(bone);
@@ -35,7 +37,7 @@ bool BCSample::get_value(std::string channel_target, const int array_index, floa
     bname = bc_string_before(bname, "\"");
     BCBoneMatrixMap::const_iterator it;
     for (it = bonemats.begin(); it != bonemats.end(); ++it) {
-      Bone *bone = it->first;
+      blender::Bone *bone = it->first;
       if (bname == bone->name) {
         matrix = it->second;
         break;
@@ -66,7 +68,7 @@ bool BCSample::get_value(std::string channel_target, const int array_index, floa
   return true;
 }
 
-const BCMatrix *BCSample::get_matrix(Bone *bone) const
+const BCMatrix *BCSample::get_matrix(blender::Bone *bone) const
 {
   BCBoneMatrixMap::const_iterator it = bonemats.find(bone);
   if (it == bonemats.end()) {

@@ -16,6 +16,8 @@
 
 #include "BLI_linklist.h"
 
+using namespace blender;
+
 static void print_import_header(ImportSettings &import_settings)
 {
   fprintf(stderr, "+-- Collada Import parameters------\n");

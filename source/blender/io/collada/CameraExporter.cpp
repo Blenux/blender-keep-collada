@@ -16,6 +16,8 @@
 
 #include "collada_internal.h"
 
+using namespace blender;
+
 CamerasExporter::CamerasExporter(COLLADASW::StreamWriter *sw, BCExportSettings &export_settings)
     : COLLADASW::LibraryCameras(sw), export_settings(export_settings)
 {

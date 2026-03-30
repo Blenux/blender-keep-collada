@@ -13,6 +13,13 @@
 #  include "BLI_fileops.h"
 #  include "BLI_path_utils.hh"
 #  include "BLI_string.h"
+#  include "RNA_types.hh"
+#  include "RNA_enum_types.hh"
+#  include "BKE_report.hh"
+#  include "DNA_windowmanager_types.h"
+#  include "DNA_screen_types.h"
+#  include "WM_api.hh"
+#  include "WM_types.hh"
 
 #  include "BKE_context.hh"
 #  include "BKE_file_handler.hh"
@@ -31,6 +38,16 @@
 #  include "UI_interface_layout.hh"
 #  include "UI_resources.hh"
 
+using namespace blender;
+
+namespace blender::ed::io {
+
+void uiCollada_exportSettings(blender::ui::Layout *layout, PointerRNA *imfptr);
+bool wm_collada_export_check(blender::bContext *C, wmOperator *op);
+void wm_collada_export_draw(blender::bContext *C, wmOperator *op);
+
+}  // namespace blender::ed::io
+
 #  include "WM_api.hh"
 #  include "WM_types.hh"
 
@@ -39,9 +56,7 @@
 #  include "io_collada.hh"
 #  include "io_utils.hh"
 
-static wmOperatorStatus wm_collada_export_invoke(bContext *C,
-                                                 wmOperator *op,
-                                                 const wmEvent * /*event*/)
+static wmOperatorStatus wm_collada_export_invoke(blender::bContext *C, wmOperator *op, const wmEvent * /*event*/)
 {
   ED_fileselect_ensure_default_filepath(C, op, ".dae");
 
@@ -50,7 +65,7 @@ static wmOperatorStatus wm_collada_export_invoke(bContext *C,
   return OPERATOR_RUNNING_MODAL;
 }
 
-static wmOperatorStatus wm_collada_export_exec(bContext *C, wmOperator *op)
+static wmOperatorStatus wm_collada_export_exec(blender::bContext *C, wmOperator *op)
 {
   char filepath[FILE_MAX];
   int apply_modifiers;
@@ -157,7 +172,7 @@ static wmOperatorStatus wm_collada_export_exec(bContext *C, wmOperator *op)
   Main *bmain = CTX_data_main(C);
 
   /* get editmode results */
-  blender::ed::object::editmode_load(bmain, CTX_data_edit_object(C));
+  ed::object::editmode_load(bmain, CTX_data_edit_object(C));
 
   // Scene *scene = CTX_data_scene(C);
 
@@ -217,26 +232,25 @@ static wmOperatorStatus wm_collada_export_exec(bContext *C, wmOperator *op)
   export_count = collada_export(C, &export_settings);
 
   if (export_count == 0) {
-    BKE_report(op->reports, RPT_WARNING, "No objects selected -- Created empty export file");
-    return OPERATOR_CANCELLED;
+    BKE_report(op->reports, RPT_INFO, "No objects selected -- Created empty export file");
+    return OPERATOR_FINISHED;
   }
   if (export_count < 0) {
-    BKE_report(op->reports, RPT_WARNING, "Error during export (see Console)");
+    BKE_report(op->reports, RPT_ERROR, "Error during export (see Console)");
     return OPERATOR_CANCELLED;
   }
 
   char buff[100];
-  SNPRINTF(buff, "Exported %d Objects", export_count);
+  BLI_snprintf(buff, sizeof(buff), "Exported %d Objects", export_count);
   BKE_report(op->reports, RPT_INFO, buff);
   return OPERATOR_FINISHED;
 }
 
-static void uiCollada_exportSettings(uiLayout *layout, PointerRNA *imfptr)
+static void uiCollada_exportSettings(ui::Layout *layout, PointerRNA *imfptr)
 {
-  uiLayout *box, *row, *col, *sub;
-  bool include_animations = RNA_boolean_get(imfptr, "include_animations");
+  ui::Layout *row, *box, *col, *sub;
   int ui_section = RNA_enum_get(imfptr, "prop_bc_export_ui_section");
-
+  
   BC_export_animation_type animation_type = BC_export_animation_type(
       RNA_enum_get(imfptr, "export_animation_type_selection"));
 
@@ -247,7 +261,7 @@ static void uiCollada_exportSettings(uiLayout *layout, PointerRNA *imfptr)
 
   /* Export Options: */
   row = &layout->row(false);
-  row->prop(imfptr, "prop_bc_export_ui_section", UI_ITEM_R_EXPAND, std::nullopt, ICON_NONE);
+  row->prop(imfptr, "prop_bc_export_ui_section", ui::ITEM_R_EXPAND, std::nullopt, ICON_NONE);
 
   layout->use_property_split_set(true);
   layout->use_property_decorate_set(false);
@@ -329,11 +343,12 @@ static void uiCollada_exportSettings(uiLayout *layout, PointerRNA *imfptr)
 
     col = &box->column(false);
     row = &col->row(false);
-    row->active_set(include_animations);
+    row->active_set(RNA_boolean_get(imfptr, "include_animations"));
     row->prop(
-        imfptr, "export_animation_type_selection", UI_ITEM_R_EXPAND, std::nullopt, ICON_NONE);
+        imfptr, "export_animation_type_selection", ui::ITEM_R_EXPAND, std::nullopt, ICON_NONE);
 
-    row->active_set(include_animations && animation_type == BC_ANIMATION_EXPORT_SAMPLES);
+    row->active_set(RNA_boolean_get(imfptr, "include_animations") &&
+                    animation_type == BC_ANIMATION_EXPORT_SAMPLES);
     if (RNA_boolean_get(imfptr, "include_animations")) {
       box->prop(imfptr,
                 "export_animation_transformation_type_selection",
@@ -350,18 +365,18 @@ static void uiCollada_exportSettings(uiLayout *layout, PointerRNA *imfptr)
     }
 
     row = &col->column(false);
-    row->active_set(include_animations &&
+    row->active_set(RNA_boolean_get(imfptr, "include_animations") &&
                     (animation_transformation_type == BC_TRANSFORMATION_TYPE_DECOMPOSED ||
                      animation_type == BC_ANIMATION_EXPORT_KEYS));
     row->prop(imfptr, "keep_smooth_curves", UI_ITEM_NONE, std::nullopt, ICON_NONE);
 
     sub = &col->column(false);
-    sub->active_set(sampling && include_animations);
+    sub->active_set(sampling && RNA_boolean_get(imfptr, "include_animations"));
     sub->prop(imfptr, "sampling_rate", UI_ITEM_NONE, std::nullopt, ICON_NONE);
     sub->prop(imfptr, "keep_keyframes", UI_ITEM_NONE, std::nullopt, ICON_NONE);
 
     sub = &col->column(false);
-    sub->active_set(include_animations);
+    sub->active_set(RNA_boolean_get(imfptr, "include_animations"));
     sub->prop(imfptr, "keep_flat_curves", UI_ITEM_NONE, std::nullopt, ICON_NONE);
     sub->prop(imfptr, "include_all_actions", UI_ITEM_NONE, std::nullopt, ICON_NONE);
   }
@@ -380,12 +395,7 @@ static void uiCollada_exportSettings(uiLayout *layout, PointerRNA *imfptr)
   }
 }
 
-static void wm_collada_export_draw(bContext * /*C*/, wmOperator *op)
-{
-  uiCollada_exportSettings(op->layout, op->ptr);
-}
-
-static bool wm_collada_export_check(bContext * /*C*/, wmOperator *op)
+static bool wm_collada_export_check(blender::bContext * /*C*/, wmOperator *op)
 {
   char filepath[FILE_MAX];
   RNA_string_get(op->ptr, "filepath", filepath);
@@ -399,7 +409,12 @@ static bool wm_collada_export_check(bContext * /*C*/, wmOperator *op)
   return false;
 }
 
-void WM_OT_collada_export(wmOperatorType *ot)
+static void wm_collada_export_draw(blender::bContext * /*C*/, wmOperator *op)
+{
+  uiCollada_exportSettings(op->layout, op->ptr);
+}
+
+void WM_OT_collada_export(blender::wmOperatorType *ot)
 {
   static const EnumPropertyItem prop_bc_export_mesh_type[] = {
       {BC_MESH_TYPE_VIEW, "view", 0, "Viewport", "Apply modifier's viewport settings"},
@@ -482,10 +497,10 @@ void WM_OT_collada_export(wmOperatorType *ot)
                                  FILE_DEFAULTDISPLAY,
                                  FILE_SORT_DEFAULT);
 
-  PropertyRNA *prop = RNA_def_string(ot->srna, "filter_glob", "*.dae", 0, "", "");
-  RNA_def_property_flag(prop, PROP_HIDDEN);
+  PropertyRNA *prop = blender::RNA_def_string(ot->srna, "filter_glob", "*.dae", 0, "", "");
+  blender::RNA_def_property_flag(prop, blender::PROP_HIDDEN);
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "prop_bc_export_ui_section",
                prop_bc_export_ui_section,
                0,
@@ -508,21 +523,21 @@ void WM_OT_collada_export(wmOperatorType *ot)
               INT_MIN,
               INT_MAX);
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_mesh_type_selection",
                prop_bc_export_mesh_type,
                0,
                "Resolution",
                "Modifier resolution for export");
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_global_forward_selection",
                prop_bc_export_global_forward,
                BC_DEFAULT_FORWARD,
                "Global Forward Axis",
                "Global Forward axis for export");
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_global_up_selection",
                prop_bc_export_global_up,
                BC_DEFAULT_UP,
@@ -577,7 +592,7 @@ void WM_OT_collada_export(wmOperatorType *ot)
                   "Export also unassigned actions (this allows you to export entire animation "
                   "libraries for your character(s))");
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_animation_type_selection",
                prop_bc_export_animation_type,
                0,
@@ -659,7 +674,7 @@ void WM_OT_collada_export(wmOperatorType *ot)
               INT_MIN,
               INT_MAX);
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_object_transformation_type_selection",
                prop_bc_export_transformation_type,
                0,
@@ -678,7 +693,7 @@ void WM_OT_collada_export(wmOperatorType *ot)
               INT_MIN,
               INT_MAX);
 
-  RNA_def_enum(ot->srna,
+  blender::RNA_def_enum(ot->srna,
                "export_animation_transformation_type_selection",
                prop_bc_export_transformation_type,
                0,
@@ -708,7 +723,7 @@ void WM_OT_collada_export(wmOperatorType *ot)
       "Store Bindpose information in custom bone properties for later use during Collada export");
 }
 
-static wmOperatorStatus wm_collada_import_exec(bContext *C, wmOperator *op)
+static wmOperatorStatus wm_collada_import_exec(blender::bContext *C, wmOperator *op)
 {
   char filepath[FILE_MAX];
   int import_units;
@@ -749,8 +764,8 @@ static wmOperatorStatus wm_collada_import_exec(bContext *C, wmOperator *op)
   import_settings.keep_bind_info = keep_bind_info != 0;
 
   if (collada_import(C, &import_settings)) {
-    DEG_id_tag_update(&CTX_data_scene(C)->id, ID_RECALC_BASE_FLAGS);
-    Scene *scene = CTX_data_scene(C);
+    DEG_id_tag_update(&CTX_data_scene(C)->id, blender::ID_RECALC_BASE_FLAGS);
+    blender::Scene *scene = CTX_data_scene(C);
     WM_event_add_notifier(C, NC_SCENE | ND_OB_SELECT, scene);
     WM_event_add_notifier(C, NC_SCENE | ND_OB_ACTIVE, scene);
     WM_event_add_notifier(C, NC_SCENE | ND_LAYER_CONTENT, scene);
@@ -762,9 +777,9 @@ static wmOperatorStatus wm_collada_import_exec(bContext *C, wmOperator *op)
   return OPERATOR_CANCELLED;
 }
 
-static void wm_collada_import_settings(uiLayout *layout, PointerRNA *imfptr)
+static void wm_collada_import_settings(ui::Layout *layout, PointerRNA *imfptr)
 {
-  uiLayout *box, *col;
+  ui::Layout *box, *col;
 
   layout->use_property_split_set(true);
   layout->use_property_decorate_set(false);
@@ -790,19 +805,19 @@ static void wm_collada_import_settings(uiLayout *layout, PointerRNA *imfptr)
   box->prop(imfptr, "keep_bind_info", UI_ITEM_NONE, std::nullopt, ICON_NONE);
 }
 
-static void wm_collada_import_draw(bContext * /*C*/, wmOperator *op)
+static void wm_collada_import_draw(blender::bContext * /*C*/, wmOperator *op)
 {
   wm_collada_import_settings(op->layout, op->ptr);
 }
 
-void WM_OT_collada_import(wmOperatorType *ot)
+void WM_OT_collada_import(blender::wmOperatorType *ot)
 {
   ot->name = "Import COLLADA (Legacy)";
   ot->description = "Load a Collada file";
   ot->idname = "WM_OT_collada_import";
-  ot->flag = OPTYPE_UNDO | OPTYPE_PRESET;
+  ot->flag = OPTYPE_PRESET | OPTYPE_UNDO;
 
-  ot->invoke = blender::ed::io::filesel_drop_import_invoke;
+  ot->invoke = ed::io::filesel_drop_import_invoke;
   ot->exec = wm_collada_import_exec;
   ot->poll = WM_operator_winactive;
 
@@ -816,8 +831,8 @@ void WM_OT_collada_import(wmOperatorType *ot)
                                  FILE_DEFAULTDISPLAY,
                                  FILE_SORT_DEFAULT);
 
-  PropertyRNA *prop = RNA_def_string(ot->srna, "filter_glob", "*.dae", 0, "", "");
-  RNA_def_property_flag(prop, PROP_HIDDEN);
+  PropertyRNA *prop = blender::RNA_def_string(ot->srna, "filter_glob", "*.dae", 0, "", "");
+  blender::RNA_def_property_flag(prop, blender::PROP_HIDDEN);
 
   RNA_def_boolean(ot->srna,
                   "import_units",

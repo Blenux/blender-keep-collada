@@ -14,6 +14,8 @@
 
 #include "collada_utils.h"
 
+using namespace blender;
+
 void TransformWriter::add_joint_transform(COLLADASW::Node &node,
                                           float mat[4][4],
                                           float parent_mat[4][4],

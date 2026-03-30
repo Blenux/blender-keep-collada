@@ -7,3 +7,5 @@
  */
 
 #include "ExportSettings.h"
+
+using namespace blender;

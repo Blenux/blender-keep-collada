@@ -4,7 +4,9 @@
 
 #include "AnimationClipExporter.h"
 
-void AnimationClipExporter::exportAnimationClips(Scene *sce)
+using namespace blender;
+
+void AnimationClipExporter::exportAnimationClips(blender::Scene *sce)
 {
   openLibrary();
   std::map<std::string, COLLADASW::ColladaAnimationClip *> clips;

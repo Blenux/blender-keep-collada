@@ -22,7 +22,7 @@ class TransformWriter {
                            BCExportSettings &export_settings,
                            bool has_restmat);
 
-  void add_node_transform_ob(COLLADASW::Node &node, Object *ob, BCExportSettings &export_settings);
+  void add_node_transform_ob(COLLADASW::Node &node, blender::Object *ob, BCExportSettings &export_settings);
 
   void add_node_transform_identity(COLLADASW::Node &node, BCExportSettings &export_settings);
 

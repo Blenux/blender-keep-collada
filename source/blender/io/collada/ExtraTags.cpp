@@ -12,6 +12,9 @@
 #include <regex>
 
 #include "ExtraTags.h"
+#include "BLI_string.h"
+
+using namespace blender;
 
 ExtraTags::ExtraTags(std::string profile)
 {

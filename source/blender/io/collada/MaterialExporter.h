@@ -27,11 +27,11 @@
 class MaterialsExporter : COLLADASW::LibraryMaterials {
  public:
   MaterialsExporter(COLLADASW::StreamWriter *sw, BCExportSettings &export_settings);
-  void exportMaterials(Scene *sce);
-  void operator()(Material *ma, Object *ob);
+  void exportMaterials(blender::Scene *sce);
+  void operator()(blender::Material *ma, blender::Object *ob);
 
  private:
-  bool hasMaterials(Scene *sce);
+  bool hasMaterials(blender::Scene *sce);
   BCExportSettings &export_settings;
 };
 
@@ -44,12 +44,12 @@ template<class Functor> class ForEachMaterialFunctor {
  public:
   ForEachMaterialFunctor(Functor *f) : f(f) {}
 
-  void operator()(Object *ob)
+  void operator()(blender::Object *ob)
   {
     int a;
     for (a = 0; a < ob->totcol; a++) {
 
-      Material *ma = BKE_object_material_get(ob, a + 1);
+      blender::Material *ma = blender::BKE_object_material_get(ob, a + 1);
 
       if (!ma) {
         continue;
@@ -70,7 +70,7 @@ struct MaterialFunctor {
    * f should have */
   // void operator()(Material *ma)
   template<class Functor>
-  void forEachMaterialInExportSet(Scene *sce, Functor &f, LinkNode *export_set)
+  void forEachMaterialInExportSet(blender::Scene *sce, Functor &f, blender::LinkNode *export_set)
   {
     ForEachMaterialFunctor<Functor> matfunc(&f);
     GeometryFunctor gf;

@@ -45,28 +45,28 @@ class ArmatureExporter : public COLLADASW::LibraryControllers,
   {
   }
 
-  void add_bone_collections(Object *ob_arm, COLLADASW::Node &node);
+  void add_bone_collections(blender::Object *ob_arm, COLLADASW::Node &node);
 
   /* write bone nodes */
-  void add_armature_bones(Object *ob_arm,
-                          ViewLayer *view_layer,
+  void add_armature_bones(blender::Object *ob_arm,
+                          blender::ViewLayer *view_layer,
                           SceneExporter *se,
-                          std::vector<Object *> &child_objects);
+                          std::vector<blender::Object *> &child_objects);
 
-  bool add_instance_controller(Object *ob);
+  bool add_instance_controller(blender::Object *ob);
 
  private:
   BlenderContext &blender_context;
   BCExportSettings &export_settings;
 
 #if 0
-  std::vector<Object *> written_armatures;
+  std::vector<blender::Object *> written_armatures;
 
-  bool already_written(Object *ob_arm);
+  bool already_written(blender::Object *ob_arm);
 
-  void wrote(Object *ob_arm);
+  void wrote(blender::Object *ob_arm);
 
-  void find_objects_using_armature(Object *ob_arm, std::vector<Object *> &objects, Scene *sce);
+  void find_objects_using_armature(blender::Object *ob_arm, std::vector<blender::Object *> &objects, blender::Scene *sce);
 #endif
 
   /**
@@ -74,20 +74,20 @@ class ArmatureExporter : public COLLADASW::LibraryControllers,
    * are required for writing bone parented objects.
    * \param parent_mat: is armature-space.
    */
-  void add_bone_node(Bone *bone,
-                     Object *ob_arm,
+  void add_bone_node(blender::Bone *bone,
+                     blender::Object *ob_arm,
                      SceneExporter *se,
-                     std::vector<Object *> &child_objects);
+                     std::vector<blender::Object *> &child_objects);
 
-  bool can_export(Bone *bone)
+  bool can_export(blender::Bone *bone)
   {
-    return !(export_settings.get_deform_bones_only() && bone->flag & BONE_NO_DEFORM);
+    return !(export_settings.get_deform_bones_only() && bone->flag & blender::BONE_NO_DEFORM);
   }
 
-  bool is_export_root(Bone *bone);
-  void add_bone_transform(Object *ob_arm, Bone *bone, COLLADASW::Node &node);
+  bool is_export_root(blender::Bone *bone);
+  void add_bone_transform(blender::Object *ob_arm, blender::Bone *bone, COLLADASW::Node &node);
 
-  std::string get_controller_id(Object *ob_arm, Object *ob);
+  std::string get_controller_id(blender::Object *ob_arm, blender::Object *ob);
 
-  void write_bone_URLs(COLLADASW::InstanceController &ins, Object *ob_arm, Bone *bone);
+  void write_bone_URLs(COLLADASW::InstanceController &ins, blender::Object *ob_arm, blender::Bone *bone);
 };

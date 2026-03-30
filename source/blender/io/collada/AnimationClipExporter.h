@@ -12,14 +12,14 @@
 
 class AnimationClipExporter : COLLADASW::LibraryAnimationClips {
  private:
-  Depsgraph *depsgraph;
-  Scene *scene = nullptr;
+  blender::Depsgraph *depsgraph;
+  blender::Scene *scene = nullptr;
   COLLADASW::StreamWriter *sw;
   BCExportSettings &export_settings;
   std::vector<std::vector<std::string>> anim_meta;
 
  public:
-  AnimationClipExporter(Depsgraph *depsgraph,
+  AnimationClipExporter(blender::Depsgraph *depsgraph,
                         COLLADASW::StreamWriter *sw,
                         BCExportSettings &export_settings,
                         std::vector<std::vector<std::string>> anim_meta)
@@ -31,5 +31,5 @@ class AnimationClipExporter : COLLADASW::LibraryAnimationClips {
   {
   }
 
-  void exportAnimationClips(Scene *sce);
+  void exportAnimationClips(blender::Scene *sce);
 };

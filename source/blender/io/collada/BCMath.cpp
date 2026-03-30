@@ -7,6 +7,8 @@
 
 #include "BLI_math_matrix.h"
 
+using namespace blender;
+
 void BCQuat::rotate_to(Matrix &mat_to)
 {
   Quat qd;
@@ -14,15 +16,15 @@ void BCQuat::rotate_to(Matrix &mat_to)
   Matrix mati;
   Matrix mat_from;
 
-  quat_to_mat4(mat_from, q);
+  blender::quat_to_mat4(mat_from, q);
 
   /* Calculate the difference matrix matd between mat_from and mat_to */
-  invert_m4_m4(mati, mat_from);
-  mul_m4_m4m4(matd, mati, mat_to);
+  blender::invert_m4_m4(mati, mat_from);
+  blender::mul_m4_m4m4(matd, mati, mat_to);
 
-  mat4_to_quat(qd, matd);
+  blender::mat4_to_quat(qd, matd);
 
-  mul_qt_qtqt(q, qd, q); /* rotate to the final rotation to mat_to */
+  blender::mul_qt_qtqt(q, qd, q); /* rotate to the final rotation to mat_to */
 }
 
 BCMatrix::BCMatrix(const BCMatrix &mat)
@@ -35,7 +37,7 @@ BCMatrix::BCMatrix(Matrix &mat)
   set_transform(mat);
 }
 
-BCMatrix::BCMatrix(Object *ob)
+BCMatrix::BCMatrix(blender::Object *ob)
 {
   set_transform(ob);
 }
@@ -49,9 +51,9 @@ BCMatrix::BCMatrix(BC_global_forward_axis global_forward_axis, BC_global_up_axis
 {
   float mrot[3][3];
   float mat[4][4];
-  mat3_from_axis_conversion(
+  blender::mat3_from_axis_conversion(
       global_forward_axis, global_up_axis, BC_DEFAULT_FORWARD, BC_DEFAULT_UP, mrot);
-  copy_m4_m3(mat, mrot);
+  blender::copy_m4_m3(mat, mrot);
   set_transform(mat);
 }
 
@@ -77,11 +79,11 @@ void BCMatrix::add_transform(Matrix &to,
 {
   if (inverted) {
     Matrix globinv;
-    invert_m4_m4(globinv, transform);
+    blender::invert_m4_m4(globinv, transform);
     add_transform(to, globinv, from, /*inverted=*/false);
   }
   else {
-    mul_m4_m4m4(to, transform, from);
+    blender::mul_m4_m4m4(to, transform, from);
   }
 }
 
@@ -91,39 +93,39 @@ void BCMatrix::apply_transform(Matrix &to,
                                bool inverse)
 {
   Matrix globinv;
-  invert_m4_m4(globinv, transform);
+  blender::invert_m4_m4(globinv, transform);
   if (inverse) {
     add_transform(to, globinv, from, /*inverted=*/false);
   }
   else {
-    mul_m4_m4m4(to, transform, from);
-    mul_m4_m4m4(to, to, globinv);
+    blender::mul_m4_m4m4(to, transform, from);
+    blender::mul_m4_m4m4(to, to, globinv);
   }
 }
 
 void BCMatrix::add_inverted_transform(Matrix &to, const Matrix &transform, const Matrix &from)
 {
   Matrix workmat;
-  invert_m4_m4(workmat, transform);
-  mul_m4_m4m4(to, workmat, from);
+  blender::invert_m4_m4(workmat, transform);
+  blender::mul_m4_m4m4(to, workmat, from);
 }
 
-void BCMatrix::set_transform(Object *ob)
+void BCMatrix::set_transform(blender::Object *ob)
 {
   Matrix lmat;
 
   BKE_object_matrix_local_get(ob, lmat);
-  copy_m4_m4(matrix, lmat);
+  blender::copy_m4_m4(matrix, lmat);
 
-  mat4_decompose(this->loc, this->q, this->size, lmat);
-  quat_to_compatible_eul(this->rot, ob->rot, this->q);
+  blender::mat4_decompose(this->loc, this->q, this->size, lmat);
+  blender::quat_to_compatible_eul(this->rot, ob->rot, this->q);
 }
 
 void BCMatrix::set_transform(Matrix &mat)
 {
-  copy_m4_m4(matrix, mat);
-  mat4_decompose(this->loc, this->q, this->size, mat);
-  quat_to_eul(this->rot, this->q);
+  blender::copy_m4_m4(matrix, mat);
+  blender::mat4_decompose(this->loc, this->q, this->size, mat);
+  blender::quat_to_eul(this->rot, this->q);
 }
 
 void BCMatrix::copy(Matrix &r, Matrix &a)
@@ -134,7 +136,7 @@ void BCMatrix::copy(Matrix &r, Matrix &a)
 
 void BCMatrix::transpose(Matrix &mat)
 {
-  transpose_m4(mat);
+  blender::transpose_m4(mat);
 }
 
 void BCMatrix::sanitize(Matrix &mat, int precision)
@@ -142,7 +144,7 @@ void BCMatrix::sanitize(Matrix &mat, int precision)
   for (auto &row : mat) {
     for (float &cell : row) {
       double val = double(cell);
-      val = double_round(val, precision);
+      val = blender::double_round(val, precision);
       cell = float(val);
     }
   }
@@ -152,16 +154,16 @@ void BCMatrix::sanitize(DMatrix &mat, int precision)
 {
   for (auto &row : mat) {
     for (double &cell : row) {
-      cell = double_round(cell, precision);
+      cell = blender::double_round(cell, precision);
     }
   }
 }
 
 void BCMatrix::unit()
 {
-  unit_m4(this->matrix);
-  mat4_decompose(this->loc, this->q, this->size, this->matrix);
-  quat_to_eul(this->rot, this->q);
+  blender::unit_m4(this->matrix);
+  blender::mat4_decompose(this->loc, this->q, this->size, this->matrix);
+  blender::quat_to_eul(this->rot, this->q);
 }
 
 void BCMatrix::get_matrix(DMatrix &mat, const bool transposed, const int precision) const
@@ -193,7 +195,7 @@ void BCMatrix::get_matrix(Matrix &mat,
   }
 
   if (inverted) {
-    invert_m4(mat);
+    blender::invert_m4(mat);
   }
 }
 

@@ -54,7 +54,7 @@ class UnitConverter {
 
   float (&get_rotation())[4][4];
   float (&get_scale())[4][4];
-  void calculate_scale(Scene &sce);
+  void calculate_scale(blender::Scene &sce);
 };
 
 extern void clear_global_id_map();
@@ -66,15 +66,15 @@ extern std::string translate_id(const char *idString);
 extern std::string id_name(void *id);
 extern std::string encode_xml(const std::string &xml);
 
-extern std::string get_geometry_id(Object *ob);
-extern std::string get_geometry_id(Object *ob, bool use_instantiation);
+extern std::string get_geometry_id(blender::Object *ob);
+extern std::string get_geometry_id(blender::Object *ob, bool use_instantiation);
 
-extern std::string get_light_id(Object *ob);
+extern std::string get_light_id(blender::Object *ob);
 
-extern std::string get_joint_sid(Bone *bone);
+extern std::string get_joint_sid(blender::Bone *bone);
 
-extern std::string get_camera_id(Object *ob);
-extern std::string get_morph_id(Object *ob);
+extern std::string get_camera_id(blender::Object *ob);
+extern std::string get_morph_id(blender::Object *ob);
 
-extern std::string get_effect_id(Material *mat);
-extern std::string get_material_id(Material *mat);
+extern std::string get_effect_id(blender::Material *mat);
+extern std::string get_material_id(blender::Material *mat);

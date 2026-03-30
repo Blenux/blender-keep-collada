@@ -17,6 +17,8 @@
 
 #include <map>
 
+using namespace blender;
+
 UnitConverter::UnitConverter() : up_axis(COLLADAFW::FileInfo::Z_UP)
 {
   axis_angle_to_mat4_single(x_up_mat4, 'Y', -M_PI_2);

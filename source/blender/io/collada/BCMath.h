@@ -20,17 +20,17 @@ class BCQuat {
  public:
   BCQuat(const BCQuat &other)
   {
-    copy_v4_v4(q, other.q);
+    blender::copy_v4_v4(q, other.q);
   }
 
   BCQuat(Quat &other)
   {
-    copy_v4_v4(q, other);
+    blender::copy_v4_v4(q, other);
   }
 
   BCQuat()
   {
-    unit_qt(q);
+    blender::unit_qt(q);
   }
 
   Quat &quat()
@@ -62,19 +62,20 @@ class BCMatrix {
   BCMatrix(BC_global_forward_axis global_forward_axis, BC_global_up_axis global_up_axis);
   BCMatrix(const BCMatrix &mat);
   BCMatrix(Matrix &mat);
-  BCMatrix(Object *ob);
+  BCMatrix(blender::Object *ob);
   BCMatrix();
 
   /**
    * We need double here because the OpenCollada API needs it.
    * precision = -1 indicates to not limit the precision.
    */
+  void transpose(Matrix &mat);
   void get_matrix(DMatrix &matrix, bool transposed = false, int precision = -1) const;
-  void get_matrix(Matrix &matrix,
-                  bool transposed = false,
-                  int precision = -1,
-                  bool inverted = false) const;
-  void set_transform(Object *ob);
+  void get_matrix(Matrix &matrix, bool transposed = false, int precision = -1, bool inverted = false) const;
+
+  void get_matrix(Matrix &matrix, bool transposed = false, int precision = -1) const;
+  void set_matrix(Matrix &matrix, bool transposed = false, int precision = -1) const;
+  void set_transform(blender::Object *ob);
   void set_transform(Matrix &mat);
   void add_transform(Matrix &to,
                      const Matrix &transform,
@@ -93,5 +94,5 @@ class BCMatrix {
 
   static void sanitize(Matrix &matrix, int precision);
   static void sanitize(DMatrix &matrix, int precision);
-  static void transpose(Matrix &matrix);
+  static void set_value(Matrix &matrix);
 };
